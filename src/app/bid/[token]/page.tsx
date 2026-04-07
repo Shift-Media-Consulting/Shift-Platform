@@ -1,11 +1,9 @@
 import { createClient } from '@/lib/supabase/server'
 import BidSubmitForm from './BidSubmitForm'
-import type { PageProps } from 'next/types'
-
 export const metadata = { title: 'Submit Bid — SHIFT.MEDIA' }
 
-export default async function BidPortalPage(props: PageProps<'/bid/[token]'>) {
-  const { token } = await props.params
+export default async function BidPortalPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = await params
   const supabase = await createClient()
 
   const { data: partner } = await supabase

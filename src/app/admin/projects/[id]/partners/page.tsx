@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import AddPartnerForm from './AddPartnerForm'
 import PartnerActions from './PartnerActions'
-import type { PageProps } from 'next/types'
 
 export const metadata = { title: 'Partners — SHIFT Platform' }
 
@@ -12,8 +11,8 @@ const statusColour: Record<string, string> = {
   'Pitch': '#8E44AD', 'Awarded': '#27AE60', 'Not Awarded': '#C0392B',
 }
 
-export default async function PartnersPage(props: PageProps<'/admin/projects/[id]/partners'>) {
-  const { id } = await props.params
+export default async function PartnersPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const [{ data: project }, { data: partners }] = await Promise.all([

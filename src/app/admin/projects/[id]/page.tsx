@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ProjectEditForm from './ProjectEditForm'
 import BriefAnalyzer from './BriefAnalyzer'
-import type { PageProps } from 'next/types'
 
 export const metadata = { title: 'Project — SHIFT Platform' }
 
@@ -13,8 +12,8 @@ const statusColour: Record<string, string> = {
   'Delivered': '#27AE60', 'Archived': '#AAAAAA',
 }
 
-export default async function ProjectDetailPage(props: PageProps<'/admin/projects/[id]'>) {
-  const { id } = await props.params
+export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const [

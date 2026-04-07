@@ -2,12 +2,10 @@ import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ClientEditForm from './ClientEditForm'
-import type { PageProps } from 'next/types'
-
 export const metadata = { title: 'Client — SHIFT Platform' }
 
-export default async function ClientDetailPage(props: PageProps<'/admin/clients/[id]'>) {
-  const { id } = await props.params
+export default async function ClientDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const [{ data: client }, { data: projects }] = await Promise.all([
