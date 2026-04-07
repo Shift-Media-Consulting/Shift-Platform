@@ -5,7 +5,7 @@ export default async function AdminPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) redirect('/login')
+  if (!user) redirect('/login?to=/admin')
 
   const { data: profile } = await supabase
     .from('profiles')
@@ -14,7 +14,7 @@ export default async function AdminPage() {
     .single()
 
   if (!profile || !['shift_admin', 'super_admin'].includes(profile.role)) {
-    redirect('/login')
+    redirect('/login?to=/admin')
   }
 
   return (

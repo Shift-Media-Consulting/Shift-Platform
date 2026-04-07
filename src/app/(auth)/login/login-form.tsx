@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginForm() {
-  const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('to') || '/'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -29,8 +30,7 @@ export default function LoginForm() {
     }
 
     if (data.user) {
-      // Let the server page handle role-based routing
-      window.location.href = '/admin'
+      window.location.href = redirectTo
     }
   }
 

@@ -49,7 +49,7 @@ export default function Nav() {
         ))}
 
         {/* Login CTA */}
-        <Link href="/login" style={{
+        <Link href="/login?to=/admin" style={{
           fontSize: '13px', fontWeight: 700,
           backgroundColor: '#00897B', color: '#FFFFFF',
           padding: '8px 20px', borderRadius: '4px',
