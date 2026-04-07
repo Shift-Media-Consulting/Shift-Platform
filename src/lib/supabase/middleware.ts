@@ -23,8 +23,18 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  // Refresh the session — pages handle their own auth redirects
-  await supabase.auth.getUser()
+  // Refresh the session
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Gate the entire site — redirect to /login if not authenticated
+  // Remove this block when the site goes public
+  const pathname = request.nextUrl.pathname
+  const isLoginPage = pathname === '/login'
+  if (!user && !isLoginPage) {
+    const loginUrl = request.nextUrl.clone()
+    loginUrl.pathname = '/login'
+    return NextResponse.redirect(loginUrl)
+  }
 
   return supabaseResponse
 }
