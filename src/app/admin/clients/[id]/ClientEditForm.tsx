@@ -28,6 +28,9 @@ export default function ClientEditForm({ client }: { client: any }) {
   return (
     <form action={formAction}>
       <input type="hidden" name="id" value={client.id} />
+      {/* Pass existing logo URL so it's preserved if no new file is uploaded */}
+      <input type="hidden" name="existing_logo_url" value={client.logo_url ?? ''} />
+
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
         <div style={{ gridColumn: '1 / -1' }}>
           <label style={lbl}>Company Name</label>
@@ -59,12 +62,31 @@ export default function ClientEditForm({ client }: { client: any }) {
           <label style={lbl}>Physical Address</label>
           <input name="address" type="text" defaultValue={client.address} required style={inp} />
         </div>
+
+        {/* Logo upload */}
         <div style={{ gridColumn: '1 / -1' }}>
-          <label style={lbl}>Logo URL <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
-          <input name="logo_url" type="url" defaultValue={client.logo_url ?? ''} style={inp} placeholder="https://…" />
+          <label style={lbl}>
+            Client Logo <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional — PNG, JPG or SVG)</span>
+          </label>
+          {client.logo_url && (
+            <div style={{ marginBottom: '10px', padding: '12px', backgroundColor: '#FAFAFA', border: '1px solid #EEEEEE', borderRadius: '4px', display: 'inline-block' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={client.logo_url} alt="Current logo" style={{ maxHeight: '48px', maxWidth: '160px', objectFit: 'contain', display: 'block' }} />
+              <p style={{ fontSize: '10px', color: '#AAAAAA', marginTop: '6px' }}>Current logo — upload a new file to replace</p>
+            </div>
+          )}
+          <input
+            name="logo"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/svg+xml"
+            style={{ ...inp, padding: '7px 12px', cursor: 'pointer' }}
+          />
         </div>
+
         <div style={{ gridColumn: '1 / -1' }}>
-          <label style={lbl}>Other Contacts <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+          <label style={lbl}>
+            Other Contacts <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+          </label>
           <textarea
             name="other_contacts"
             rows={3}

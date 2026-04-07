@@ -44,7 +44,7 @@ export default function NewClientPage() {
         <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #DDDDDD', borderRadius: '4px', padding: '40px' }}>
           <form action={formAction}>
 
-            {/* Company section */}
+            {/* Company */}
             <p style={sectionHead}>Company</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '28px' }}>
               <div style={{ gridColumn: '1 / -1' }}>
@@ -72,12 +72,19 @@ export default function NewClientPage() {
                 <input name="address" type="text" required style={inp} placeholder="Musterstraße 1, 20095 Hamburg" />
               </div>
               <div style={{ gridColumn: '1 / -1' }}>
-                <label style={lbl}>Logo URL <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
-                <input name="logo_url" type="url" style={inp} placeholder="https://client.com/logo.png" />
+                <label style={lbl}>
+                  Client Logo <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional — PNG, JPG or SVG)</span>
+                </label>
+                <input
+                  name="logo"
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                  style={{ ...inp, padding: '7px 12px', cursor: 'pointer' }}
+                />
               </div>
             </div>
 
-            {/* Contacts section */}
+            {/* Contacts */}
             <div style={{ borderTop: '1px solid #EEEEEE', paddingTop: '24px', marginBottom: '28px' }}>
               <p style={sectionHead}>Contacts</p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
@@ -90,7 +97,9 @@ export default function NewClientPage() {
                   <input name="email" type="email" required style={inp} placeholder="jane@acme.com" />
                 </div>
                 <div style={{ gridColumn: '1 / -1' }}>
-                  <label style={lbl}>Other Contacts <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+                  <label style={lbl}>
+                    Other Contacts <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+                  </label>
                   <textarea
                     name="other_contacts"
                     rows={3}
