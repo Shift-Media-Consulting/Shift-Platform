@@ -29,7 +29,8 @@ export async function proxy(request: NextRequest) {
   // Gate the entire site — redirect to /login if not authenticated
   // Remove this block when the site goes public
   const pathname = request.nextUrl.pathname
-  if (!user && pathname !== '/login') {
+  const isPublicRoute = pathname === '/login' || pathname.startsWith('/bid/')
+  if (!user && !isPublicRoute) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/login'
     return NextResponse.redirect(loginUrl)
