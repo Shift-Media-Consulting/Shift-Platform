@@ -5,16 +5,22 @@ export default async function AdminPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) redirect('/login')
+  if (!user) {
+    return <pre style={{padding:40}}>DEBUG: No user session found. Supabase getUser returned null.</pre>
+  }
 
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('role, full_name')
     .eq('id', user.id)
     .single()
 
-  if (!profile || !['shift_admin', 'super_admin'].includes(profile.role)) {
-    redirect('/login')
+  if (profileError || !profile) {
+    return <pre style={{padding:40}}>DEBUG: User ID: {user.id} | Profile error: {JSON.stringify(profileError)} | Profile: {JSON.stringify(profile)}</pre>
+  }
+
+  if (!['shift_admin', 'super_admin'].includes(profile.role)) {
+    return <pre style={{padding:40}}>DEBUG: Wrong role: {profile.role}</pre>
   }
 
   return (

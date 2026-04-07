@@ -29,19 +29,8 @@ export default function LoginForm() {
     }
 
     if (data.user) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', data.user.id)
-        .single()
-
-      if (profile?.role === 'shift_admin' || profile?.role === 'super_admin') {
-        window.location.href = '/admin'
-      } else if (profile?.role === 'client') {
-        window.location.href = '/client/dashboard'
-      } else {
-        window.location.href = '/'
-      }
+      // Let the server page handle role-based routing
+      window.location.href = '/admin'
     }
   }
 
