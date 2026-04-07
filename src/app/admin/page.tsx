@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import LogoutButton from './logout-button'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -38,9 +39,12 @@ export default async function AdminPage() {
           <span style={{ color: '#00897B', fontWeight: 700 }}>.</span>
           <span style={{ fontWeight: 400 }}>MEDIA</span>
         </span>
-        <span style={{ fontSize: '13px', color: '#555555' }}>
-          {profile.full_name || user.email}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <span style={{ fontSize: '13px', color: '#555555' }}>
+            {profile.full_name || user.email}
+          </span>
+          <LogoutButton />
+        </div>
       </nav>
 
       {/* Content */}
