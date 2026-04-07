@@ -36,11 +36,11 @@ export default function LoginForm() {
         .single()
 
       if (profile?.role === 'shift_admin' || profile?.role === 'super_admin') {
-        router.push('/admin')
+        window.location.href = '/admin'
       } else if (profile?.role === 'client') {
-        router.push('/client/dashboard')
+        window.location.href = '/client/dashboard'
       } else {
-        router.push('/')
+        window.location.href = '/'
       }
     }
   }
