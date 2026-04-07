@@ -26,13 +26,13 @@ export default function BriefAnalyzer({ projectId }: { projectId: string }) {
           {state.error}
         </div>
       )}
-      {state?.success && (
+      {state && 'success' in state && (
         <div style={{ padding: '14px 16px', backgroundColor: '#E8F5F3', border: '1px solid #A5D6A7', borderRadius: '4px', marginBottom: '12px' }}>
           <p style={{ fontSize: '11px', fontWeight: 700, color: '#00695C', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '8px' }}>Analysis complete</p>
-          {state.flags && state.flags.length > 0 && (
+          {'flags' in state && state.flags && state.flags.length > 0 && (
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, color: '#888888', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Flags</p>
-              {state.flags.map((flag: string, i: number) => (
+              {(state.flags as string[]).map((flag: string, i: number) => (
                 <p key={i} style={{ fontSize: '13px', color: '#555555', marginBottom: '4px' }}>⚠ {flag}</p>
               ))}
             </div>
