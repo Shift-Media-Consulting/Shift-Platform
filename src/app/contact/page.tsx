@@ -117,7 +117,7 @@ export default function ContactPage() {
                   {
                     step: '01',
                     title: 'You send us a brief message',
-                    body: 'Tell us who you are, what you're working on, and what challenge you're trying to solve. A few sentences is enough.',
+                    body: "Tell us who you are, what you're working on, and what challenge you're trying to solve. A few sentences is enough.",
                   },
                   {
                     step: '02',
