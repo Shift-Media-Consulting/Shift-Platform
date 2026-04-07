@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import LoginForm from './login-form'
 
 export const metadata = {
@@ -56,7 +57,9 @@ export default function LoginPage() {
               Access the SHIFT platform
             </p>
 
-            <LoginForm />
+            <Suspense fallback={null}>
+              <LoginForm />
+            </Suspense>
           </div>
         </div>
 
