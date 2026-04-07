@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata = { title: 'Clients — SHIFT Platform' }
 
-const sectorColour: Record<string, string> = {
+const typeColour: Record<string, string> = {
   'Brand': '#00897B', 'Agency': '#2980B9', 'Other': '#888888',
 }
 
@@ -59,8 +59,8 @@ export default async function ClientsPage() {
                   <td style={{ padding: '14px 20px' }}>
                     <span style={{
                       fontSize: '11px', fontWeight: 700,
-                      color: sectorColour[c.client_type] ?? '#888888',
-                      backgroundColor: (sectorColour[c.client_type] ?? '#888888') + '18',
+                      color: typeColour[c.client_type] ?? '#888888',
+                      backgroundColor: (typeColour[c.client_type] ?? '#888888') + '18',
                       padding: '3px 8px', borderRadius: '3px',
                     }}>{c.client_type}</span>
                   </td>
