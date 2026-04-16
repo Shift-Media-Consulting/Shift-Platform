@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { fmtDate } from '@/lib/utils/format-date'
 import { BUDGET_SECTIONS } from '@/lib/budget/positions'
+import { ensureShiftPartnerAction } from './actions'
 
 export const metadata = { title: 'Budgets — SHIFT Platform' }
 
@@ -67,12 +68,28 @@ export default async function BudgetsPage({ params }: { params: Promise<{ id: st
             <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#111111' }}>Production Budgets</h1>
             <p style={{ fontSize: '13px', color: '#888888', marginTop: '4px' }}>{project.project_name}</p>
           </div>
-          <Link
-            href={`/admin/projects/${id}/budgets/new`}
-            style={{ backgroundColor: '#00897B', color: '#FFFFFF', padding: '10px 20px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
-          >
-            + Add Budget
-          </Link>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <Link
+              href={`/admin/projects/${id}/bids`}
+              style={{ color: '#00897B', border: '1px solid #00897B', padding: '9px 18px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
+            >
+              Bid Review ›
+            </Link>
+            <Link
+              href={`/admin/projects/${id}/budgets/new`}
+              style={{ backgroundColor: '#111111', color: '#FFFFFF', padding: '10px 20px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
+            >
+              + Add Budget
+            </Link>
+            <form action={ensureShiftPartnerAction.bind(null, id)}>
+              <button
+                type="submit"
+                style={{ backgroundColor: '#00897B', color: '#FFFFFF', padding: '10px 20px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', fontFamily: "'Poppins', Calibri, Arial, sans-serif" }}
+              >
+                + SHIFT Internal Bid
+              </button>
+            </form>
+          </div>
           {clientBudget && (
             <div style={{ textAlign: 'right' }}>
               <p style={{ fontSize: '10px', fontWeight: 700, color: '#888888', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '2px' }}>Client Budget</p>

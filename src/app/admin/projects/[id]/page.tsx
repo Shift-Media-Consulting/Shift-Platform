@@ -198,6 +198,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <Link href={`/admin/projects/${id}/partners`} style={{ display: 'block', backgroundColor: '#00897B', color: '#FFFFFF', padding: '10px 16px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', textAlign: 'center' }}>
               Manage Partners ›
             </Link>
+            <Link href={`/admin/projects/${id}/bids`} style={{ display: 'block', backgroundColor: '#111111', color: '#FFFFFF', padding: '10px 16px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', textAlign: 'center' }}>
+              Bid Review ›
+            </Link>
             <Link href={`/admin/projects/${id}/budgets`} style={{ display: 'block', backgroundColor: '#FFFFFF', color: '#00897B', padding: '10px 16px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', textAlign: 'center', border: '1px solid #00897B' }}>
               View Budgets ›
             </Link>

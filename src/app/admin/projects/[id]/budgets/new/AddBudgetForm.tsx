@@ -6,10 +6,27 @@ import { createClient } from '@/lib/supabase/client'
 import BudgetBuilder, { type BudgetBuilderHandle, type BudgetFormState } from '@/components/budget/BudgetBuilder'
 import { BUDGET_POSITIONS, BUDGET_SECTIONS } from '@/lib/budget/positions'
 
+const BUCKET = 'bid-documents'
+
 interface Partner {
   id: string
   company_name: string
   contact_name: string
+}
+
+async function uploadCreative(
+  supabase: ReturnType<typeof createClient>,
+  file: File,
+  partnerId: string,
+): Promise<string | null> {
+  const ext = file.name.split('.').pop() ?? 'bin'
+  const path = `${partnerId}/creative-admin-${Date.now()}.${ext}`
+  const { error } = await supabase.storage
+    .from(BUCKET)
+    .upload(path, file, { contentType: file.type, upsert: false })
+  if (error) return null
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(path)
+  return data.publicUrl
 }
 
 function buildLineItems(budgetId: string, formState: BudgetFormState) {
@@ -55,24 +72,28 @@ const lbl: React.CSSProperties = {
 export default function AddBudgetForm({
   projectId,
   partners,
+  preselectedPartnerId,
 }: {
   projectId: string
   partners: Partner[]
+  preselectedPartnerId?: string
 }) {
-  const [partnerId, setPartnerId] = useState(partners[0]?.id ?? '')
+  const [partnerId, setPartnerId] = useState(preselectedPartnerId ?? partners[0]?.id ?? '')
   const [director, setDirector] = useState('')
   const [version, setVersion] = useState('V1')
   const [notes, setNotes] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const budgetBuilderRef = useRef<BudgetBuilderHandle>(null)
+  const creativeRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
-  const draftKey = `shift_admin_budget_draft_${projectId}`
+  const draftKey = `shift_admin_budget_draft_${projectId}_${partnerId}`
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const budgetData = budgetBuilderRef.current?.getData() ?? {}
     const totalNet = budgetBuilderRef.current?.getTotal() ?? 0
+    const creativeFile = creativeRef.current?.files?.[0] ?? null
 
     if (!partnerId) {
       setError('Please select a production partner.')
@@ -83,6 +104,33 @@ export default function AddBudgetForm({
     setError('')
 
     const supabase = createClient()
+
+    // Upload creative if provided
+    let creativeUrl: string | null = null
+    if (creativeFile) {
+      creativeUrl = await uploadCreative(supabase, creativeFile, partnerId)
+      if (!creativeUrl) {
+        setError('Creative treatment upload failed. Please try again.')
+        setSubmitting(false)
+        return
+      }
+    }
+
+    // Create bids record if we have a creative treatment
+    if (creativeUrl) {
+      const { error: bidErr } = await supabase
+        .from('bids')
+        .insert({
+          project_id: projectId,
+          partner_id: partnerId,
+          creative_url: creativeUrl,
+        })
+      if (bidErr) {
+        setError(bidErr.message)
+        setSubmitting(false)
+        return
+      }
+    }
 
     // Create budget record
     const { data: budget, error: budgetErr } = await supabase
@@ -112,7 +160,6 @@ export default function AddBudgetForm({
       const { error: liErr } = await supabase
         .from('budget_line_items')
         .insert(lineItems)
-
       if (liErr) {
         setError(liErr.message)
         setSubmitting(false)
@@ -150,7 +197,7 @@ export default function AddBudgetForm({
               <option value="">Select partner…</option>
               {partners.map(p => (
                 <option key={p.id} value={p.id}>
-                  {p.company_name}{p.contact_name ? ` (${p.contact_name})` : ''}
+                  {p.company_name}{p.contact_name && p.contact_name !== 'Internal' ? ` (${p.contact_name})` : ''}
                 </option>
               ))}
             </select>
@@ -187,6 +234,23 @@ export default function AddBudgetForm({
               placeholder="Any notes…"
               style={inp}
             />
+          </div>
+
+          {/* Creative treatment upload */}
+          <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #EEEEEE', paddingTop: '16px' }}>
+            <label style={lbl}>
+              Creative Treatment{' '}
+              <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional — PDF, PPT, Keynote, Word, ZIP)</span>
+            </label>
+            <input
+              ref={creativeRef}
+              type="file"
+              accept=".pdf,.ppt,.pptx,.key,.doc,.docx,.zip"
+              style={{ ...inp, cursor: 'pointer', padding: '7px 12px' }}
+            />
+            <p style={{ fontSize: '11px', color: '#888888', marginTop: '4px' }}>
+              If provided, a bid record will be created alongside this budget so it appears in the Bid Review page.
+            </p>
           </div>
         </div>
       </div>
