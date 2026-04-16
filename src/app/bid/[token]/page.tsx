@@ -57,7 +57,7 @@ export default async function BidPortalPage({ params }: { params: Promise<{ toke
 
         <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #DDDDDD', borderRadius: '4px', padding: '40px' }}>
           <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.7, marginBottom: '32px' }}>
-            Please submit your creative treatment and budget using the form below. Both documents are required. Your submission will be reviewed by the SHIFT MEDIA team before being presented to the client.
+            Please submit your creative treatment and production budget using the tabs below. Your submission will be reviewed by the SHIFT MEDIA team before being presented to the client.
           </p>
           <BidSubmitForm partnerId={partner.id} projectId={partner.project_id} />
         </div>

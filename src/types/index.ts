@@ -141,6 +141,39 @@ export interface Bid {
   submitted_at: string
 }
 
+// Budget
+export interface Budget {
+  id: string
+  project_id: string
+  partner_id: string
+  version: string
+  status: 'Draft' | 'Submitted' | 'Under Review' | 'Approved' | 'Rejected'
+  director?: string
+  notes?: string
+  total_net: number
+  submitted_at?: string
+  created_at: string
+  updated_at: string
+  // joined
+  production_partners?: { company_name: string; contact_name: string }
+  budget_line_items?: BudgetLineItem[]
+}
+
+export interface BudgetLineItem {
+  id: string
+  budget_id: string
+  section_number: number
+  section_name: string
+  position_code: string
+  name: string
+  quantity: number
+  days: number
+  rate: number
+  amount: number
+  notes?: string
+  sort_order: number
+}
+
 // Overage
 export interface Overage {
   id: string
