@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { getEffectiveClientId } from '@/lib/client-preview'
 
 export const metadata = { title: 'Client Portal — SHIFT.MEDIA' }
 
@@ -16,11 +17,13 @@ export default async function ClientDashboard() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('client_id, full_name')
+    .select('role, client_id, full_name')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.client_id) {
+  const clientId = await getEffectiveClientId(profile?.client_id, profile?.role ?? '')
+
+  if (!clientId) {
     return (
       <div style={{ textAlign: 'center', padding: '64px' }}>
         <p style={{ color: '#888888', fontSize: '14px' }}>Your account is not yet linked to a client. Please contact SHIFT.MEDIA.</p>
@@ -29,8 +32,8 @@ export default async function ClientDashboard() {
   }
 
   const [{ data: projects }, { data: client }] = await Promise.all([
-    supabase.from('projects').select('id, project_id, project_name, status, created_at').eq('client_id', profile.client_id).order('created_at', { ascending: false }),
-    supabase.from('clients').select('company_name').eq('id', profile.client_id).single(),
+    supabase.from('projects').select('id, project_id, project_name, status, created_at').eq('client_id', clientId).order('created_at', { ascending: false }),
+    supabase.from('clients').select('company_name').eq('id', clientId).single(),
   ])
 
   return (
@@ -42,7 +45,7 @@ export default async function ClientDashboard() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '40px' }}>
         {[
-          { label: 'Active Projects', value: projects?.filter(p => !['Delivered','Archived'].includes(p.status)).length ?? 0 },
+          { label: 'Active Projects', value: projects?.filter(p => !['Delivered', 'Archived'].includes(p.status)).length ?? 0 },
           { label: 'Delivered', value: projects?.filter(p => p.status === 'Delivered').length ?? 0 },
           { label: 'Total Projects', value: projects?.length ?? 0 },
         ].map(card => (

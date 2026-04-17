@@ -77,11 +77,31 @@ export default function AdminSidebar() {
         ))}
       </nav>
 
-      {/* Bottom — link back to site */}
+      {/* Bottom */}
       <div style={{
         padding: '16px 24px',
         borderTop: '1px solid #1f1f1f',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
       }}>
+        {/* Client view toggle */}
+        <Link href="/client" style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '8px 12px',
+          backgroundColor: '#003D35',
+          border: '1px solid #00897B44',
+          borderRadius: '4px',
+          fontSize: '12px',
+          fontWeight: 700,
+          color: '#00897B',
+          textDecoration: 'none',
+        }}>
+          <span style={{ fontSize: '13px' }}>◉</span>
+          Client View
+        </Link>
         <Link href="/" style={{
           fontSize: '11px',
           color: '#444444',

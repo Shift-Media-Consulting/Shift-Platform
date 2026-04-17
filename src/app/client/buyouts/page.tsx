@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { getEffectiveClientId } from '@/lib/client-preview'
 
 export const metadata = { title: 'Buyouts — SHIFT.MEDIA Client Portal' }
 
@@ -14,20 +15,18 @@ export default async function ClientBuyoutsPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('client_id')
+    .select('role, client_id')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.client_id) redirect('/client')
+  const clientId = await getEffectiveClientId(profile?.client_id, profile?.role ?? '')
+  if (!clientId) redirect('/client')
 
-  // Fetch buyout line items belonging to this client's projects
-  // via buyout_projects → projects (filtered by client_id)
   const { data: buyoutProjects } = await supabase
     .from('buyout_projects')
     .select('id, buyout_project_id, projects(project_id, project_name), buyout_line_items(*)')
-    .eq('client_id', profile.client_id)
+    .eq('client_id', clientId)
 
-  // Flatten line items with their project info
   const lineItems = (buyoutProjects ?? []).flatMap((bp: any) =>
     ((bp.buyout_line_items ?? []) as any[]).map((item: any) => ({
       ...item,
@@ -59,9 +58,7 @@ export default async function ClientBuyoutsPage() {
 
       <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #DDDDDD', borderRadius: '4px', overflow: 'hidden' }}>
         {!lineItems.length ? (
-          <div style={{ padding: '64px', textAlign: 'center', color: '#888888', fontSize: '13px' }}>
-            No buyout line items yet.
-          </div>
+          <div style={{ padding: '64px', textAlign: 'center', color: '#888888', fontSize: '13px' }}>No buyout line items yet.</div>
         ) : (
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>

@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { getEffectiveClientId } from '@/lib/client-preview'
 
 export const metadata = { title: 'Projects — SHIFT.MEDIA Client Portal' }
 
@@ -17,16 +18,17 @@ export default async function ClientProjectsPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('client_id')
+    .select('role, client_id')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.client_id) redirect('/client')
+  const clientId = await getEffectiveClientId(profile?.client_id, profile?.role ?? '')
+  if (!clientId) redirect('/client')
 
   const { data: projects } = await supabase
     .from('projects')
     .select('id, project_id, project_name, status, budget, project_type, created_at')
-    .eq('client_id', profile.client_id)
+    .eq('client_id', clientId)
     .order('created_at', { ascending: false })
 
   return (

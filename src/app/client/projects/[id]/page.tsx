@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
+import { getEffectiveClientId } from '@/lib/client-preview'
 
 export const metadata = { title: 'Project — SHIFT.MEDIA Client Portal' }
 
@@ -18,18 +19,19 @@ export default async function ClientProjectDetailPage({ params }: { params: Prom
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('client_id')
+    .select('role, client_id')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.client_id) redirect('/client')
+  const clientId = await getEffectiveClientId(profile?.client_id, profile?.role ?? '')
+  if (!clientId) redirect('/client')
 
   const [{ data: project }, { data: bids }] = await Promise.all([
     supabase
       .from('projects')
       .select('id, project_id, project_name, status, budget, consultant, project_type, brief_summary, created_at')
       .eq('id', id)
-      .eq('client_id', profile.client_id)
+      .eq('client_id', clientId)
       .single(),
     supabase
       .from('bids')
