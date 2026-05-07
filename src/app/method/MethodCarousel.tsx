@@ -370,7 +370,7 @@ export default function MethodCarousel() {
   return (
     <section
       data-mth
-      style={{ padding: 'clamp(80px,10vw,120px) 0' }}
+      style={{ padding: 'clamp(56px,7vw,88px) 0' }}
     >
       {/* Header */}
       <div

@@ -99,7 +99,7 @@ export default function MethodArtifact() {
         data-mth
         className="mth-artifact"
         style={{
-          padding: 'clamp(80px,10vw,120px) var(--margin-x)',
+          padding: 'clamp(56px,7vw,88px) var(--margin-x)',
         }}
       >
         {/* Two-column layout */}

@@ -87,7 +87,7 @@ export default function MethodFramework() {
     <section
       data-mth
       style={{
-        padding: 'clamp(80px,10vw,120px) var(--margin-x)',
+        padding: 'clamp(56px,7vw,88px) var(--margin-x)',
       }}
     >
       {/* Rail */}
@@ -113,7 +113,7 @@ export default function MethodFramework() {
           gridTemplateColumns: 'min(440px,45vw) 1fr',
           gap: 'clamp(48px, 6vw, 96px)',
           alignItems: 'center',
-          marginBottom: 'clamp(64px, 8vw, 96px)',
+          marginBottom: 'clamp(48px, 6vw, 72px)',
         }}
       >
         {/* SVG diagram */}

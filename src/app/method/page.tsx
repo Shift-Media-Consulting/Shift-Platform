@@ -35,7 +35,7 @@ export default function MethodPage() {
         <section
           data-ab
           style={{
-            padding: `clamp(120px, 18vw, 180px) var(--margin-x) clamp(56px, 8vw, 80px)`,
+            padding: `clamp(96px, 13vw, 140px) var(--margin-x) clamp(40px, 5vw, 60px)`,
           }}
         >
           {/* Eyebrow */}
@@ -140,7 +140,7 @@ export default function MethodPage() {
         <section
           data-mth
           style={{
-            padding: 'clamp(80px,10vw,120px) var(--margin-x)',
+            padding: 'clamp(56px,7vw,88px) var(--margin-x)',
           }}
         >
           {/* Rail */}
@@ -269,8 +269,8 @@ export default function MethodPage() {
         <section
           data-mth
           style={{
-            padding: 'clamp(80px,10vw,120px) var(--margin-x)',
-            borderTop: '1px solid rgba(246,245,242,0.20)',
+            padding: 'clamp(56px,7vw,88px) var(--margin-x)',
+            borderTop: '1px solid rgba(17,17,17,0.12)',
           }}
         >
           {/* Rail */}
@@ -280,7 +280,7 @@ export default function MethodPage() {
               fontFamily: 'var(--font-mono)',
               fontSize: '13px',
               letterSpacing: '0.18em',
-              color: 'rgba(246,245,242,0.55)',
+              color: 'rgba(0,77,64,0.65)',
               marginBottom: '48px',
               fontWeight: 400,
             }}
@@ -297,9 +297,9 @@ export default function MethodPage() {
               fontSize: 'clamp(40px, 6vw, 80px)',
               lineHeight: 1.0,
               letterSpacing: '-0.025em',
-              color: '#f6f5f2',
+              color: '#111111',
               maxWidth: '1100px',
-              marginBottom: 'clamp(56px, 7vw, 96px)',
+              marginBottom: 'clamp(48px, 6vw, 80px)',
             }}
           >
             No vendor affiliations. No production-company kickbacks. No agency
@@ -334,7 +334,7 @@ export default function MethodPage() {
                 key={col.h4}
                 className="mth-r"
                 style={{
-                  borderTop: '1px solid rgba(246,245,242,0.30)',
+                  borderTop: '1px solid rgba(17,17,17,0.15)',
                   paddingTop: '24px',
                 }}
               >
@@ -342,7 +342,7 @@ export default function MethodPage() {
                   fontFamily: 'var(--font-head)',
                   fontWeight: 600,
                   fontSize: '22px',
-                  color: '#f6f5f2',
+                  color: '#111111',
                   marginBottom: '14px',
                   letterSpacing: '-0.01em',
                 }}>
@@ -351,7 +351,7 @@ export default function MethodPage() {
                 <p style={{
                   fontSize: '15px',
                   lineHeight: 1.65,
-                  color: 'rgba(246,245,242,0.68)',
+                  color: 'rgba(17,17,17,0.62)',
                 }}>
                   {col.body}
                 </p>
@@ -364,7 +364,7 @@ export default function MethodPage() {
         <section
           data-mth
           style={{
-            padding: 'clamp(80px,10vw,120px) var(--margin-x) clamp(100px, 14vw, 160px)',
+            padding: 'clamp(56px,7vw,88px) var(--margin-x) clamp(72px, 10vw, 120px)',
             textAlign: 'center',
             display: 'flex',
             flexDirection: 'column',
@@ -377,7 +377,7 @@ export default function MethodPage() {
               fontFamily: 'var(--font-mono)',
               fontSize: '13px',
               letterSpacing: '0.18em',
-              color: 'rgba(246,245,242,0.55)',
+              color: 'rgba(0,77,64,0.65)',
               marginBottom: '24px',
             }}
           >
@@ -392,7 +392,7 @@ export default function MethodPage() {
               fontSize: 'clamp(48px, 6.5vw, 88px)',
               lineHeight: 1.0,
               letterSpacing: '-0.025em',
-              color: '#f6f5f2',
+              color: '#111111',
               marginBottom: '24px',
             }}
           >
@@ -404,7 +404,7 @@ export default function MethodPage() {
             style={{
               fontSize: '21px',
               lineHeight: 1.5,
-              color: 'rgba(246,245,242,0.80)',
+              color: 'rgba(17,17,17,0.68)',
               maxWidth: '600px',
               marginBottom: '40px',
             }}
@@ -423,8 +423,8 @@ export default function MethodPage() {
                 gap: '6px',
                 padding: '18px 36px',
                 borderRadius: '9999px',
-                background: '#f6f5f2',
-                color: '#111111',
+                background: '#004d40',
+                color: '#f6f5f2',
                 fontFamily: 'var(--font-head)',
                 fontWeight: 600,
                 fontSize: '17px',
@@ -442,7 +442,7 @@ export default function MethodPage() {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '13px',
                 letterSpacing: '0.10em',
-                color: 'rgba(246,245,242,0.65)',
+                color: 'rgba(0,77,64,0.70)',
                 textDecoration: 'none',
               }}
             >
@@ -456,7 +456,7 @@ export default function MethodPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              borderTop: '1px solid rgba(246,245,242,0.20)',
+              borderTop: '1px solid rgba(17,17,17,0.12)',
               maxWidth: '860px',
               width: '100%',
               textAlign: 'left',
@@ -468,12 +468,12 @@ export default function MethodPage() {
               { label: 'Outcome',   value: 'Written assessment in 5 days' },
               { label: 'Next step', value: 'Yours to decide' },
             ].map((cell) => (
-              <div key={cell.label} style={{ borderTop: '1px solid rgba(246,245,242,0.25)', paddingTop: '20px', paddingRight: '20px' }}>
+              <div key={cell.label} style={{ borderTop: '1px solid rgba(17,17,17,0.12)', paddingTop: '20px', paddingRight: '20px' }}>
                 <p style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '11px',
                   letterSpacing: '0.14em',
-                  color: 'rgba(246,245,242,0.40)',
+                  color: 'rgba(0,77,64,0.55)',
                   marginBottom: '6px',
                 }}>
                   {cell.label}
@@ -482,7 +482,7 @@ export default function MethodPage() {
                   fontFamily: 'var(--font-head)',
                   fontSize: '18px',
                   fontWeight: 500,
-                  color: '#f6f5f2',
+                  color: '#111111',
                   lineHeight: 1.25,
                 }}>
                   {cell.value}
