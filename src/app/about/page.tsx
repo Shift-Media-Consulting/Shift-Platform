@@ -101,9 +101,6 @@ export default function AboutPage() {
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[1200px]">
-            <p className="ab-label text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
-              WHAT
-            </p>
             <h2
               className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
@@ -220,9 +217,6 @@ export default function AboutPage() {
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[760px]">
-            <p className="ab-label text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
-              HOW
-            </p>
             <h2
               className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-6"
               style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}

@@ -26,11 +26,11 @@ export async function updateSession(request: NextRequest) {
   // Refresh the session
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Gate the entire site — redirect to /login if not authenticated
-  // Remove this block when the site goes public
+  // Public marketing pages — no auth required
   const pathname = request.nextUrl.pathname
-  const isLoginPage = pathname === '/login'
-  if (!user && !isLoginPage) {
+  const publicPaths = ['/', '/about', '/services', '/team', '/contact', '/login']
+  const isPublic = publicPaths.includes(pathname) || pathname.startsWith('/bid/')
+  if (!user && !isPublic) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/login'
     return NextResponse.redirect(loginUrl)

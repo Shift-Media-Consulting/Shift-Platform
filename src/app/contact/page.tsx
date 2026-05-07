@@ -1,5 +1,6 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
+import PageReveal from '@/components/marketing/PageReveal'
 
 export const metadata = {
   title: 'Contact — shift.media',
@@ -14,10 +15,12 @@ export default function ContactPage() {
   return (
     <>
       <Nav />
+      <PageReveal />
       <main style={{ background: FULL_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
         {/* HERO */}
         <section
+          data-ab
           className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
           style={{
             paddingTop: 'clamp(120px, 18vw, 180px)',
@@ -26,7 +29,7 @@ export default function ContactPage() {
         >
           <div className="max-w-[1100px]">
             <h1
-              className="font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
+              className="ab-h font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               Connect with{' '}
@@ -35,8 +38,8 @@ export default function ContactPage() {
               </em>
             </h1>
             <p
-              className="text-cream leading-[1.55] max-w-[560px] font-medium"
-              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)', opacity: 0.82 }}
+              className="ab-p text-cream/80 leading-[1.55] max-w-[560px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
             >
               Tell us about your production challenge. We&apos;ll come back within
               24 hours with an honest read on whether — and how — we can help.
@@ -46,10 +49,11 @@ export default function ContactPage() {
 
         {/* FORM + DETAILS */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(24px, 5vw, 40px)', paddingBottom: 'clamp(96px, 18vw, 160px)' }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start max-w-[1200px]">
+          <div className="ab-card grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start max-w-[1200px]">
 
             {/* Form */}
             <div className="flex flex-col gap-10">

@@ -1,6 +1,7 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PillButton from '@/components/marketing/PillButton'
+import PageReveal from '@/components/marketing/PageReveal'
 import ServicesSlider from './ServicesSlider'
 import ServicesFaq from './ServicesFaq'
 
@@ -99,10 +100,12 @@ export default function ServicesPage() {
   return (
     <>
       <Nav />
+      <PageReveal />
       <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
         {/* HERO */}
         <section
+          data-ab
           className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
           style={{
             paddingTop: 'clamp(120px, 18vw, 180px)',
@@ -111,7 +114,7 @@ export default function ServicesPage() {
         >
           <div className="max-w-[1100px]">
             <h1
-              className="font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
+              className="ab-h font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               From a single brief{' '}
@@ -120,8 +123,8 @@ export default function ServicesPage() {
               </em>
             </h1>
             <p
-              className="text-cream leading-[1.65] max-w-[600px] font-medium"
-              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)', opacity: 0.82 }}
+              className="ab-p text-cream/80 leading-[1.65] max-w-[600px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
             >
               We meet brands wherever they are.
               One project. A focused workshop. An embedded retainer.
@@ -133,12 +136,15 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CAROUSELS */}
-        <section style={{
-          paddingTop: 'clamp(64px, 10vw, 100px)',
-          paddingBottom: 'clamp(64px, 10vw, 100px)',
-        }}>
-          <div className="flex flex-col gap-20">
+        {/* CAROUSELS — complex client components, each fades in as a unit */}
+        <section
+          data-ab
+          style={{
+            paddingTop: 'clamp(64px, 10vw, 100px)',
+            paddingBottom: 'clamp(64px, 10vw, 100px)',
+          }}
+        >
+          <div className="ab-card flex flex-col gap-20">
             <ServicesSlider
               label="Where to start."
               cards={entryPoints}
@@ -152,12 +158,13 @@ export default function ServicesPage() {
 
         {/* CAPABILITIES */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[1200px]">
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
             >
               Four pillars.{' '}
@@ -167,7 +174,7 @@ export default function ServicesPage() {
             </h2>
             <div className="grid gap-y-12 sm:gap-y-16 gap-x-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {pillars.map(item => (
-                <div key={item.num} className="flex flex-col">
+                <div key={item.num} className="ab-card flex flex-col">
                   <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>[{item.num}]</p>
                   <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">{item.name}</h3>
                   <p className="font-medium text-[14px] text-gray-warm leading-[1.6] mb-5">{item.desc}</p>
@@ -186,12 +193,13 @@ export default function ServicesPage() {
 
         {/* FAQ */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[860px]">
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
             >
               Common{' '}
@@ -200,16 +208,19 @@ export default function ServicesPage() {
               </em>
             </h2>
 
-            <ServicesFaq items={faqs} />
+            <div className="ab-card">
+              <ServicesFaq items={faqs} />
+            </div>
           </div>
         </section>
 
         {/* CLOSING CTA */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(24px, 4vw, 40px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
         >
-          <div className="flex flex-wrap gap-4">
+          <div className="ab-btn flex flex-wrap gap-4">
             <PillButton href="/contact" variant="teal" size="md">Start a conversation</PillButton>
             <PillButton href="/method" variant="outline-ink" size="md">Read the Method</PillButton>
           </div>
