@@ -2,9 +2,14 @@ declare namespace gsap {
   namespace core {
     class Tween {
       kill(): void
+      pause(): this
+      resume(): this
+      progress(value?: number): this | number
     }
     class Timeline {
       kill(): void
+      pause(): this
+      resume(): this
     }
   }
 }
