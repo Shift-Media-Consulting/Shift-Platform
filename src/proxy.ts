@@ -26,10 +26,10 @@ export async function proxy(request: NextRequest) {
   // Refresh session
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Gate the entire site — redirect to /login if not authenticated
-  // Remove this block when the site goes public
+  // Public marketing pages — no auth required
   const pathname = request.nextUrl.pathname
-  const isPublicRoute = pathname === '/login' || pathname.startsWith('/bid/')
+  const publicPaths = ['/', '/about', '/services', '/method', '/team', '/contact', '/login']
+  const isPublicRoute = publicPaths.includes(pathname) || pathname.startsWith('/bid/')
   if (!user && !isPublicRoute) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/login'
