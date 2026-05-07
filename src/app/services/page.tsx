@@ -135,20 +135,17 @@ export default function ServicesPage() {
 
         {/* CAROUSELS */}
         <section
-          className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
-          <div className="max-w-[1200px]">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-              <ServicesSlider
-                label="Where to begin"
-                cards={entryPoints}
-              />
-              <ServicesSlider
-                label="How we work together"
-                cards={partnerships}
-              />
-            </div>
+          <div className="flex flex-col gap-14">
+            <ServicesSlider
+              label="Where to begin"
+              cards={entryPoints}
+            />
+            <ServicesSlider
+              label="How we work together"
+              cards={partnerships}
+            />
           </div>
         </section>
 
