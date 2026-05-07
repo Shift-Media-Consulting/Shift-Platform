@@ -1,188 +1,494 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import PillButton from '@/components/marketing/PillButton'
 import PageReveal from '@/components/marketing/PageReveal'
-import MethodDimensions from './MethodDimensions'
+import MethodReveal from './MethodReveal'
+import MethodFramework from './MethodFramework'
+import MethodArtifact from './MethodArtifact'
+import MethodCarousel from './MethodCarousel'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'The Shift Method — shift.media',
-  description: 'A diagnostic framework for brand content operations. Six dimensions. One conversation.',
+  description:
+    'A diagnostic, not a sales pitch. Six operational dimensions. One independent assessment. Yours to keep.',
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
-
-const deliverables = [
-  {
-    num: '01',
-    name: 'The Diagnostic',
-    desc: 'A RAG-scored report across all six dimensions, with evidence, root-cause analysis, and indicative benchmarks.',
-  },
-  {
-    num: '02',
-    name: 'The Roadmap',
-    desc: 'A prioritised action plan. What to fix first, what to fix next, and what to leave alone.',
-  },
-  {
-    num: '03',
-    name: 'The Recommendation',
-    desc: 'A clear view on which engagement type comes next — or whether you don\'t need one yet.',
-  },
-]
+const BODY_GRADIENT =
+  'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
 
 export default function MethodPage() {
   return (
     <>
       <Nav />
       <PageReveal />
-      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
+      <MethodReveal />
+      <main
+        className="mth-main"
+        style={{
+          background: BODY_GRADIENT,
+          minHeight: '100vh',
+          fontFamily: 'var(--font-head)',
+        }}
+      >
 
-        {/* HERO */}
+        {/* ── Section 1: Hero ──────────────────────────────────────────── */}
         <section
           data-ab
-          className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
           style={{
-            paddingTop: 'clamp(120px, 18vw, 180px)',
-            paddingBottom: 'clamp(56px, 8vw, 80px)',
+            padding: `clamp(120px, 18vw, 180px) var(--margin-x) clamp(56px, 8vw, 80px)`,
           }}
         >
-          <div className="max-w-[1100px]">
-            <h1
-              className="ab-h font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
-              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
-            >
-              The Shift{' '}
-              <em className="not-italic font-bold text-ink tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                Method.
-              </em>
-            </h1>
-            <p
-              className="ab-p text-cream/80 leading-[1.55] max-w-[580px] font-medium"
-              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
-            >
-              A diagnostic framework for brand content operations.
-              Six dimensions. One clear roadmap.
-            </p>
+          {/* Eyebrow */}
+          <p
+            className="ab-label"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              letterSpacing: '0.18em',
+              color: 'rgba(246,245,242,0.55)',
+              marginBottom: '28px',
+              fontWeight: 400,
+            }}
+          >
+            — The Shift Method · A diagnostic, not a sales pitch
+          </p>
+
+          {/* h1 */}
+          <h1
+            className="ab-h"
+            style={{
+              fontFamily: 'var(--font-head)',
+              fontWeight: 600,
+              fontSize: 'clamp(48px, 7.5vw, 104px)',
+              lineHeight: 0.95,
+              letterSpacing: '-0.025em',
+              color: '#f6f5f2',
+              maxWidth: '1300px',
+              marginBottom: '32px',
+            }}
+          >
+            The{' '}
+            <em className="news">diagnosis</em>{' '}
+            no one inside the room is paid to give you.
+          </h1>
+
+          {/* Deck */}
+          <p
+            className="ab-p"
+            style={{
+              fontSize: 'clamp(18px, 2vw, 26px)',
+              lineHeight: 1.4,
+              color: 'rgba(246,245,242,0.85)',
+              fontWeight: 400,
+              maxWidth: '760px',
+              marginBottom: 'clamp(48px, 6vw, 72px)',
+            }}
+          >
+            Six operational dimensions. One independent assessment. Yours to keep —
+            whether or not you ever work with us again.
+          </p>
+
+          {/* Meta strip */}
+          <div
+            className="ab-p2"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '0',
+              borderTop: '1px solid rgba(246,245,242,0.20)',
+              maxWidth: '900px',
+            }}
+          >
+            {[
+              { label: 'Format',   value: 'Diagnostic engagement' },
+              { label: 'Duration', value: '4–8 weeks' },
+              { label: 'Output',   value: 'Three documents' },
+              { label: 'Outcome',  value: 'A defensible plan' },
+            ].map((cell) => (
+              <div
+                key={cell.label}
+                style={{
+                  borderTop: '1px solid rgba(246,245,242,0.25)',
+                  paddingTop: '20px',
+                  paddingRight: '24px',
+                }}
+              >
+                <p style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  color: 'rgba(246,245,242,0.45)',
+                  marginBottom: '6px',
+                }}>
+                  {cell.label}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-head)',
+                  fontSize: '22px',
+                  fontWeight: 500,
+                  color: '#f6f5f2',
+                  lineHeight: 1.2,
+                }}>
+                  {cell.value}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* OPENING CLAIM */}
+        {/* ── Section 2: When to use it ────────────────────────────────── */}
         <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
+          data-mth
+          style={{
+            padding: 'clamp(80px,10vw,120px) var(--margin-x)',
+          }}
         >
-          <div className="max-w-[860px]">
-            <p
-              className="ab-h font-bold text-cream leading-[1.05] tracking-[-0.02em] mb-4"
-              style={{ fontSize: 'clamp(26px, 3.8vw, 46px)' }}
-            >
-              Most production problems are not creative problems.
-            </p>
-            <p
-              className="ab-p font-bold text-cream/85 leading-[1.05] tracking-[-0.02em] mb-10"
+          {/* Rail */}
+          <p
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              letterSpacing: '0.18em',
+              color: 'rgba(246,245,242,0.55)',
+              marginBottom: '40px',
+              fontWeight: 400,
+            }}
+          >
+            — 01 / When to use it · Three triggers
+          </p>
+
+          {/* h2 */}
+          <h2
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-head)',
+              fontWeight: 600,
+              fontSize: 'clamp(32px, 4vw, 56px)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
+              color: '#f6f5f2',
+              marginBottom: '16px',
+              maxWidth: '760px',
+            }}
+          >
+            Most production problems are not creative problems.
+          </h2>
+
+          {/* Deck */}
+          <p
+            className="mth-r"
+            style={{
+              fontSize: '20px',
+              lineHeight: 1.5,
+              color: 'rgba(246,245,242,0.75)',
+              maxWidth: '600px',
+              marginBottom: 'clamp(48px, 6vw, 72px)',
+            }}
+          >
+            They are operational problems. Here is when to reach for the Method —
+            and when not to.
+          </p>
+
+          {/* 3 triggers */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              columnGap: '48px',
+            }}
+          >
+            {[
+              {
+                num: 'Trigger 01',
+                h3: 'Costs are climbing but output isn\'t.',
+                body: 'Year-on-year content spend keeps growing. The deliverables list, the asset count, and the audience response do not. You suspect waste, but cannot point to it on a page.',
+              },
+              {
+                num: 'Trigger 02',
+                h3: 'You\'re being asked to defend fees you cannot fully explain.',
+                body: 'Procurement wants line-item clarity. The CFO wants benchmarks. Your agency invoice is a single number with three sentences underneath. You need an independent read before the next renewal.',
+              },
+              {
+                num: 'Trigger 03',
+                h3: 'You\'re considering bringing production in-house.',
+                body: 'A studio, a model, a hybrid. Before you build anything — or sign anything — you want a senior, vendor-free view of what your operation actually needs. Not what someone wants to sell you.',
+              },
+            ].map((t) => (
+              <div
+                key={t.num}
+                className="mth-r"
+                style={{
+                  borderTop: '1px solid rgba(246,245,242,0.40)',
+                  paddingTop: '28px',
+                }}
+              >
+                <p style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  color: 'rgba(246,245,242,0.45)',
+                  marginBottom: '20px',
+                }}>
+                  {t.num}
+                </p>
+                <h3 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontStyle: 'italic',
+                  fontWeight: 600,
+                  fontSize: 'clamp(22px, 2.2vw, 30px)',
+                  lineHeight: 1.2,
+                  color: '#f6f5f2',
+                  maxWidth: '360px',
+                  marginBottom: '20px',
+                }}>
+                  {t.h3}
+                </h3>
+                <p style={{
+                  fontSize: '15px',
+                  lineHeight: 1.65,
+                  color: 'rgba(246,245,242,0.70)',
+                }}>
+                  {t.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Section 3: Framework ─────────────────────────────────────── */}
+        <MethodFramework />
+
+        {/* ── Section 4: Artifact ──────────────────────────────────────── */}
+        <MethodArtifact />
+
+        {/* ── Section 5: Carousel / Deliverables ───────────────────────── */}
+        <MethodCarousel />
+
+        {/* ── Section 6: Independence Statement ───────────────────────── */}
+        <section
+          data-mth
+          style={{
+            padding: 'clamp(80px,10vw,120px) var(--margin-x)',
+            borderTop: '1px solid rgba(246,245,242,0.20)',
+          }}
+        >
+          {/* Rail */}
+          <p
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              letterSpacing: '0.18em',
+              color: 'rgba(246,245,242,0.55)',
+              marginBottom: '48px',
+              fontWeight: 400,
+            }}
+          >
+            — 05 / Why this works · The independence statement
+          </p>
+
+          {/* Big statement */}
+          <p
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-head)',
+              fontWeight: 600,
+              fontSize: 'clamp(40px, 6vw, 80px)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              color: '#f6f5f2',
+              maxWidth: '1100px',
+              marginBottom: 'clamp(56px, 7vw, 96px)',
+            }}
+          >
+            No vendor affiliations. No production-company kickbacks. No agency
+            parent. Just{' '}
+            <em className="news">senior production expertise</em>{' '}
+            on your side of the table.
+          </p>
+
+          {/* 3-column list */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              columnGap: '48px',
+            }}
+          >
+            {[
+              {
+                h4: 'Affiliations',
+                body: 'We do not own, partner with, or take referral fees from any production company. Every supplier we evaluate is evaluated on the same terms. We have no upside in your spend going up — or in any specific name being kept on a roster.',
+              },
+              {
+                h4: 'Compensation',
+                body: 'We are paid by you. Once. Fixed scope, fixed fee. No rebates. No back-end. No volume-based incentives.',
+              },
+              {
+                h4: 'Parentage',
+                body: 'We are not part of an agency holding group, nor a production network. No quarterly target to feed. No sister company to recommend.',
+              },
+            ].map((col) => (
+              <div
+                key={col.h4}
+                className="mth-r"
+                style={{
+                  borderTop: '1px solid rgba(246,245,242,0.30)',
+                  paddingTop: '24px',
+                }}
+              >
+                <h4 style={{
+                  fontFamily: 'var(--font-head)',
+                  fontWeight: 600,
+                  fontSize: '22px',
+                  color: '#f6f5f2',
+                  marginBottom: '14px',
+                  letterSpacing: '-0.01em',
+                }}>
+                  {col.h4}
+                </h4>
+                <p style={{
+                  fontSize: '15px',
+                  lineHeight: 1.65,
+                  color: 'rgba(246,245,242,0.68)',
+                }}>
+                  {col.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Section 7: CTA ───────────────────────────────────────────── */}
+        <section
+          data-mth
+          style={{
+            padding: 'clamp(80px,10vw,120px) var(--margin-x) clamp(100px, 14vw, 160px)',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <p
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              letterSpacing: '0.18em',
+              color: 'rgba(246,245,242,0.55)',
+              marginBottom: '24px',
+            }}
+          >
+            — Start with a conversation
+          </p>
+
+          <h2
+            className="mth-r"
+            style={{
+              fontFamily: 'var(--font-head)',
+              fontWeight: 600,
+              fontSize: 'clamp(48px, 6.5vw, 88px)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              color: '#f6f5f2',
+              marginBottom: '24px',
+            }}
+          >
+            Forty-five minutes. No sales pitch.
+          </h2>
+
+          <p
+            className="mth-r"
+            style={{
+              fontSize: '21px',
+              lineHeight: 1.5,
+              color: 'rgba(246,245,242,0.80)',
+              maxWidth: '600px',
+              marginBottom: '40px',
+            }}
+          >
+            We&apos;ll tell you in writing within five working days whether the Method
+            is the right next step for your operation — or what is, if it isn&apos;t.
+          </p>
+
+          {/* Buttons */}
+          <div className="mth-r" style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '64px' }}>
+            <a
+              href="/contact"
               style={{
-                fontFamily: 'var(--font-serif)',
-                fontStyle: 'italic',
-                fontSize: 'clamp(26px, 3.8vw, 46px)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '18px 36px',
+                borderRadius: '9999px',
+                background: '#f6f5f2',
+                color: '#111111',
+                fontFamily: 'var(--font-head)',
+                fontWeight: 600,
+                fontSize: '17px',
+                textDecoration: 'none',
+                transition: 'background 200ms, transform 200ms',
               }}
             >
-              They are operational problems.
-            </p>
-            <p className="ab-p2 font-medium text-[16px] sm:text-[17px] text-cream/85 leading-[1.65] max-w-[640px]">
-              The Shift Method is how we diagnose them — across six dimensions,
-              ending in a clear roadmap and a defensible plan.
-            </p>
-          </div>
-        </section>
-
-        {/* SIX DIMENSIONS */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[1200px]">
-            <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-4 max-w-[900px]"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              Request a conversation ›
+            </a>
+            <a
+              href="mailto:hello@shift-media.io"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '13px',
+                letterSpacing: '0.10em',
+                color: 'rgba(246,245,242,0.65)',
+                textDecoration: 'none',
+              }}
             >
-              Six{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                dimensions.
-              </em>
-            </h2>
-            <p className="ab-p font-medium text-[15px] text-gray-warm leading-[1.6] mb-12 sm:mb-16 max-w-[560px]">
-              Each one a diagnostic lens. Select any dimension to explore what we look at and why.
-            </p>
-
-            <div className="ab-card">
-              <MethodDimensions />
-            </div>
-
+              hello@shift-media.io
+            </a>
           </div>
-        </section>
 
-        {/* WHAT YOU RECEIVE */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[1000px]">
-            <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
-            >
-              Three deliverables.{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                Yours to keep.
-              </em>
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-12 gap-x-8">
-              {deliverables.map(item => (
-                <div key={item.num} className="ab-card flex flex-col">
-                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>
-                    [{item.num}]
-                  </p>
-                  <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">
-                    {item.name}
-                  </h3>
-                  <p className="font-medium text-[14px] text-gray-warm leading-[1.65]">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CLOSING CTA */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
-        >
-          <div className="max-w-[760px]">
-            <h2
-              className="ab-h font-bold text-ink leading-[1.05] tracking-[-0.02em] mb-6"
-              style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}
-            >
-              Start with a{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                conversation.
-              </em>
-            </h2>
-            <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[520px]">
-              The Shift Method begins with a conversation, not a sales pitch.
-              We&apos;ll tell you whether this is the right next step — and if it
-              isn&apos;t, what is.
-            </p>
-            <div className="ab-btn">
-              <PillButton href="/contact" variant="teal" size="md">
-                Get in touch
-              </PillButton>
-            </div>
+          {/* Spec strip */}
+          <div
+            className="mth-r"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              borderTop: '1px solid rgba(246,245,242,0.20)',
+              maxWidth: '860px',
+              width: '100%',
+              textAlign: 'left',
+            }}
+          >
+            {[
+              { label: 'Format',    value: '45-minute call — video or phone' },
+              { label: 'Cost',      value: 'None' },
+              { label: 'Outcome',   value: 'Written assessment in 5 days' },
+              { label: 'Next step', value: 'Yours to decide' },
+            ].map((cell) => (
+              <div key={cell.label} style={{ borderTop: '1px solid rgba(246,245,242,0.25)', paddingTop: '20px', paddingRight: '20px' }}>
+                <p style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  color: 'rgba(246,245,242,0.40)',
+                  marginBottom: '6px',
+                }}>
+                  {cell.label}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-head)',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                  color: '#f6f5f2',
+                  lineHeight: 1.25,
+                }}>
+                  {cell.value}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
