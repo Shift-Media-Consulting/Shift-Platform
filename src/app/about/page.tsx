@@ -1,7 +1,7 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PillButton from '@/components/marketing/PillButton'
-import AboutTriangle from './AboutTriangle'
+import AboutConflict from './AboutConflict'
 
 export const metadata = {
   title: 'About — shift.media',
@@ -89,43 +89,7 @@ export default function AboutPage() {
         </section>
 
         {/* WHY WE EXIST */}
-        <section
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[1100px]">
-            <p className="text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
-              WHY
-            </p>
-            <h2
-              className="font-bold text-cream leading-[1.05] tracking-[-0.02em] mb-10 max-w-[900px]"
-              style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}
-            >
-              The brand–agency–production triangle has{' '}
-              <em className="not-italic font-bold text-cream/70" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                built-in conflicts.
-              </em>
-            </h2>
-
-            {/* Interactive Triangle */}
-            <div className="mb-12 sm:mb-14">
-              <AboutTriangle />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[900px]">
-              <p className="font-medium text-[16px] sm:text-[17px] text-cream/85 leading-[1.65]">
-                Agencies are often financially tied to the size of production
-                budgets. Production companies rely on ongoing agency
-                relationships. Brands are the only party with no one
-                independently in their corner.
-              </p>
-              <p className="font-medium text-[16px] sm:text-[17px] text-cream/85 leading-[1.65]">
-                A market this complex, this unregulated, and this large does
-                not need another agency. It needs an independent partner.
-              </p>
-            </div>
-          </div>
-        </section>
+        <AboutConflict />
 
         {/* OUR DIFFERENCE */}
         <section
