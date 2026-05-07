@@ -29,7 +29,7 @@ export async function proxy(request: NextRequest) {
   // Public marketing pages — no auth required
   const pathname = request.nextUrl.pathname
   const publicPaths = ['/', '/about', '/services', '/method', '/team', '/contact', '/login']
-  const isPublicRoute = publicPaths.includes(pathname) || pathname.startsWith('/bid/')
+  const isPublicRoute = publicPaths.includes(pathname) || pathname.startsWith('/bid/') || pathname.startsWith('/api/')
   if (!user && !isPublicRoute) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/login'
