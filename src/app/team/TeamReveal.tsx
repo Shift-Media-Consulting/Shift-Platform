@@ -67,6 +67,16 @@ em.news.is-drawn::after { transform: scaleX(1); }
   .tm-partner-cluster { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid rgba(246,245,242,0.25); padding-bottom: 32px !important; }
   .tm-partner-cluster:last-child { border-bottom: none !important; }
   .tm-meta-strip { grid-template-columns: repeat(2, 1fr) !important; }
+  /* Hero section padding */
+  [data-t]:first-child { padding-left: var(--margin-x) !important; padding-right: var(--margin-x) !important; }
+  /* Founder portrait — reduce size */
+  .tm-founder-portrait { min-height: 300px !important; }
+  /* Working model glass card padding */
+  .tm-work-card { padding: 24px !important; }
+  /* Partner discipline list items */
+  .tm-discipline-item { padding: 10px 0 !important; }
+  /* Footer rule on partner section — stack */
+  .tm-partner-footer { flex-direction: column !important; gap: 8px !important; }
 }
 `
 

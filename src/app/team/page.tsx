@@ -3,6 +3,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PageReveal from '@/components/marketing/PageReveal'
 import TeamReveal from './TeamReveal'
+import CtaSection from '@/components/marketing/CtaSection'
 
 export const metadata: Metadata = {
   title: 'The Team — shift.media',
@@ -128,7 +129,7 @@ export default function TeamPage() {
       <main
         className="tm-main"
         style={{
-          background: 'linear-gradient(180deg, #2a6f5e 0%, #4f9382 55%, #b9d8d2 100%)',
+          background: 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)',
           backgroundSize: '100% 200%',
           minHeight: '100vh',
           fontFamily: 'var(--font-head)',
@@ -569,7 +570,7 @@ export default function TeamPage() {
 
             {/* Right glass card */}
             <div
-              className="reveal"
+              className="reveal tm-work-card"
               style={{
                 background: 'rgba(246,245,242,0.06)',
                 border: '1px solid rgba(246,245,242,0.30)',
@@ -772,6 +773,7 @@ export default function TeamPage() {
                   {cluster.disciplines.map((d, di) => (
                     <div
                       key={di}
+                      className="tm-discipline-item"
                       style={{
                         display: 'grid',
                         gridTemplateColumns: 'auto 1fr',
@@ -814,7 +816,7 @@ export default function TeamPage() {
           </div>
 
           {/* Footer rule */}
-          <div style={{
+          <div className="tm-partner-footer" style={{
             marginTop: '24px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -830,104 +832,7 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* ── Section 6: CTA ────────────────────────────────────────────── */}
-        <section
-          data-t
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            padding: 'clamp(56px,7vw,88px) var(--margin-x) clamp(72px,10vw,120px)',
-          }}
-        >
-          {/* Eyebrow */}
-          <p
-            className="reveal"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '13px',
-              letterSpacing: '0.18em',
-              color: 'rgba(246,245,242,0.55)',
-              marginBottom: '24px',
-            }}
-          >
-            — Start with a conversation
-          </p>
-
-          {/* H2 */}
-          <h2
-            className="reveal"
-            style={{
-              fontFamily: 'var(--font-head)',
-              fontWeight: 600,
-              fontSize: 'clamp(48px,6.5vw,80px)',
-              lineHeight: 1.0,
-              letterSpacing: '-0.025em',
-              color: '#f6f5f2',
-              marginBottom: '24px',
-            }}
-          >
-            Forty-five minutes. No sales pitch.
-          </h2>
-
-          {/* Para */}
-          <p
-            className="reveal"
-            style={{
-              fontSize: '21px',
-              color: 'rgba(246,245,242,0.80)',
-              lineHeight: 1.5,
-              maxWidth: '720px',
-              marginBottom: '40px',
-            }}
-          >
-            Tell us what you are trying to figure out. We will tell you in writing within five working days whether we are the right people to help — and which founder you would be working with.
-          </p>
-
-          {/* Buttons */}
-          <div
-            className="reveal"
-            style={{
-              display: 'flex',
-              gap: '16px',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-            }}
-          >
-            <a
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '18px 36px',
-                borderRadius: '9999px',
-                background: '#f6f5f2',
-                color: '#111111',
-                fontFamily: 'var(--font-head)',
-                fontWeight: 600,
-                fontSize: '17px',
-                textDecoration: 'none',
-              }}
-            >
-              Request a conversation ›
-            </a>
-            <a
-              href="mailto:hello@shift-media.io"
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px',
-                letterSpacing: '0.10em',
-                color: 'rgba(246,245,242,0.65)',
-                textDecoration: 'underline',
-              }}
-            >
-              hello@shift-media.io
-            </a>
-          </div>
-        </section>
-
+        <CtaSection h2="Forty-five minutes. No sales pitch." para="Tell us what you are trying to figure out. We will tell you in writing within five working days whether we are the right people to help — and which founder you would be working with." />
       </main>
       <Footer />
     </>
