@@ -103,7 +103,7 @@ export default function TeamGrid() {
     <>
       {/* FOUNDERS */}
       <section
-        className="px-[var(--margin-x)]"
+        className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
         style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
       >
         <div className="max-w-[1200px]">
@@ -225,7 +225,7 @@ export default function TeamGrid() {
 
       {/* TEAM IN NUMBERS */}
       <section
-        className="px-[var(--margin-x)]"
+        className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
         style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
       >
         <div className="max-w-[1200px]">
@@ -266,7 +266,7 @@ export default function TeamGrid() {
 
       {/* PARTNER NETWORK */}
       <section
-        className="px-[var(--margin-x)]"
+        className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
         style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
       >
         <div className="max-w-[1200px]">

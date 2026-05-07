@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer
-      className="px-[var(--margin-x)] pt-12 md:pt-16 pb-8"
+      className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-12 md:pt-16 pb-8"
       style={{ backgroundColor: 'var(--teal)' }}
     >
       {/* Proof line */}

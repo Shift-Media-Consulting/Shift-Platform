@@ -198,7 +198,7 @@ export default function ServicesSlider({ label, cards }: Props) {
     <div className="flex flex-col gap-8">
 
       {/* Bold section heading */}
-      <div className="px-[var(--margin-x)]">
+      <div className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         <h2
           className="font-bold text-cream leading-[1.0] tracking-[-0.025em]"
           style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
@@ -290,7 +290,7 @@ export default function ServicesSlider({ label, cards }: Props) {
       </div>
 
       {/* Controls row */}
-      <div className="flex items-center justify-between px-[var(--margin-x)]">
+      <div className="flex items-center justify-between px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         {/* Dots */}
         <div className="flex items-center gap-2">
           {cards.map((_, i) => (

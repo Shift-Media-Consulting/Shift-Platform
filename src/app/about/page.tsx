@@ -68,7 +68,7 @@ export default function AboutPage() {
         {/* HERO */}
         <section
           data-ab
-          className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
+          className="flex flex-col justify-end px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24 min-h-[60vh]"
           style={{
             paddingTop: 'clamp(120px, 18vw, 180px)',
             paddingBottom: 'clamp(56px, 8vw, 80px)',
@@ -100,7 +100,7 @@ export default function AboutPage() {
         {/* OUR DIFFERENCE */}
         <section
           data-ab
-          className="px-[var(--margin-x)]"
+          className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[1200px]">
@@ -135,7 +135,7 @@ export default function AboutPage() {
         {/* WHAT WE BELIEVE */}
         <section
           data-ab
-          className="px-[var(--margin-x)]"
+          className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[900px]">
@@ -177,7 +177,7 @@ export default function AboutPage() {
         {/* FOUNDER NOTE */}
         <section
           data-ab
-          className="px-[var(--margin-x)]"
+          className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[760px]">

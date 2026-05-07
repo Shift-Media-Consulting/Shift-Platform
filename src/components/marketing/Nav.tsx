@@ -101,7 +101,7 @@ export default function Nav() {
 
       <nav
         className={[
-          'fixed inset-x-0 top-0 z-[100] h-[72px] px-[var(--margin-x)]',
+          'fixed inset-x-0 top-0 z-[100] h-[72px] px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24',
           'grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]',
           'transition-[background-color,backdrop-filter] duration-300',
         ].join(' ')}

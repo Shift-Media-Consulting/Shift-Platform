@@ -61,7 +61,7 @@
   --font-head:   'Onest', system-ui, sans-serif;
   --font-serif:  'Newsreader36', Georgia, serif;
   --font-mono:   'Geist Mono', 'GeistMono', ui-monospace, monospace;
-  --margin-x:    clamp(24px, 6vw, 96px);
+  --margin-x:    clamp(32px, 7.5vw, 96px);
   --gradient-body: linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%);
 }
 

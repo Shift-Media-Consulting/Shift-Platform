@@ -111,7 +111,7 @@ export default function ServicesPage() {
         {/* HERO */}
         <section
           data-ab
-          className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
+          className="flex flex-col justify-end px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24 min-h-[60vh]"
           style={{
             paddingTop: 'clamp(120px, 18vw, 180px)',
             paddingBottom: 'clamp(56px, 8vw, 80px)',
