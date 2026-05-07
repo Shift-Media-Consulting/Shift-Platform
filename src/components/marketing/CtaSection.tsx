@@ -74,48 +74,25 @@ export default function CtaSection({
         {para}
       </p>
 
-      {/* Buttons */}
-      <div
+      {/* Button */}
+      <a
+        href="/contact"
         style={{
-          display: 'flex',
-          gap: '20px',
+          display: 'inline-flex',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          gap: '6px',
+          padding: '18px 36px',
+          borderRadius: '9999px',
+          background: '#f6f5f2',
+          color: '#111111',
+          fontFamily: 'var(--font-head)',
+          fontWeight: 600,
+          fontSize: '17px',
+          textDecoration: 'none',
         }}
       >
-        <a
-          href="/contact"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '18px 36px',
-            borderRadius: '9999px',
-            background: '#f6f5f2',
-            color: '#111111',
-            fontFamily: 'var(--font-head)',
-            fontWeight: 600,
-            fontSize: '17px',
-            textDecoration: 'none',
-          }}
-        >
-          Request a conversation ›
-        </a>
-        <a
-          href="mailto:hello@shift-media.io"
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '13px',
-            letterSpacing: '0.10em',
-            color: 'rgba(246,245,242,0.65)',
-            textDecoration: 'underline',
-            textUnderlineOffset: '3px',
-          }}
-        >
-          hello@shift-media.io
-        </a>
-      </div>
+        Request a conversation ›
+      </a>
     </section>
   )
 }

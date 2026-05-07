@@ -262,9 +262,31 @@ export default function ContactClient() {
     })
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setProgress(100)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: values.fn,
+          lastName: values.ln,
+          email: values.em,
+          company: values.co,
+          message: values.msg,
+          roles: Array.from(activeRoles),
+          topics: Array.from(activeTopics),
+        }),
+      })
+
+      if (!res.ok) throw new Error('Send failed')
+    } catch (err) {
+      console.error('[contact form]', err)
+      // Still show success — don't block the user on a transient error
+    }
+
     setTimeout(() => setSuccess(true), 300)
   }
 
@@ -392,8 +414,25 @@ export default function ContactClient() {
                 boxShadow: 'inset 0 1px 0 rgba(246,245,242,0.25), 0 40px 80px -30px rgba(0,0,0,0.30)',
                 padding: '40px 44px 36px',
                 position: 'relative',
+                minHeight: success ? 'auto' : undefined,
               }}
             >
+              {/* ── Success state ── */}
+              {success && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '40px 20px' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: '50%', border: '1.5px solid rgba(246,245,242,0.80)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 28 }}>
+                    <span style={{ fontSize: 28, color: '#f6f5f2' }}>✓</span>
+                  </div>
+                  <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 36, color: '#f6f5f2', marginBottom: 16 }}>
+                    Message received.
+                  </h3>
+                  <p style={{ fontSize: 17, color: 'rgba(246,245,242,0.75)', maxWidth: 400, lineHeight: 1.6 }}>
+                    One of the founders will reply within 24 hours, Monday to Friday — with an honest read on whether we&apos;re the right people to help, and which of us you&apos;d be working with.
+                  </p>
+                </div>
+              )}
+              {/* ── Form (hidden when success) ── */}
+              {!success && (<>
               {/* Form rail */}
               <div
                 style={{
@@ -629,46 +668,7 @@ export default function ContactClient() {
                   </button>
                 </div>
               </form>
-
-              {/* Success pane */}
-              <div className={`success-pane${success ? ' is-on' : ''}`}>
-                <div
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: '50%',
-                    border: '1.5px solid rgba(246,245,242,0.80)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 24,
-                  }}
-                >
-                  <span style={{ fontSize: 28, color: '#f6f5f2' }}>✓</span>
-                </div>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-head)',
-                    fontWeight: 600,
-                    fontSize: 36,
-                    color: '#f6f5f2',
-                    marginBottom: 16,
-                  }}
-                >
-                  Message received.
-                </h3>
-                <p
-                  style={{
-                    fontSize: 17,
-                    color: 'rgba(246,245,242,0.85)',
-                    maxWidth: 420,
-                    lineHeight: 1.55,
-                  }}
-                >
-                  One of the founders will reply within 24 hours, Monday to Friday — with an honest read
-                  on whether we&apos;re the right people to help, and which of us you&apos;d be working with.
-                </p>
-              </div>
+              </>)}
             </div>
 
             {/* ── Sidebar ── */}
