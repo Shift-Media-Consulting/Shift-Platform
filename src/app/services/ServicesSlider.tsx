@@ -77,6 +77,11 @@ export default function ServicesSlider({ label, cards }: Props) {
     cardEls.forEach((el, i) => {
       const src  = i % CARD_COUNT
       const dist = Math.min(Math.abs(src - activeIdx), CARD_COUNT - Math.abs(src - activeIdx))
+      // Update shadow immediately (not animated — string values)
+      el.style.boxShadow = dist === 0
+        ? 'inset 0 1px 0 rgba(246,245,242,0.28), 0 40px 100px -10px rgba(0,0,0,0.55), 0 8px 32px rgba(0,0,0,0.3)'
+        : 'inset 0 1px 0 rgba(246,245,242,0.15), 0 24px 60px -20px rgba(0,0,0,0.15)'
+
       gsap.to(el, {
         scale:   dist === 0 ? 1.035 : 1,
         opacity: dist === 0 ? 1 : dist === 1 ? 0.5 : 0.2,
@@ -229,7 +234,7 @@ export default function ServicesSlider({ label, cards }: Props) {
                     backdropFilter:       'blur(10px) saturate(1.3)',
                     WebkitBackdropFilter: 'blur(10px) saturate(1.3)',
                     border:               '1px solid rgba(246,245,242,0.28)',
-                    boxShadow:            'inset 0 1px 0 rgba(246,245,242,0.25), 0 24px 60px -20px rgba(0,0,0,0.25)',
+                    boxShadow:            'inset 0 1px 0 rgba(246,245,242,0.15), 0 24px 60px -20px rgba(0,0,0,0.15)',
                     pointerEvents:        'none',
                     flexShrink:           0,
                   }}

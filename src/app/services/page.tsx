@@ -137,7 +137,7 @@ export default function ServicesPage() {
         <section style={{
           paddingTop: 'clamp(64px, 10vw, 100px)',
           paddingBottom: 'clamp(64px, 10vw, 100px)',
-          background: 'linear-gradient(180deg, #004d40 0%, #00695c 60%, #00897b 100%)',
+          background: 'linear-gradient(180deg, #003d33 0%, #004d40 25%, #00695c 60%, #00897b 85%, #26a69a 100%)',
         }}>
           <div className="flex flex-col gap-20">
             <ServicesSlider
