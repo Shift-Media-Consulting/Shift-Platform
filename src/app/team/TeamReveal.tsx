@@ -3,18 +3,6 @@
 import { useEffect } from 'react'
 
 const CSS = `
-/* ─── Layer 4: gradient drift on .tm-main ──────────────────────────── */
-@keyframes tm-drift {
-  0%,100% { background-position: 0% 0%; }
-  50%      { background-position: 0% 100%; }
-}
-.tm-main {
-  animation: tm-drift 90s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .tm-main { animation-duration: 180s; }
-}
-
 /* ─── Layer 1: .reveal children initial state ───────────────────────── */
 [data-t] .reveal {
   opacity: 0;

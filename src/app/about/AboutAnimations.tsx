@@ -3,17 +3,6 @@
 import { useEffect } from 'react'
 
 const CSS = `
-@keyframes ab-drift {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-}
-.about-main {
-  animation: ab-drift 90s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .about-main { animation-duration: 180s; }
-}
-
 /* ── PageReveal classes (copied from PageReveal.tsx) ── */
 [data-ab] .ab-label,
 [data-ab] .ab-h,

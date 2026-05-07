@@ -3,18 +3,6 @@
 import { useEffect } from 'react'
 
 const CSS = `
-/* ─── Gradient drift on .mth-main ──────────────────────────────────── */
-@keyframes mth-drift {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-}
-.mth-main {
-  animation: mth-drift 90s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .mth-main { animation-duration: 180s; }
-}
-
 /* ─── Layer 1: mth-r children initial state ─────────────────────────── */
 [data-mth] .mth-r {
   opacity: 0;

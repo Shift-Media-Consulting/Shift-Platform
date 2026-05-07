@@ -3,22 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const CSS = `
-/* ── Body gradient + drift ─────────────────────────────────────────── */
-@keyframes ct-drift {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-}
+/* ── Body gradient ─────────────────────────────────────────────────── */
 .ct-main {
   background: linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 50%, #b9d8d2 82%, #b9d8d2 100%);
-  background-size: 100% 200%;
-  animation: ct-drift 90s ease-in-out infinite;
   min-height: 100vh;
   font-family: var(--font-head);
 }
-@media (prefers-reduced-motion: reduce) {
-  .ct-main { animation-duration: 180s; }
-}
-
 /* ── Section reveal system ─────────────────────────────────────────── */
 .ct-section .reveal {
   opacity: 0;

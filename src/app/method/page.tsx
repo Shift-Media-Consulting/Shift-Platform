@@ -27,7 +27,6 @@ export default function MethodPage() {
         className="mth-main"
         style={{
           background: BODY_GRADIENT,
-          backgroundSize: '100% 200%',
           minHeight: '100vh',
           fontFamily: 'var(--font-head)',
         }}

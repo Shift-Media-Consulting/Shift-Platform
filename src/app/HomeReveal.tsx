@@ -3,19 +3,6 @@
 import { useEffect } from 'react'
 
 const CSS = `
-/* ─── Gradient drift animation on .hm-main ─────────────────────────── */
-@keyframes hm-drift {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-}
-.hm-main {
-  background-size: 100% 200%;
-  animation: hm-drift 90s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hm-main { animation-duration: 180s; }
-}
-
 /* ─── Reveal system ─────────────────────────────────────────────────── */
 .hm-section .reveal {
   opacity: 0;

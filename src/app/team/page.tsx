@@ -130,7 +130,6 @@ export default function TeamPage() {
         className="tm-main"
         style={{
           background: 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)',
-          backgroundSize: '100% 200%',
           minHeight: '100vh',
           fontFamily: 'var(--font-head)',
         }}

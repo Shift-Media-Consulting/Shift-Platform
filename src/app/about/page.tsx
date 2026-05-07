@@ -62,7 +62,6 @@ export default function AboutPage() {
         className="about-main min-h-screen font-[family-name:var(--font-head)]"
         style={{
           background: BODY_GRADIENT,
-          backgroundSize: '100% 200%',
         }}
       >
 

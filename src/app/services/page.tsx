@@ -105,7 +105,6 @@ export default function ServicesPage() {
         className="services-main min-h-screen font-[family-name:var(--font-head)]"
         style={{
           background: BODY_GRADIENT,
-          backgroundSize: '100% 200%',
         }}
       >
 
