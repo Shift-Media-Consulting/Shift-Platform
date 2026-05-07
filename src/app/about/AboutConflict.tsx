@@ -4,27 +4,6 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 const CSS = `
-/* ─── Layer 3 · Ambient gradient drift ─────────────────────────── */
-@keyframes ab-drift {
-  0%, 100% { background-position: 0% 0%; }
-  50%       { background-position: 0% 100%; }
-}
-.ab-drift {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg,
-    rgba(0,77,64,0.18) 0%,
-    rgba(0,137,123,0.10) 40%,
-    rgba(77,182,160,0.06) 100%
-  );
-  background-size: 100% 200%;
-  animation: ab-drift 90s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .ab-drift { animation-duration: 180s; }
-}
-
 /* ─── Section ───────────────────────────────────────────────────── */
 .ab-section {
   position: relative;
@@ -147,25 +126,32 @@ em.news.is-drawn::after { transform: scaleX(1); }
   margin: 0;
 }
 
-/* ─── Footer rule ───────────────────────────────────────────────── */
+/* ─── Footer annotation ─────────────────────────────────────────── */
 .ab-footer-rule {
-  margin-top: 80px;
-  border-top: 1px solid rgba(246,245,242,0.40);
-  padding-top: 20px;
+  margin-top: 64px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: rgba(246,245,242,0.65);
+  color: rgba(246,245,242,0.45);
   font-weight: 400;
+  text-align: center;
 }
 .ab-footer-rule a {
   color: inherit;
   text-decoration: none;
+}
+.ab-footer-rule em.news {
+  font-style: italic;
+  font-family: var(--font-serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 13px;
+  color: rgba(246,245,242,0.55);
 }
 
 /* ─── Punchline ─────────────────────────────────────────────────── */
@@ -195,7 +181,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
 .ab-section .ab-headline  { transform: translateY(24px); }
 .ab-section .ab-deck      { transform: translateY(16px); }
 .ab-section .ab-col       { transform: translateY(20px); }
-.ab-section .ab-footer-rule { transform: scaleX(0.7); transform-origin: left; }
+.ab-section .ab-footer-rule { transform: translateY(12px); }
 .ab-section .ab-punchline { transform: translateY(20px); }
 
 /* ─── Transitions ───────────────────────────────────────────────── */
@@ -237,8 +223,8 @@ em.news.is-drawn::after { transform: scaleX(1); }
   transition-delay: 1300ms;
 }
 .ab-section .ab-footer-rule {
-  transition: opacity 800ms cubic-bezier(0.22,0.61,0.36,1),
-              transform 800ms cubic-bezier(0.22,0.61,0.36,1);
+  transition: opacity 600ms cubic-bezier(0.22,0.61,0.36,1),
+              transform 600ms cubic-bezier(0.22,0.61,0.36,1);
   transition-delay: 1400ms;
 }
 .ab-section .ab-punchline {
@@ -281,7 +267,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
   .ab-col       { min-height: auto; }
   .ab-role      { font-size: 80px; }
   .ab-punchline { font-size: 32px; margin-top: 64px; }
-  .ab-footer-rule { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .ab-footer-rule { gap: 4px; }
 }
 `
 
@@ -331,9 +317,6 @@ export default function AboutConflict() {
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       <section ref={sectionRef} className="ab-section">
-
-        {/* Layer 3: Ambient gradient drift — scoped to this section */}
-        <div className="ab-drift" aria-hidden="true" />
 
         <h1 className="ab-headline">
           The brand–agency–production triangle has{' '}
