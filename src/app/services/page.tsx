@@ -2,6 +2,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import CtaSection from '@/components/marketing/CtaSection'
 import ServicesReveal from './ServicesReveal'
+import ServicesSlider from './ServicesSlider'
 import ServicesFaq from './ServicesFaq'
 
 export const metadata = {
@@ -10,6 +11,36 @@ export const metadata = {
 }
 
 const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+
+const entryPoints = [
+  {
+    name: 'Audit',
+    desc: 'A clear, independent read of where you stand. We assess your production setup — costs, vendors, structure, process — and surface the gaps and opportunities.',
+  },
+  {
+    name: 'Workshop',
+    desc: 'Deep, focused sessions on a single topic. AI readiness, production strategy, organisational design, or anything else. Practical and built around your real briefs.',
+  },
+  {
+    name: 'Pilot',
+    desc: 'A defined project, start to finish. We embed alongside your team, run it independently, and leave you with a working blueprint.',
+  },
+]
+
+const partnerships = [
+  {
+    name: 'Build',
+    desc: 'Advisory-led design of your in-house production model. Structure, talent, process, tooling — designed and stood up alongside your team.',
+  },
+  {
+    name: 'Engine',
+    desc: 'Senior advisory on retainer. Always-on counsel across content, campaigns, and operations. Independent of any single project. Named partner ownership.',
+  },
+  {
+    name: 'Campaign',
+    desc: 'Embedded production oversight, brief to delivery. Cost control, vendor selection, quality assurance. We sit on the brand side of the table.',
+  },
+]
 
 const pillars = [
   {
@@ -106,6 +137,20 @@ export default function ServicesPage() {
               The architecture is the same.
               The scope adjusts to the engagement.
             </p>
+          </div>
+        </section>
+
+        {/* CAROUSELS */}
+        <section
+          data-ab
+          style={{
+            paddingTop: 'clamp(64px, 10vw, 100px)',
+            paddingBottom: 'clamp(64px, 10vw, 100px)',
+          }}
+        >
+          <div className="ab-card flex flex-col gap-20">
+            <ServicesSlider label="Where to start." cards={entryPoints} />
+            <ServicesSlider label="How we engage."  cards={partnerships} />
           </div>
         </section>
 
