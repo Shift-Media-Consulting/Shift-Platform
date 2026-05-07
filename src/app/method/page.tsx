@@ -8,7 +8,7 @@ export const metadata = {
   description: 'A diagnostic framework for brand content operations. Six dimensions. One conversation.',
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%)'
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
 
 const deliverables = [
   {
