@@ -4,6 +4,11 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "shift.media — Independent Production Advisory",
   description: "We stand between creative vision and commercial reality — protecting budgets without compromising craft. Hamburg, DE.",
+  icons: {
+    icon: '/logo-mark.svg',
+    shortcut: '/logo-mark.svg',
+    apple: '/logo-mark.svg',
+  },
 };
 
 export default function RootLayout({
@@ -21,7 +26,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      {/* Dark teal body background prevents a flash of white/page-content
+          before the client-side IntroAnimation overlay mounts */}
+      <body style={{ background: '#004d40' }}>{children}</body>
     </html>
   );
 }

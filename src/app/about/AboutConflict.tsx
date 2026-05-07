@@ -83,7 +83,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
 .ab-role {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 120px;
+  font-size: clamp(56px, 5.5vw, 120px);
   line-height: 0.92;
   letter-spacing: -0.03em;
   color: #f6f5f2;
@@ -263,8 +263,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
   .ab-deck      { font-size: 18px; margin-bottom: 56px; }
   .ab-grid      { grid-template-columns: 1fr; column-gap: 0; row-gap: 40px; }
   .ab-col       { min-height: auto; }
-  .ab-role      { font-size: 80px; }
-  .ab-punchline { font-size: 32px; margin-top: 64px; }
+.ab-punchline { font-size: 32px; margin-top: 64px; }
   .ab-fr-top  { font-size: 16px; }
   .ab-fr-main { font-size: 28px; }
 }

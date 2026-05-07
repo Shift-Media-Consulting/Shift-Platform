@@ -27,12 +27,20 @@ export default function Nav() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    if (sessionStorage.getItem('sm-intro-v5')) {
+    // Returning visitor — intro already played this session
+    if (sessionStorage.getItem('sm-intro-v6')) {
       setIntroDone(true)
       return
     }
-    const t = setTimeout(() => setIntroDone(true), 3900)
-    return () => clearTimeout(t)
+    // First visit — listen for the event IntroAnimation dispatches on completion
+    const handler = () => setIntroDone(true)
+    window.addEventListener('sm-intro-complete', handler)
+    // Safety fallback in case something prevents the event firing
+    const fallback = setTimeout(() => setIntroDone(true), 5000)
+    return () => {
+      window.removeEventListener('sm-intro-complete', handler)
+      clearTimeout(fallback)
+    }
   }, [])
 
   useEffect(() => {

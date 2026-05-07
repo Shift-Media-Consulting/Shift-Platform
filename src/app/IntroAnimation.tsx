@@ -53,9 +53,11 @@ export default function IntroAnimation() {
     // ── Timeline ──────────────────────────────────────────
     const tl = gsap.timeline({
       onComplete: () => {
-        setVisible(false)
         document.body.style.overflow = ''
         sessionStorage.setItem('sm-intro-v6', '1')
+        // Signal Nav so it fades its logo in exactly as our overlay fades out
+        window.dispatchEvent(new CustomEvent('sm-intro-complete'))
+        setVisible(false)
       },
     })
 
@@ -95,6 +97,10 @@ export default function IntroAnimation() {
       duration: 1.05,
       ease: 'power3.inOut',
     }, 2.55)
+
+    // Crossfade: overlay logo fades out while Nav logo (opacity 0→1 in Nav.tsx)
+    // fades in simultaneously — no visible gap between the two.
+    tl.to(groupRef.current, { opacity: 0, duration: 0.25, ease: 'power2.in' })
 
     return () => {
       tl.kill()
