@@ -2,6 +2,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PillButton from '@/components/marketing/PillButton'
 import AboutConflict from './AboutConflict'
+import AboutAnimations from './AboutAnimations'
 
 export const metadata = {
   title: 'About — shift.media',
@@ -56,10 +57,12 @@ export default function AboutPage() {
   return (
     <>
       <Nav />
+      <AboutAnimations />
       <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
         {/* HERO */}
         <section
+          data-ab
           className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
           style={{
             paddingTop: 'clamp(120px, 18vw, 180px)',
@@ -68,7 +71,7 @@ export default function AboutPage() {
         >
           <div className="max-w-[1100px]">
             <h1
-              className="font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
+              className="ab-h font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               Built on expertise.{' '}
@@ -78,8 +81,8 @@ export default function AboutPage() {
             </h1>
 
             <p
-              className="text-cream leading-[1.55] max-w-[600px] font-medium"
-              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)', opacity: 0.82 }}
+              className="ab-p text-cream/80 leading-[1.55] max-w-[600px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
             >
               shift.media exists to give brands an independent voice in
               production — without the conflicts of interest built into the
@@ -88,20 +91,21 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* WHY WE EXIST */}
+        {/* WHY WE EXIST — has its own IntersectionObserver */}
         <AboutConflict />
 
         {/* OUR DIFFERENCE */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[1200px]">
-            <p className="text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
+            <p className="ab-label text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
               WHAT
             </p>
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
             >
               We have no relationships{' '}
@@ -112,7 +116,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-14 gap-x-8">
               {differences.map(item => (
-                <div key={item.num} className="flex flex-col">
+                <div key={item.num} className="ab-card flex flex-col">
                   <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>
                     [{item.num}]
                   </p>
@@ -130,12 +134,13 @@ export default function AboutPage() {
 
         {/* WHAT WE BELIEVE */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[900px]">
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
             >
               What we{' '}
@@ -146,7 +151,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-10 sm:gap-12">
               {beliefs.map((b, i) => (
-                <div key={i} className="border-l-2 border-teal-mid/30 pl-7 sm:pl-9">
+                <div key={i} className="ab-card border-l-2 border-teal-mid/30 pl-7 sm:pl-9">
                   <p
                     className="font-bold text-ink leading-[1.1] tracking-[-0.02em] mb-2"
                     style={{ fontSize: 'clamp(20px, 2.8vw, 30px)' }}
@@ -171,12 +176,13 @@ export default function AboutPage() {
 
         {/* FOUNDER NOTE */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[760px]">
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-10"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-10"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
             >
               Why we{' '}
@@ -186,12 +192,12 @@ export default function AboutPage() {
             </h2>
 
             <div className="flex flex-col gap-6 mb-10">
-              <p className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
+              <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
                 We started shift.media in Hamburg because the independent
                 production advisor we&apos;d want to hire didn&apos;t exist in Europe —
                 at least not the way we thought it should.
               </p>
-              <p className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
+              <p className="ab-p2 font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
                 Three founders. Decades on set. One firm built around the
                 conviction that brands deserve a partner who is genuinely on
                 their side.
@@ -199,7 +205,7 @@ export default function AboutPage() {
             </div>
 
             <p
-              className="font-bold text-[14px] text-ink/60 tracking-[0.3px]"
+              className="ab-name font-bold text-[14px] text-ink/60 tracking-[0.3px]"
               style={{ fontFamily: 'var(--font-mono)' }}
             >
               — Justin Stiebel · Cornelius Roenz · Jankel Huppertz
@@ -209,15 +215,16 @@ export default function AboutPage() {
 
         {/* HOW WE WORK — METHOD LINK */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[760px]">
-            <p className="text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
+            <p className="ab-label text-[11px] tracking-[2.5px] text-teal-mid mb-5 font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
               HOW
             </p>
             <h2
-              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-6"
+              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-6"
               style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}
             >
               Read how we{' '}
@@ -225,24 +232,29 @@ export default function AboutPage() {
                 work.
               </em>
             </h2>
-            <p className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[520px]">
+            <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[520px]">
               The Shift Method. Six dimensions. A clear diagnostic, a prioritised
               roadmap, and a defensible plan.
             </p>
-            <PillButton href="/method" variant="teal" size="md">
-              Read the Method
-            </PillButton>
+            <div className="ab-btn">
+              <PillButton href="/method" variant="teal" size="md">
+                Read the Method
+              </PillButton>
+            </div>
           </div>
         </section>
 
         {/* CLOSING CTA */}
         <section
+          data-ab
           className="px-[var(--margin-x)]"
           style={{ paddingTop: 'clamp(24px, 4vw, 40px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
         >
-          <PillButton href="/team" variant="outline-ink" size="md">
-            Meet the team
-          </PillButton>
+          <div className="ab-card">
+            <PillButton href="/team" variant="outline-ink" size="md">
+              Meet the team
+            </PillButton>
+          </div>
         </section>
 
       </main>

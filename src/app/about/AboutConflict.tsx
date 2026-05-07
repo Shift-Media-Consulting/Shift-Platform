@@ -126,32 +126,32 @@ em.news.is-drawn::after { transform: scaleX(1); }
   margin: 0;
 }
 
-/* ─── Footer annotation ─────────────────────────────────────────── */
+/* ─── Footer statement ──────────────────────────────────────────── */
 .ab-footer-rule {
-  margin-top: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: rgba(246,245,242,0.45);
-  font-weight: 400;
+  margin-top: 80px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.ab-fr-top {
+  display: block;
+  font-size: 26px;
+  color: rgba(246,245,242,0.50);
+  margin-bottom: 8px;
+}
+.ab-fr-main {
+  display: block;
+  font-size: 46px;
+  color: #f6f5f2;
 }
 .ab-footer-rule a {
   color: inherit;
   text-decoration: none;
-}
-.ab-footer-rule em.news {
-  font-style: italic;
-  font-family: var(--font-serif);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 13px;
-  color: rgba(246,245,242,0.55);
 }
 
 /* ─── Punchline ─────────────────────────────────────────────────── */
@@ -267,7 +267,8 @@ em.news.is-drawn::after { transform: scaleX(1); }
   .ab-col       { min-height: auto; }
   .ab-role      { font-size: 80px; }
   .ab-punchline { font-size: 32px; margin-top: 64px; }
-  .ab-footer-rule { gap: 4px; }
+  .ab-fr-top  { font-size: 16px; }
+  .ab-fr-main { font-size: 28px; }
 }
 `
 
@@ -373,8 +374,8 @@ export default function AboutConflict() {
         </div>
 
         <div className="ab-footer-rule">
-          <span>— Three roles · three relationships · zero independent oversight</span>
-          <span>
+          <span className="ab-fr-top">Three roles · three relationships · zero independent oversight</span>
+          <span className="ab-fr-main">
             <Link href="/">shift.media</Link>
             {' · '}<em className="news">the missing fourth seat</em>
           </span>
