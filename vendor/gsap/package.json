@@ -1,0 +1,55 @@
+{
+  "name": "gsap",
+  "version": "3.13.0",
+  "description": "GSAP Club GreenSock (local install)",
+  "main": "src/index.js",
+  "module": "esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./src/index.js"
+    },
+    "./ScrollTrigger": {
+      "import": "./esm/ScrollTrigger.js",
+      "require": "./src/ScrollTrigger.js"
+    },
+    "./ScrollSmoother": {
+      "import": "./esm/ScrollSmoother.js",
+      "require": "./src/ScrollSmoother.js"
+    },
+    "./SplitText": {
+      "import": "./esm/SplitText.js",
+      "require": "./src/SplitText.js"
+    },
+    "./CustomEase": {
+      "import": "./esm/CustomEase.js",
+      "require": "./src/CustomEase.js"
+    },
+    "./Flip": {
+      "import": "./esm/Flip.js",
+      "require": "./src/Flip.js"
+    },
+    "./DrawSVGPlugin": {
+      "import": "./esm/DrawSVGPlugin.js",
+      "require": "./src/DrawSVGPlugin.js"
+    },
+    "./MorphSVGPlugin": {
+      "import": "./esm/MorphSVGPlugin.js",
+      "require": "./src/MorphSVGPlugin.js"
+    },
+    "./MotionPathPlugin": {
+      "import": "./esm/MotionPathPlugin.js",
+      "require": "./src/MotionPathPlugin.js"
+    },
+    "./TextPlugin": {
+      "import": "./esm/TextPlugin.js",
+      "require": "./src/TextPlugin.js"
+    },
+    "./Observer": {
+      "import": "./esm/Observer.js",
+      "require": "./src/Observer.js"
+    }
+  },
+  "sideEffects": false,
+  "type": "module"
+}
