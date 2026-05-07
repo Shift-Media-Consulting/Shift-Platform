@@ -119,7 +119,7 @@ export default function MethodFramework() {
         {/* SVG diagram */}
         <div
           ref={svgWrapRef}
-          style={{ position: 'relative', width: '100%', aspectRatio: '1' }}
+          style={{ position: 'relative', width: '100%' }}
         >
           <style>{`
             .mth-diagram-ring { opacity: 0; transition: opacity 800ms cubic-bezier(.22,.61,.36,1) 100ms; }
@@ -150,8 +150,8 @@ export default function MethodFramework() {
             }
           `}</style>
           <svg
-            viewBox="0 0 440 440"
-            style={{ width: '100%', height: '100%', overflow: 'visible' }}
+            viewBox="-100 -30 640 500"
+            style={{ width: '100%', height: 'auto', overflow: 'visible' }}
             aria-hidden="true"
           >
             {/* Spokes */}

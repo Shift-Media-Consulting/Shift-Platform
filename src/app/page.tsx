@@ -66,7 +66,7 @@ export default function HomePage() {
             style={{
               fontFamily: 'var(--font-head)',
               fontWeight: 600,
-              fontSize: 'clamp(72px,9vw,132px)',
+              fontSize: 'clamp(44px,12vw,132px)',
               lineHeight: 0.92,
               letterSpacing: '-0.03em',
               color: '#f6f5f2',
