@@ -7,7 +7,7 @@ const CSS = `
 /* ─── Section ───────────────────────────────────────────────────── */
 .ab-section {
   position: relative;
-  padding: 96px var(--margin-x) 120px;
+  padding: 96px 56px 120px;
 }
 
 /* ─── Headline ──────────────────────────────────────────────────── */
@@ -258,7 +258,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
 
 /* ─── Mobile (<900px) ───────────────────────────────────────────── */
 @media (max-width: 899px) {
-  .ab-section   { padding: 48px var(--margin-x) 80px; }
+  .ab-section   { padding: 48px 24px 80px; }
   .ab-headline  { font-size: 52px; }
   .ab-deck      { font-size: 18px; margin-bottom: 56px; }
   .ab-grid      { grid-template-columns: 1fr; column-gap: 0; row-gap: 40px; }
