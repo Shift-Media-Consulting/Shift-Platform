@@ -29,7 +29,7 @@ export async function updateSession(request: NextRequest) {
   // Public marketing pages — no auth required
   const pathname = request.nextUrl.pathname
   const publicPaths = ['/', '/about', '/services', '/team', '/contact', '/login']
-  const isPublic = publicPaths.includes(pathname) || pathname.startsWith('/bid/')
+  const isPublic = publicPaths.includes(pathname) || pathname.startsWith('/bid/') || pathname.startsWith('/api/contact')
   if (!user && !isPublic) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/login'
