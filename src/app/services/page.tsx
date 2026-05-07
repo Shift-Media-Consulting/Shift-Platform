@@ -9,7 +9,7 @@ export const metadata = {
   description: 'How we work with brands. Independent advisory across the full production lifecycle.',
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%)'
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
 
 const entryPoints = [
   {
@@ -133,11 +133,10 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CAROUSELS — pinned to dark teal so glass cards always read */}
+        {/* CAROUSELS */}
         <section style={{
           paddingTop: 'clamp(64px, 10vw, 100px)',
           paddingBottom: 'clamp(64px, 10vw, 100px)',
-          background: 'linear-gradient(180deg, #003d33 0%, #004d40 25%, #00695c 60%, #00897b 85%, #26a69a 100%)',
         }}>
           <div className="flex flex-col gap-20">
             <ServicesSlider
