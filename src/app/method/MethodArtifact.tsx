@@ -92,6 +92,10 @@ export default function MethodArtifact() {
             transform: scale(1) !important;
           }
         }
+        @media (max-width: 899px) {
+          .mth-artifact-grid { grid-template-columns: 1fr !important; }
+          .mth-artifact-doc { min-height: auto !important; }
+        }
       `}</style>
 
       <section
@@ -104,9 +108,10 @@ export default function MethodArtifact() {
       >
         {/* Two-column layout */}
         <div
+          className="mth-artifact-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: '480px 1fr',
+            gridTemplateColumns: 'min(480px, 100%) 1fr',
             gap: 'clamp(48px, 6vw, 96px)',
             alignItems: 'center',
           }}
@@ -198,7 +203,7 @@ export default function MethodArtifact() {
           </div>
 
           {/* Right: glass document mock */}
-          <div className="mth-r" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '560px' }}>
+          <div className="mth-r mth-artifact-doc" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '560px' }}>
 
             {/* Back page */}
             <div

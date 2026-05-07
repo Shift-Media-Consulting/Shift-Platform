@@ -6,6 +6,7 @@ import MethodReveal from './MethodReveal'
 import MethodFramework from './MethodFramework'
 import MethodArtifact from './MethodArtifact'
 import MethodCarousel from './MethodCarousel'
+import CtaSection from '@/components/marketing/CtaSection'
 
 export const metadata: Metadata = {
   title: 'The Shift Method — shift.media',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
 export default function MethodPage() {
   return (
@@ -26,6 +27,7 @@ export default function MethodPage() {
         className="mth-main"
         style={{
           background: BODY_GRADIENT,
+          backgroundSize: '100% 200%',
           minHeight: '100vh',
           fontFamily: 'var(--font-head)',
         }}
@@ -90,7 +92,7 @@ export default function MethodPage() {
 
           {/* Meta strip */}
           <div
-            className="ab-p2"
+            className="ab-p2 mth-meta-strip"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
@@ -192,6 +194,7 @@ export default function MethodPage() {
 
           {/* 3 triggers */}
           <div
+            className="mth-triggers-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -310,6 +313,7 @@ export default function MethodPage() {
 
           {/* 3-column list */}
           <div
+            className="mth-independence-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -360,137 +364,7 @@ export default function MethodPage() {
           </div>
         </section>
 
-        {/* ── Section 7: CTA ───────────────────────────────────────────── */}
-        <section
-          data-mth
-          style={{
-            padding: 'clamp(56px,7vw,88px) var(--margin-x) clamp(72px, 10vw, 120px)',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <p
-            className="mth-r"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '13px',
-              letterSpacing: '0.18em',
-              color: 'rgba(0,77,64,0.65)',
-              marginBottom: '24px',
-            }}
-          >
-            — Start with a conversation
-          </p>
-
-          <h2
-            className="mth-r"
-            style={{
-              fontFamily: 'var(--font-head)',
-              fontWeight: 600,
-              fontSize: 'clamp(48px, 6.5vw, 88px)',
-              lineHeight: 1.0,
-              letterSpacing: '-0.025em',
-              color: '#111111',
-              marginBottom: '24px',
-            }}
-          >
-            Forty-five minutes. No sales pitch.
-          </h2>
-
-          <p
-            className="mth-r"
-            style={{
-              fontSize: '21px',
-              lineHeight: 1.5,
-              color: 'rgba(17,17,17,0.68)',
-              maxWidth: '600px',
-              marginBottom: '40px',
-            }}
-          >
-            We&apos;ll tell you in writing within five working days whether the Method
-            is the right next step for your operation — or what is, if it isn&apos;t.
-          </p>
-
-          {/* Buttons */}
-          <div className="mth-r" style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '64px' }}>
-            <a
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '18px 36px',
-                borderRadius: '9999px',
-                background: '#004d40',
-                color: '#f6f5f2',
-                fontFamily: 'var(--font-head)',
-                fontWeight: 600,
-                fontSize: '17px',
-                textDecoration: 'none',
-                transition: 'background 200ms, transform 200ms',
-              }}
-            >
-              Request a conversation ›
-            </a>
-            <a
-              href="mailto:hello@shift-media.io"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px',
-                letterSpacing: '0.10em',
-                color: 'rgba(0,77,64,0.70)',
-                textDecoration: 'none',
-              }}
-            >
-              hello@shift-media.io
-            </a>
-          </div>
-
-          {/* Spec strip */}
-          <div
-            className="mth-r"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              borderTop: '1px solid rgba(17,17,17,0.12)',
-              maxWidth: '860px',
-              width: '100%',
-              textAlign: 'left',
-            }}
-          >
-            {[
-              { label: 'Format',    value: '45-minute call — video or phone' },
-              { label: 'Cost',      value: 'None' },
-              { label: 'Outcome',   value: 'Written assessment in 5 days' },
-              { label: 'Next step', value: 'Yours to decide' },
-            ].map((cell) => (
-              <div key={cell.label} style={{ borderTop: '1px solid rgba(17,17,17,0.12)', paddingTop: '20px', paddingRight: '20px' }}>
-                <p style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.14em',
-                  color: 'rgba(0,77,64,0.55)',
-                  marginBottom: '6px',
-                }}>
-                  {cell.label}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--font-head)',
-                  fontSize: '18px',
-                  fontWeight: 500,
-                  color: '#111111',
-                  lineHeight: 1.25,
-                }}>
-                  {cell.value}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <CtaSection h2="Forty-five minutes. No sales pitch." para="We will tell you in writing within five working days whether the Method is the right next step for your operation — or what is, if it is not." />
 
       </main>
       <Footer />

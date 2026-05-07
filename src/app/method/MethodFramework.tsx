@@ -107,7 +107,7 @@ export default function MethodFramework() {
 
       {/* Two-col: diagram + copy */}
       <div
-        className="mth-r"
+        className="mth-r mth-framework-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: 'min(440px,45vw) 1fr',
@@ -140,6 +140,13 @@ export default function MethodFramework() {
               .mth-diagram-ring, .mth-diagram-node, .mth-diagram-label, .mth-diagram-center {
                 opacity: 1 !important; transform: scale(1) !important; transition: none !important;
               }
+            }
+            @media (max-width: 899px) {
+              /* Two-col diagram + copy → stacked */
+              .mth-framework-grid { grid-template-columns: 1fr !important; }
+              /* 3-col dimension card grid → 1 col */
+              .mth-dim-grid { grid-template-columns: 1fr !important; }
+              /* Cluster legend — already flex so wraps fine */
             }
           `}</style>
           <svg
@@ -333,7 +340,7 @@ export default function MethodFramework() {
 
       {/* 6-dimension card grid */}
       <div
-        className="mth-r"
+        className="mth-r mth-dim-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',

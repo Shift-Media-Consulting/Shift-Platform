@@ -1,8 +1,7 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import PillButton from '@/components/marketing/PillButton'
-import PageReveal from '@/components/marketing/PageReveal'
-import ServicesSlider from './ServicesSlider'
+import CtaSection from '@/components/marketing/CtaSection'
+import ServicesReveal from './ServicesReveal'
 import ServicesFaq from './ServicesFaq'
 
 export const metadata = {
@@ -10,37 +9,7 @@ export const metadata = {
   description: 'How we work with brands. Independent advisory across the full production lifecycle.',
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
-
-const entryPoints = [
-  {
-    name: 'Audit',
-    desc: 'A clear, independent read of where you stand. We assess your production setup — costs, vendors, structure, process — and surface the gaps and opportunities.',
-  },
-  {
-    name: 'Workshop',
-    desc: 'Deep, focused sessions on a single topic. AI readiness, production strategy, organisational design, or anything else. Practical and built around your real briefs.',
-  },
-  {
-    name: 'Pilot',
-    desc: 'A defined project, start to finish. We embed alongside your team, run it independently, and leave you with a working blueprint.',
-  },
-]
-
-const partnerships = [
-  {
-    name: 'Build',
-    desc: 'Advisory-led design of your in-house production model. Structure, talent, process, tooling — designed and stood up alongside your team.',
-  },
-  {
-    name: 'Engine',
-    desc: 'Senior advisory on retainer. Always-on counsel across content, campaigns, and operations. Independent of any single project. Named partner ownership.',
-  },
-  {
-    name: 'Campaign',
-    desc: 'Embedded production oversight, brief to delivery. Cost control, vendor selection, quality assurance. We sit on the brand side of the table.',
-  },
-]
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
 const pillars = [
   {
@@ -100,8 +69,14 @@ export default function ServicesPage() {
   return (
     <>
       <Nav />
-      <PageReveal />
-      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
+      <ServicesReveal />
+      <main
+        className="services-main min-h-screen font-[family-name:var(--font-head)]"
+        style={{
+          background: BODY_GRADIENT,
+          backgroundSize: '100% 200%',
+        }}
+      >
 
         {/* HERO */}
         <section
@@ -118,9 +93,7 @@ export default function ServicesPage() {
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               From a single brief{' '}
-              <em className="not-italic font-bold text-ink tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                to a full rebuild.
-              </em>
+              <em className="news">to a full rebuild.</em>
             </h1>
             <p
               className="ab-p text-cream/80 leading-[1.65] max-w-[600px] font-medium"
@@ -136,95 +109,203 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CAROUSELS — complex client components, each fades in as a unit */}
+        {/* FOUR PILLARS */}
         <section
           data-ab
-          style={{
-            paddingTop: 'clamp(64px, 10vw, 100px)',
-            paddingBottom: 'clamp(64px, 10vw, 100px)',
-          }}
+          style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}
         >
-          <div className="ab-card flex flex-col gap-20">
-            <ServicesSlider
-              label="Where to start."
-              cards={entryPoints}
-            />
-            <ServicesSlider
-              label="How we engage."
-              cards={partnerships}
-            />
-          </div>
-        </section>
-
-        {/* CAPABILITIES */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[1200px]">
+          {/* Header grid */}
+          <div
+            className="ab-h svc-header-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1.2fr 1fr',
+              gap: 'clamp(48px,6vw,80px)',
+              marginBottom: '64px',
+              alignItems: 'end',
+            }}
+          >
             <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              style={{
+                fontFamily: 'var(--font-head)',
+                fontWeight: 600,
+                fontSize: 'clamp(48px,6.5vw,88px)',
+                lineHeight: 0.96,
+                letterSpacing: '-0.025em',
+                color: '#111111',
+                margin: 0,
+              }}
             >
-              Four pillars.{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                One partner.
-              </em>
+              Four pillars. One partner.
             </h2>
-            <div className="grid gap-y-12 sm:gap-y-16 gap-x-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-              {pillars.map(item => (
-                <div key={item.num} className="ab-card flex flex-col">
-                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>[{item.num}]</p>
-                  <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">{item.name}</h3>
-                  <p className="font-medium text-[14px] text-gray-warm leading-[1.6] mb-5">{item.desc}</p>
-                  <p className="text-[11px] text-gray-soft leading-[1.7] tracking-[0.3px] mb-5" style={{ fontFamily: 'var(--font-mono)' }}>{item.details}</p>
-                  <p
-                    className="font-bold text-teal-mid leading-[1.2] tracking-[-0.01em] mt-auto"
-                    style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(14px, 1.4vw, 16px)' }}
+            <p
+              className="ab-p"
+              style={{
+                fontSize: '19px',
+                lineHeight: 1.55,
+                color: 'rgba(17,17,17,0.78)',
+                maxWidth: '460px',
+                alignSelf: 'end',
+                margin: 0,
+              }}
+            >
+              A complete operating model for brands that produce — covering the four areas where independent expertise pays for itself fastest.
+            </p>
+          </div>
+
+          {/* Pillar rail */}
+          <div
+            className="ab-p2"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              borderTop: '1px solid rgba(17,17,17,0.40)',
+              paddingTop: '18px',
+              marginBottom: '32px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '12px',
+                letterSpacing: '0.20em',
+                color: 'rgba(17,17,17,0.65)',
+              }}
+            >
+              — What we do
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '12px',
+                letterSpacing: '0.20em',
+                color: 'rgba(17,17,17,0.65)',
+              }}
+            >
+              04 capabilities
+            </span>
+          </div>
+
+          {/* 4-col grid */}
+          <div
+            className="svc-pillar-grid"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 0 }}
+          >
+            {pillars.map((item, idx) => (
+              <div
+                key={item.num}
+                className="ab-card svc-pillar"
+                style={{
+                  borderTop: '1px solid rgba(17,17,17,0.35)',
+                  borderRight: idx < 3 ? '1px solid rgba(17,17,17,0.18)' : 'none',
+                  padding: '28px 24px 36px 0',
+                  minHeight: '480px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                {/* Top row */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    marginBottom: '64px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '12px',
+                      letterSpacing: '0.22em',
+                      color: 'rgba(17,17,17,0.60)',
+                    }}
                   >
-                    {item.outcome}
-                  </p>
+                    [{item.num}] · {item.name.split(' ')[0]}
+                  </span>
                 </div>
-              ))}
-            </div>
+
+                {/* H3 */}
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-head)',
+                    fontWeight: 600,
+                    fontSize: '28px',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.0,
+                    color: '#111111',
+                    marginBottom: '12px',
+                  }}
+                >
+                  {item.name}
+                </h3>
+
+                {/* Desc */}
+                <p
+                  style={{
+                    fontSize: '15px',
+                    lineHeight: 1.5,
+                    color: 'rgba(17,17,17,0.78)',
+                    marginBottom: '24px',
+                  }}
+                >
+                  {item.desc}
+                </p>
+
+                {/* List */}
+                <ul
+                  style={{
+                    marginTop: 'auto',
+                    borderTop: '1px dashed rgba(17,17,17,0.30)',
+                    paddingTop: '16px',
+                    listStyle: 'none',
+                    padding: 0,
+                    marginBottom: 0,
+                  }}
+                >
+                  {item.details.split(' · ').map((detail, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontSize: '13px',
+                        color: 'rgba(17,17,17,0.72)',
+                        lineHeight: 1.55,
+                        paddingTop: '6px',
+                      }}
+                    >
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* FAQ */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[860px]">
+        <section data-ab style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}>
+          <div style={{ maxWidth: '860px' }}>
             <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              className="ab-h"
+              style={{
+                fontFamily: 'var(--font-head)',
+                fontWeight: 600,
+                fontSize: 'clamp(32px,4.5vw,56px)',
+                lineHeight: 1.0,
+                letterSpacing: '-0.02em',
+                color: '#111111',
+                marginBottom: 'clamp(40px,5vw,56px)',
+              }}
             >
-              Common{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                questions.
-              </em>
+              Common questions.
             </h2>
-
             <div className="ab-card">
               <ServicesFaq items={faqs} />
             </div>
           </div>
         </section>
 
-        {/* CLOSING CTA */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(24px, 4vw, 40px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
-        >
-          <div className="ab-btn flex flex-wrap gap-4">
-            <PillButton href="/contact" variant="teal" size="md">Start a conversation</PillButton>
-            <PillButton href="/method" variant="outline-ink" size="md">Read the Method</PillButton>
-          </div>
-        </section>
+        <CtaSection />
 
       </main>
       <Footer />

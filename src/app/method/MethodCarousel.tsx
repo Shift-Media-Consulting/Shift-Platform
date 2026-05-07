@@ -374,7 +374,7 @@ export default function MethodCarousel() {
     >
       {/* Header */}
       <div
-        className="mth-r"
+        className="mth-r mth-carousel-header"
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',

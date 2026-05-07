@@ -5,13 +5,11 @@ import { useEffect } from 'react'
 const CSS = `
 /* ─── Gradient drift on .mth-main ──────────────────────────────────── */
 @keyframes mth-drift {
-  0%   { background-position: 0% 0%; }
-  50%  { background-position: 0% 100%; }
-  100% { background-position: 0% 0%; }
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
 }
 .mth-main {
-  background-size: 100% 200%;
-  animation: mth-drift 90s linear infinite;
+  animation: mth-drift 90s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .mth-main { animation-duration: 180s; }
@@ -58,6 +56,19 @@ em.news::after {
 em.news.is-drawn::after { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) {
   em.news::after { transition-duration: 200ms; }
+}
+
+@media (max-width: 899px) {
+  /* Triggers section — 3 col → 1 col */
+  .mth-triggers-grid { grid-template-columns: 1fr !important; row-gap: 32px !important; }
+  /* Independence section — 3 col → 1 col */
+  .mth-independence-grid { grid-template-columns: 1fr !important; row-gap: 28px !important; }
+  /* Framework section — handled in MethodFramework */
+  /* Artifact section — handled in MethodArtifact */
+  /* Meta strip — 4 col → 2 col */
+  .mth-meta-strip { grid-template-columns: repeat(2, 1fr) !important; }
+  /* Carousel header — 2 col → 1 col */
+  .mth-carousel-header { grid-template-columns: 1fr !important; }
 }
 `
 

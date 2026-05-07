@@ -3,18 +3,18 @@
 import { useEffect } from 'react'
 
 const CSS = `
-@keyframes ab-drift {
+@keyframes sv-drift {
   0%, 100% { background-position: 0% 0%; }
   50% { background-position: 0% 100%; }
 }
-.about-main {
-  animation: ab-drift 90s ease-in-out infinite;
+.services-main {
+  animation: sv-drift 90s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .about-main { animation-duration: 180s; }
+  .services-main { animation-duration: 180s; }
 }
 
-/* ── PageReveal classes (copied from PageReveal.tsx) ── */
+/* ── PageReveal classes ── */
 [data-ab] .ab-label,
 [data-ab] .ab-h,
 [data-ab] .ab-p,
@@ -67,9 +67,17 @@ em.news.is-drawn::after { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) {
   em.news::after { transition-duration: 0ms; }
 }
+
+/* ── Responsive overrides ── */
+@media (max-width: 899px) {
+  .svc-pillar-grid { grid-template-columns: 1fr !important; }
+  .svc-pillar { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid rgba(17,17,17,0.18); }
+  .svc-pillar:last-child { border-bottom: none !important; }
+  .svc-header-grid { grid-template-columns: 1fr !important; }
+}
 `
 
-export default function AboutAnimations() {
+export default function ServicesReveal() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const cleanups: (() => void)[] = []

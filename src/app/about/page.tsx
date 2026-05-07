@@ -1,6 +1,6 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import PillButton from '@/components/marketing/PillButton'
+import CtaSection from '@/components/marketing/CtaSection'
 import AboutConflict from './AboutConflict'
 import AboutAnimations from './AboutAnimations'
 
@@ -9,7 +9,7 @@ export const metadata = {
   description: 'shift.media exists to give brands an independent voice in production — built on expertise, not affiliation.',
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 8%, #00897b 20%, #4db6a0 48%, #b9d8d2 68%, #f6f5f2 82%)'
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
 const differences = [
   {
@@ -58,7 +58,13 @@ export default function AboutPage() {
     <>
       <Nav />
       <AboutAnimations />
-      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
+      <main
+        className="about-main min-h-screen font-[family-name:var(--font-head)]"
+        style={{
+          background: BODY_GRADIENT,
+          backgroundSize: '100% 200%',
+        }}
+      >
 
         {/* HERO */}
         <section
@@ -75,9 +81,7 @@ export default function AboutPage() {
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               Built on expertise.{' '}
-              <em className="not-italic font-bold text-ink tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                Not affiliation.
-              </em>
+              <em className="news">Not affiliation.</em>
             </h1>
 
             <p
@@ -210,46 +214,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* HOW WE WORK — METHOD LINK */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="max-w-[760px]">
-            <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-6"
-              style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}
-            >
-              Read how we{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                work.
-              </em>
-            </h2>
-            <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[520px]">
-              The Shift Method. Six dimensions. A clear diagnostic, a prioritised
-              roadmap, and a defensible plan.
-            </p>
-            <div className="ab-btn">
-              <PillButton href="/method" variant="teal" size="md">
-                Read the Method
-              </PillButton>
-            </div>
-          </div>
-        </section>
-
-        {/* CLOSING CTA */}
-        <section
-          data-ab
-          className="px-[var(--margin-x)]"
-          style={{ paddingTop: 'clamp(24px, 4vw, 40px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
-        >
-          <div className="ab-card">
-            <PillButton href="/team" variant="outline-ink" size="md">
-              Meet the team
-            </PillButton>
-          </div>
-        </section>
+        <CtaSection
+          h2="Forty-five minutes. No sales pitch."
+          para="We will tell you in writing within five working days whether we are the right next step — or what is, if we are not."
+        />
 
       </main>
       <Footer />
