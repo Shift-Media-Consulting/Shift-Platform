@@ -133,17 +133,19 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CAROUSELS */}
-        <section
-          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
-        >
-          <div className="flex flex-col gap-14">
+        {/* CAROUSELS — pinned to dark teal so glass cards always read */}
+        <section style={{
+          paddingTop: 'clamp(64px, 10vw, 100px)',
+          paddingBottom: 'clamp(64px, 10vw, 100px)',
+          background: 'linear-gradient(180deg, #004d40 0%, #00695c 60%, #00897b 100%)',
+        }}>
+          <div className="flex flex-col gap-20">
             <ServicesSlider
-              label="Where to begin"
+              label="Where to start."
               cards={entryPoints}
             />
             <ServicesSlider
-              label="How we work together"
+              label="How we engage."
               cards={partnerships}
             />
           </div>

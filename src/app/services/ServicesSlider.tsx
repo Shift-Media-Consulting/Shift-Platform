@@ -13,23 +13,25 @@ const EASE            = 'cubic-bezier(0.65,0,0.35,1)'
 const DURATION        = 0.8
 const AUTO_MS         = 7000
 const RESUME_AFTER_MS = 4000
-const GAP             = 20
+const GAP             = 24
 
 export default function ServicesSlider({ label, cards }: Props) {
   const trackRef        = useRef<HTMLDivElement>(null)
   const containerRef    = useRef<HTMLDivElement>(null)
   const progressFillRef = useRef<HTMLDivElement>(null)
   const xRef            = useRef(0)
+  const centerRef       = useRef(0)   // (containerW - cardW) / 2
   const animRef         = useRef<gsap.core.Tween | null>(null)
   const progAnimRef     = useRef<gsap.core.Tween | null>(null)
   const autoTimerRef    = useRef<ReturnType<typeof setTimeout> | null>(null)
   const resumeTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isPausedRef     = useRef(false)
   const goToRef         = useRef<(d: number) => void>(() => {})
+  const stepRef         = useRef(0)
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [isMobile, setIsMobile]       = useState(false)
-  const [cardPx, setCardPx]           = useState(400)
+  const [cardPx, setCardPx]           = useState(540)
 
   const tripled    = [...cards, ...cards, ...cards]
   const CARD_COUNT = cards.length
@@ -70,14 +72,14 @@ export default function ServicesSlider({ label, cards }: Props) {
     }, RESUME_AFTER_MS)
   }, [startProgress])
 
-  /* Card opacity / scale */
+  /* Card opacity / scale based on distance from active */
   const updateCards = useCallback((cardEls: HTMLElement[], activeIdx: number) => {
     cardEls.forEach((el, i) => {
       const src  = i % CARD_COUNT
       const dist = Math.min(Math.abs(src - activeIdx), CARD_COUNT - Math.abs(src - activeIdx))
       gsap.to(el, {
         scale:   dist === 0 ? 1.035 : 1,
-        opacity: dist === 0 ? 1 : dist === 1 ? 0.55 : 0.28,
+        opacity: dist === 0 ? 1 : dist === 1 ? 0.5 : 0.2,
         duration: DURATION,
         ease:     EASE,
         transformOrigin: 'center center',
@@ -92,25 +94,33 @@ export default function ServicesSlider({ label, cards }: Props) {
     const container = containerRef.current
     if (!track || !container) return
 
-    const cardEls = Array.from(track.children) as HTMLElement[]
-    const cw      = cardEls[0]?.offsetWidth ?? 400
+    const cardEls  = Array.from(track.children) as HTMLElement[]
+    const cw       = cardEls[0]?.offsetWidth ?? 540
     setCardPx(cw)
-    const step = cw + GAP
+    const step     = cw + GAP
+    stepRef.current = step
 
-    xRef.current = -(step * CARD_COUNT)
+    // Center offset: how far left the track needs to be so active card is centred
+    const co = Math.max(0, (container.offsetWidth - cw) / 2)
+    centerRef.current = co
+
+    // Start position: middle set, first card, centred
+    xRef.current = -(step * CARD_COUNT) + co
     gsap.set(track, { x: xRef.current })
     updateCards(cardEls, 0)
 
     const wrap = () => {
-      if (xRef.current <= -(step * CARD_COUNT * 2)) {
+      // Wrap bounds adjusted for centerOffset
+      if (xRef.current <= -(step * CARD_COUNT * 2) + co) {
         xRef.current += step * CARD_COUNT
         gsap.set(track, { x: xRef.current })
-      } else if (xRef.current >= 0) {
+      } else if (xRef.current >= co) {
         xRef.current -= step * CARD_COUNT
         gsap.set(track, { x: xRef.current })
       }
-      const idx       = Math.round((-xRef.current - step * CARD_COUNT) / step)
-      const newActive = ((idx % CARD_COUNT) + CARD_COUNT) % CARD_COUNT
+      // Active index: k = how many steps from position 0
+      const k       = Math.round((-xRef.current + co) / step)
+      const newActive = ((k % CARD_COUNT) + CARD_COUNT) % CARD_COUNT
       setActiveIndex(newActive)
       updateCards(cardEls, newActive)
     }
@@ -138,9 +148,12 @@ export default function ServicesSlider({ label, cards }: Props) {
         wrap()
       },
       onDragEnd: () => {
-        const nearest = Math.round(-xRef.current / step) * step
+        const co2    = centerRef.current
+        const st     = stepRef.current
+        const k      = Math.round((-xRef.current + co2) / st)
+        const target = -k * st + co2
         animRef.current = gsap.to(xRef, {
-          current:  -nearest,
+          current:  target,
           duration: DURATION,
           ease:     EASE,
           onUpdate:  () => { gsap.set(track, { x: xRef.current }); wrap() },
@@ -171,46 +184,37 @@ export default function ServicesSlider({ label, cards }: Props) {
 
   const handleArrow = (dir: 1 | -1) => { pauseAll(); goToRef.current(dir); scheduleResume() }
 
+  // Two-sided mask: fades left AND right so adjacent cards show ~50%
   const mask = isMobile
-    ? 'linear-gradient(to right, black 4%, black 96%, transparent 100%)'
-    : 'linear-gradient(to right, black 30%, black 70%, transparent 100%)'
+    ? 'linear-gradient(to right, transparent 2%, black 10%, black 90%, transparent 98%)'
+    : 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)'
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
 
-      {/* Header */}
-      <div className="flex items-center justify-between px-[var(--margin-x)]">
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '2.5px',
-                    fontWeight: 500, textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)' }}>
+      {/* Bold section heading */}
+      <div className="px-[var(--margin-x)]">
+        <h2
+          className="font-bold text-cream leading-[1.0] tracking-[-0.025em]"
+          style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
+        >
           {label}
-        </p>
-        {!isMobile && (
-          <div className="flex items-center gap-2 pr-[var(--margin-x)]">
-            {(['‹', '›'] as const).map((ch, i) => (
-              <button key={ch} onClick={() => handleArrow(i === 0 ? -1 : 1)}
-                aria-label={i === 0 ? 'Previous' : 'Next'}
-                className="w-9 h-9 rounded-full flex items-center justify-center text-[18px] leading-none cursor-pointer transition-all duration-200 hover:bg-white/10"
-                style={{ border: '1px solid rgba(246,245,242,0.2)', color: 'rgba(246,245,242,0.7)', background: 'transparent' }}>
-                {ch}
-              </button>
-            ))}
-          </div>
-        )}
+        </h2>
       </div>
 
-      {/* Slider wrapper — relative so progress bar can overlay */}
+      {/* Slider */}
       <div className="relative">
 
-        {/* Radial highlight behind active card */}
+        {/* Radial glow centred on active card */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: `radial-gradient(ellipse 50% 40% at calc(var(--margin-x) + ${cardPx / 2}px) 50%, rgba(246,245,242,0.08), transparent 70%)`,
+          background: `radial-gradient(ellipse 45% 60% at 50% 50%, rgba(246,245,242,0.07), transparent 70%)`,
         }} />
 
-        {/* Scrolling track */}
+        {/* Track container — full width, no horizontal padding */}
         <div
           ref={containerRef}
           className="overflow-hidden touch-none select-none cursor-grab active:cursor-grabbing"
-          style={{ paddingLeft: 'var(--margin-x)', WebkitMaskImage: mask, maskImage: mask }}
+          style={{ WebkitMaskImage: mask, maskImage: mask }}
         >
           <div ref={trackRef} className="flex will-change-transform" style={{ gap: `${GAP}px` }}>
             {tripled.map((card, i) => {
@@ -219,29 +223,30 @@ export default function ServicesSlider({ label, cards }: Props) {
                 <div key={i}
                   className="flex-shrink-0 flex flex-col rounded-2xl overflow-hidden"
                   style={{
-                    width:                isMobile ? '82vw' : 'min(400px, calc(100vw - var(--margin-x) - 80px))',
-                    height:               '380px',
+                    width:                isMobile ? '82vw' : 'min(540px, 80vw)',
+                    height:               '400px',
                     background:           'rgba(246,245,242,0.10)',
                     backdropFilter:       'blur(10px) saturate(1.3)',
                     WebkitBackdropFilter: 'blur(10px) saturate(1.3)',
                     border:               '1px solid rgba(246,245,242,0.28)',
                     boxShadow:            'inset 0 1px 0 rgba(246,245,242,0.25), 0 24px 60px -20px rgba(0,0,0,0.25)',
                     pointerEvents:        'none',
+                    flexShrink:           0,
                   }}
                 >
-                  <div className="flex flex-col h-full" style={{ padding: 'clamp(24px, 2.5vw, 36px)' }}>
+                  <div className="flex flex-col h-full" style={{ padding: 'clamp(28px, 3vw, 40px)' }}>
 
                     {/* [01] + hairline */}
-                    <div style={{ paddingBottom: '24px', borderBottom: '1px solid rgba(246,245,242,0.25)', marginBottom: '24px' }}>
-                      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '14px',
-                                  letterSpacing: '0.18em', color: 'rgba(246,245,242,0.55)', fontWeight: 400 }}>
+                    <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgba(246,245,242,0.2)', marginBottom: '24px' }}>
+                      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px',
+                                  letterSpacing: '0.18em', color: 'rgba(246,245,242,0.45)', fontWeight: 400 }}>
                         [{String(src + 1).padStart(2, '0')}]
                       </p>
                     </div>
 
                     {/* Title */}
                     <h3 style={{
-                      fontSize:      'clamp(52px, 6.5vw, 100px)',
+                      fontSize:      'clamp(56px, 7vw, 100px)',
                       lineHeight:    0.92,
                       letterSpacing: '-0.025em',
                       fontWeight:    600,
@@ -252,8 +257,8 @@ export default function ServicesSlider({ label, cards }: Props) {
                     </h3>
 
                     {/* Body */}
-                    <p style={{ fontSize: '16px', lineHeight: 1.45, maxWidth: '420px',
-                                color: 'rgba(246,245,242,0.82)', fontWeight: 400 }}>
+                    <p style={{ fontSize: '15px', lineHeight: 1.5, maxWidth: '420px',
+                                color: 'rgba(246,245,242,0.78)', fontWeight: 400 }}>
                       {card.desc}
                     </p>
                   </div>
@@ -263,30 +268,48 @@ export default function ServicesSlider({ label, cards }: Props) {
           </div>
         </div>
 
-        {/* Progress bar — floats over the active card, outside overflow:hidden */}
+        {/* Progress bar — centred over active card */}
         <div
           className="absolute pointer-events-none"
           style={{
             bottom: 0,
-            left:   'var(--margin-x)',
-            width:  `min(400px, calc(100vw - var(--margin-x) - 80px))`,
+            left:   `calc(50% - ${cardPx / 2}px)`,
+            width:  `${cardPx}px`,
             height: '2px',
             background: 'rgba(246,245,242,0.12)',
           }}
         >
-          <div ref={progressFillRef} style={{ height: '100%', background: 'rgba(246,245,242,0.75)', transformOrigin: 'left center' }} />
+          <div ref={progressFillRef}
+               style={{ height: '100%', background: 'rgba(246,245,242,0.75)', transformOrigin: 'left center' }} />
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="flex items-center gap-2 px-[var(--margin-x)]">
-        {cards.map((_, i) => (
-          <div key={i} className="rounded-full transition-all duration-300" style={{
-            width:      i === activeIndex ? '22px' : '5px',
-            height:     '5px',
-            background: i === activeIndex ? 'rgba(246,245,242,0.85)' : 'rgba(246,245,242,0.2)',
-          }} />
-        ))}
+      {/* Controls row */}
+      <div className="flex items-center justify-between px-[var(--margin-x)]">
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {cards.map((_, i) => (
+            <div key={i} className="rounded-full transition-all duration-300" style={{
+              width:      i === activeIndex ? '22px' : '5px',
+              height:     '5px',
+              background: i === activeIndex ? 'rgba(246,245,242,0.85)' : 'rgba(246,245,242,0.2)',
+            }} />
+          ))}
+        </div>
+
+        {/* Arrows — hidden on mobile */}
+        {!isMobile && (
+          <div className="flex items-center gap-2">
+            {(['‹', '›'] as const).map((ch, i) => (
+              <button key={ch} onClick={() => handleArrow(i === 0 ? -1 : 1)}
+                aria-label={i === 0 ? 'Previous' : 'Next'}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-[18px] leading-none cursor-pointer transition-all duration-200 hover:bg-white/10"
+                style={{ border: '1px solid rgba(246,245,242,0.2)', color: 'rgba(246,245,242,0.7)', background: 'transparent' }}>
+                {ch}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
     </div>
