@@ -1,29 +1,82 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+/* ── Brand fonts (local fallback for Geist Mono / Onest) ── */
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Newsreader36';
+  src: url('/fonts/Newsreader_36pt-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('/fonts/GeistMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
+/* ── Tailwind v4 design tokens ── */
+@theme {
+  --color-cream:        #f6f5f2;
+  --color-cream-soft:   #faf9f6;
+  --color-teal:         #004d40;
+  --color-teal-mid:     #00695c;
+  --color-teal-light:   #00897b;
+  --color-ink:          #111111;
+  --color-gray-warm:    #555555;
+  --color-gray-soft:    #888888;
+  --color-rule:         #e2e1de;
+
+  --font-head:  'Onest', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Newsreader36', Georgia, serif;
+  --font-mono:  'Geist Mono', 'GeistMono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --radius-pill: 9999px;
+}
+
+/* ── CSS variable aliases (for any inline styles still using them) ── */
 :root {
-  --color-bg: #F6F5F2;
-  --color-white: #FFFFFF;
-  --color-teal: #00897B;
-  --color-teal-dark: #00695C;
-  --color-teal-deep: #004D40;
-  --color-teal-light: #26A69A;
-  --color-teal-pale: #E8F5F3;
-  --color-ink: #111111;
-  --color-mid: #555555;
-  --color-muted: #888888;
-  --color-rule: #DDDDDD;
+  --cream:       #f6f5f2;
+  --teal:        #004d40;
+  --teal-mid:    #00695c;
+  --teal-light:  #00897b;
+  --ink:         #111111;
+  --gray:        #555555;
+  --gray-light:  #888888;
+  --font-head:   'Onest', system-ui, sans-serif;
+  --font-serif:  'Newsreader36', Georgia, serif;
+  --font-mono:   'Geist Mono', 'GeistMono', ui-monospace, monospace;
+  --margin-x:    clamp(24px, 6vw, 96px);
+  --gradient-body: linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%);
+}
 
-  --font-head: 'Poppins', Calibri, Arial, sans-serif;
-  --font-weight-bold: 700;
-  --margin-x: 56px;
-  --radius-card: 4px;
-  --border-rule: 1px solid #DDDDDD;
+* { box-sizing: border-box; }
+*::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-ink);
+  background-color: var(--cream);
+  color: var(--ink);
   font-family: var(--font-head);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

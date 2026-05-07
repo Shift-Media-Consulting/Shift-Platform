@@ -1,73 +1,97 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import Link from 'next/link'
+import PillButton from '@/components/marketing/PillButton'
+import ServicesSlider from './ServicesSlider'
+import ServicesFaq from './ServicesFaq'
 
 export const metadata = {
-  title: 'Services — SHIFT.MEDIA',
-  description: 'Production advisory, bid management, buyout consulting, and cost auditing for brands and agencies.',
+  title: 'Services — shift.media',
+  description: 'How we work with brands. Independent advisory across the full production lifecycle.',
 }
 
-const services = [
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%)'
+
+const entryPoints = [
   {
-    number: '01',
-    title: 'Production Controlling',
-    summary: 'Cost intelligence and real-time visibility across every production.',
-    detail: 'We take ownership of the numbers so your team can focus on the work. From initial budget development through final reconciliation, we ensure costs are tracked, variance is explained, and overspend is caught early — not at wrap.',
-    items: [
-      'Budget development and management',
-      'Cost plan review and challenge',
-      'Vendor and supplier negotiation',
-      'Real-time cost reporting',
-      'Variance analysis and forecasting',
-      'Final cost reconciliation',
-      'Buyout and usage rights management',
-    ],
-    forWhom: 'Brands and agencies commissioning TVC, content, or campaign production.',
+    name: 'Audit',
+    desc: 'A clear, independent read of where you stand. We assess your production setup — costs, vendors, structure, process — and surface the gaps and opportunities.',
   },
   {
-    number: '02',
-    title: 'Strategic Advisory',
-    summary: 'Shaping how brands and agencies commission and manage content at scale.',
-    detail: 'Strategic questions need honest answers — not answers shaped by who is in the room. We provide independent counsel on production strategy, roster decisions, format planning, and international structure.',
-    items: [
-      'Production strategy development',
-      'Director and production company roster advisory',
-      'Format and channel planning',
-      'Sustainable production strategy',
-      'International production structures',
-      'Risk assessment and mitigation',
-    ],
-    forWhom: 'Brands planning annual production programmes. Agencies building advisory credentials.',
+    name: 'Workshop',
+    desc: 'Deep, focused sessions on a single topic. AI readiness, production strategy, organisational design, or anything else. Practical and built around your real briefs.',
   },
   {
-    number: '03',
-    title: 'Organisational Design & Studio Builds',
-    summary: 'Building the production capability organisations need — from the ground up.',
-    detail: 'Whether you are insourcing for the first time, restructuring an underperforming department, or building a new studio from scratch, we design the structure, define the roles, and support the build.',
-    items: [
-      'In-house production department design',
-      'Agency production function builds',
-      'Content studio design and launch',
-      'VFX, post-production, and AI studio builds',
-      'Capability audits and gap analysis',
-      'Recruitment and team structure advisory',
-    ],
-    forWhom: 'Brands insourcing production. Agencies building or fixing production departments.',
+    name: 'Pilot',
+    desc: 'A defined project, start to finish. We embed alongside your team, run it independently, and leave you with a working blueprint.',
+  },
+]
+
+const partnerships = [
+  {
+    name: 'Build',
+    desc: 'Advisory-led design of your in-house production model. Structure, talent, process, tooling — designed and stood up alongside your team.',
   },
   {
-    number: '04',
-    title: 'AI Integration & Transformation',
-    summary: 'Practical AI adoption in production — with governance and measurable results.',
-    detail: 'AI is already changing how production works. We help brands and agencies understand where it creates genuine value, where it creates risk, and how to integrate it in a way that is practical, governed, and real.',
-    items: [
-      'AI readiness audit',
-      'Tool selection and workflow integration',
-      'Team training and upskilling',
-      'Ethics framework and governance',
-      'Pilot project design and delivery',
-      'Ongoing optimisation and review',
-    ],
-    forWhom: 'Any organisation navigating AI adoption in creative and production workflows.',
+    name: 'Engine',
+    desc: 'Senior advisory on retainer. Always-on counsel across content, campaigns, and operations. Independent of any single project. Named partner ownership.',
+  },
+  {
+    name: 'Campaign',
+    desc: 'Embedded production oversight, brief to delivery. Cost control, vendor selection, quality assurance. We sit on the brand side of the table.',
+  },
+]
+
+const pillars = [
+  {
+    num: '01',
+    name: 'Production Controlling',
+    desc: 'Cost intelligence and real-time visibility across every production.',
+    details: 'Budget development & validation · Cost reporting & reconciliation · Vendor selection & negotiation · Triple bidding · Rate benchmarking · Talent buyout management · SOW & MSA review · Real-time spend visibility',
+    outcome: 'Less waste, full visibility, no surprises.',
+  },
+  {
+    num: '02',
+    name: 'Strategic Advisory',
+    desc: 'Shaping how brands commission and plan content at scale.',
+    details: 'Production strategy · Operating-model design · Roster & vendor strategy · Sustainable production & ESG reporting · Risk & compliance · International production structures · Tax-incentive strategy',
+    outcome: 'A production strategy your CFO and your CMO both sign.',
+  },
+  {
+    num: '03',
+    name: 'Organisational Setup',
+    desc: 'Building the production capability you need — from scratch or from inside.',
+    details: 'In-house production department setup · Talent strategy & hiring · Production tech stack & tooling · VFX & post-production pipelines · AI studio architecture · Team upskilling & change management',
+    outcome: 'An in-house team that ships.',
+  },
+  {
+    num: '04',
+    name: 'AI Integration',
+    desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.',
+    details: 'AI maturity assessment · AI use-case identification & prioritisation · Tool selection & vendor evaluation · EU-compliant AI stack selection · Workflow integration · AI playbooks (Brand · Production · Governance) · Team training & certification · Ethics & policy frameworks',
+    outcome: 'A working AI operating model — not a slide deck.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'How is shift.media different from a production company?',
+    a: 'We don\'t make productions. We advise on them. We have no financial interest in any production going ahead, going bigger, or going to any particular vendor.',
+  },
+  {
+    q: 'How is shift.media different from a consultancy?',
+    a: 'We\'ve actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production — not what a slide deck says should happen.',
+  },
+  {
+    q: 'Do you take a cut of vendor fees?',
+    a: 'No. Never. Our fees come from our clients. That\'s it.',
+  },
+  {
+    q: 'What does an engagement typically cost?',
+    a: 'We scope each engagement individually. Talk to us — we\'ll tell you what\'s involved before you commit to anything.',
+  },
+  {
+    q: 'Can you work alongside our existing agency?',
+    a: 'Yes. We work with brands whose agencies are managing the production, brands working directly with production companies, and brands building their own in-house function. Independent oversight is the constant.',
   },
 ]
 
@@ -75,94 +99,121 @@ export default function ServicesPage() {
   return (
     <>
       <Nav />
-      <main style={{ fontFamily: "'Poppins', Calibri, Arial, sans-serif", paddingTop: '64px' }}>
+      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
-        {/* Page header */}
-        <section style={{ backgroundColor: '#111111', padding: '80px 56px' }}>
-          <p style={{
-            fontSize: '11px',
-            fontWeight: 700,
-            color: '#00897B',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>Services</p>
-          <h1 style={{
-            fontSize: 'clamp(32px, 4vw, 52px)',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            lineHeight: 1.1,
-            maxWidth: '640px',
-            marginBottom: '20px',
-          }}>
-            Four disciplines. One clear mandate.
-          </h1>
-          <p style={{ fontSize: '16px', color: '#888888', maxWidth: '480px', lineHeight: 1.7 }}>
-            Independent advisory for brands and agencies — across cost, strategy, structure, and technology.
-          </p>
+        {/* HERO */}
+        <section
+          className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
+          style={{
+            paddingTop: 'clamp(120px, 18vw, 180px)',
+            paddingBottom: 'clamp(56px, 8vw, 80px)',
+          }}
+        >
+          <div className="max-w-[1100px]">
+            <h1
+              className="font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
+              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
+            >
+              From a single brief{' '}
+              <em className="not-italic font-bold text-ink tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                to a full rebuild.
+              </em>
+            </h1>
+            <p
+              className="text-cream leading-[1.65] max-w-[600px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)', opacity: 0.82 }}
+            >
+              We meet brands wherever they are.
+              One project. A focused workshop. An embedded retainer.
+              A complete in-house production transformation.
+              <br /><br />
+              The architecture is the same.
+              The scope adjusts to the engagement.
+            </p>
+          </div>
         </section>
 
-        {/* Services */}
-        {services.map((service, i) => (
-          <section key={service.number} style={{
-            backgroundColor: i % 2 === 0 ? '#F6F5F2' : '#FFFFFF',
-            padding: '80px 56px',
-            borderBottom: '1px solid #DDDDDD',
-          }}>
-            <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '64px' }}>
-              <div>
-                <p style={{ fontSize: '11px', fontWeight: 700, color: '#00897B', letterSpacing: '2px', marginBottom: '12px' }}>{service.number}</p>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#111111', lineHeight: 1.2, marginBottom: '16px' }}>{service.title}</h2>
-                <p style={{ fontSize: '14px', color: '#888888', lineHeight: 1.6, marginBottom: '20px' }}>{service.summary}</p>
-                <div style={{ padding: '16px 20px', backgroundColor: '#E8F5F3', borderRadius: '4px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 700, color: '#00695C', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' }}>For</p>
-                  <p style={{ fontSize: '12px', color: '#00695C', lineHeight: 1.5 }}>{service.forWhom}</p>
-                </div>
-              </div>
-              <div>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '32px' }}>{service.detail}</p>
-                <div style={{ borderTop: '1px solid #DDDDDD', paddingTop: '24px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 700, color: '#888888', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '16px' }}>
-                    What this includes
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 32px' }}>
-                    {service.items.map(item => (
-                      <div key={item} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#00897B', fontWeight: 700, flexShrink: 0, marginTop: '1px' }}>›</span>
-                        <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.5 }}>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+        {/* CAROUSELS */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
+        >
+          <div className="max-w-[1200px]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+              <ServicesSlider
+                label="Where to begin"
+                cards={entryPoints}
+              />
+              <ServicesSlider
+                label="How we work together"
+                cards={partnerships}
+              />
             </div>
-          </section>
-        ))}
+          </div>
+        </section>
 
-        {/* CTA */}
-        <section style={{ backgroundColor: '#00897B', padding: '80px 56px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
-            <div>
-              <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#FFFFFF', marginBottom: '8px' }}>
-                Not sure which service fits?
-              </h2>
-              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.75)' }}>
-                Most engagements start with a conversation. Tell us what you're dealing with.
-              </p>
+        {/* CAPABILITIES */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
+        >
+          <div className="max-w-[1200px]">
+            <h2
+              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+            >
+              Four pillars.{' '}
+              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                One partner.
+              </em>
+            </h2>
+            <div className="grid gap-y-12 sm:gap-y-16 gap-x-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {pillars.map(item => (
+                <div key={item.num} className="flex flex-col">
+                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>[{item.num}]</p>
+                  <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">{item.name}</h3>
+                  <p className="font-medium text-[14px] text-gray-warm leading-[1.6] mb-5">{item.desc}</p>
+                  <p className="text-[11px] text-gray-soft leading-[1.7] tracking-[0.3px] mb-5" style={{ fontFamily: 'var(--font-mono)' }}>{item.details}</p>
+                  <p
+                    className="font-bold text-teal-mid leading-[1.2] tracking-[-0.01em] mt-auto"
+                    style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(14px, 1.4vw, 16px)' }}
+                  >
+                    {item.outcome}
+                  </p>
+                </div>
+              ))}
             </div>
-            <Link href="/contact" style={{
-              display: 'inline-block',
-              backgroundColor: '#FFFFFF',
-              color: '#00897B',
-              padding: '14px 32px',
-              borderRadius: '4px',
-              fontSize: '13px',
-              fontWeight: 700,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}>
-              Start a conversation ›
-            </Link>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
+        >
+          <div className="max-w-[860px]">
+            <h2
+              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+            >
+              Common{' '}
+              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                questions.
+              </em>
+            </h2>
+
+            <ServicesFaq items={faqs} />
+          </div>
+        </section>
+
+        {/* CLOSING CTA */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(24px, 4vw, 40px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
+        >
+          <div className="flex flex-wrap gap-4">
+            <PillButton href="/contact" variant="teal" size="md">Start a conversation</PillButton>
+            <PillButton href="/method" variant="outline-ink" size="md">Read the Method</PillButton>
           </div>
         </section>
 

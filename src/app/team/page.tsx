@@ -1,224 +1,76 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import Link from 'next/link'
+import PillButton from '@/components/marketing/PillButton'
+import TeamGrid from './TeamGrid'
 
 export const metadata = {
-  title: 'Team — SHIFT.MEDIA',
-  description: 'The people behind SHIFT MEDIA.',
+  title: 'Team — shift.media',
+  description: 'The team behind shift.media. Three co-founders and an independent partner network.',
 }
+
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%)'
 
 export default function TeamPage() {
   return (
     <>
       <Nav />
-      <main style={{ fontFamily: "'Poppins', Calibri, Arial, sans-serif", paddingTop: '64px' }}>
+      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
-        {/* Page header */}
-        <section style={{ backgroundColor: '#111111', padding: '80px 56px' }}>
-          <p style={{
-            fontSize: '11px',
-            fontWeight: 700,
-            color: '#00897B',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>Team</p>
-          <h1 style={{
-            fontSize: 'clamp(32px, 4vw, 52px)',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            lineHeight: 1.1,
-            maxWidth: '640px',
-            marginBottom: '20px',
-          }}>
-            Built by people who have done this work.
-          </h1>
-          <p style={{ fontSize: '16px', color: '#888888', maxWidth: '480px', lineHeight: 1.7 }}>
-            Between us, we have been inside productions — not just advising on them.
-            That is the difference.
-          </p>
-        </section>
+        {/* HERO */}
+        <section
+          className="flex flex-col justify-end px-[var(--margin-x)] min-h-[60vh]"
+          style={{
+            paddingTop: 'clamp(120px, 18vw, 180px)',
+            paddingBottom: 'clamp(56px, 8vw, 80px)',
+          }}
+        >
+          <div className="max-w-[1100px]">
+            <h1
+              className="font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
+              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
+            >
+              Built by people who have{' '}
+              <em className="not-italic font-bold text-ink tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                done this work.
+              </em>
+            </h1>
 
-        {/* Founders */}
-        <section style={{ backgroundColor: '#F6F5F2', padding: '80px 56px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-
-              {/* Justin */}
-              <div style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #DDDDDD',
-                borderRadius: '4px',
-                padding: '48px 40px',
-              }}>
-                <div style={{ width: '48px', height: '4px', backgroundColor: '#00897B', marginBottom: '28px' }} />
-                <h2 style={{ fontSize: '26px', fontWeight: 700, color: '#111111', marginBottom: '6px' }}>
-                  Justin Stiebel
-                </h2>
-                <p style={{ fontSize: '12px', fontWeight: 700, color: '#00897B', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '28px' }}>
-                  Co-Founder · Production Controlling & Advisory
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  Production controlling and advisory specialist with deep market knowledge
-                  across German and European TVC, content, and campaign production.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  Has built and managed production budgets across formats — from small social
-                  campaigns to large-scale international shoots. Specialist in the German market:
-                  its rates, its production companies, its directors, and its dynamics.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '32px' }}>
-                  Brings a rigorous, numbers-first approach to advisory work — always grounded
-                  in what production actually costs, not what it's quoted at.
-                </p>
-                <div style={{ borderTop: '1px solid #EEEEEE', paddingTop: '24px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {['Production Controlling', 'Budget Management', 'TVC', 'German Market', 'Vendor Negotiation'].map(tag => (
-                    <span key={tag} style={{
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      color: '#888888',
-                      backgroundColor: '#F6F5F2',
-                      padding: '4px 10px',
-                      borderRadius: '2px',
-                      letterSpacing: '0.3px',
-                    }}>{tag}</span>
-                  ))}
-                </div>
-                <div style={{ marginTop: '24px' }}>
-                  <a href="mailto:justin@shift-media.org" style={{
-                    fontSize: '13px',
-                    color: '#00897B',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                  }}>
-                    justin@shift-media.org ›
-                  </a>
-                </div>
-              </div>
-
-              {/* Cornelius */}
-              <div style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #DDDDDD',
-                borderRadius: '4px',
-                padding: '48px 40px',
-              }}>
-                <div style={{ width: '48px', height: '4px', backgroundColor: '#00897B', marginBottom: '28px' }} />
-                <h2 style={{ fontSize: '26px', fontWeight: 700, color: '#111111', marginBottom: '6px' }}>
-                  Cornelius Roenz
-                </h2>
-                <p style={{ fontSize: '12px', fontWeight: 700, color: '#00897B', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '28px' }}>
-                  Co-Founder · Strategy & Organisational Design
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  Production leader with extensive experience building and running production
-                  functions at agency and brand level across Europe.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  Has designed and implemented production departments, led organisational
-                  transformation, and advised on international production structures.
-                  Experience spans Hamburg, London, Dubai, and wider European markets.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '32px' }}>
-                  Specialist in sustainable production strategy, emerging content formats,
-                  and the structural challenges facing agencies as the market shifts.
-                </p>
-                <div style={{ borderTop: '1px solid #EEEEEE', paddingTop: '24px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {['Strategy', 'Org Design', 'Agency Structure', 'Sustainable Production', 'AI Integration'].map(tag => (
-                    <span key={tag} style={{
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      color: '#888888',
-                      backgroundColor: '#F6F5F2',
-                      padding: '4px 10px',
-                      borderRadius: '2px',
-                      letterSpacing: '0.3px',
-                    }}>{tag}</span>
-                  ))}
-                </div>
-                <div style={{ marginTop: '24px' }}>
-                  <a href="mailto:cornelius@shift-media.org" style={{
-                    fontSize: '13px',
-                    color: '#00897B',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                  }}>
-                    cornelius@shift-media.org ›
-                  </a>
-                </div>
-              </div>
-
-            </div>
+            <p
+              className="text-cream leading-[1.55] max-w-[560px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)', opacity: 0.82 }}
+            >
+              Three co-founders. One independent partner network.
+              Decades of hands-on production experience — from cost control
+              to creative delivery.
+            </p>
           </div>
         </section>
 
-        {/* How we work together */}
-        <section style={{ backgroundColor: '#FFFFFF', padding: '80px 56px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            <p style={{
-              fontSize: '11px',
-              fontWeight: 700,
-              color: '#00897B',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              marginBottom: '16px',
-            }}>Our model</p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px' }}>
-              <div>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#111111', marginBottom: '20px', lineHeight: 1.2 }}>
-                  Small by design. Senior by default.
-                </h2>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  We are not a large consultancy with junior teams and senior oversight.
-                  Every engagement is led and delivered by one of the founders.
-                  You get the people you spoke to in the pitch.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8 }}>
-                  This is intentional. Our value comes from experience and judgement —
-                  not from scale.
-                </p>
-              </div>
-              <div>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#111111', marginBottom: '20px', lineHeight: 1.2 }}>
-                  Extended network. Vetted.
-                </h2>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8, marginBottom: '20px' }}>
-                  For larger programmes or specialist requirements, we draw on a curated network
-                  of senior production professionals across Europe — all vetted personally,
-                  all working to our standards.
-                </p>
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: 1.8 }}>
-                  No subcontracting to unknown parties. No hand-offs without disclosure.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <TeamGrid />
 
-        {/* CTA */}
-        <section style={{ backgroundColor: '#111111', padding: '80px 56px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
-            <div>
-              <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#FFFFFF', marginBottom: '8px' }}>
-                Want to speak to us directly?
-              </h2>
-              <p style={{ fontSize: '15px', color: '#888888' }}>
-                We are always open for a first conversation.
-              </p>
+        {/* GET IN TOUCH CTA */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
+        >
+          <div className="max-w-[760px]">
+            <h2
+              className="font-bold text-ink leading-[1.05] tracking-[-0.02em] mb-6"
+              style={{ fontSize: 'clamp(28px, 3.8vw, 48px)' }}
+            >
+              Ready to{' '}
+              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                talk?
+              </em>
+            </h2>
+            <p className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[480px]">
+              No pitch deck. No agenda. Just an honest conversation about whether
+              we can help — and how.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <PillButton href="/contact" variant="teal" size="md">Get in touch</PillButton>
+              <PillButton href="/services" variant="outline-ink" size="md">See how we work</PillButton>
             </div>
-            <Link href="/contact" style={{
-              display: 'inline-block',
-              backgroundColor: '#00897B',
-              color: '#FFFFFF',
-              padding: '14px 32px',
-              borderRadius: '4px',
-              fontSize: '13px',
-              fontWeight: 700,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}>
-              Get in touch ›
-            </Link>
           </div>
         </section>
 

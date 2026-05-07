@@ -1,184 +1,227 @@
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
-import Link from 'next/link'
+import PillButton from '@/components/marketing/PillButton'
+import IntroWrapper from './IntroWrapper'
 
 export const metadata = {
-  title: 'SHIFT.MEDIA — Independent Production Advisory',
-  description: 'Independent production advisory for brands and agencies. Hamburg, DE.',
+  title: 'shift.media — Independent Production Advisory',
+  description: 'Independent by design. On your side by choice. Production advisory for brands. Hamburg, DE.',
 }
+
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%)'
+
+const capabilities = [
+  {
+    num: '01',
+    name: 'Production Controlling',
+    desc: 'Cost intelligence and real-time visibility across every production.',
+    details: 'Budget development · Cost reporting · Vendor negotiation · Buyout management · The Shift Platform',
+  },
+  {
+    num: '02',
+    name: 'Strategic Advisory',
+    desc: 'Shaping how brands commission and plan content at scale.',
+    details: 'Production strategy · Roster advisory · Sustainable production · Risk assessment · International structures',
+  },
+  {
+    num: '03',
+    name: 'Organisational Setup',
+    desc: 'Building the production capability you need — from scratch or from inside.',
+    details: 'In-house dept setup · Talent advisory · Tech stack selection · VFX & post · AI studio builds',
+  },
+  {
+    num: '04',
+    name: 'AI Integration',
+    desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.',
+    details: 'AI readiness audit · Tool selection · Workflow integration · Training · Ethics & governance',
+  },
+]
+
+const whereWeFit = [
+  {
+    num: '01',
+    name: 'Procurement',
+    desc: 'Sourcing, RFPs, vendor terms, rate benchmarking.',
+  },
+  {
+    num: '02',
+    name: 'Operating model',
+    desc: 'How the team is organised. Where AI fits. How decisions get made.',
+  },
+  {
+    num: '03',
+    name: 'Live execution',
+    desc: 'Embedded oversight on specific productions.',
+  },
+  {
+    num: '04',
+    name: 'Capability build',
+    desc: 'In-house departments. Talent. Tech stack.',
+  },
+  {
+    num: '05',
+    name: 'Measurement',
+    desc: 'Spend. Savings. Performance. Visibility.',
+  },
+  {
+    num: '06',
+    name: 'Strategy',
+    desc: 'Production strategy. Sustainability. International structures.',
+  },
+]
 
 export default function Home() {
   return (
     <>
+      <IntroWrapper />
       <Nav />
-      <main style={{ fontFamily: "'Poppins', Calibri, Arial, sans-serif" }}>
+      <main style={{ background: BODY_GRADIENT }} className="min-h-screen font-[family-name:var(--font-head)]">
 
-        {/* Hero */}
-        <section style={{
-          backgroundColor: '#111111',
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '120px 56px 80px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            position: 'absolute',
-            right: '-20px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            fontSize: '560px',
-            fontWeight: 700,
-            color: '#00897B',
-            opacity: 0.06,
-            lineHeight: 1,
-            userSelect: 'none',
-            pointerEvents: 'none',
-          }}>›</div>
-
-          <div style={{ maxWidth: '720px', position: 'relative', zIndex: 1 }}>
-            <p style={{
-              fontSize: '11px',
-              fontWeight: 700,
-              color: '#00897B',
-              letterSpacing: '2.5px',
-              textTransform: 'uppercase',
-              marginBottom: '40px',
-            }}>
-              Independent Production Advisory · Hamburg, DE
-            </p>
-            <h1 style={{
-              fontSize: 'clamp(40px, 5.5vw, 72px)',
-              fontWeight: 700,
-              color: '#FFFFFF',
-              lineHeight: 1.05,
-              marginBottom: '36px',
-              letterSpacing: '-1px',
-            }}>
-              Everyone in the room<br />
-              has an agenda.<br />
-              <span style={{ color: '#00897B' }}>We&nbsp;don&apos;t.</span>
+        {/* HERO */}
+        <section
+          className="flex flex-col justify-center min-h-screen px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(96px, 18vw, 120px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
+        >
+          <div className="max-w-[1100px] w-full">
+            <h1
+              className="font-bold text-cream leading-[0.95] tracking-[-0.02em] mb-12 sm:mb-14"
+              style={{ fontSize: 'clamp(56px, 8vw, 120px)' }}
+            >
+              Independent<br />
+              by{' '}
+              <em className="not-italic font-bold tracking-[-0.025em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                design.
+              </em>
+              <br />
+              On your side<br />
+              by{' '}
+              <em className="not-italic font-bold tracking-[-0.025em] text-ink" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                choice.
+              </em>
             </h1>
-            <p style={{
-              fontSize: '17px',
-              color: '#777777',
-              lineHeight: 1.75,
-              maxWidth: '480px',
-              marginBottom: '52px',
-            }}>
-              SHIFT MEDIA advises brands and agencies on production —
-              independently, transparently, and always on the client side.
+
+            <p
+              className="text-ink/70 leading-[1.55] mb-10 sm:mb-12 max-w-[560px] font-medium"
+              style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
+            >
+              Independent production advisory for brands. We fix what the
+              agency–production system can't — because we're not part of it.
             </p>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <Link href="/services" style={{
-                backgroundColor: '#00897B',
-                color: '#FFFFFF',
-                padding: '14px 32px',
-                borderRadius: '4px',
-                fontSize: '13px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                letterSpacing: '0.3px',
-              }}>
-                What we do ›
-              </Link>
-              <Link href="/contact" style={{
-                backgroundColor: 'transparent',
-                color: '#FFFFFF',
-                padding: '14px 32px',
-                borderRadius: '4px',
-                fontSize: '13px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                letterSpacing: '0.3px',
-                border: '1px solid #2a2a2a',
-              }}>
+
+            <div className="flex flex-wrap gap-4">
+              <PillButton href="/contact" variant="ink" size="lg">
                 Get in touch
-              </Link>
+              </PillButton>
+              <PillButton href="/services" variant="outline-cream" size="lg">
+                See how we work
+              </PillButton>
             </div>
           </div>
         </section>
 
-        {/* Who / Why / What */}
-        <section style={{ backgroundColor: '#F6F5F2', padding: '96px 56px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2px' }}>
-            {[
-              {
-                label: 'Who we are',
-                body: 'An independent production advisory firm. No agency ties. No supplier relationships. We are paid only by the clients we represent.',
-                link: { href: '/about', text: 'About us' },
-              },
-              {
-                label: 'Why we exist',
-                body: "The brand–agency–production triangle has built-in conflicts of interest. Brands are the only party with no one in their corner — until now.",
-                link: { href: '/about', text: 'Our story' },
-              },
-              {
-                label: 'What we do',
-                body: 'Production controlling, bid management, strategic advisory, organisational design, and AI integration — across the full production lifecycle.',
-                link: { href: '/services', text: 'Our services' },
-              },
-            ].map(item => (
-              <div key={item.label} style={{
-                backgroundColor: '#FFFFFF',
-                padding: '40px 36px',
-                borderTop: '3px solid #00897B',
-              }}>
-                <p style={{
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#00897B',
-                  letterSpacing: '1.5px',
-                  textTransform: 'uppercase',
-                  marginBottom: '20px',
-                }}>{item.label}</p>
-                <p style={{
-                  fontSize: '14px',
-                  color: '#555555',
-                  lineHeight: 1.75,
-                  marginBottom: '28px',
-                }}>{item.body}</p>
-                <Link href={item.link.href} style={{
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: '#00897B',
-                  textDecoration: 'none',
-                  letterSpacing: '0.3px',
-                }}>
-                  {item.link.text} ›
-                </Link>
-              </div>
-            ))}
+        {/* CAPABILITIES */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(64px, 12vw, 120px)', paddingBottom: 'clamp(64px, 12vw, 80px)' }}
+        >
+          <div className="max-w-[1200px]">
+            <h2
+              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              style={{ fontSize: 'clamp(36px, 4.5vw, 64px)' }}
+            >
+              Four pillars.{' '}
+              <em className="not-italic font-bold text-teal-mid tracking-[-0.02em]" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                One partner.
+              </em>
+            </h2>
+
+            <div className="grid gap-y-12 sm:gap-y-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {capabilities.map(item => (
+                <div key={item.num} className="flex flex-col">
+                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>
+                    [{item.num}]
+                  </p>
+                  <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">
+                    {item.name}
+                  </h3>
+                  <p className="font-medium text-[14px] text-gray-warm leading-[1.6] mb-5">
+                    {item.desc}
+                  </p>
+                  <p className="text-[11px] text-gray-soft leading-[1.7] tracking-[0.3px]" style={{ fontFamily: 'var(--font-mono)' }}>
+                    {item.details}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* CTA strip */}
-        <section style={{ backgroundColor: '#00897B', padding: '64px 56px' }}>
-          <div style={{
-            maxWidth: '1100px',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '24px',
-          }}>
-            <p style={{ fontSize: '22px', fontWeight: 700, color: '#FFFFFF' }}>
-              Before you brief your next production — talk to us.
+        {/* WHERE WE FIT */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
+        >
+          <div className="max-w-[1200px]">
+            <h2
+              className="font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+            >
+              We work at every level{' '}
+              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                of the production system.
+              </em>
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 sm:gap-y-12 gap-x-8">
+              {whereWeFit.map(item => (
+                <div key={item.num} className="flex flex-col">
+                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-4" style={{ fontFamily: 'var(--font-mono)' }}>
+                    [{item.num}]
+                  </p>
+                  <h3 className="font-bold text-[18px] text-ink leading-[1.05] tracking-[-0.015em] mb-2.5">
+                    {item.name}
+                  </h3>
+                  <p className="font-medium text-[14px] text-gray-warm leading-[1.65]">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* THE SHIFT METHOD — TEASER */}
+        <section
+          className="px-[var(--margin-x)]"
+          style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(80px, 14vw, 120px)' }}
+        >
+          <div className="max-w-[800px]">
+            <h2
+              className="font-bold text-ink leading-[1.05] tracking-[-0.02em] mb-8"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+            >
+              Every engagement starts with the same question.{' '}
+              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                Where are you, really?
+              </em>
+            </h2>
+
+            <p
+              className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65] mb-10 max-w-[600px]"
+            >
+              The Shift Method is our diagnostic framework —
+              six dimensions, evidence-based, grounded in established management science.
+              It&apos;s how we tell the truth about your operation before we recommend anything.
             </p>
-            <Link href="/contact" style={{
-              backgroundColor: '#FFFFFF',
-              color: '#00897B',
-              padding: '14px 32px',
-              borderRadius: '4px',
-              fontSize: '13px',
-              fontWeight: 700,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}>
-              Start a conversation ›
-            </Link>
+
+            <div className="flex flex-wrap gap-4">
+              <PillButton href="/method" variant="teal" size="md">
+                Read the Method
+              </PillButton>
+              <PillButton href="/contact" variant="outline-ink" size="md">
+                Start a conversation
+              </PillButton>
+            </div>
           </div>
         </section>
 

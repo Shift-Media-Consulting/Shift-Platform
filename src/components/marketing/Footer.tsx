@@ -1,38 +1,104 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer style={{
-      backgroundColor: '#111111',
-      borderTop: '1px solid #1a1a1a',
-      padding: '48px 56px',
-      fontFamily: "'Poppins', Calibri, Arial, sans-serif",
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
-        <div>
-          <p style={{ fontSize: '17px', marginBottom: '12px' }}>
-            <span style={{ fontWeight: 700, color: '#FFFFFF' }}>SHIFT</span>
-            <span style={{ fontWeight: 700, color: '#00897B' }}>.</span>
-            <span style={{ fontWeight: 400, color: '#FFFFFF' }}>MEDIA</span>
-          </p>
-          <p style={{ fontSize: '13px', color: '#555555' }}>Independent Production Advisory · Hamburg, DE</p>
-        </div>
-        <div style={{ display: 'flex', gap: '32px' }}>
+    <footer
+      className="px-[var(--margin-x)] pt-12 md:pt-16 pb-8"
+      style={{ backgroundColor: 'var(--teal)' }}
+    >
+      {/* Proof line */}
+      <p
+        className="mb-10 md:mb-14 font-medium"
+        style={{
+          fontFamily: 'var(--font-head)',
+          fontSize: 'clamp(13px, 1.25vw, 15px)',
+          color: 'rgba(246,245,242,0.55)',
+          lineHeight: '1.6',
+          letterSpacing: '0.1px',
+        }}
+      >
+        No vendor affiliations. No production-company kickbacks. No agency parent.{' '}
+        Just senior production expertise on your side.
+      </p>
+
+      {/* Top row */}
+      <div className="grid gap-10 md:gap-10 md:grid-cols-[1fr_auto_1fr] md:items-center mb-10 md:mb-14">
+        {/* Brand */}
+        <Link
+          href="/"
+          className="flex items-center gap-[14px] md:justify-self-start"
+          style={{ textDecoration: 'none' }}
+        >
+          <Image src="/logo-mark.svg" alt="" width={29} height={26} />
+          <Image src="/wordmark-cream.svg" alt="shift.media" width={143} height={22} />
+        </Link>
+
+        {/* Links */}
+        <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-10 md:justify-self-center">
           {[
-            { href: '/about', label: 'About' },
+            { href: '/about',    label: 'About' },
             { href: '/services', label: 'Services' },
-            { href: '/team', label: 'Team' },
-            { href: '/contact', label: 'Contact' },
+            { href: '/method',   label: 'The Method' },
+            { href: '/team',     label: 'Team' },
+            { href: '/contact',  label: 'Contact' },
           ].map(link => (
-            <Link key={link.href} href={link.href} style={{ fontSize: '13px', color: '#555555', textDecoration: 'none' }}>
+            <Link
+              key={link.href}
+              href={link.href}
+              style={{
+                fontFamily: 'var(--font-head)',
+                fontWeight: 500,
+                fontSize: '14px',
+                color: 'rgba(246,245,242,0.7)',
+                textDecoration: 'none',
+              }}
+            >
               {link.label}
             </Link>
           ))}
         </div>
+
+        {/* Email */}
+        <a
+          href="mailto:hello@shift-media.io"
+          className="md:justify-self-end"
+          style={{
+            fontFamily: 'var(--font-head)',
+            fontWeight: 500,
+            fontSize: '14px',
+            color: 'var(--cream)',
+            textDecoration: 'none',
+            letterSpacing: '0.1px',
+          }}
+        >
+          hello@shift-media.io
+        </a>
       </div>
-      <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: '24px', display: 'flex', justifyContent: 'space-between' }}>
-        <p style={{ fontSize: '12px', color: '#333333' }}>© 2026 SHIFT MEDIA GmbH. All rights reserved.</p>
-        <p style={{ fontSize: '12px', color: '#333333' }}>www.shift-media.org</p>
+
+      {/* Bottom row */}
+      <div
+        className="pt-6 flex flex-col md:flex-row md:justify-between gap-2"
+        style={{ borderTop: '1px solid rgba(246,245,242,0.12)' }}
+      >
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontWeight: 400,
+          fontSize: '11px',
+          color: 'rgba(246,245,242,0.4)',
+          letterSpacing: '0.5px',
+        }}>
+          © 2026 SHIFT MEDIA GmbH. All rights reserved.
+        </p>
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontWeight: 400,
+          fontSize: '11px',
+          color: 'rgba(246,245,242,0.4)',
+          letterSpacing: '1px',
+        }}>
+          INDEPENDENT PRODUCTION ADVISORY · HAMBURG, DE
+        </p>
       </div>
     </footer>
   )
