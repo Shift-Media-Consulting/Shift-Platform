@@ -75,13 +75,21 @@ export default function Nav() {
 
       <nav
         className={[
-          'fixed inset-x-0 top-0 z-[100] h-[72px] px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24',
+          'fixed z-[100] h-[72px]',
           'grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]',
-          'transition-[background-color,backdrop-filter] duration-300',
         ].join(' ')}
         style={{
-          backgroundColor: transparent ? 'transparent' : 'rgba(0,77,64,0.85)',
-          backdropFilter:  transparent ? 'none' : 'blur(14px)',
+          left:            scrolled ? '16px' : '0px',
+          right:           scrolled ? '16px' : '0px',
+          top:             scrolled ? '12px' : '0px',
+          borderRadius:    scrolled ? '20px' : '0px',
+          padding:         scrolled ? '0 28px' : '0 32px',
+          backgroundColor: transparent ? 'transparent' : 'rgba(0,77,64,0.55)',
+          backdropFilter:  transparent ? 'none' : 'blur(20px)',
+          WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
+          boxShadow:       scrolled ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
+          border:          scrolled ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
         {/* Logo */}
