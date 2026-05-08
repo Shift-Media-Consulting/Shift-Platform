@@ -361,7 +361,7 @@ export default function MethodPage() {
           </div>
         </section>
 
-        <CtaSection h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>} para="We will tell you whether this is the right next step for your operation — or what is, if it is not." />
+        <CtaSection h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>} para="We will tell you whether this is the right next step for your operation, and if it is not, what is." />
 
       </main>
       <Footer />

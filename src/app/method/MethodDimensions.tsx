@@ -17,7 +17,7 @@ const dimensions: Dimension[] = [
   {
     num: '02',
     name: 'Technology & Systems Integration',
-    desc: 'We assess your tech stack, integration health, adoption rates, and whether your technology investment is actually serving your production goals — or creating new complexity.',
+    desc: 'We assess your tech stack, integration health, adoption rates, and whether your technology investment is actually serving your production goals, or creating new complexity.',
   },
   {
     num: '03',
@@ -32,12 +32,12 @@ const dimensions: Dimension[] = [
   {
     num: '05',
     name: 'Content Pipeline & Output Quality',
-    desc: 'We trace the path of content from brief through production to archive, evaluate quality control mechanisms, rework rates, and feedback loops. Where does quality get created — and where does it get eroded?',
+    desc: 'We trace the path of content from brief through production to archive, evaluate quality control mechanisms, rework rates, and feedback loops. Where does quality get created, and where does it get eroded?',
   },
   {
     num: '06',
     name: 'Vendor & Partner Management',
-    desc: 'We segment your vendor portfolio, assess contract structure and service levels, and evaluate the relationships that matter most to your output. Not all vendors are equal — and most brands treat them as if they are.',
+    desc: 'We segment your vendor portfolio, assess contract structure and service levels, and evaluate the relationships that matter most to your output. Not all vendors are equal, and most brands treat them as if they are.',
   },
 ]
 

@@ -381,8 +381,7 @@ export default function ContactClient() {
               lineHeight: 1.5,
             }}
           >
-            Tell us about your production challenge. We will come back within 24 hours
-            with an honest read on whether — and how — we can help.
+            Tell us about your production challenge. We will come back within 24 hours with an honest read on whether we can help, and how.
           </p>
         </section>
 
@@ -772,7 +771,7 @@ export default function ContactClient() {
                     color: 'rgba(246,245,242,0.90)',
                   }}
                 >
-                  No pitch deck. No agenda. Just an honest conversation about whether we can help — and how.
+                  No pitch deck. No agenda. Just an honest conversation about whether we can help, and how.
                 </p>
               </div>
             </aside>

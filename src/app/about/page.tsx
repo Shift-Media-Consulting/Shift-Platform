@@ -6,7 +6,7 @@ import AboutAnimations from './AboutAnimations'
 
 export const metadata = {
   title: 'About — shift.media',
-  description: 'shift.media exists to give brands an independent voice in production — built on expertise, not affiliation.',
+  description: 'shift.media exists to give brands an independent voice in production, built on expertise, not affiliation.',
 }
 
 const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
@@ -15,22 +15,22 @@ const differences = [
   {
     num: '01',
     name: 'Genuinely independent',
-    desc: 'We are not a production company. We are not an agency. We have no financial relationships with the directors or production companies we recommend — our advice is only ever in the client\'s interest.',
+    desc: 'We are not a production company. We are not an agency. We have no financial relationships with the directors or production companies we recommend. Our advice is only ever in the client\'s interest.',
   },
   {
     num: '02',
     name: 'Real production knowledge',
-    desc: 'Our team has built, run, and controlled productions. We have been on set, in the edit suite, and in the negotiations. Every recommendation is grounded in what actually happens — not what a slide deck says should happen.',
+    desc: 'Our team has built, run, and controlled productions. We have been on set, in the edit suite, and in the negotiations. Every recommendation is grounded in what actually happens, not what a slide deck says should happen.',
   },
   {
     num: '03',
     name: 'Methodology, not opinions',
-    desc: 'shift.media operates on a documented methodology — the Shift Method — proprietary tooling, and a replicable advisory framework. Every engagement runs on the same diagnostic, the same playbooks, and the same review structure. Clients get institutional quality — not individual availability.',
+    desc: 'shift.media operates on a documented methodology (the Shift Method), proprietary tooling, and a replicable advisory framework. Every engagement runs on the same diagnostic, the same playbooks, and the same review structure. Clients get institutional quality. Not individual availability.',
   },
   {
     num: '04',
     name: 'Built for where it\'s going',
-    desc: 'Most production advisors were built for the industry as it was. We were built for the one that\'s coming — AI-native operating models, in-housing, budget accountability, and the unbundling of the agency model. We started there. We didn\'t bolt it on.',
+    desc: 'Most production advisors were built for the industry as it was. We were built for the one that is coming: AI-native operating models, in-housing, budget accountability, and the unbundling of the agency model. We started there. We did not bolt it on.',
   },
 ]
 
@@ -88,7 +88,7 @@ export default function AboutPage() {
               style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
             >
               shift.media exists to give brands an independent voice in
-              production — without the conflicts of interest built into the
+              production, without the conflicts of interest built into the
               brand–agency–production system.
             </p>
           </div>
@@ -194,7 +194,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-6 mb-10">
               <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
                 We started shift.media in Hamburg because the independent
-                production advisor we&apos;d want to hire didn&apos;t exist in Europe —
+                production advisor we would want to hire did not exist in Europe,
                 at least not the way we thought it should.
               </p>
               <p className="ab-p2 font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
@@ -215,7 +215,7 @@ export default function AboutPage() {
 
         <CtaSection
           h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>}
-          para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help — and which founder you would be working with."
+          para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with."
         />
 
       </main>

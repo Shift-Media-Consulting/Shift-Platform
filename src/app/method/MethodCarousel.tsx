@@ -30,7 +30,7 @@ const CARDS: CardData[] = [
     numeral: 'iii.',
     kind: '— The recommendation',
     h3: 'A memo.',
-    para: 'A clear view on which engagement type comes next — or whether you don\'t need one yet. Signed. On the record.',
+    para: 'A clear view on which engagement type comes next, or whether you do not need one yet. Signed. On the record.',
   },
 ]
 

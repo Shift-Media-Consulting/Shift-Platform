@@ -92,7 +92,7 @@ export default function HomePage() {
             }}
           >
             <em className="news">shift.media</em> gives brands an independent voice in
-            production — built on expertise, not affiliation.
+            production, built on expertise, not affiliation.
           </p>
 
           {/* CTA row */}
@@ -180,8 +180,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              A complete operating model for brands that produce — covering the four
-              areas where independent expertise pays for itself fastest.
+              A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.
             </p>
           </div>
 
@@ -190,7 +189,7 @@ export default function HomePage() {
             cards={[
               { name: 'Production Controlling', desc: 'Cost intelligence and real-time visibility across every production.' },
               { name: 'Strategic Advisory',     desc: 'Shaping how brands commission and plan content at scale.' },
-              { name: 'Organisational Setup',   desc: 'Building the production capability you need — from scratch or from inside.' },
+              { name: 'Organisational Setup',   desc: 'Building the production capability you need, from scratch or from inside.' },
               { name: 'AI Integration',         desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.' },
             ]}
           />
@@ -255,9 +254,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                That is the entire premise. Everything else — the controlling, the
-                advisory, the org design, the AI — works because the foundation is
-                independent.
+                That is the entire premise. Everything else (the controlling, the advisory, the org design, the AI) works because the foundation is independent.
               </p>
             </div>
           </div>
@@ -366,9 +363,7 @@ export default function HomePage() {
               marginBottom: '40px',
             }}
           >
-            A 45-minute call. We will come back within 24 hours with an honest read on
-            whether we are the right people to help — and which founder you would be
-            working with.
+            A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help, and which founder you would be working with.
           </p>
 
           {/* CTA row */}

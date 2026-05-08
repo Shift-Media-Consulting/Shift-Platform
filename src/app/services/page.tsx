@@ -15,7 +15,7 @@ const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 
 const entryPoints = [
   {
     name: 'Audit',
-    desc: 'A clear, independent read of where you stand. We assess your production setup — costs, vendors, structure, process — and surface the gaps and opportunities.',
+    desc: 'A clear, independent read of where you stand. We assess your production setup (costs, vendors, structure, process) and surface the gaps and opportunities.',
   },
   {
     name: 'Workshop',
@@ -30,7 +30,7 @@ const entryPoints = [
 const partnerships = [
   {
     name: 'Build',
-    desc: 'Advisory-led design of your in-house production model. Structure, talent, process, tooling — designed and stood up alongside your team.',
+    desc: 'Advisory-led design of your in-house production model. Structure, talent, process, tooling. Designed and stood up alongside your team.',
   },
   {
     name: 'Engine',
@@ -63,7 +63,7 @@ const pillars = [
     num: '03',
     label: 'Setup',
     name: 'Organisational Setup',
-    desc: 'Building the production capability you need — from scratch or from inside.',
+    desc: 'Building the production capability you need, from scratch or from inside.',
     details: 'In-house production department setup · Talent strategy & hiring · Production tech stack & tooling · VFX & post-production pipelines · AI studio architecture · Team upskilling & change management',
     outcome: 'An in-house team that ships.',
   },
@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: 'How is shift.media different from a consultancy?',
-    a: 'We have actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production — not what a slide deck says should happen.',
+    a: 'We have actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production, not what a slide deck says should happen.',
   },
   {
     q: 'Do you take a cut of vendor fees?',
@@ -197,7 +197,7 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              A complete operating model for brands that produce — covering the four areas where independent expertise pays for itself fastest.
+              A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.
             </p>
           </div>
 
@@ -353,7 +353,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <CtaSection para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help — and which founder you would be working with." />
+        <CtaSection para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with." />
 
       </main>
       <Footer />

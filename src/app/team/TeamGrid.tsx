@@ -28,8 +28,8 @@ const founders: Founder[] = [
     discipline: 'Strategy, Production Leadership & Advisory',
     bio: [
       'Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.',
-      'Has built and managed production budgets across formats — from small social campaigns to large-scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.',
-      'Specialist in the German market — its rates, its production companies, its directors, and its dynamics.',
+      'Has built and managed production budgets across formats, from small social campaigns to large-scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.',
+      'Specialist in the German market: its rates, its production companies, its directors, and its dynamics.',
     ],
     linkedin: 'https://linkedin.com/in/[PLACEHOLDER — Justin to supply]',
     previously: '[PLACEHOLDER — Justin to supply]',
@@ -42,7 +42,7 @@ const founders: Founder[] = [
     discipline: 'Strategy, Organisational Design & Executive Production',
     bio: [
       'Production leader with extensive experience building and running production functions at agency and brand level across Europe.',
-      'Has operated at every level of high-end commercial production — from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.',
+      'Has operated at every level of high-end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.',
       'Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.',
     ],
     linkedin: 'https://linkedin.com/in/[PLACEHOLDER — Cornelius to supply]',
@@ -56,8 +56,8 @@ const founders: Founder[] = [
     discipline: 'Production Leadership, Operations & Advisory',
     bio: [
       'Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.',
-      'Has built and managed production across formats and scales — from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.',
-      'Specialist in production structures, processes, and budgets — and where value is created or lost.',
+      'Has built and managed production across formats and scales, from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.',
+      'Specialist in production structures, processes, budgets, and where value is created or lost.',
     ],
     linkedin: 'https://linkedin.com/in/[PLACEHOLDER — Jankel to supply]',
     previously: '[PLACEHOLDER — Jankel to supply]',
@@ -272,8 +272,7 @@ export default function TeamGrid() {
         <div className="max-w-[1200px]">
           <p className="font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.6] max-w-[640px] mb-12 sm:mb-14">
             Our partner network is a curated group of senior specialists we
-            engage on specific projects. They are independent — not staff,
-            not employees — and they extend our expertise where it&apos;s needed.
+            engage on specific projects. They are independent (not staff, not employees) and they extend our expertise where it is needed.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-12 gap-x-8">
