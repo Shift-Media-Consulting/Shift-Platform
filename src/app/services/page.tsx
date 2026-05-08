@@ -239,7 +239,7 @@ export default function ServicesPage() {
         </section>
 
         {/* FAQ */}
-        <section data-ab style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}>
+        <section data-ab data-theme="light" style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}>
           <div style={{ maxWidth: '860px' }}>
             <h2
               className="ab-h"
@@ -249,7 +249,7 @@ export default function ServicesPage() {
                 fontSize: 'clamp(32px,4.5vw,56px)',
                 lineHeight: 1.0,
                 letterSpacing: '-0.02em',
-                color: '#111111',
+                color: 'var(--fg)',
                 marginBottom: 'clamp(40px,5vw,56px)',
               }}
             >

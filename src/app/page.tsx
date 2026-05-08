@@ -48,13 +48,13 @@ export default function HomePage() {
           <div
             className="reveal"
             style={{
-              borderTop: '1px solid rgba(246,245,242,0.35)',
+              borderTop: '1px solid var(--fg-rule)',
               paddingTop: '16px',
               marginBottom: '40px',
               fontFamily: 'var(--font-mono)',
               fontSize: '13px',
               letterSpacing: '0.20em',
-              color: 'rgba(246,245,242,0.55)',
+              color: 'var(--fg-faint)',
               fontWeight: 400,
             }}
           >
@@ -70,7 +70,7 @@ export default function HomePage() {
               fontSize: 'clamp(44px,12vw,132px)',
               lineHeight: 0.92,
               letterSpacing: '-0.03em',
-              color: '#f6f5f2',
+              color: 'var(--fg)',
               maxWidth: '1500px',
               marginBottom: '32px',
             }}
@@ -86,7 +86,7 @@ export default function HomePage() {
             style={{
               fontSize: '26px',
               lineHeight: 1.4,
-              color: 'rgba(246,245,242,0.85)',
+              color: 'var(--fg-muted)',
               maxWidth: '700px',
               marginBottom: '40px',
             }}
@@ -164,7 +164,7 @@ export default function HomePage() {
                 fontSize: 'clamp(56px,7vw,96px)',
                 lineHeight: 0.96,
                 letterSpacing: '-0.025em',
-                color: '#f6f5f2',
+                color: 'var(--fg)',
                 margin: 0,
               }}
             >
@@ -174,7 +174,7 @@ export default function HomePage() {
               style={{
                 fontSize: '19px',
                 lineHeight: 1.55,
-                color: 'rgba(246,245,242,0.78)',
+                color: 'var(--fg-muted)',
                 maxWidth: '460px',
                 alignSelf: 'end',
                 margin: 0,
@@ -221,7 +221,7 @@ export default function HomePage() {
                 fontWeight: 600,
                 fontSize: 'clamp(44px,5vw,64px)',
                 lineHeight: 1.0,
-                color: '#f6f5f2',
+                color: 'var(--fg)',
                 margin: 0,
               }}
             >
@@ -235,7 +235,7 @@ export default function HomePage() {
                 className="reveal"
                 style={{
                   fontSize: '19px',
-                  color: 'rgba(246,245,242,0.78)',
+                  color: 'var(--fg-muted)',
                   maxWidth: '540px',
                   lineHeight: 1.6,
                   margin: '0 0 20px 0',
@@ -248,7 +248,7 @@ export default function HomePage() {
                 className="reveal"
                 style={{
                   fontSize: '19px',
-                  color: 'rgba(246,245,242,0.78)',
+                  color: 'var(--fg-muted)',
                   maxWidth: '540px',
                   lineHeight: 1.6,
                   margin: 0,
@@ -265,7 +265,7 @@ export default function HomePage() {
             style={{
               marginTop: 'clamp(56px,7vw,80px)',
               maxWidth: '1400px',
-              borderTop: '1px solid rgba(246,245,242,0.25)',
+              borderTop: '1px solid var(--fg-rule)',
               paddingTop: '32px',
               display: 'grid',
               gridTemplateColumns: 'repeat(4,1fr)',
@@ -285,7 +285,7 @@ export default function HomePage() {
                     fontWeight: 600,
                     fontSize: 'clamp(44px,5vw,64px)',
                     letterSpacing: '-0.025em',
-                    color: '#f6f5f2',
+                    color: 'var(--fg)',
                     display: 'block',
                     marginBottom: '8px',
                   }}
@@ -297,7 +297,7 @@ export default function HomePage() {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '12px',
                     letterSpacing: '0.18em',
-                    color: '#111111',
+                    color: 'var(--fg-muted)',
                     display: 'block',
                   }}
                 >

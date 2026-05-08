@@ -270,9 +270,10 @@ export default function MethodPage() {
         {/* ── Section 6: Independence Statement ───────────────────────── */}
         <section
           data-mth
+          data-theme="light"
           style={{
             padding: 'clamp(56px,7vw,88px) var(--margin-x)',
-            borderTop: '1px solid rgba(17,17,17,0.12)',
+            borderTop: '1px solid var(--fg-rule)',
           }}
         >
           {/* Rail */}
@@ -282,7 +283,7 @@ export default function MethodPage() {
               fontFamily: 'var(--font-mono)',
               fontSize: '13px',
               letterSpacing: '0.18em',
-              color: 'rgba(0,77,64,0.65)',
+              color: 'var(--fg-faint)',
               marginBottom: '48px',
               fontWeight: 400,
             }}
@@ -299,7 +300,7 @@ export default function MethodPage() {
               fontSize: 'clamp(40px, 6vw, 80px)',
               lineHeight: 1.0,
               letterSpacing: '-0.025em',
-              color: '#111111',
+              color: 'var(--fg)',
               maxWidth: '1100px',
               marginBottom: 'clamp(48px, 6vw, 80px)',
             }}
@@ -335,7 +336,7 @@ export default function MethodPage() {
                 key={col.h4}
                 className="mth-r"
                 style={{
-                  borderTop: '1px solid rgba(17,17,17,0.15)',
+                  borderTop: '1px solid var(--fg-rule)',
                   paddingTop: '24px',
                 }}
               >
@@ -343,7 +344,7 @@ export default function MethodPage() {
                   fontFamily: 'var(--font-head)',
                   fontWeight: 600,
                   fontSize: '22px',
-                  color: '#111111',
+                  color: 'var(--fg)',
                   marginBottom: '14px',
                   letterSpacing: '-0.01em',
                 }}>
@@ -352,7 +353,7 @@ export default function MethodPage() {
                 <p style={{
                   fontSize: '15px',
                   lineHeight: 1.65,
-                  color: 'rgba(17,17,17,0.62)',
+                  color: 'var(--fg-muted)',
                 }}>
                   {col.body}
                 </p>

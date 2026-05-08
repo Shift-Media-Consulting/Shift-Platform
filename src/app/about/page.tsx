@@ -100,13 +100,14 @@ export default function AboutPage() {
         {/* OUR DIFFERENCE */}
         <section
           data-ab
+          data-theme="light"
           className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[1200px]">
             <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
               We have no relationships{' '}
               <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
@@ -117,13 +118,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-14 gap-x-8">
               {differences.map(item => (
                 <div key={item.num} className="ab-card flex flex-col">
-                  <p className="text-[11px] tracking-[1px] text-gray-soft mb-5" style={{ fontFamily: 'var(--font-mono)' }}>
+                  <p className="text-[11px] tracking-[1px] mb-5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-faint)' }}>
                     [{item.num}]
                   </p>
-                  <h3 className="font-bold text-[20px] text-ink leading-[1.05] tracking-[-0.015em] mb-3.5">
+                  <h3 className="font-bold text-[20px] leading-[1.05] tracking-[-0.015em] mb-3.5" style={{ color: 'var(--fg)' }}>
                     {item.name}
                   </h3>
-                  <p className="font-medium text-[14px] text-gray-warm leading-[1.65]">
+                  <p className="font-medium text-[14px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
                     {item.desc}
                   </p>
                 </div>
@@ -135,13 +136,14 @@ export default function AboutPage() {
         {/* WHAT WE BELIEVE */}
         <section
           data-ab
+          data-theme="light"
           className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[900px]">
             <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
               What we{' '}
               <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
@@ -153,18 +155,14 @@ export default function AboutPage() {
               {beliefs.map((b, i) => (
                 <div key={i} className="ab-card border-l-2 border-teal-mid/30 pl-7 sm:pl-9">
                   <p
-                    className="font-bold text-ink leading-[1.1] tracking-[-0.02em] mb-2"
-                    style={{ fontSize: 'clamp(20px, 2.8vw, 30px)' }}
+                    className="font-bold leading-[1.1] tracking-[-0.02em] mb-2"
+                    style={{ fontSize: 'clamp(20px, 2.8vw, 30px)', color: 'var(--fg)' }}
                   >
                     {b.statement}
                   </p>
                   <p
                     className="font-bold text-teal-mid leading-[1.1] tracking-[-0.02em]"
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontStyle: 'italic',
-                      fontSize: 'clamp(20px, 2.8vw, 30px)',
-                    }}
+                    style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.8vw, 30px)' }}
                   >
                     {b.emphasis}
                   </p>
@@ -177,13 +175,14 @@ export default function AboutPage() {
         {/* FOUNDER NOTE */}
         <section
           data-ab
+          data-theme="light"
           className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24"
           style={{ paddingTop: 'clamp(56px, 10vw, 80px)', paddingBottom: 'clamp(56px, 10vw, 80px)' }}
         >
           <div className="max-w-[760px]">
             <h2
-              className="ab-h font-bold text-ink leading-[1.0] tracking-[-0.02em] mb-10"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+              className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-10"
+              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
               Why we{' '}
               <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
@@ -192,12 +191,12 @@ export default function AboutPage() {
             </h2>
 
             <div className="flex flex-col gap-6 mb-10">
-              <p className="ab-p font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
+              <p className="ab-p font-medium text-[16px] sm:text-[17px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
                 We started shift.media in Hamburg because the independent
                 production advisor we would want to hire did not exist in Europe,
                 at least not the way we thought it should.
               </p>
-              <p className="ab-p2 font-medium text-[16px] sm:text-[17px] text-gray-warm leading-[1.65]">
+              <p className="ab-p2 font-medium text-[16px] sm:text-[17px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
                 Three founders. Decades on set. One firm built around the
                 conviction that brands deserve a partner who is genuinely on
                 their side.
@@ -205,8 +204,8 @@ export default function AboutPage() {
             </div>
 
             <p
-              className="ab-name font-bold text-[14px] text-ink/60 tracking-[0.3px]"
-              style={{ fontFamily: 'var(--font-mono)' }}
+              className="ab-name font-bold text-[14px] tracking-[0.3px]"
+              style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-faint)' }}
             >
               — Justin Stiebel · Cornelius Roenz · Jankel Huppertz
             </p>

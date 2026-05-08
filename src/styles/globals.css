@@ -63,7 +63,26 @@
   --font-mono:   'Geist Mono', 'GeistMono', ui-monospace, monospace;
   --margin-x:    clamp(32px, 7.5vw, 96px);
   --gradient-body: linear-gradient(180deg, #004d40 0%, #00695c 12%, #00897b 22%, #b9d8d2 32%, #f6f5f2 50%);
+
+  /* ── Semantic foreground tokens — default: dark (teal) context ── */
+  --fg:       #f6f5f2;
+  --fg-muted: rgba(246,245,242,0.72);
+  --fg-faint: rgba(246,245,242,0.42);
+  --fg-rule:  rgba(246,245,242,0.18);
 }
+
+/* Light (cream / pale-mint) context — flip all foreground tokens to ink */
+[data-theme="light"] {
+  --fg:       #111111;
+  --fg-muted: rgba(17,17,17,0.62);
+  --fg-faint: rgba(17,17,17,0.38);
+  --fg-rule:  rgba(17,17,17,0.12);
+}
+
+/* Utility classes that consume the semantic tokens */
+.text-fg       { color: var(--fg); }
+.text-fg-muted { color: var(--fg-muted); }
+.text-fg-faint { color: var(--fg-faint); }
 
 * { box-sizing: border-box; }
 *::before, *::after { box-sizing: border-box; }

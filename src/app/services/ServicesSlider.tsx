@@ -201,8 +201,8 @@ export default function ServicesSlider({ label, cards, compact = false }: Props)
       {label && (
         <div className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24">
           <h2
-            className="font-bold text-cream leading-[1.0] tracking-[-0.025em]"
-            style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
+            className="font-bold text-fg leading-[1.0] tracking-[-0.025em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--fg)' }}
           >
             {label}
           </h2>
