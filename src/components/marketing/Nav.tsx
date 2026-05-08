@@ -23,9 +23,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  /* ── Close dropdown when scroll state flips (prevents ghost state) ── */
-  useEffect(() => { setDropOpen(false) }, [scrolled])
-
   /* ── Intro ── */
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -47,9 +44,9 @@ export default function Nav() {
 
   const transparent = !scrolled && !mobileOpen
 
-  /* Dropdown hover helpers — small delay prevents flicker on mouse movement */
+  /* Dropdown hover helpers — delay prevents flicker on diagonal mouse movement */
   const openDrop  = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setDropOpen(true) }
-  const closeDrop = () => { closeTimer.current = setTimeout(() => setDropOpen(false), 120) }
+  const closeDrop = () => { closeTimer.current = setTimeout(() => setDropOpen(false), 150) }
 
   const isServicesActive = pathname.startsWith('/services') || pathname.startsWith('/method')
 
@@ -67,9 +64,29 @@ export default function Nav() {
 
         .burger-line { display:block; width:24px; height:2px; background-color:var(--cream); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; border-radius:2px; }
 
-        /* ── Floating dropdown (transparent / top-of-page mode only) ── */
-        .svc-drop { position:absolute; left:50%; transform:translateX(-50%); min-width:220px; display:flex; flex-direction:column; background:rgba(0,77,64,0.55); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); pointer-events:none; transition:clip-path 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.22s ease; }
-        .svc-drop.is-open { pointer-events:auto; }
+        /*
+         * Dropdown bubble — same glass as the nav pill.
+         * In pill mode (scrolled): attaches flush to the nav bottom,
+         * no top border, top corners are square → looks like the pill
+         * grew a pocket just under Services (true Dynamic Island).
+         * In transparent mode: floats with a gap + full rounding.
+         */
+        .svc-drop {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          min-width: 220px;
+          display: flex;
+          flex-direction: column;
+          background: rgba(0,77,64,0.55);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          pointer-events: none;
+          transition:
+            clip-path 0.45s cubic-bezier(0.16,1,0.3,1),
+            opacity   0.22s ease;
+        }
+        .svc-drop.is-open { pointer-events: auto; }
         .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; }
         .svc-drop-item:hover { background:rgba(246,245,242,0.08); }
         .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; white-space:nowrap; }
@@ -77,198 +94,155 @@ export default function Nav() {
         .svc-drop-divider { height:1px; background:rgba(246,245,242,0.08); flex-shrink:0; }
       `}</style>
 
-      {/*
-        ─────────────────────────────────────────────────────────────────
-        NAV ELEMENT — no fixed height here.
-        In pill mode (scrolled): overflow:hidden clips the expanding
-        submenu to the pill's border-radius, creating the Dynamic Island
-        morph.  The pill grows as the inline submenu panel opens.
-        In transparent mode (!scrolled): overflow:visible lets the
-        floating dropdown card escape the nav bounds.
-        ─────────────────────────────────────────────────────────────────
-      */}
       <nav
-        className="fixed z-[100]"
+        className={[
+          'fixed z-[100] h-[72px]',
+          'grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]',
+        ].join(' ')}
         style={{
           left:            scrolled ? '16px' : '0px',
           right:           scrolled ? '16px' : '0px',
           top:             scrolled ? '12px' : '0px',
           borderRadius:    scrolled ? '20px' : '0px',
+          padding:         scrolled ? '0 28px' : '0 var(--margin-x)',
           backgroundColor: transparent ? 'transparent' : 'rgba(0,77,64,0.55)',
           backdropFilter:  transparent ? 'none' : 'blur(20px)',
           WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
           boxShadow:       scrolled ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
           border:          scrolled ? '1px solid rgba(246,245,242,0.12)' : 'none',
-          /* overflow:hidden in pill mode clips submenu to the pill shape */
-          overflow:        scrolled ? 'hidden' : 'visible',
-          transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
+          transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
-
-        {/* ── Main nav row — always 72px tall ── */}
-        <div
-          className="h-[72px] grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]"
-          style={{
-            padding:    scrolled ? '0 28px' : '0 var(--margin-x)',
-            transition: 'padding 0.5s cubic-bezier(0.16,1,0.3,1)',
-          }}
+        {/* Logo */}
+        <Link
+          href="/"
+          className="nav-logo flex items-center gap-3.5 justify-self-start no-underline"
+          style={{ opacity: introDone ? 1 : 0, transition: 'opacity 0.4s ease', pointerEvents: introDone ? 'auto' : 'none' }}
         >
-          {/* Logo */}
-          <Link
-            href="/"
-            className="nav-logo flex items-center gap-3.5 justify-self-start no-underline"
-            style={{ opacity: introDone ? 1 : 0, transition: 'opacity 0.4s ease', pointerEvents: introDone ? 'auto' : 'none' }}
-          >
-            <span className="nav-logo-mark inline-flex">
-              <Image src="/logo-mark.svg" alt="" width={29} height={26} priority />
-            </span>
-            <Image src="/wordmark-cream.svg" alt="shift.media" width={143} height={22} priority className="hidden sm:block" />
-          </Link>
+          <span className="nav-logo-mark inline-flex">
+            <Image src="/logo-mark.svg" alt="" width={29} height={26} priority />
+          </span>
+          <Image src="/wordmark-cream.svg" alt="shift.media" width={143} height={22} priority className="hidden sm:block" />
+        </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-11 justify-self-center">
-            {navItems.map(link => {
-              const isServices = link.href === '/services'
-              const active = isServices ? isServicesActive : pathname === link.href
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-11 justify-self-center">
+          {navItems.map(link => {
+            const isServices = link.href === '/services'
+            const active = isServices ? isServicesActive : pathname === link.href
 
-              if (isServices) {
-                return (
+            if (isServices) {
+              return (
+                <div
+                  key={link.href}
+                  className="relative inline-flex items-center"
+                  onMouseEnter={openDrop}
+                  onMouseLeave={closeDrop}
+                >
+                  <Link
+                    href={link.href}
+                    className={`nav-link font-bold text-[17px] text-cream no-underline pb-1${active ? ' nav-link--active' : ''}`}
+                    style={{ fontFamily: 'var(--font-head)' }}
+                  >
+                    <span className="nav-link__stack">
+                      <span className="nav-link__row">{link.label}</span>
+                      <span className="nav-link__row">{link.label}</span>
+                    </span>
+                  </Link>
+
+                  {/*
+                    Dynamic Island bubble.
+
+                    Pill mode (scrolled):
+                      — top: 100%  → flush against nav bottom, no gap
+                      — border-radius: 0 0 16px 16px  → square top corners
+                        so the bubble looks like it grows from the pill
+                      — border-top: none  → the pill's own bottom border
+                        is the visual separator; adding another border
+                        here would create a double-line seam
+                      — clip-path reveals top→bottom (content pours out
+                        of the pill downward)
+
+                    Transparent mode (!scrolled):
+                      — top: calc(100% + 8px)  → floating card with gap
+                      — border-radius: 16px  → fully rounded card
+                      — full border on all sides
+                  */}
                   <div
-                    key={link.href}
-                    className="relative inline-flex items-center"
+                    className={`svc-drop${dropOpen ? ' is-open' : ''}`}
+                    style={{
+                      top:          scrolled ? '100%' : 'calc(100% + 8px)',
+                      borderRadius: scrolled ? '0 0 16px 16px' : '16px',
+                      border:       '1px solid rgba(246,245,242,0.12)',
+                      borderTop:    scrolled ? 'none' : '1px solid rgba(246,245,242,0.12)',
+                      boxShadow:    scrolled
+                        ? '0 14px 36px rgba(0,0,0,0.24)'
+                        : '0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10)',
+                      clipPath: dropOpen
+                        ? (scrolled ? 'inset(0 0 0% 0 round 0 0 16px 16px)' : 'inset(0 0 0% 0 round 16px)')
+                        : (scrolled ? 'inset(0 0 100% 0 round 0 0 16px 16px)' : 'inset(0 0 100% 0 round 16px)'),
+                      opacity: dropOpen ? 1 : 0,
+                    }}
                     onMouseEnter={openDrop}
                     onMouseLeave={closeDrop}
                   >
-                    <Link
-                      href={link.href}
-                      className={`nav-link font-bold text-[17px] text-cream no-underline pb-1${active ? ' nav-link--active' : ''}`}
-                      style={{ fontFamily: 'var(--font-head)' }}
-                    >
-                      <span className="nav-link__stack">
-                        <span className="nav-link__row">{link.label}</span>
-                        <span className="nav-link__row">{link.label}</span>
-                      </span>
-                    </Link>
-
-                    {/*
-                      Floating card — only in transparent (top-of-page) mode.
-                      Unmounted when scrolled, so it never conflicts with the
-                      inline Dynamic Island panel below.
-                    */}
-                    {!scrolled && (
-                      <div
-                        className={`svc-drop${dropOpen ? ' is-open' : ''}`}
-                        style={{
-                          top:       'calc(100% + 8px)',
-                          borderRadius: '16px',
-                          border:    '1px solid rgba(246,245,242,0.12)',
-                          boxShadow: '0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10)',
-                          clipPath:  dropOpen ? 'inset(0 0 0% 0 round 16px)' : 'inset(0 0 100% 0 round 16px)',
-                          opacity:   dropOpen ? 1 : 0,
-                        }}
-                        onMouseEnter={openDrop}
-                        onMouseLeave={closeDrop}
-                      >
-                        {servicesDropdown.map((item, i) => (
-                          <>
-                            {i > 0 && <div key={`div-${i}`} className="svc-drop-divider" />}
-                            <Link key={item.href} href={item.href} className="svc-drop-item">
-                              <span className="svc-drop-item__label">{item.label}</span>
-                              <span className="svc-drop-item__desc">{item.desc}</span>
-                            </Link>
-                          </>
-                        ))}
+                    {servicesDropdown.map((item, i) => (
+                      <div key={item.href}>
+                        {i > 0 && <div className="svc-drop-divider" />}
+                        <Link href={item.href} className="svc-drop-item">
+                          <span className="svc-drop-item__label">{item.label}</span>
+                          <span className="svc-drop-item__desc">{item.desc}</span>
+                        </Link>
                       </div>
-                    )}
+                    ))}
                   </div>
-                )
-              }
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`nav-link font-bold text-[17px] text-cream no-underline pb-1${active ? ' nav-link--active' : ''}`}
-                  style={{ fontFamily: 'var(--font-head)' }}
-                >
-                  <span className="nav-link__stack">
-                    <span className="nav-link__row">{link.label}</span>
-                    <span className="nav-link__row">{link.label}</span>
-                  </span>
-                </Link>
+                </div>
               )
-            })}
-          </div>
+            }
 
-          {/* Desktop CTA */}
-          <Link
-            href="/contact"
-            className={[
-              'hidden md:inline-flex items-center gap-2 justify-self-end',
-              'rounded-full bg-cream text-teal font-bold text-[15px] tracking-[0.2px]',
-              'px-7 py-3.5 no-underline',
-              'shadow-[0_4px_14px_rgba(0,0,0,0.14)]',
-              'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-              'hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)] hover:bg-cream-soft',
-            ].join(' ')}
-            style={{ fontFamily: 'var(--font-head)' }}
-          >
-            Get in touch ›
-          </Link>
-
-          {/* Mobile burger */}
-          <button
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden justify-self-end flex flex-col items-end gap-1.5 p-2 -mr-2 bg-transparent border-0 cursor-pointer"
-          >
-            <span className="burger-line" style={{ transform: mobileOpen ? 'translateY(8px) rotate(45deg)' : 'none' }} />
-            <span className="burger-line" style={{ opacity: mobileOpen ? 0 : 1 }} />
-            <span className="burger-line" style={{ transform: mobileOpen ? 'translateY(-8px) rotate(-45deg)' : 'none' }} />
-          </button>
-        </div>
-
-        {/*
-          ── Dynamic Island inline submenu ──────────────────────────────
-          Lives INSIDE the nav element so the pill grows to contain it.
-          Only active in pill/scrolled mode — the floating card handles
-          the transparent-nav state above.
-          max-height animates 0 → auto-equivalent; overflow:hidden on
-          THIS div clips the content during the reveal so items don't
-          ghost outside before the pill catches up.
-          The nav's own overflow:hidden (set when scrolled) then clips
-          the whole thing to the pill's border-radius.
-          ──────────────────────────────────────────────────────────────
-        */}
-        <div
-          className="hidden md:block"
-          onMouseEnter={openDrop}
-          onMouseLeave={closeDrop}
-          style={{
-            maxHeight:  (scrolled && dropOpen) ? '300px' : '0px',
-            overflow:   'hidden',
-            transition: 'max-height 0.48s cubic-bezier(0.16,1,0.3,1)',
-          }}
-        >
-          {/* Top hairline separates the submenu from the nav row */}
-          <div style={{ borderTop: '1px solid rgba(246,245,242,0.14)', margin: '0 20px' }} />
-
-          {servicesDropdown.map((item, i) => (
-            <div key={item.href}>
-              {i > 0 && (
-                <div style={{ height: '1px', background: 'rgba(246,245,242,0.08)', margin: '0 20px' }} />
-              )}
-              <Link href={item.href} className="svc-drop-item" style={{ padding: '13px 28px' }}>
-                <span className="svc-drop-item__label">{item.label}</span>
-                <span className="svc-drop-item__desc">{item.desc}</span>
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`nav-link font-bold text-[17px] text-cream no-underline pb-1${active ? ' nav-link--active' : ''}`}
+                style={{ fontFamily: 'var(--font-head)' }}
+              >
+                <span className="nav-link__stack">
+                  <span className="nav-link__row">{link.label}</span>
+                  <span className="nav-link__row">{link.label}</span>
+                </span>
               </Link>
-            </div>
-          ))}
-          {/* Bottom breathing room */}
-          <div style={{ height: '8px' }} />
+            )
+          })}
         </div>
 
+        {/* Desktop CTA */}
+        <Link
+          href="/contact"
+          className={[
+            'hidden md:inline-flex items-center gap-2 justify-self-end',
+            'rounded-full bg-cream text-teal font-bold text-[15px] tracking-[0.2px]',
+            'px-7 py-3.5 no-underline',
+            'shadow-[0_4px_14px_rgba(0,0,0,0.14)]',
+            'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
+            'hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)] hover:bg-cream-soft',
+          ].join(' ')}
+          style={{ fontFamily: 'var(--font-head)' }}
+        >
+          Get in touch ›
+        </Link>
+
+        {/* Mobile burger */}
+        <button
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden justify-self-end flex flex-col items-end gap-1.5 p-2 -mr-2 bg-transparent border-0 cursor-pointer"
+        >
+          <span className="burger-line" style={{ transform: mobileOpen ? 'translateY(8px) rotate(45deg)' : 'none' }} />
+          <span className="burger-line" style={{ opacity: mobileOpen ? 0 : 1 }} />
+          <span className="burger-line" style={{ transform: mobileOpen ? 'translateY(-8px) rotate(-45deg)' : 'none' }} />
+        </button>
       </nav>
 
       {/* Mobile overlay */}
@@ -288,7 +262,6 @@ export default function Nav() {
             if (isServices) {
               return (
                 <div key={link.href} className="flex flex-col gap-5 w-full">
-                  {/* Services row — inline-flex so the chevron sits on the text baseline */}
                   <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: '14px' }}>
                     <Link
                       href={link.href}
@@ -314,15 +287,10 @@ export default function Nav() {
                     </button>
                   </div>
 
-                  {/* Sub-items */}
                   {mobileServicesOpen && (
                     <div className="flex flex-col gap-4 pl-5 border-l border-white/20">
                       {servicesDropdown.map(item => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="no-underline"
-                        >
+                        <Link key={item.href} href={item.href} className="no-underline">
                           <span
                             className="font-bold no-underline text-cream"
                             style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(22px,5vw,32px)', letterSpacing: '-0.5px', opacity: 0.85 }}

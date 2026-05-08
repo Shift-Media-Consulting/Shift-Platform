@@ -71,15 +71,12 @@
   --fg-rule:  rgba(246,245,242,0.18);
 }
 
-/* Light (cream / pale-mint) context — keep cream, add shadow for legibility */
+/* Light (cream / pale-mint) context — flip to ink so text is legible */
 [data-theme="light"] {
-  /* Borders: teal-tinted so hairlines stay visible on pale mint */
-  --fg-rule: rgba(0,77,64,0.18);
-}
-
-/* Drop-shadow on all text in light sections so cream reads on pale mint */
-[data-theme="light"] :is(h1,h2,h3,h4,h5,h6,p,span,a,em,strong,li,button,label) {
-  text-shadow: 0 1px 4px rgba(0,40,30,0.42), 0 3px 14px rgba(0,40,30,0.22);
+  --fg:       #111111;
+  --fg-muted: rgba(17,17,17,0.65);
+  --fg-faint: rgba(17,17,17,0.42);
+  --fg-rule:  rgba(0,77,64,0.18);
 }
 
 /* Utility classes that consume the semantic tokens */
