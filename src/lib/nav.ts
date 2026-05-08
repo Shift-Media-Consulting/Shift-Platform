@@ -13,7 +13,7 @@ export const footerNavItems = [
 
 /** Dropdown shown under Services in the nav */
 export const servicesDropdown = [
-  { label: "Audit",      href: "/method",              desc: "Six-dimension operational diagnostic" },
-  { label: "Workshops",  href: "/services/workshops",   desc: "Focused sessions on a single topic" },
+  { label: "Audit",      href: "/method",              desc: "Operational Diagnostics" },
+  { label: "Workshops",  href: "/services/workshops",   desc: "Focused Sessions" },
   { label: "Pilot",      href: "/services/pilot",       desc: "A defined project, start to finish" },
 ] as const;

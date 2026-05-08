@@ -64,13 +64,13 @@ export default function Nav() {
 
         .burger-line { display:block; width:24px; height:2px; background-color:var(--cream); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; border-radius:2px; }
 
-        /* Dropdown */
-        .svc-drop { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); min-width:220px; border-radius:12px; overflow:hidden; border:1px solid rgba(246,245,242,0.12); box-shadow:0 20px 48px rgba(0,0,0,0.28); }
-        .svc-drop-item { display:flex; flex-direction:column; gap:2px; padding:12px 16px; text-decoration:none; transition:background 200ms ease; }
+        /* Dropdown — horizontal layout */
+        .svc-drop { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); border-radius:12px; overflow:hidden; border:1px solid rgba(246,245,242,0.12); box-shadow:0 20px 48px rgba(0,0,0,0.28); display:flex; flex-direction:row; }
+        .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; flex:1; min-width:140px; }
         .svc-drop-item:hover { background:rgba(246,245,242,0.10); }
-        .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; }
-        .svc-drop-item__desc  { font-family:var(--font-mono); font-size:11px; letter-spacing:0.10em; color:rgba(246,245,242,0.45); line-height:1.4; }
-        .svc-drop-divider { height:1px; background:rgba(246,245,242,0.08); margin:0 16px; }
+        .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; white-space:nowrap; }
+        .svc-drop-item__desc  { font-family:var(--font-mono); font-size:10px; letter-spacing:0.10em; color:rgba(246,245,242,0.45); white-space:nowrap; }
+        .svc-drop-divider { width:1px; background:rgba(246,245,242,0.08); align-self:stretch; flex-shrink:0; }
       `}</style>
 
       <nav
@@ -130,13 +130,13 @@ export default function Nav() {
                       onMouseLeave={closeDrop}
                     >
                       {servicesDropdown.map((item, i) => (
-                        <div key={item.href}>
-                          {i > 0 && <div className="svc-drop-divider" />}
-                          <Link href={item.href} className="svc-drop-item">
+                        <>
+                          {i > 0 && <div key={`div-${i}`} className="svc-drop-divider" />}
+                          <Link key={item.href} href={item.href} className="svc-drop-item">
                             <span className="svc-drop-item__label">{item.label}</span>
                             <span className="svc-drop-item__desc">{item.desc}</span>
                           </Link>
-                        </div>
+                        </>
                       ))}
                     </div>
                   )}
@@ -206,8 +206,8 @@ export default function Nav() {
             if (isServices) {
               return (
                 <div key={link.href} className="flex flex-col gap-5 w-full">
-                  {/* Services row */}
-                  <div className="flex items-center gap-5">
+                  {/* Services row — inline-flex so the chevron sits on the text baseline */}
+                  <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: '14px' }}>
                     <Link
                       href={link.href}
                       className="font-bold tracking-[-1.5px] no-underline leading-[1] text-cream"
@@ -220,8 +220,8 @@ export default function Nav() {
                       aria-label="Toggle services sub-menu"
                       className="bg-transparent border-0 cursor-pointer p-0"
                       style={{
-                        color: 'rgba(246,245,242,0.60)',
-                        fontSize: '22px',
+                        color: 'rgba(246,245,242,0.55)',
+                        fontSize: '20px',
                         lineHeight: 1,
                         display: 'inline-block',
                         transform: mobileServicesOpen ? 'rotate(180deg)' : 'none',
