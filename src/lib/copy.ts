@@ -14,9 +14,9 @@ export const site = {
     body: "Request a conversation",
   },
   stats: {
-    budgets: "€600M+",
-    markets: "25+",
-    founders: "3",
-    affiliations: "0",
+    budgets:      { value: "€600M+", label: "Budgets controlled" },
+    experience:   { value: "50+",    label: "Years of combined production experience" },
+    affiliations: { value: "0",      label: "Vendor affiliations" },
+    ownership:    { value: "100%",   label: "Founder-owned" },
   },
 } as const;
