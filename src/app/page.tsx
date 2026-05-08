@@ -397,19 +397,6 @@ export default function HomePage() {
               Request a conversation ›
             </a>
           </div>
-          <p
-            className="reveal"
-            style={{
-              marginTop: '20px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'rgba(246,245,242,0.40)',
-            }}
-          >
-            Named partner ownership on every engagement.
-          </p>
         </section>
 
       </main>

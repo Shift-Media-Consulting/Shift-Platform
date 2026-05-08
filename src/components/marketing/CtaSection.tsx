@@ -97,19 +97,6 @@ export default function CtaSection({
         Request a conversation ›
       </a>
 
-      {/* Micro-label */}
-      <p
-        style={{
-          marginTop: '20px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '11px',
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: 'rgba(246,245,242,0.40)',
-        }}
-      >
-        Named partner ownership on every engagement.
-      </p>
     </section>
   )
 }
