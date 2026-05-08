@@ -85,9 +85,10 @@ export default function Nav() {
           min-width: 220px;
           display: flex;
           flex-direction: column;
-          background: rgba(0,77,64,0.55);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          /* No backdrop-filter here — the nav's own blur context is already
+             applied to this area. A second blur pass would create a denser
+             seam at the junction. Slightly more opaque background compensates. */
+          background: rgba(0,72,60,0.72);
           pointer-events: none;
           transition:
             clip-path 0.45s cubic-bezier(0.16,1,0.3,1),
@@ -116,7 +117,12 @@ export default function Nav() {
           backdropFilter:  transparent ? 'none' : 'blur(20px)',
           WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
           boxShadow:       isPill ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
-          border:          isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          /* Remove bottom border when dropdown is open so the two glass
+             surfaces butt flush — no visible seam line between nav and pocket */
+          borderTop:       isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          borderLeft:      isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          borderRight:     isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          borderBottom:    (isPill && dropOpen) ? 'none' : isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
           transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
