@@ -659,6 +659,7 @@ export default function TeamPage() {
         {/* ── Section 5: Partner network ────────────────────────────────── */}
         <section
           data-t
+          data-theme="light"
           style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}
         >
           {/* Rail */}
@@ -668,7 +669,7 @@ export default function TeamPage() {
               fontFamily: 'var(--font-mono)',
               fontSize: '13px',
               letterSpacing: '0.2em',
-              color: 'rgba(246,245,242,0.55)',
+              color: 'var(--fg-faint)',
               marginBottom: '40px',
               fontWeight: 400,
             }}
@@ -692,7 +693,7 @@ export default function TeamPage() {
                 fontWeight: 600,
                 fontSize: 'clamp(48px,6vw,72px)',
                 letterSpacing: '-0.025em',
-                color: '#f6f5f2',
+                color: 'var(--fg)',
                 marginBottom: 0,
               }}
             >
@@ -702,7 +703,7 @@ export default function TeamPage() {
               className="reveal"
               style={{
                 fontSize: '19px',
-                color: 'rgba(246,245,242,0.80)',
+                color: 'var(--fg-muted)',
                 lineHeight: 1.6,
                 alignSelf: 'end',
               }}
@@ -717,7 +718,7 @@ export default function TeamPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3,1fr)',
-              borderTop: '1px solid rgba(246,245,242,0.35)',
+              borderTop: '1px solid var(--fg-rule)',
             }}
           >
             {clusters.map((cluster, ci) => (
@@ -727,7 +728,7 @@ export default function TeamPage() {
                 style={{
                   paddingTop: '28px',
                   paddingRight: '40px',
-                  borderRight: ci < clusters.length - 1 ? '1px solid rgba(246,245,242,0.25)' : 'none',
+                  borderRight: ci < clusters.length - 1 ? '1px solid var(--fg-rule)' : 'none',
                 }}
               >
                 {/* Cluster header */}
@@ -741,7 +742,7 @@ export default function TeamPage() {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '11px',
                     letterSpacing: '0.2em',
-                    color: 'rgba(246,245,242,0.60)',
+                    color: 'var(--fg-faint)',
                   }}>
                     {cluster.label}
                   </span>
@@ -750,7 +751,7 @@ export default function TeamPage() {
                     fontStyle: 'italic',
                     fontWeight: 600,
                     fontSize: '30px',
-                    color: '#f6f5f2',
+                    color: 'var(--teal-mid)',
                   }}>
                     {cluster.title}
                   </span>
@@ -759,7 +760,7 @@ export default function TeamPage() {
                 {/* Cluster description */}
                 <p style={{
                   fontSize: '14px',
-                  color: 'rgba(246,245,242,0.75)',
+                  color: 'var(--fg-muted)',
                   lineHeight: 1.6,
                   maxWidth: '320px',
                   marginBottom: '24px',
@@ -778,13 +779,13 @@ export default function TeamPage() {
                         gridTemplateColumns: 'auto 1fr',
                         columnGap: '14px',
                         padding: '14px 0',
-                        borderTop: '1px solid rgba(246,245,242,0.25)',
+                        borderTop: '1px solid var(--fg-rule)',
                       }}
                     >
                       <span style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '11px',
-                        color: 'rgba(246,245,242,0.55)',
+                        color: 'var(--fg-faint)',
                         paddingTop: '2px',
                       }}>
                         {d.num}
@@ -794,14 +795,14 @@ export default function TeamPage() {
                           fontFamily: 'var(--font-head)',
                           fontWeight: 500,
                           fontSize: '17px',
-                          color: '#f6f5f2',
+                          color: 'var(--fg)',
                           marginBottom: '4px',
                         }}>
                           {d.name}
                         </p>
                         <p style={{
                           fontSize: '13px',
-                          color: 'rgba(246,245,242,0.72)',
+                          color: 'var(--fg-muted)',
                           lineHeight: 1.5,
                         }}>
                           {d.role}
@@ -819,13 +820,13 @@ export default function TeamPage() {
             marginTop: '24px',
             display: 'flex',
             justifyContent: 'space-between',
-            borderTop: '1px solid rgba(246,245,242,0.35)',
+            borderTop: '1px solid var(--fg-rule)',
             paddingTop: '22px',
           }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'rgba(246,245,242,0.55)' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--fg-faint)' }}>
               — Eight disciplines · three clusters · zero affiliations
             </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'rgba(246,245,242,0.55)' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--fg-faint)' }}>
               shift.media · a network, not a roster
             </span>
           </div>
