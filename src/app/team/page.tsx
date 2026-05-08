@@ -53,10 +53,10 @@ const founders = [
 
 /* ── Proof cells ───────────────────────────────────────────────────────── */
 const proofCells = [
-  { target: ‘600’, suffix: ‘M+’, label: ‘Budgets controlled across the founders’ careers’ },
-  { target: ‘50’,  suffix: ‘+’,  label: ‘Years of combined production experience’ },
-  { target: ‘0’,   suffix: ‘’,   label: ‘Vendor affiliations’ },
-  { target: ‘100’, suffix: ‘%’,  label: ‘Founder-owned’ },
+  { target: '600', suffix: 'M+', label: "Budgets controlled across the founders' careers" },
+  { target: '50',  suffix: '+',  label: 'Years of combined production experience' },
+  { target: '0',   suffix: '',   label: 'Vendor affiliations' },
+  { target: '100', suffix: '%',  label: 'Founder-owned' },
 ]
 
 /* ── Working model rows ────────────────────────────────────────────────── */
