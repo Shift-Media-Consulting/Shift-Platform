@@ -136,67 +136,6 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* Status row */}
-          <div
-            className="reveal"
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              borderTop: '1px solid rgba(246,245,242,0.30)',
-              paddingTop: '28px',
-              marginBottom: 0,
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '12px',
-                letterSpacing: '0.18em',
-                color: 'rgba(246,245,242,0.55)',
-              }}
-            >
-              Hamburg · DE · hello@shift-media.io
-            </span>
-          </div>
-
-          {/* Marquee strip */}
-          <div
-            style={{
-              marginTop: 'clamp(40px,5vw,56px)',
-              borderTop: '1px solid rgba(246,245,242,0.25)',
-              borderBottom: '1px solid rgba(246,245,242,0.25)',
-              padding: '22px 0',
-              overflow: 'hidden',
-            }}
-          >
-            <div className="hm-marquee-track">
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '14px',
-                  letterSpacing: '0.18em',
-                  color: 'rgba(246,245,242,0.78)',
-                  whiteSpace: 'nowrap',
-                  paddingRight: '80px',
-                }}
-              >
-                {MARQUEE_CAPS}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '14px',
-                  letterSpacing: '0.18em',
-                  color: 'rgba(246,245,242,0.78)',
-                  whiteSpace: 'nowrap',
-                  paddingRight: '80px',
-                }}
-              >
-                {MARQUEE_CAPS}
-              </span>
-            </div>
-          </div>
         </section>
 
         {/* ── Section 2: Four Pillars ──────────────────────────────────── */}
