@@ -7,7 +7,7 @@ import { Observer } from 'gsap/Observer'
 gsap.registerPlugin(Observer)
 
 type Card = { name: string; desc: string }
-type Props = { label: ReactNode; cards: Card[] }
+type Props = { label?: ReactNode; cards: Card[]; compact?: boolean }
 
 const EASE            = 'cubic-bezier(0.65,0,0.35,1)'
 const DURATION        = 0.8
@@ -15,7 +15,7 @@ const AUTO_MS         = 7000
 const RESUME_AFTER_MS = 4000
 const GAP             = 24
 
-export default function ServicesSlider({ label, cards }: Props) {
+export default function ServicesSlider({ label, cards, compact = false }: Props) {
   const trackRef        = useRef<HTMLDivElement>(null)
   const containerRef    = useRef<HTMLDivElement>(null)
   const progressFillRef = useRef<HTMLDivElement>(null)
@@ -197,15 +197,17 @@ export default function ServicesSlider({ label, cards }: Props) {
   return (
     <div className="flex flex-col gap-8">
 
-      {/* Bold section heading */}
-      <div className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24">
-        <h2
-          className="font-bold text-cream leading-[1.0] tracking-[-0.025em]"
-          style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
-        >
-          {label}
-        </h2>
-      </div>
+      {/* Bold section heading — only rendered if label is provided */}
+      {label && (
+        <div className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24">
+          <h2
+            className="font-bold text-cream leading-[1.0] tracking-[-0.025em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
+          >
+            {label}
+          </h2>
+        </div>
+      )}
 
       {/* Slider */}
       <div className="relative">
@@ -239,10 +241,15 @@ export default function ServicesSlider({ label, cards }: Props) {
                     flexShrink:           0,
                   }}
                 >
-                  <div className="flex flex-col h-full" style={{ padding: 'clamp(28px, 3vw, 40px)' }}>
+                  <div className="flex flex-col h-full" style={{
+                    padding: 'clamp(28px, 3vw, 40px)',
+                    alignItems: compact ? 'center' : undefined,
+                    textAlign:  compact ? 'center'  : undefined,
+                    justifyContent: compact ? 'center' : undefined,
+                  }}>
 
                     {/* [01] + hairline */}
-                    <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgba(246,245,242,0.2)', marginBottom: '24px' }}>
+                    <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgba(246,245,242,0.2)', marginBottom: '24px', width: '100%' }}>
                       <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px',
                                   letterSpacing: '0.18em', color: 'rgba(246,245,242,0.45)', fontWeight: 400 }}>
                         [{String(src + 1).padStart(2, '0')}]
@@ -251,18 +258,18 @@ export default function ServicesSlider({ label, cards }: Props) {
 
                     {/* Title */}
                     <h3 style={{
-                      fontSize:      'clamp(56px, 7vw, 100px)',
-                      lineHeight:    0.92,
+                      fontSize:      compact ? 'clamp(32px, 4vw, 52px)' : 'clamp(56px, 7vw, 100px)',
+                      lineHeight:    0.96,
                       letterSpacing: '-0.025em',
                       fontWeight:    600,
                       color:         '#f6f5f2',
-                      marginBottom:  '20px',
+                      marginBottom:  '16px',
                     }}>
                       {card.name}
                     </h3>
 
                     {/* Body */}
-                    <p style={{ fontSize: '15px', lineHeight: 1.5, maxWidth: '420px',
+                    <p style={{ fontSize: '15px', lineHeight: 1.5, maxWidth: compact ? '320px' : '420px',
                                 color: 'rgba(246,245,242,0.78)', fontWeight: 400 }}>
                       {card.desc}
                     </p>

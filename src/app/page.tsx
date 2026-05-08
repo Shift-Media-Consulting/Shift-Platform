@@ -164,7 +164,7 @@ export default function HomePage() {
                 fontSize: 'clamp(56px,7vw,96px)',
                 lineHeight: 0.96,
                 letterSpacing: '-0.025em',
-                color: '#111111',
+                color: '#f6f5f2',
                 margin: 0,
               }}
             >
@@ -174,7 +174,7 @@ export default function HomePage() {
               style={{
                 fontSize: '19px',
                 lineHeight: 1.55,
-                color: 'rgba(17,17,17,0.78)',
+                color: 'rgba(246,245,242,0.78)',
                 maxWidth: '460px',
                 alignSelf: 'end',
                 margin: 0,
@@ -186,7 +186,7 @@ export default function HomePage() {
           </div>
 
           <ServicesSlider
-            label={<>Four pillars. <em className="news">One partner.</em></>}
+            compact
             cards={[
               { name: 'Production Controlling', desc: 'Cost intelligence and real-time visibility across every production.' },
               { name: 'Strategic Advisory',     desc: 'Shaping how brands commission and plan content at scale.' },
