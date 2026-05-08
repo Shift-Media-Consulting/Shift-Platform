@@ -3,6 +3,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PageReveal from '@/components/marketing/PageReveal'
 import TeamReveal from './TeamReveal'
+import Image from 'next/image'
 import CtaSection from '@/components/marketing/CtaSection'
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ const founders = [
   {
     monogram: 'CR',
     index: '02',
+    image: '/team/cornelius.jpg',
     name: 'Cornelius Rönz',
     role: '— 02 / Co-founder',
     knownForText: 'Known for ',
@@ -358,41 +360,86 @@ export default function TeamPage() {
             {founders.map((f) => (
               <div key={f.index} className="tm-founder reveal">
 
-                {/* Portrait placeholder */}
+                {/* Portrait */}
                 <div style={{
                   aspectRatio: '4/5',
-                  background: 'linear-gradient(135deg, rgba(246,245,242,0.10) 0%, rgba(246,245,242,0.04) 100%)',
                   border: '1px solid rgba(246,245,242,0.30)',
                   borderRadius: '6px',
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  boxShadow: 'inset 0 1px 0 rgba(246,245,242,0.20)',
+                  boxShadow: 'inset 0 1px 0 rgba(246,245,242,0.20), 0 24px 60px rgba(0,0,0,0.22)',
                   position: 'relative',
                   marginBottom: '28px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  overflow: 'hidden',
+                  /* Glass tint when no photo; photo covers it when present */
+                  background: (f as any).image
+                    ? 'rgba(0,20,15,0.15)'
+                    : 'linear-gradient(135deg, rgba(246,245,242,0.10) 0%, rgba(246,245,242,0.04) 100%)',
+                  backdropFilter: (f as any).image ? 'none' : 'blur(8px)',
+                  WebkitBackdropFilter: (f as any).image ? 'none' : 'blur(8px)',
                 }}>
-                  <span style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    fontWeight: 600,
-                    fontSize: 'clamp(80px,8vw,120px)',
-                    color: 'rgba(246,245,242,0.35)',
-                  }}>
-                    {f.monogram}
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11px',
-                    letterSpacing: '0.12em',
-                    color: 'rgba(246,245,242,0.35)',
-                    position: 'absolute',
-                    bottom: '16px',
-                    left: '16px',
-                  }}>
-                    {f.name}
-                  </span>
+                  {(f as any).image ? (
+                    <>
+                      {/* Photo fills card — visible through the subtle glass tint */}
+                      <Image
+                        src={(f as any).image}
+                        alt={f.name}
+                        fill
+                        sizes="(max-width:900px) 80vw, 33vw"
+                        style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      />
+                      {/* Glass plane overlay — very subtle tint so photo reads clearly */}
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'rgba(0,40,30,0.08)',
+                        backdropFilter: 'blur(0px)',
+                      }} />
+                      {/* Gradient scrim at bottom for name legibility */}
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(to bottom, transparent 45%, rgba(0,25,18,0.82) 100%)',
+                      }} />
+                      {/* Name over the scrim */}
+                      <span style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '11px',
+                        letterSpacing: '0.12em',
+                        color: 'rgba(246,245,242,0.70)',
+                        position: 'absolute',
+                        bottom: '16px',
+                        left: '16px',
+                      }}>
+                        {f.name}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontStyle: 'italic',
+                        fontWeight: 600,
+                        fontSize: 'clamp(80px,8vw,120px)',
+                        color: 'rgba(246,245,242,0.35)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%',
+                      }}>
+                        {f.monogram}
+                      </span>
+                      <span style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '11px',
+                        letterSpacing: '0.12em',
+                        color: 'rgba(246,245,242,0.35)',
+                        position: 'absolute',
+                        bottom: '16px',
+                        left: '16px',
+                      }}>
+                        {f.name}
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 {/* Mono row */}
