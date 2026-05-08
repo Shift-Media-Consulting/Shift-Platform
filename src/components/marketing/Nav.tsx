@@ -106,7 +106,7 @@ export default function Nav() {
               return (
                 <div
                   key={link.href}
-                  className="relative"
+                  className="relative inline-flex items-center"
                   onMouseEnter={openDrop}
                   onMouseLeave={closeDrop}
                 >
