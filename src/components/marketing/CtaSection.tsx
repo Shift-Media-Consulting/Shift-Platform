@@ -35,12 +35,13 @@ export default function CtaSection({
       {/* Eyebrow */}
       <p
         style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '15px',
-          letterSpacing: '0.14em',
-          color: 'rgba(246,245,242,0.55)',
+          fontFamily: 'var(--font-head)',
+          fontSize: '13px',
+          letterSpacing: '0.20em',
+          textTransform: 'uppercase' as const,
+          color: 'rgba(246,245,242,0.60)',
           marginBottom: '24px',
-          fontWeight: 400,
+          fontWeight: 600,
         }}
       >
         {eyebrow}

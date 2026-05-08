@@ -325,10 +325,12 @@ export default function HomePage() {
           <p
             className="reveal"
             style={{
-              fontFamily: 'var(--font-mono)',
+              fontFamily: 'var(--font-head)',
               fontSize: '13px',
-              letterSpacing: '0.18em',
-              color: 'rgba(246,245,242,0.55)',
+              fontWeight: 600,
+              letterSpacing: '0.20em',
+              textTransform: 'uppercase',
+              color: 'rgba(246,245,242,0.60)',
               marginBottom: '24px',
             }}
           >
