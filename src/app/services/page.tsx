@@ -4,6 +4,7 @@ import CtaSection from '@/components/marketing/CtaSection'
 import ServicesReveal from './ServicesReveal'
 import ServicesSlider from './ServicesSlider'
 import ServicesFaq from './ServicesFaq'
+import ServicesPillarCarousel from './ServicesPillarCarousel'
 
 export const metadata = {
   title: 'Services — shift.media',
@@ -180,7 +181,7 @@ export default function ServicesPage() {
                 fontSize: 'clamp(48px,6.5vw,88px)',
                 lineHeight: 0.96,
                 letterSpacing: '-0.025em',
-                color: '#111111',
+                color: '#f6f5f2',
                 margin: 0,
               }}
             >
@@ -191,7 +192,7 @@ export default function ServicesPage() {
               style={{
                 fontSize: '19px',
                 lineHeight: 1.55,
-                color: 'rgba(17,17,17,0.78)',
+                color: 'rgba(246,245,242,0.75)',
                 maxWidth: '460px',
                 alignSelf: 'end',
                 margin: 0,
@@ -207,7 +208,7 @@ export default function ServicesPage() {
             style={{
               display: 'flex',
               justifyContent: 'space-between',
-              borderTop: '1px solid rgba(17,17,17,0.40)',
+              borderTop: '1px solid rgba(246,245,242,0.25)',
               paddingTop: '18px',
               marginBottom: '32px',
             }}
@@ -217,7 +218,7 @@ export default function ServicesPage() {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '12px',
                 letterSpacing: '0.20em',
-                color: 'rgba(17,17,17,0.65)',
+                color: 'rgba(246,245,242,0.50)',
               }}
             >
               — What we do
@@ -227,107 +228,14 @@ export default function ServicesPage() {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '12px',
                 letterSpacing: '0.20em',
-                color: 'rgba(17,17,17,0.65)',
+                color: 'rgba(246,245,242,0.50)',
               }}
             >
               04 capabilities
             </span>
           </div>
 
-          {/* 4-col grid */}
-          <div
-            className="svc-pillar-grid"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 0 }}
-          >
-            {pillars.map((item, idx) => (
-              <div
-                key={item.num}
-                className="ab-card svc-pillar"
-                style={{
-                  borderTop: '1px solid rgba(17,17,17,0.35)',
-                  borderRight: idx < 3 ? '1px solid rgba(17,17,17,0.18)' : 'none',
-                  padding: '28px 24px 36px 0',
-                  minHeight: '480px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                {/* Top row */}
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    marginBottom: '64px',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '12px',
-                      letterSpacing: '0.22em',
-                      color: 'rgba(17,17,17,0.60)',
-                    }}
-                  >
-                    [{item.num}] · {item.label}
-                  </span>
-                </div>
-
-                {/* H3 */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-head)',
-                    fontWeight: 600,
-                    fontSize: '28px',
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.0,
-                    color: '#111111',
-                    marginBottom: '12px',
-                  }}
-                >
-                  {item.name}
-                </h3>
-
-                {/* Desc */}
-                <p
-                  style={{
-                    fontSize: '15px',
-                    lineHeight: 1.5,
-                    color: 'rgba(17,17,17,0.78)',
-                    marginBottom: '24px',
-                  }}
-                >
-                  {item.desc}
-                </p>
-
-                {/* List */}
-                <ul
-                  style={{
-                    marginTop: 'auto',
-                    borderTop: '1px dashed rgba(17,17,17,0.30)',
-                    paddingTop: '16px',
-                    listStyle: 'none',
-                    padding: 0,
-                    marginBottom: 0,
-                  }}
-                >
-                  {item.details.split(' · ').map((detail, i) => (
-                    <li
-                      key={i}
-                      style={{
-                        fontSize: '13px',
-                        color: 'rgba(17,17,17,0.72)',
-                        lineHeight: 1.55,
-                        paddingTop: '6px',
-                      }}
-                    >
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <ServicesPillarCarousel pillars={pillars} />
         </section>
 
         {/* FAQ */}
