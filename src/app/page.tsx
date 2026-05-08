@@ -144,7 +144,7 @@ export default function HomePage() {
           data-hm
           className="hm-section"
           style={{
-            padding: `clamp(80px,10vw,120px) var(--margin-x)`,
+            padding: `clamp(48px,6vw,72px) var(--margin-x)`,
           }}
         >
           {/* Header grid */}
@@ -153,8 +153,8 @@ export default function HomePage() {
             style={{
               display: 'grid',
               gridTemplateColumns: '1.2fr 1fr',
-              gap: 'clamp(48px,6vw,80px)',
-              marginBottom: '80px',
+              gap: 'clamp(32px,4vw,56px)',
+              marginBottom: '48px',
             }}
           >
             <h2
@@ -201,7 +201,7 @@ export default function HomePage() {
           data-hm
           className="hm-section"
           style={{
-            padding: `clamp(80px,10vw,120px) var(--margin-x)`,
+            padding: `clamp(48px,6vw,72px) var(--margin-x)`,
           }}
         >
           {/* Inner grid */}

@@ -68,6 +68,9 @@
 * { box-sizing: border-box; }
 *::before, *::after { box-sizing: border-box; }
 
+::selection        { background: rgba(246,245,242,0.25); color: #f6f5f2; }
+::-moz-selection   { background: rgba(246,245,242,0.25); color: #f6f5f2; }
+
 html, body {
   margin: 0;
   padding: 0;
