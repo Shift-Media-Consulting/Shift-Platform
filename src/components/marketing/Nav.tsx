@@ -42,18 +42,11 @@ export default function Nav() {
   /* ── Close on route change ── */
   useEffect(() => { setMobileOpen(false); setMobileServicesOpen(false) }, [pathname])
 
-  /*
-   * isPill — true when the nav should show as a glass pill.
-   * Includes dropOpen so hovering Services at the top of the page
-   * collapses the nav into pill form first, then the dropdown
-   * pockets beneath it as one continuous surface.
-   */
-  const isPill    = scrolled || (dropOpen && !mobileOpen)
-  const transparent = !isPill && !mobileOpen
+  const transparent = !scrolled && !mobileOpen
 
-  /* Dropdown hover helpers — delay prevents flicker on diagonal mouse movement */
+  /* Dropdown hover helpers */
   const openDrop  = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setDropOpen(true) }
-  const closeDrop = () => { closeTimer.current = setTimeout(() => setDropOpen(false), 150) }
+  const closeDrop = () => { closeTimer.current = setTimeout(() => setDropOpen(false), 180) }
 
   const isServicesActive = pathname.startsWith('/services') || pathname.startsWith('/method')
 
@@ -71,35 +64,47 @@ export default function Nav() {
 
         .burger-line { display:block; width:24px; height:2px; background-color:var(--cream); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; border-radius:2px; }
 
-        /*
-         * Dropdown bubble — same glass as the nav pill.
-         * In pill mode (scrolled): attaches flush to the nav bottom,
-         * no top border, top corners are square → looks like the pill
-         * grew a pocket just under Services (true Dynamic Island).
-         * In transparent mode: floats with a gap + full rounding.
-         */
+        /* ── Floating glass dropdown ── */
         .svc-drop {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          min-width: 220px;
+          top: calc(100% + 10px);
+          min-width: 230px;
+          border-radius: 16px;
+          background: rgba(0,60,50,0.65);
+          backdrop-filter: blur(24px) saturate(1.4);
+          -webkit-backdrop-filter: blur(24px) saturate(1.4);
+          border: 1px solid rgba(246,245,242,0.14);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.14), inset 0 1px 0 rgba(246,245,242,0.12);
           display: flex;
           flex-direction: column;
-          /* No backdrop-filter here — the nav's own blur context is already
-             applied to this area. A second blur pass would create a denser
-             seam at the junction. Slightly more opaque background compensates. */
-          background: rgba(0,72,60,0.72);
+          overflow: hidden;
           pointer-events: none;
+          /* Animate scale + opacity — feels weightless, like it materialises */
+          opacity: 0;
+          transform: translateX(-50%) translateY(-6px) scale(0.97);
           transition:
-            clip-path 0.45s cubic-bezier(0.16,1,0.3,1),
-            opacity   0.22s ease;
+            opacity   0.22s cubic-bezier(0.16,1,0.3,1),
+            transform 0.28s cubic-bezier(0.16,1,0.3,1);
         }
-        .svc-drop.is-open { pointer-events: auto; }
-        .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; }
-        .svc-drop-item:hover { background:rgba(246,245,242,0.08); }
+        .svc-drop.is-open {
+          pointer-events: auto;
+          opacity: 1;
+          transform: translateX(-50%) translateY(0px) scale(1);
+        }
+        .svc-drop-item {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          padding: 13px 20px;
+          text-decoration: none;
+          transition: background 180ms ease;
+        }
+        .svc-drop-item:hover { background: rgba(246,245,242,0.07); }
+        .svc-drop-divider { height: 1px; background: rgba(246,245,242,0.08); margin: 0 12px; flex-shrink: 0; }
         .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; white-space:nowrap; }
-        .svc-drop-item__desc  { font-family:var(--font-mono); font-size:10px; letter-spacing:0.10em; color:rgba(246,245,242,0.45); white-space:nowrap; }
-        .svc-drop-divider { height:1px; background:rgba(246,245,242,0.08); flex-shrink:0; }
+        .svc-drop-item__desc  { font-family:var(--font-mono); font-size:10px; letter-spacing:0.10em; color:rgba(246,245,242,0.42); white-space:nowrap; }
       `}</style>
 
       <nav
@@ -108,21 +113,16 @@ export default function Nav() {
           'grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]',
         ].join(' ')}
         style={{
-          left:            isPill ? '16px' : '0px',
-          right:           isPill ? '16px' : '0px',
-          top:             isPill ? '12px' : '0px',
-          borderRadius:    isPill ? '20px' : '0px',
-          padding:         isPill ? '0 28px' : '0 var(--margin-x)',
+          left:            scrolled ? '16px' : '0px',
+          right:           scrolled ? '16px' : '0px',
+          top:             scrolled ? '12px' : '0px',
+          borderRadius:    scrolled ? '20px' : '0px',
+          padding:         scrolled ? '0 28px' : '0 var(--margin-x)',
           backgroundColor: transparent ? 'transparent' : 'rgba(0,77,64,0.55)',
           backdropFilter:  transparent ? 'none' : 'blur(20px)',
           WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
-          boxShadow:       isPill ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
-          /* Remove bottom border when dropdown is open so the two glass
-             surfaces butt flush — no visible seam line between nav and pocket */
-          borderTop:       isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
-          borderLeft:      isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
-          borderRight:     isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
-          borderBottom:    (isPill && dropOpen) ? 'none' : isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          boxShadow:       scrolled ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
+          border:          scrolled ? '1px solid rgba(246,245,242,0.12)' : 'none',
           transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
@@ -163,39 +163,9 @@ export default function Nav() {
                     </span>
                   </Link>
 
-                  {/*
-                    Dynamic Island bubble.
-
-                    Pill mode (scrolled):
-                      — top: 100%  → flush against nav bottom, no gap
-                      — border-radius: 0 0 16px 16px  → square top corners
-                        so the bubble looks like it grows from the pill
-                      — border-top: none  → the pill's own bottom border
-                        is the visual separator; adding another border
-                        here would create a double-line seam
-                      — clip-path reveals top→bottom (content pours out
-                        of the pill downward)
-
-                    Transparent mode (!scrolled):
-                      — top: calc(100% + 8px)  → floating card with gap
-                      — border-radius: 16px  → fully rounded card
-                      — full border on all sides
-                  */}
+                  {/* Floating glass dropdown — independent, hovering below the nav */}
                   <div
                     className={`svc-drop${dropOpen ? ' is-open' : ''}`}
-                    style={{
-                      top:          isPill ? '100%' : 'calc(100% + 8px)',
-                      borderRadius: isPill ? '0 0 16px 16px' : '16px',
-                      border:       '1px solid rgba(246,245,242,0.12)',
-                      borderTop:    isPill ? 'none' : '1px solid rgba(246,245,242,0.12)',
-                      boxShadow:    isPill
-                        ? '0 14px 36px rgba(0,0,0,0.24)'
-                        : '0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10)',
-                      clipPath: dropOpen
-                        ? (isPill ? 'inset(0 0 0% 0 round 0 0 16px 16px)' : 'inset(0 0 0% 0 round 16px)')
-                        : (isPill ? 'inset(0 0 100% 0 round 0 0 16px 16px)' : 'inset(0 0 100% 0 round 16px)'),
-                      opacity: dropOpen ? 1 : 0,
-                    }}
                     onMouseEnter={openDrop}
                     onMouseLeave={closeDrop}
                   >
