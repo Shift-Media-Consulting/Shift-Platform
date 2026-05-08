@@ -64,8 +64,9 @@ export default function Nav() {
 
         .burger-line { display:block; width:24px; height:2px; background-color:var(--cream); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; border-radius:2px; }
 
-        /* Dropdown — vertical layout, glass (matches pill nav) */
-        .svc-drop { position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%); border-radius:16px; overflow:hidden; border:1px solid rgba(246,245,242,0.12); box-shadow:0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10); display:flex; flex-direction:column; min-width:210px; }
+        /* Dropdown — Dynamic Island liquid glass */
+        .svc-drop { position:absolute; left:50%; transform:translateX(-50%); min-width:220px; display:flex; flex-direction:column; background:rgba(0,77,64,0.55); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); pointer-events:none; transition:clip-path 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.22s ease; }
+        .svc-drop.is-open { pointer-events:auto; }
         .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; }
         .svc-drop-item:hover { background:rgba(246,245,242,0.08); }
         .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; white-space:nowrap; }
@@ -129,25 +130,35 @@ export default function Nav() {
                     </span>
                   </Link>
 
-                  {/* Dropdown */}
-                  {dropOpen && (
-                    <div
-                      className="svc-drop"
-                      style={{ background: 'rgba(0,77,64,0.55)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
-                      onMouseEnter={openDrop}
-                      onMouseLeave={closeDrop}
-                    >
-                      {servicesDropdown.map((item, i) => (
-                        <>
-                          {i > 0 && <div key={`div-${i}`} className="svc-drop-divider" />}
-                          <Link key={item.href} href={item.href} className="svc-drop-item">
-                            <span className="svc-drop-item__label">{item.label}</span>
-                            <span className="svc-drop-item__desc">{item.desc}</span>
-                          </Link>
-                        </>
-                      ))}
-                    </div>
-                  )}
+                  {/* Dropdown — always in DOM, morphs open via clip-path */}
+                  <div
+                    className={`svc-drop${dropOpen ? ' is-open' : ''}`}
+                    style={{
+                      top:          scrolled ? '100%' : 'calc(100% + 8px)',
+                      borderRadius: scrolled ? '0 0 16px 16px' : '16px',
+                      border:       '1px solid rgba(246,245,242,0.12)',
+                      borderTop:    scrolled ? 'none' : '1px solid rgba(246,245,242,0.12)',
+                      boxShadow:    scrolled
+                        ? '0 14px 36px rgba(0,0,0,0.24)'
+                        : '0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10)',
+                      clipPath: dropOpen
+                        ? (scrolled ? 'inset(0 0 0% 0 round 0 0 16px 16px)' : 'inset(0 0 0% 0 round 16px)')
+                        : (scrolled ? 'inset(0 0 100% 0 round 0 0 16px 16px)' : 'inset(0 0 100% 0 round 16px)'),
+                      opacity: dropOpen ? 1 : 0,
+                    }}
+                    onMouseEnter={openDrop}
+                    onMouseLeave={closeDrop}
+                  >
+                    {servicesDropdown.map((item, i) => (
+                      <>
+                        {i > 0 && <div key={`div-${i}`} className="svc-drop-divider" />}
+                        <Link key={item.href} href={item.href} className="svc-drop-item">
+                          <span className="svc-drop-item__label">{item.label}</span>
+                          <span className="svc-drop-item__desc">{item.desc}</span>
+                        </Link>
+                      </>
+                    ))}
+                  </div>
                 </div>
               )
             }
