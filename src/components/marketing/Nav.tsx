@@ -42,7 +42,14 @@ export default function Nav() {
   /* ── Close on route change ── */
   useEffect(() => { setMobileOpen(false); setMobileServicesOpen(false) }, [pathname])
 
-  const transparent = !scrolled && !mobileOpen
+  /*
+   * isPill — true when the nav should show as a glass pill.
+   * Includes dropOpen so hovering Services at the top of the page
+   * collapses the nav into pill form first, then the dropdown
+   * pockets beneath it as one continuous surface.
+   */
+  const isPill    = scrolled || (dropOpen && !mobileOpen)
+  const transparent = !isPill && !mobileOpen
 
   /* Dropdown hover helpers — delay prevents flicker on diagonal mouse movement */
   const openDrop  = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setDropOpen(true) }
@@ -100,16 +107,16 @@ export default function Nav() {
           'grid items-center grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr]',
         ].join(' ')}
         style={{
-          left:            scrolled ? '16px' : '0px',
-          right:           scrolled ? '16px' : '0px',
-          top:             scrolled ? '12px' : '0px',
-          borderRadius:    scrolled ? '20px' : '0px',
-          padding:         scrolled ? '0 28px' : '0 var(--margin-x)',
+          left:            isPill ? '16px' : '0px',
+          right:           isPill ? '16px' : '0px',
+          top:             isPill ? '12px' : '0px',
+          borderRadius:    isPill ? '20px' : '0px',
+          padding:         isPill ? '0 28px' : '0 var(--margin-x)',
           backgroundColor: transparent ? 'transparent' : 'rgba(0,77,64,0.55)',
           backdropFilter:  transparent ? 'none' : 'blur(20px)',
           WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
-          boxShadow:       scrolled ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
-          border:          scrolled ? '1px solid rgba(246,245,242,0.12)' : 'none',
+          boxShadow:       isPill ? '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(246,245,242,0.10)' : 'none',
+          border:          isPill ? '1px solid rgba(246,245,242,0.12)' : 'none',
           transition:      'left 0.5s cubic-bezier(0.16,1,0.3,1), right 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), border-radius 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
@@ -171,16 +178,16 @@ export default function Nav() {
                   <div
                     className={`svc-drop${dropOpen ? ' is-open' : ''}`}
                     style={{
-                      top:          scrolled ? '100%' : 'calc(100% + 8px)',
-                      borderRadius: scrolled ? '0 0 16px 16px' : '16px',
+                      top:          isPill ? '100%' : 'calc(100% + 8px)',
+                      borderRadius: isPill ? '0 0 16px 16px' : '16px',
                       border:       '1px solid rgba(246,245,242,0.12)',
-                      borderTop:    scrolled ? 'none' : '1px solid rgba(246,245,242,0.12)',
-                      boxShadow:    scrolled
+                      borderTop:    isPill ? 'none' : '1px solid rgba(246,245,242,0.12)',
+                      boxShadow:    isPill
                         ? '0 14px 36px rgba(0,0,0,0.24)'
                         : '0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(246,245,242,0.10)',
                       clipPath: dropOpen
-                        ? (scrolled ? 'inset(0 0 0% 0 round 0 0 16px 16px)' : 'inset(0 0 0% 0 round 16px)')
-                        : (scrolled ? 'inset(0 0 100% 0 round 0 0 16px 16px)' : 'inset(0 0 100% 0 round 16px)'),
+                        ? (isPill ? 'inset(0 0 0% 0 round 0 0 16px 16px)' : 'inset(0 0 0% 0 round 16px)')
+                        : (isPill ? 'inset(0 0 100% 0 round 0 0 16px 16px)' : 'inset(0 0 100% 0 round 16px)'),
                       opacity: dropOpen ? 1 : 0,
                     }}
                     onMouseEnter={openDrop}
