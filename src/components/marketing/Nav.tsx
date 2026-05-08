@@ -64,13 +64,13 @@ export default function Nav() {
 
         .burger-line { display:block; width:24px; height:2px; background-color:var(--cream); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; border-radius:2px; }
 
-        /* Dropdown — horizontal layout */
-        .svc-drop { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); border-radius:12px; overflow:hidden; border:1px solid rgba(246,245,242,0.12); box-shadow:0 20px 48px rgba(0,0,0,0.28); display:flex; flex-direction:row; }
-        .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; flex:1; min-width:140px; }
-        .svc-drop-item:hover { background:rgba(246,245,242,0.10); }
+        /* Dropdown — vertical layout, glass */
+        .svc-drop { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); border-radius:12px; overflow:hidden; border:1px solid rgba(246,245,242,0.15); box-shadow:0 20px 48px rgba(0,0,0,0.28); display:flex; flex-direction:column; min-width:200px; }
+        .svc-drop-item { display:flex; flex-direction:column; gap:4px; padding:14px 20px; text-decoration:none; transition:background 200ms ease; }
+        .svc-drop-item:hover { background:rgba(246,245,242,0.08); }
         .svc-drop-item__label { font-family:var(--font-head); font-weight:600; font-size:15px; color:#f6f5f2; letter-spacing:-0.2px; white-space:nowrap; }
         .svc-drop-item__desc  { font-family:var(--font-mono); font-size:10px; letter-spacing:0.10em; color:rgba(246,245,242,0.45); white-space:nowrap; }
-        .svc-drop-divider { width:1px; background:rgba(246,245,242,0.08); align-self:stretch; flex-shrink:0; }
+        .svc-drop-divider { height:1px; background:rgba(246,245,242,0.08); flex-shrink:0; }
       `}</style>
 
       <nav
@@ -125,7 +125,7 @@ export default function Nav() {
                   {dropOpen && (
                     <div
                       className="svc-drop"
-                      style={{ background: 'rgba(0,55,45,0.97)', backdropFilter: 'blur(16px)' }}
+                      style={{ background: 'rgba(0,55,45,0.50)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
                       onMouseEnter={openDrop}
                       onMouseLeave={closeDrop}
                     >
