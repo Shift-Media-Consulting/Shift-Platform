@@ -222,7 +222,7 @@ export default function HomePage() {
                 fontWeight: 600,
                 fontSize: 'clamp(44px,5vw,64px)',
                 lineHeight: 1.0,
-                color: '#111111',
+                color: '#f6f5f2',
                 margin: 0,
               }}
             >
@@ -236,7 +236,7 @@ export default function HomePage() {
                 className="reveal"
                 style={{
                   fontSize: '19px',
-                  color: 'rgba(17,17,17,0.82)',
+                  color: 'rgba(246,245,242,0.78)',
                   maxWidth: '540px',
                   lineHeight: 1.6,
                   margin: '0 0 20px 0',
@@ -249,7 +249,7 @@ export default function HomePage() {
                 className="reveal"
                 style={{
                   fontSize: '19px',
-                  color: 'rgba(17,17,17,0.82)',
+                  color: 'rgba(246,245,242,0.78)',
                   maxWidth: '540px',
                   lineHeight: 1.6,
                   margin: 0,
@@ -268,7 +268,7 @@ export default function HomePage() {
             style={{
               marginTop: 'clamp(56px,7vw,80px)',
               maxWidth: '1400px',
-              borderTop: '1px solid rgba(17,17,17,0.30)',
+              borderTop: '1px solid rgba(246,245,242,0.25)',
               paddingTop: '32px',
               display: 'grid',
               gridTemplateColumns: 'repeat(4,1fr)',
@@ -288,7 +288,7 @@ export default function HomePage() {
                     fontWeight: 600,
                     fontSize: 'clamp(44px,5vw,64px)',
                     letterSpacing: '-0.025em',
-                    color: '#111111',
+                    color: '#f6f5f2',
                     display: 'block',
                     marginBottom: '8px',
                   }}
@@ -300,7 +300,7 @@ export default function HomePage() {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '12px',
                     letterSpacing: '0.18em',
-                    color: 'rgba(17,17,17,0.65)',
+                    color: 'rgba(246,245,242,0.50)',
                     display: 'block',
                   }}
                 >
