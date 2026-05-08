@@ -3,6 +3,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import IntroWrapper from './IntroWrapper'
 import HomeReveal from './HomeReveal'
+import ServicesSlider from './services/ServicesSlider'
 
 export const metadata: Metadata = {
   title: 'shift.media — Independent Production Advisory',
@@ -184,206 +185,15 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Pillar rail */}
-          <div
-            className="reveal"
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              borderTop: '1px solid rgba(17,17,17,0.40)',
-              paddingTop: '18px',
-              marginBottom: '32px',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '12px',
-                letterSpacing: '0.20em',
-                color: 'rgba(17,17,17,0.65)',
-              }}
-            >
-              — What we do
-            </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '12px',
-                letterSpacing: '0.20em',
-                color: 'rgba(17,17,17,0.65)',
-              }}
-            >
-              04 capabilities
-            </span>
-          </div>
-
-          {/* 4-col pillar grid */}
-          <div
-            className="hm-pillar-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4,1fr)',
-              gap: 0,
-            }}
-          >
-            {[
-              {
-                code: '[01] · Production',
-                h3: 'Production Controlling',
-                blurb:
-                  'Cost intelligence and real-time visibility across every production.',
-                items: [
-                  'Budget development',
-                  'Cost reporting',
-                  'Vendor negotiation',
-                  'Buyout management',
-                  'The Shift Platform',
-                ],
-              },
-              {
-                code: '[02] · Strategy',
-                h3: 'Strategic Advisory',
-                blurb: 'Shaping how brands commission and plan content at scale.',
-                items: [
-                  'Production strategy',
-                  'Roster advisory',
-                  'Sustainable production',
-                  'Risk assessment',
-                  'International structures',
-                ],
-              },
-              {
-                code: '[03] · Setup',
-                h3: 'Organisational Setup',
-                blurb:
-                  'Building the production capability you need — from scratch or from inside.',
-                items: [
-                  'In-house dept setup',
-                  'Talent advisory',
-                  'Tech stack selection',
-                  'VFX & post',
-                  'AI studio builds',
-                ],
-              },
-              {
-                code: '[04] · AI',
-                h3: 'AI Integration',
-                blurb:
-                  'From AI experiments to AI-native production. Governed, calibrated, built to last.',
-                items: [
-                  'AI readiness audit',
-                  'Tool selection',
-                  'Workflow integration',
-                  'Training',
-                  'Ethics & governance',
-                ],
-              },
-            ].map((pillar, idx) => (
-              <div
-                key={pillar.code}
-                className="pillar reveal"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  borderTop: '1px solid rgba(17,17,17,0.35)',
-                  borderRight:
-                    idx < 3 ? '1px solid rgba(17,17,17,0.18)' : 'none',
-                  padding: '28px 24px 36px 0',
-                  minHeight: '480px',
-                }}
-              >
-                {/* Top row */}
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    marginBottom: '80px',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '12px',
-                      letterSpacing: '0.22em',
-                      color: 'rgba(17,17,17,0.60)',
-                    }}
-                  >
-                    {pillar.code}
-                  </span>
-                  <span
-                    className="pillar-arrow"
-                    style={{
-                      width: '28px',
-                      height: '28px',
-                      borderRadius: '50%',
-                      border: '1px solid rgba(17,17,17,0.35)',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: 'transparent',
-                      color: 'rgba(17,17,17,0.70)',
-                      fontSize: '14px',
-                    }}
-                  >
-                    ↗
-                  </span>
-                </div>
-
-                {/* H3 */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-head)',
-                    fontWeight: 600,
-                    fontSize: '32px',
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.0,
-                    color: '#111111',
-                    margin: '0 0 14px 0',
-                  }}
-                >
-                  {pillar.h3}
-                </h3>
-
-                {/* Blurb */}
-                <p
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: 1.5,
-                    color: 'rgba(17,17,17,0.78)',
-                    margin: '0 0 28px 0',
-                  }}
-                >
-                  {pillar.blurb}
-                </p>
-
-                {/* List */}
-                <ul
-                  style={{
-                    marginTop: 'auto',
-                    borderTop: '1px dashed rgba(17,17,17,0.30)',
-                    listStyle: 'none',
-                    padding: '16px 0 0 0',
-                    margin: 'auto 0 0 0',
-                  }}
-                >
-                  {pillar.items.map(item => (
-                    <li
-                      key={item}
-                      style={{
-                        fontSize: '13px',
-                        color: 'rgba(17,17,17,0.72)',
-                        lineHeight: 1.55,
-                        paddingTop: '6px',
-                      }}
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <ServicesSlider
+            label={<>Four pillars. <em className="news">One partner.</em></>}
+            cards={[
+              { name: 'Production Controlling', desc: 'Cost intelligence and real-time visibility across every production.' },
+              { name: 'Strategic Advisory',     desc: 'Shaping how brands commission and plan content at scale.' },
+              { name: 'Organisational Setup',   desc: 'Building the production capability you need — from scratch or from inside.' },
+              { name: 'AI Integration',         desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.' },
+            ]}
+          />
         </section>
 
         {/* ── Section 3: Conviction beat ───────────────────────────────── */}
