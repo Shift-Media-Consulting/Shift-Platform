@@ -231,7 +231,7 @@ export default function ServicesSlider({ label, cards, compact = false }: Props)
                   className="flex-shrink-0 flex flex-col rounded-2xl overflow-hidden"
                   style={{
                     width:                isMobile ? '82vw' : 'min(540px, 80vw)',
-                    height:               '400px',
+                    height:               compact ? '280px' : '400px',
                     background:           'rgba(246,245,242,0.10)',
                     backdropFilter:       'blur(10px) saturate(1.3)',
                     WebkitBackdropFilter: 'blur(10px) saturate(1.3)',
@@ -242,14 +242,14 @@ export default function ServicesSlider({ label, cards, compact = false }: Props)
                   }}
                 >
                   <div className="flex flex-col h-full" style={{
-                    padding: 'clamp(28px, 3vw, 40px)',
+                    padding: compact ? 'clamp(20px, 2vw, 28px)' : 'clamp(28px, 3vw, 40px)',
                     alignItems: compact ? 'center' : undefined,
                     textAlign:  compact ? 'center'  : undefined,
                     justifyContent: compact ? 'center' : undefined,
                   }}>
 
                     {/* [01] + hairline */}
-                    <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgba(246,245,242,0.2)', marginBottom: '24px', width: '100%' }}>
+                    <div style={{ paddingBottom: compact ? '12px' : '20px', borderBottom: '1px solid rgba(246,245,242,0.2)', marginBottom: compact ? '16px' : '24px', width: '100%' }}>
                       <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px',
                                   letterSpacing: '0.18em', color: 'rgba(246,245,242,0.45)', fontWeight: 400 }}>
                         [{String(src + 1).padStart(2, '0')}]
