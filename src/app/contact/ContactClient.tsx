@@ -210,7 +210,7 @@ const TOPICS = ['Cost diagnostic', 'Roster review', 'In-house setup', 'AI integr
 const FAQ = [
   {
     q: 'WHAT DOES A FIRST CONVERSATION ACTUALLY LOOK LIKE?',
-    a: 'Forty-five minutes on video or phone with one of the three founders. We listen, ask questions, and tell you in writing within five working days whether we\'re the right next step — or what is, if we\'re not.',
+    a: 'Forty-five minutes on video or phone with one of the three founders. We listen, ask questions, and tell you within 24 hours, Monday to Friday, whether we are the right next step — or what is, if we are not.',
   },
   {
     q: 'WILL YOU SIGN AN NDA BEFORE THE FIRST CALL?',
@@ -381,7 +381,7 @@ export default function ContactClient() {
               lineHeight: 1.5,
             }}
           >
-            Tell us about your production challenge. We&apos;ll come back within 24 hours
+            Tell us about your production challenge. We will come back within 24 hours
             with an honest read on whether — and how — we can help.
           </p>
         </section>
@@ -717,7 +717,7 @@ export default function ContactClient() {
                   — Headquarters
                 </p>
                 <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)', lineHeight: 1.6 }}>
-                  shift.media GmbH<br />Hamburg, Germany
+                  Shift Media GmbH<br />Hamburg, Germany
                 </p>
               </div>
 

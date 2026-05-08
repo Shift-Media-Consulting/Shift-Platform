@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { Observer } from 'gsap/Observer'
 
 gsap.registerPlugin(Observer)
 
 type Card = { name: string; desc: string }
-type Props = { label: string; cards: Card[] }
+type Props = { label: ReactNode; cards: Card[] }
 
 const EASE            = 'cubic-bezier(0.65,0,0.35,1)'
 const DURATION        = 0.8

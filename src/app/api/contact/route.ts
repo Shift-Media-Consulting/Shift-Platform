@@ -6,10 +6,13 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: process.env.GMAIL_USER,   // hello@shift-media.io
+    user: process.env.GMAIL_USER,   // justin@shift-media.io
     pass: process.env.GMAIL_PASS,   // Google App Password (16 chars, no spaces)
   },
 })
+
+// Send to all three founders directly — group inbox blocks external SMTP
+const INTERNAL_TO = ['justin@shift-media.io', 'cornelius@shift-media.io', 'jankel@shift-media.io']
 
 // ─── Internal notification email ──────────────────────────────────────────────
 
@@ -127,7 +130,7 @@ function autoReplyEmail(firstName: string) {
     <tr>
       <td style="background:#003d33;padding:36px 36px 32px;">
         <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(246,245,242,0.40);margin:0 0 16px;">— Message received</p>
-        <h1 style="font-family:Helvetica,Arial,sans-serif;font-weight:700;font-size:32px;line-height:1.05;letter-spacing:-0.02em;color:#f6f5f2;margin:0 0 16px;">We'll be in touch,<br>${firstName}.</h1>
+        <h1 style="font-family:Helvetica,Arial,sans-serif;font-weight:700;font-size:32px;line-height:1.05;letter-spacing:-0.02em;color:#f6f5f2;margin:0 0 16px;">We will be in touch,<br>${firstName}.</h1>
         <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;line-height:1.55;color:rgba(246,245,242,0.70);margin:0;">One of the three founders will read your message personally and reply within 24 hours, Monday to Friday.</p>
       </td>
     </tr>
@@ -201,7 +204,7 @@ function autoReplyEmail(firstName: string) {
               <a href="https://shift-media.io" style="color:rgba(17,17,17,0.35);text-decoration:none;">shift-media.io</a>
               &nbsp;·&nbsp; Hamburg, DE
             </td>
-            <td align="right" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:0.18em;color:rgba(17,17,17,0.25);">shift.media GmbH</td>
+            <td align="right" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:0.18em;color:rgba(17,17,17,0.25);">Shift Media GmbH</td>
           </tr>
         </table>
       </td>
@@ -226,10 +229,10 @@ export async function POST(req: NextRequest) {
     }
 
     await Promise.all([
-      // 1. Internal notification
+      // 1. Internal notification — sent directly to each founder (group blocks external SMTP)
       transporter.sendMail({
         from: '"shift.media" <justin@shift-media.io>',
-        to: 'hello@shift-media.io',
+        to: INTERNAL_TO.join(', '),
         replyTo: email,
         subject: `New enquiry — ${firstName} ${lastName}, ${company}`,
         html: internalEmail({ firstName, lastName, email, company, roles, topics, message }),
@@ -239,7 +242,7 @@ export async function POST(req: NextRequest) {
       transporter.sendMail({
         from: '"shift.media" <justin@shift-media.io>',
         to: email,
-        subject: `We've received your message — shift.media`,
+        subject: `We have received your message — shift.media`,
         html: autoReplyEmail(firstName),
       }),
     ])

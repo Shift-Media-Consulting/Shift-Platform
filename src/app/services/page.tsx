@@ -45,6 +45,7 @@ const partnerships = [
 const pillars = [
   {
     num: '01',
+    label: 'Production',
     name: 'Production Controlling',
     desc: 'Cost intelligence and real-time visibility across every production.',
     details: 'Budget development & validation · Cost reporting & reconciliation · Vendor selection & negotiation · Triple bidding · Rate benchmarking · Talent buyout management · SOW & MSA review · Real-time spend visibility',
@@ -52,6 +53,7 @@ const pillars = [
   },
   {
     num: '02',
+    label: 'Strategy',
     name: 'Strategic Advisory',
     desc: 'Shaping how brands commission and plan content at scale.',
     details: 'Production strategy · Operating-model design · Roster & vendor strategy · Sustainable production & ESG reporting · Risk & compliance · International production structures · Tax-incentive strategy',
@@ -59,6 +61,7 @@ const pillars = [
   },
   {
     num: '03',
+    label: 'Setup',
     name: 'Organisational Setup',
     desc: 'Building the production capability you need — from scratch or from inside.',
     details: 'In-house production department setup · Talent strategy & hiring · Production tech stack & tooling · VFX & post-production pipelines · AI studio architecture · Team upskilling & change management',
@@ -66,9 +69,10 @@ const pillars = [
   },
   {
     num: '04',
+    label: 'AI',
     name: 'AI Integration',
     desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.',
-    details: 'AI maturity assessment · AI use-case identification & prioritisation · Tool selection & vendor evaluation · EU-compliant AI stack selection · Workflow integration · AI playbooks (Brand · Production · Governance) · Team training & certification · Ethics & policy frameworks',
+    details: 'AI maturity assessment · AI use-case identification & prioritisation · Tool selection & vendor evaluation · EU-compliant AI stack selection · Workflow integration · AI playbooks (Brand, Production, Governance) · Team training & certification · Ethics & policy frameworks',
     outcome: 'A working AI operating model — not a slide deck.',
   },
 ]
@@ -76,19 +80,19 @@ const pillars = [
 const faqs = [
   {
     q: 'How is shift.media different from a production company?',
-    a: 'We don\'t make productions. We advise on them. We have no financial interest in any production going ahead, going bigger, or going to any particular vendor.',
+    a: 'We do not make productions. We advise on them. We have no financial interest in any production going ahead, going bigger, or going to any particular vendor.',
   },
   {
     q: 'How is shift.media different from a consultancy?',
-    a: 'We\'ve actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production — not what a slide deck says should happen.',
+    a: 'We have actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production — not what a slide deck says should happen.',
   },
   {
     q: 'Do you take a cut of vendor fees?',
-    a: 'No. Never. Our fees come from our clients. That\'s it.',
+    a: 'No. Never. Our fees come from our clients. That is it.',
   },
   {
     q: 'What does an engagement typically cost?',
-    a: 'We scope each engagement individually. Talk to us — we\'ll tell you what\'s involved before you commit to anything.',
+    a: 'We scope each engagement individually. Talk to us — we will tell you what is involved before you commit to anything.',
   },
   {
     q: 'Can you work alongside our existing agency?',
@@ -148,8 +152,8 @@ export default function ServicesPage() {
           }}
         >
           <div className="ab-card flex flex-col gap-20">
-            <ServicesSlider label="Where to start." cards={entryPoints} />
-            <ServicesSlider label="How we engage."  cards={partnerships} />
+            <ServicesSlider label={<>Where to <em className="news">start.</em></>} cards={entryPoints} />
+            <ServicesSlider label={<>How we <em className="news">engage.</em></>} cards={partnerships} />
           </div>
         </section>
 
@@ -180,7 +184,7 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              Four pillars. One partner.
+              Four pillars. <em className="news">One partner.</em>
             </h2>
             <p
               className="ab-p"
@@ -265,7 +269,7 @@ export default function ServicesPage() {
                       color: 'rgba(17,17,17,0.60)',
                     }}
                   >
-                    [{item.num}] · {item.name.split(' ')[0]}
+                    [{item.num}] · {item.label}
                   </span>
                 </div>
 
@@ -341,7 +345,7 @@ export default function ServicesPage() {
                 marginBottom: 'clamp(40px,5vw,56px)',
               }}
             >
-              Common questions.
+              Common <em className="news">questions.</em>
             </h2>
             <div className="ab-card">
               <ServicesFaq items={faqs} />
@@ -349,7 +353,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <CtaSection />
+        <CtaSection para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help — and which founder you would be working with." />
 
       </main>
       <Footer />

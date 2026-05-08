@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { footerNavItems } from '@/lib/nav'
 
 export default function Footer() {
   return (
@@ -36,13 +37,7 @@ export default function Footer() {
 
         {/* Links */}
         <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-10 md:justify-self-center">
-          {[
-            { href: '/about',    label: 'About' },
-            { href: '/services', label: 'Services' },
-            { href: '/method',   label: 'The Method' },
-            { href: '/team',     label: 'Team' },
-            { href: '/contact',  label: 'Contact' },
-          ].map(link => (
+          {footerNavItems.map(link => (
             <Link
               key={link.href}
               href={link.href}
@@ -88,7 +83,7 @@ export default function Footer() {
           color: 'rgba(246,245,242,0.4)',
           letterSpacing: '0.5px',
         }}>
-          © 2026 SHIFT MEDIA GmbH. All rights reserved.
+          © 2026 Shift Media GmbH. All rights reserved.
         </p>
         <p style={{
           fontFamily: 'var(--font-mono)',

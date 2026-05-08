@@ -76,7 +76,7 @@ export default function HomePage() {
           >
             Independent by design.
             <br />
-            On your side by choice.
+            <em className="news">On your side by choice.</em>
           </h1>
 
           {/* Deck */}
@@ -141,37 +141,13 @@ export default function HomePage() {
             className="reveal"
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
+              justifyContent: 'flex-end',
               alignItems: 'center',
               borderTop: '1px solid rgba(246,245,242,0.30)',
               paddingTop: '28px',
               marginBottom: 0,
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span
-                className="hm-dot"
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#f6f5f2',
-                  boxShadow: '0 0 12px #f6f5f2',
-                  display: 'inline-block',
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '12px',
-                  letterSpacing: '0.18em',
-                  color: 'rgba(246,245,242,0.78)',
-                }}
-              >
-                Open for engagements · Q1 2026
-              </span>
-            </div>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
@@ -252,7 +228,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Four pillars. One partner.
+              Four pillars. <em className="news">One partner.</em>
             </h2>
             <p
               style={{
@@ -354,7 +330,7 @@ export default function HomePage() {
                 code: '[04] · AI',
                 h3: 'AI Integration',
                 blurb:
-                  'Practical AI adoption in production — with governance, training, and real results.',
+                  'From AI experiments to AI-native production. Governed, calibrated, built to last.',
                 items: [
                   'AI readiness audit',
                   'Tool selection',
@@ -628,7 +604,7 @@ export default function HomePage() {
               marginBottom: '24px',
             }}
           >
-            Tell us what you&apos;re trying to figure out.
+            Tell us what you are trying to figure out.
           </h2>
 
           {/* Para */}
@@ -642,9 +618,9 @@ export default function HomePage() {
               marginBottom: '40px',
             }}
           >
-            A 45-minute call. We come back in writing within five working days with an
-            honest read on whether we&apos;re the right people to help — and which
-            founder you&apos;d be working with.
+            A 45-minute call. We will come back within 24 hours with an honest read on
+            whether we are the right people to help — and which founder you would be
+            working with.
           </p>
 
           {/* CTA row */}

@@ -4,13 +4,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { navItems } from '@/lib/nav'
 
-const links = [
-  { href: '/about',    label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/method',   label: 'The Method' },
-  { href: '/team',     label: 'Team' },
-]
+const links = navItems.map(({ href, label }) => ({ href, label }))
 
 export default function Nav() {
   const pathname = usePathname()
@@ -166,8 +162,7 @@ export default function Nav() {
           ].join(' ')}
           style={{ fontFamily: 'var(--font-head)' }}
         >
-          <span>Get in touch</span>
-          <span aria-hidden="true" className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:translate-x-1">›</span>
+          Get in touch ›
         </Link>
 
         {/* Mobile burger (right) */}

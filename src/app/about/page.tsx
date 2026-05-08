@@ -214,8 +214,8 @@ export default function AboutPage() {
         </section>
 
         <CtaSection
-          h2="Forty-five minutes. No sales pitch."
-          para="We will tell you in writing within five working days whether we are the right next step — or what is, if we are not."
+          h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>}
+          para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help — and which founder you would be working with."
         />
 
       </main>

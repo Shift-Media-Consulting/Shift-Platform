@@ -5,19 +5,21 @@
  * so it "returns" from the pale band.
  */
 
+import { ReactNode } from 'react'
+
 const CTA_GRADIENT =
   'linear-gradient(180deg, #b9d8d2 0%, #2a6f5e 60%, #004d40 100%)'
 
 type Props = {
-  h2?: string
+  h2?: ReactNode
   para?: string
   eyebrow?: string
 }
 
 export default function CtaSection({
   eyebrow = '— Start with a conversation',
-  h2 = 'Forty-five minutes. No sales pitch.',
-  para = "Tell us what you are trying to figure out. We will tell you in writing within five working days whether we are the right people to help — and which founder you would be working with.",
+  h2 = <>Forty-five minutes. <em className="news">No sales pitch.</em></>,
+  para = "Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help — and which founder you would be working with.",
 }: Props) {
   return (
     <section
