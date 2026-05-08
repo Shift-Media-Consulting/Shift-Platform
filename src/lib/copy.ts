@@ -8,8 +8,7 @@ export const site = {
   slaShort: "Within 24 hours",
   year: 2026,
   tagline: "INDEPENDENT PRODUCTION ADVISORY",
-  independenceLine:
-    "No vendor affiliations. No production-company kickbacks. No agency parent. Just senior production expertise on your side.",
+  independenceLine: "Senior production expertise on your side.",
   cta: {
     nav: "Get in touch",
     body: "Request a conversation",

@@ -8,21 +8,6 @@ export default function Footer() {
       className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-12 md:pt-16 pb-8"
       style={{ backgroundColor: 'var(--teal)' }}
     >
-      {/* Proof line */}
-      <p
-        className="mb-10 md:mb-14 font-medium"
-        style={{
-          fontFamily: 'var(--font-head)',
-          fontSize: 'clamp(13px, 1.25vw, 15px)',
-          color: 'rgba(246,245,242,0.55)',
-          lineHeight: '1.6',
-          letterSpacing: '0.1px',
-        }}
-      >
-        No vendor affiliations. No production-company kickbacks. No agency parent.{' '}
-        Just senior production expertise on your side.
-      </p>
-
       {/* Top row */}
       <div className="grid gap-10 md:gap-10 md:grid-cols-[1fr_auto_1fr] md:items-center mb-10 md:mb-14">
         {/* Brand */}

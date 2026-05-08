@@ -304,9 +304,7 @@ export default function MethodPage() {
               marginBottom: 'clamp(48px, 6vw, 80px)',
             }}
           >
-            No vendor affiliations. No production-company kickbacks. No agency
-            parent. Just{' '}
-            <em className="news">senior production expertise</em>{' '}
+            <em className="news">Senior production expertise</em>{' '}
             on your side of the table.
           </p>
 
@@ -326,7 +324,7 @@ export default function MethodPage() {
               },
               {
                 h4: 'Compensation',
-                body: 'We are paid by you. Once. Fixed scope, fixed fee. No rebates. No back-end. No volume-based incentives.',
+                body: 'We are paid by you. Once. Fixed scope, fixed fee.',
               },
               {
                 h4: 'Parentage',

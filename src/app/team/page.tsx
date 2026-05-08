@@ -56,7 +56,7 @@ const proofCells = [
   { target: '600', suffix: 'M+', label: 'Production budgets managed across the founders’ careers' },
   { target: '40',  suffix: '+',  label: 'Years of combined production leadership' },
   { target: '25',  suffix: '+',  label: 'Markets shipped into — DACH, EMEA, Americas, APAC' },
-  { target: '0',   suffix: '',   label: 'Vendor affiliations, kickbacks, or holding-company parents' },
+  { target: '0',   suffix: '',   label: 'Agency or holding-group affiliations' },
 ]
 
 /* ── Working model rows ────────────────────────────────────────────────── */
@@ -83,7 +83,7 @@ const workRows = [
     step: 'Step 04',
     tag: 'Always',
     heading: 'One invoice, fully itemised',
-    desc: 'No bundling. No rebates. No back-end. You see exactly who did what, for how long, at what rate.',
+    desc: 'You see exactly who did what, for how long, at what rate.',
   },
 ]
 

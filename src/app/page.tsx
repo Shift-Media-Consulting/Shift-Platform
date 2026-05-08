@@ -243,8 +243,7 @@ export default function HomePage() {
                 }}
               >
                 We do not own a production company. We are not part of an agency
-                holding group. We do not take rebates, kickbacks, or volume incentives
-                from any supplier we recommend.
+                holding group.
               </p>
               <p
                 className="reveal"
