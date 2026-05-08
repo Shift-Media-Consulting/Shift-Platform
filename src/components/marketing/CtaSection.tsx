@@ -17,7 +17,7 @@ type Props = {
 }
 
 export default function CtaSection({
-  eyebrow = '— Start with a conversation',
+  eyebrow = '— Start with a conversation —',
   h2 = <>Forty-five minutes. <em className="news">No sales pitch.</em></>,
   para = "Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with.",
 }: Props) {
@@ -36,8 +36,8 @@ export default function CtaSection({
       <p
         style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '13px',
-          letterSpacing: '0.18em',
+          fontSize: '15px',
+          letterSpacing: '0.14em',
           color: 'rgba(246,245,242,0.55)',
           marginBottom: '24px',
           fontWeight: 400,
