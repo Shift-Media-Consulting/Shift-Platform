@@ -300,7 +300,7 @@ export default function HomePage() {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '12px',
                     letterSpacing: '0.18em',
-                    color: 'rgba(246,245,242,0.50)',
+                    color: '#111111',
                     display: 'block',
                   }}
                 >
