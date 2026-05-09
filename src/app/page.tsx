@@ -122,19 +122,6 @@ export default function HomePage() {
             >
               Get in touch ›
             </a>
-            <a
-              href="/method"
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px',
-                letterSpacing: '0.10em',
-                color: 'rgba(246,245,242,0.75)',
-                textDecoration: 'underline',
-                textUnderlineOffset: '3px',
-              }}
-            >
-              The Shift Method
-            </a>
           </div>
 
         </section>
