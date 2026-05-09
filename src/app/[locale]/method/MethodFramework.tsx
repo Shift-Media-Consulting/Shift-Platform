@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useMessages } from 'next-intl'
 
 type Node = {
   index: number
@@ -65,6 +66,9 @@ const CX = 220, CY = 220, R_OUTER = 190, R_INNER = 78
 const ECX = 250, ECY = 250, R_ORBIT = 182, SUN_R = 64
 
 export default function MethodFramework() {
+  const messages = useMessages()
+  const dims = ((messages as any).Method?.Dimensions?.items as Array<{ number: string; title: string; description: string }> | undefined) ?? []
+
   const svgWrapRef     = useRef<HTMLDivElement>(null)
   const [expanded, setExpanded]   = useState(false)
   const [hovered, setHovered]     = useState<number | null>(null)
@@ -276,7 +280,7 @@ export default function MethodFramework() {
                         <text x={nx + labelXOff} y={ny + 18} textAnchor={anchor}
                           fill="rgba(246,245,242,0.85)" fontSize="11"
                           fontFamily="var(--font-head)" fontWeight="500">
-                          {n.name}
+                          {dims[n.index]?.title ?? n.name}
                         </text>
                       </g>
                     </g>
@@ -392,10 +396,10 @@ export default function MethodFramework() {
                 color: '#f6f5f2',
                 marginBottom: '16px',
               }}>
-                <em className="news">{card.italic}</em>
+                <em className="news">{dims[i]?.title ?? card.italic}</em>
               </h3>
               <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(246,245,242,0.68)' }}>
-                {card.body}
+                {dims[i]?.description ?? card.body}
               </p>
             </div>
           ))}
@@ -691,7 +695,7 @@ export default function MethodFramework() {
                             fontWeight: 600,
                             color: 'rgba(246,245,242,0.80)',
                             letterSpacing: '-0.01em',
-                          }}>{n.name}</span>
+                          }}>{dims[i]?.title ?? n.name}</span>
                         </div>
                       </div>
                     ))}
@@ -742,7 +746,7 @@ export default function MethodFramework() {
                         fontWeight: 600,
                         color: '#f6f5f2',
                         letterSpacing: '-0.01em',
-                      }}>{NODES[hovered].name}</span>
+                      }}>{dims[hovered]?.title ?? NODES[hovered].name}</span>
                     </div>
                   </div>
 
@@ -756,7 +760,7 @@ export default function MethodFramework() {
                     marginBottom: '18px',
                     letterSpacing: '-0.01em',
                   }}>
-                    <em className="news">{CARD_DESCS[hovered].italic}</em>
+                    <em className="news">{dims[hovered]?.title ?? CARD_DESCS[hovered].italic}</em>
                   </h3>
 
                   <p style={{
@@ -765,7 +769,7 @@ export default function MethodFramework() {
                     color: 'rgba(246,245,242,0.72)',
                     fontWeight: 400,
                   }}>
-                    {CARD_DESCS[hovered].body}
+                    {dims[hovered]?.description ?? CARD_DESCS[hovered].body}
                   </p>
 
                   {/* Divider + cluster badge */}

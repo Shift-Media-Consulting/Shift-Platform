@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useMessages } from 'next-intl'
 
 const EASE     = 'cubic-bezier(0.65,0,0.35,1)'
 const DURATION = 0.8
@@ -191,6 +192,17 @@ function animateTo(
 }
 
 export default function MethodCarousel() {
+  const messages  = useMessages()
+  const delivItems = ((messages as any).Method?.Deliverables?.items as Array<{ number: string; title: string; description: string }> | undefined) ?? []
+
+  // Override CARDS with translated content if available
+  const cards: CardData[] = CARDS.map((c, i) => ({
+    ...c,
+    h3:   delivItems[i]?.title   ?? c.h3,
+    para: delivItems[i]?.description ?? c.para,
+  }))
+  const tripled = [...cards, ...cards, ...cards]
+
   const trackRef     = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const xRef         = useRef(0)
@@ -202,8 +214,6 @@ export default function MethodCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isMobile, setIsMobile]       = useState(false)
   const [cardPx, setCardPx]           = useState(460)
-
-  const tripled = [...CARDS, ...CARDS, ...CARDS]
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 900)

@@ -1,68 +1,42 @@
+import { setRequestLocale, getTranslations, getMessages } from 'next-intl/server'
+import { getTranslations as getMeta } from 'next-intl/server'
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import CtaSection from '@/components/marketing/CtaSection'
 import AboutConflict from './AboutConflict'
 import AboutAnimations from './AboutAnimations'
 
-export const metadata = {
-  title: 'About — shift.media',
-  description: 'shift.media exists to give brands an independent voice in production, built on expertise, not affiliation.',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getMeta({ locale, namespace: 'About.Meta' })
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: locale === 'de' ? '/about' : '/en/about',
+      languages: { 'de-DE': '/about', 'en': '/en/about', 'x-default': '/about' },
+    },
+  }
 }
 
 const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
-const differences = [
-  {
-    num: '01',
-    name: 'Genuinely independent',
-    desc: 'We are not a production company. We are not an agency. We have no financial relationships with the directors or production companies we recommend. Our advice is only ever in the client\'s interest.',
-  },
-  {
-    num: '02',
-    name: 'Real production knowledge',
-    desc: 'Our team has built, run, and controlled productions. We have been on set, in the edit suite, and in the negotiations. Every recommendation is grounded in what actually happens, not what a slide deck says should happen.',
-  },
-  {
-    num: '03',
-    name: 'Methodology, not opinions',
-    desc: 'shift.media operates on a documented methodology (the Shift Method), proprietary tooling, and a replicable advisory framework. Every engagement runs on the same diagnostic, the same playbooks, and the same review structure. Clients get institutional quality. Not individual availability.',
-  },
-  {
-    num: '04',
-    name: 'Built for where it\'s going',
-    desc: 'Most production advisors were built for the industry as it was. We were built for the one that is coming: AI-native operating models, in-housing, budget accountability, and the unbundling of the agency model. We started there. We did not bolt it on.',
-  },
-]
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
 
-const beliefs = [
-  {
-    statement: 'Production budgets should be transparent.',
-    emphasis: 'They almost never are.',
-  },
-  {
-    statement: 'AI does not replace production craft.',
-    emphasis: 'It removes the parts that were never craft.',
-  },
-  {
-    statement: 'In-house is not cheaper by default.',
-    emphasis: 'Done badly, it\'s more expensive than what it replaced.',
-  },
-  {
-    statement: 'The best production decision is often a smaller one,',
-    emphasis: 'sooner.',
-  },
-]
+  const t = await getTranslations('About')
+  const messages = await getMessages()
+  const principlesItems = ((messages as any).About.Principles.items as Array<{ number: string; title: string; description: string }>)
+  const beliefsItems    = ((messages as any).About.Beliefs.items    as Array<{ claim: string; reality: string }>)
 
-export default function AboutPage() {
   return (
     <>
       <Nav />
       <AboutAnimations />
       <main
         className="about-main min-h-screen font-[family-name:var(--font-head)]"
-        style={{
-          background: BODY_GRADIENT,
-        }}
+        style={{ background: BODY_GRADIENT }}
       >
 
         {/* HERO */}
@@ -79,22 +53,19 @@ export default function AboutPage() {
               className="ab-h font-bold text-cream leading-[0.95] tracking-[-0.025em] mb-8"
               style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
-              Built on expertise.{' '}
-              <em className="news">Not affiliation.</em>
+              {t.rich('Hero.title', { em: (c) => <em className="news">{c}</em> })}
             </h1>
 
             <p
               className="ab-p text-cream/80 leading-[1.55] max-w-[600px] font-medium"
               style={{ fontSize: 'clamp(16px, 1.6vw, 18px)' }}
             >
-              shift.media exists to give brands an independent voice in
-              production, without the conflicts of interest built into the
-              brand–agency–production system.
+              {t('Hero.subtitle')}
             </p>
           </div>
         </section>
 
-        {/* WHY WE EXIST — has its own IntersectionObserver */}
+        {/* WHY WE EXIST */}
         <AboutConflict />
 
         {/* OUR DIFFERENCE */}
@@ -109,23 +80,26 @@ export default function AboutPage() {
               className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16 max-w-[900px]"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
-              We have no relationships{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                to protect.
-              </em>
+              {t.rich('Principles.title', {
+                em: (c) => (
+                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                    {c}
+                  </em>
+                ),
+              })}
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-14 gap-x-8">
-              {differences.map(item => (
-                <div key={item.num} className="ab-card flex flex-col">
+              {principlesItems.map(item => (
+                <div key={item.number} className="ab-card flex flex-col">
                   <p className="text-[11px] tracking-[1px] mb-5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-faint)' }}>
-                    [{item.num}]
+                    [{item.number}]
                   </p>
                   <h3 className="font-bold text-[20px] leading-[1.05] tracking-[-0.015em] mb-3.5" style={{ color: 'var(--fg)' }}>
-                    {item.name}
+                    {item.title}
                   </h3>
                   <p className="font-medium text-[14px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
-                    {item.desc}
+                    {item.description}
                   </p>
                 </div>
               ))}
@@ -145,26 +119,29 @@ export default function AboutPage() {
               className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-12 sm:mb-16"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
-              What we{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                believe.
-              </em>
+              {t.rich('Beliefs.title', {
+                em: (c) => (
+                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                    {c}
+                  </em>
+                ),
+              })}
             </h2>
 
             <div className="flex flex-col gap-10 sm:gap-12">
-              {beliefs.map((b, i) => (
+              {beliefsItems.map((b, i) => (
                 <div key={i} className="ab-card border-l-2 border-teal-mid/30 pl-7 sm:pl-9">
                   <p
                     className="font-bold leading-[1.1] tracking-[-0.02em] mb-2"
                     style={{ fontSize: 'clamp(20px, 2.8vw, 30px)', color: 'var(--fg)' }}
                   >
-                    {b.statement}
+                    {b.claim}
                   </p>
                   <p
                     className="font-bold text-teal-mid leading-[1.1] tracking-[-0.02em]"
                     style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.8vw, 30px)' }}
                   >
-                    {b.emphasis}
+                    {b.reality}
                   </p>
                 </div>
               ))}
@@ -172,7 +149,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* FOUNDER NOTE */}
+        {/* ORIGIN / FOUNDER NOTE */}
         <section
           data-ab
           data-theme="light"
@@ -184,22 +161,21 @@ export default function AboutPage() {
               className="ab-h font-bold leading-[1.0] tracking-[-0.02em] mb-10"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', color: 'var(--fg)' }}
             >
-              Why we{' '}
-              <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
-                built this.
-              </em>
+              {t.rich('Origin.title', {
+                em: (c) => (
+                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                    {c}
+                  </em>
+                ),
+              })}
             </h2>
 
             <div className="flex flex-col gap-6 mb-10">
               <p className="ab-p font-medium text-[16px] sm:text-[17px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
-                We started shift.media in Hamburg because the independent
-                production advisor we would want to hire did not exist in Europe,
-                at least not the way we thought it should.
+                {t('Origin.body_p1')}
               </p>
               <p className="ab-p2 font-medium text-[16px] sm:text-[17px] leading-[1.65]" style={{ color: 'var(--fg-muted)' }}>
-                Three founders. Decades on set. One firm built around the
-                conviction that brands deserve a partner who is genuinely on
-                their side.
+                {t('Origin.body_p2')}
               </p>
             </div>
 
@@ -207,14 +183,16 @@ export default function AboutPage() {
               className="ab-name font-bold text-[14px] tracking-[0.3px]"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-faint)' }}
             >
-              — Justin Stiebel · Cornelius Roenz · Jankel Huppertz
+              — {t('Origin.signature')}
             </p>
           </div>
         </section>
 
         <CtaSection
-          h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>}
-          para="Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with."
+          eyebrow={`— ${t('Closing.kicker')} —`}
+          h2={t.rich('Closing.title', { em: (c) => <em className="news">{c}</em> })}
+          para={t('Closing.body')}
+          cta={t('Closing.cta')}
         />
 
       </main>

@@ -1,8 +1,19 @@
-import Link from 'next/link'
+'use client'
+
 import Image from 'next/image'
-import { footerNavItems } from '@/lib/nav'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 export default function Footer() {
+  const t = useTranslations('Footer')
+
+  const footerNavItems = [
+    { label: t('about'),    href: '/about' as const },
+    { label: t('services'), href: '/services' as const },
+    { label: t('team'),     href: '/team' as const },
+    { label: t('contact'),  href: '/contact' as const },
+  ]
+
   return (
     <footer
       className="px-8 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-12 md:pt-16 pb-8"
@@ -68,7 +79,7 @@ export default function Footer() {
           color: 'rgba(246,245,242,0.4)',
           letterSpacing: '0.5px',
         }}>
-          © 2026 Shift Media GmbH. All rights reserved.
+          {t('rights')}
         </p>
         <p style={{
           fontFamily: 'var(--font-mono)',
@@ -77,7 +88,7 @@ export default function Footer() {
           color: 'rgba(246,245,242,0.4)',
           letterSpacing: '1px',
         }}>
-          INDEPENDENT PRODUCTION ADVISORY · HAMBURG, DE
+          {t('tagline')}
         </p>
       </div>
     </footer>

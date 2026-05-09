@@ -1,0 +1,525 @@
+{
+  "Nav": {
+    "about": "About",
+    "services": "Services",
+    "method": "Die Methode",
+    "audit": "Audit",
+    "audit_label": "Operative Diagnose",
+    "workshops": "Workshops",
+    "workshops_label": "Fokussierte Sessions",
+    "pilot": "Pilot",
+    "pilot_label": "Ein definiertes Projekt, von Anfang bis Ende",
+    "team": "Team",
+    "contact": "Kontakt aufnehmen ›",
+    "email": "HELLO@SHIFT-MEDIA.IO"
+  },
+  "Footer": {
+    "tagline": "UNABHÄNGIGE PRODUKTIONSBERATUNG · HAMBURG, DE",
+    "rights": "© 2026 Shift Media GmbH. Alle Rechte vorbehalten.",
+    "about": "About",
+    "services": "Services",
+    "team": "Team",
+    "contact": "Kontakt"
+  },
+  "Promise": {
+    "line": "Keine Vendor Verbindungen. Keine Kickbacks von Produktionsfirmen. Keine Agenturgruppe im Hintergrund. Nur erfahrene Produktionsexpertise auf Ihrer Seite."
+  },
+  "Home": {
+    "Meta": {
+      "title": "shift.media — Unabhängige Produktionsberatung",
+      "description": "Unabhängig aus Prinzip. Auf Ihrer Seite aus Überzeugung. Produktionsberatung für Marken. Hamburg, DE."
+    },
+    "Hero": {
+      "kicker": "01 / Index · Unabhängig aus Prinzip",
+      "title": "Unabhängig aus Prinzip. <em>Auf Ihrer Seite aus Überzeugung.</em>",
+      "subtitle": "<brand>shift.media</brand> gibt Marken eine unabhängige Stimme in der Produktion. Aus Expertise, nicht aus Verbindungen.",
+      "cta_primary": "Kontakt aufnehmen ›",
+      "cta_secondary": "Die Shift Methode"
+    },
+    "Pillars": {
+      "title": "Vier Säulen. <em>Ein Partner.</em>",
+      "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Production Controlling",
+          "description": "Kostentransparenz und Echtzeitübersicht über jede Produktion."
+        },
+        {
+          "number": "02",
+          "title": "Strategische Beratung",
+          "description": "Wir gestalten, wie Marken Inhalte beauftragen und planen. In jeder Größenordnung."
+        },
+        {
+          "number": "03",
+          "title": "Organisationsaufbau",
+          "description": "Aufbau der Produktionskompetenz, die Sie brauchen. Von Grund auf oder aus dem Bestand heraus."
+        },
+        {
+          "number": "04",
+          "title": "AI Integration",
+          "description": "Vom AI Experiment zur AI nativen Produktion. Gesteuert, kalibriert, gebaut, um zu bleiben."
+        }
+      ]
+    },
+    "Independence": {
+      "headline": "Die meisten Produktionsbudgets werden von Menschen verhandelt, die am Ergebnis verdienen. <em>Wir nicht.</em>",
+      "body_p1": "Wir besitzen keine Produktionsfirma. Wir gehören zu keiner Agenturgruppe.",
+      "body_p2": "Das ist die ganze Prämisse. Alles andere (das Controlling, die Beratung, das Organisationsdesign, die AI) funktioniert, weil das Fundament unabhängig ist."
+    },
+    "Stats": {
+      "items": [
+        { "value": "€600M+", "label": "Verantwortete Budgets" },
+        { "value": "50+", "label": "Jahre kombinierte Produktionserfahrung" },
+        { "value": "0", "label": "Vendor Verbindungen" },
+        { "value": "100%", "label": "Gründergeführt" }
+      ]
+    },
+    "Closing": {
+      "kicker": "Beginnen Sie mit einem Gespräch",
+      "title": "Sagen Sie uns, was Sie herausfinden wollen.",
+      "body": "Ein 45 Minuten Gespräch. Wir melden uns innerhalb von 24 Stunden mit einer ehrlichen Einschätzung, ob wir die richtigen Menschen sind, um zu helfen. Und mit welchem Gründer Sie zusammenarbeiten würden.",
+      "cta": "Gespräch anfragen ›"
+    }
+  },
+  "About": {
+    "Meta": {
+      "title": "About — shift.media",
+      "description": "shift.media gibt Marken eine unabhängige Stimme in der Produktion. Aus Expertise, nicht aus Verbindungen."
+    },
+    "Hero": {
+      "title": "Aus Expertise. <em>Nicht aus Verbindungen.</em>",
+      "subtitle": "shift.media gibt Marken eine unabhängige Stimme in der Produktion. Ohne die Interessenkonflikte, die im Dreieck aus Marke, Agentur und Produktion eingebaut sind."
+    },
+    "Triangle": {
+      "title": "Das Dreieck aus Marke, Agentur und Produktion hat <em>eingebaute Konflikte.</em>",
+      "intro": "Drei Rollen. Drei Beziehungen. Null unabhängige Aufsicht. Jeder am Tisch wird von einem anderen bezahlt. Was bedeutet: niemand wird dafür bezahlt, zu widersprechen.",
+      "nodes": [
+        {
+          "kicker": "01 / Der Käufer",
+          "role": "Marke",
+          "description": "Zahlt die Rechnung. Will Ergebnisse, Transparenz und Gegenwert. Nicht gebündelte Rechnungen und ungelesene Posten.",
+          "edge_to": "Agentur",
+          "quote": "Bezahlen wir die Idee, oder den Aufschlag auf die Menschen, die sie umsetzen?"
+        },
+        {
+          "kicker": "02 / Der Verkäufer",
+          "role": "Agentur",
+          "description": "Verkauft die Idee. Die Vergütung ist oft ein Prozentsatz des Produktionsbudgets, das sie selbst spezifiziert. Größeres Spec, größeres Honorar.",
+          "edge_to": "Produktion",
+          "quote": "Wessen Marge steckt in wessen Position. Und wer wird es ansprechen?"
+        },
+        {
+          "kicker": "03 / Der Macher",
+          "role": "Produktion",
+          "description": "Macht die Arbeit. Verdient über Aufschläge, Equipment und Crew. Jede Kostenkürzung ist ein Schnitt in die eigene Bilanz. Niemand benotet seine eigenen Hausaufgaben.",
+          "edge_to": "Marke",
+          "quote": "Wer sagt mir, wann ein Angebot fair ist. Wenn niemand im Raum dafür bezahlt wird, es zu sagen."
+        }
+      ],
+      "caption": "Drei Rollen · drei Beziehungen · null unabhängige Aufsicht",
+      "fourth_seat": "<brand>shift.media</brand> · <em>der fehlende vierte Sitz</em>",
+      "outro": "Ein Markt dieser Komplexität, ohne Regulierung und in dieser Größenordnung braucht keine <em>weitere Agentur.</em> Er braucht einen <em>unabhängigen Partner.</em>"
+    },
+    "Principles": {
+      "title": "Wir haben keine Verbindungen, <em>die wir schützen müssen.</em>",
+      "items": [
+        {
+          "number": "01",
+          "title": "Wirklich unabhängig",
+          "description": "Wir sind keine Produktionsfirma. Wir sind keine Agentur. Wir haben keine finanziellen Beziehungen zu den Regisseuren oder Produktionsfirmen, die wir empfehlen. Unsere Empfehlungen liegen ausschließlich im Interesse des Klienten."
+        },
+        {
+          "number": "02",
+          "title": "Echtes Produktionswissen",
+          "description": "Unser Team hat Produktionen gebaut, geführt und kontrolliert. Wir waren am Set, im Schneideraum, in den Verhandlungen. Jede Empfehlung beruht auf dem, was tatsächlich passiert. Nicht auf dem, was eine Folie behauptet."
+        },
+        {
+          "number": "03",
+          "title": "Methodik, keine Meinungen",
+          "description": "shift.media arbeitet mit einer dokumentierten Methodik (der Shift Methode), eigenen Tools und einem replizierbaren Beratungsrahmen. Jeder Auftrag läuft über dieselbe Diagnose, dieselben Playbooks und dieselbe Reviewstruktur. Klienten bekommen institutionelle Qualität. Nicht individuelle Verfügbarkeit."
+        },
+        {
+          "number": "04",
+          "title": "Gebaut für das, was kommt",
+          "description": "Die meisten Produktionsberater wurden für die Branche gebaut, wie sie war. Wir sind für die gebaut, die kommt. AI native Operating Models, Inhousing, Budgetverantwortung und das Auflösen des klassischen Agenturmodells. Wir haben dort angefangen. Wir haben es nicht nachträglich angeklebt."
+        }
+      ]
+    },
+    "Beliefs": {
+      "title": "Was wir <em>glauben.</em>",
+      "items": [
+        {
+          "claim": "Produktionsbudgets sollten transparent sein.",
+          "reality": "Sie sind es fast nie."
+        },
+        {
+          "claim": "AI ersetzt kein Produktionshandwerk.",
+          "reality": "Sie entfernt die Teile, die nie Handwerk waren."
+        },
+        {
+          "claim": "Inhouse ist nicht automatisch günstiger.",
+          "reality": "Schlecht umgesetzt, ist es teurer als das, was es ersetzt hat."
+        },
+        {
+          "claim": "Die beste Produktionsentscheidung ist oft eine kleinere.",
+          "reality": "Früher."
+        }
+      ]
+    },
+    "Origin": {
+      "title": "Warum wir <em>das gebaut haben.</em>",
+      "body_p1": "Wir haben shift.media in Hamburg gegründet, weil es den unabhängigen Produktionsberater, den wir selbst engagieren würden, in Europa nicht gab. Zumindest nicht so, wie wir ihn verstehen.",
+      "body_p2": "Drei Gründer. Jahrzehnte am Set. Eine Firma, gebaut auf der Überzeugung, dass Marken einen Partner verdienen, der wirklich auf ihrer Seite steht.",
+      "signature": "Justin Stiebel · Cornelius Roenz · Jankel Huppertz"
+    },
+    "Closing": {
+      "kicker": "Beginnen Sie mit einem Gespräch",
+      "title": "Fünfundvierzig Minuten. <em>Kein Sales Pitch.</em>",
+      "body": "Sagen Sie uns, was Sie herausfinden wollen. Wir melden uns innerhalb von 24 Stunden, Montag bis Freitag, mit einer ehrlichen Einschätzung, ob wir die richtigen Menschen sind, um zu helfen. Und mit welchem Gründer Sie zusammenarbeiten würden.",
+      "cta": "Gespräch anfragen ›"
+    }
+  },
+  "Services": {
+    "Meta": {
+      "title": "Services — shift.media",
+      "description": "Wie wir mit Marken arbeiten. Unabhängige Beratung über den gesamten Produktionszyklus."
+    },
+    "Hero": {
+      "title": "Vom einzelnen Briefing <em>zum kompletten Neuaufbau.</em>",
+      "body_p1": "Wir treffen Marken dort, wo sie stehen. Ein Projekt. Ein fokussierter Workshop. Ein eingebundener Retainer. Eine vollständige Inhouse Produktionstransformation.",
+      "body_p2": "Die Architektur bleibt gleich. Der Umfang passt sich dem Auftrag an."
+    },
+    "Entry": {
+      "title": "Wo Sie <em>anfangen.</em>",
+      "items": [
+        {
+          "number": "01",
+          "title": "Audit",
+          "description": "Eine klare, unabhängige Standortbestimmung. Wir prüfen Ihr Produktionssetup (Kosten, Vendoren, Struktur, Prozess) und legen Lücken und Chancen offen."
+        },
+        {
+          "number": "02",
+          "title": "Workshop",
+          "description": "Tiefe, fokussierte Sessions zu einem Thema. AI Readiness, Produktionsstrategie, Organisationsdesign oder anderem. Praktisch und an Ihren echten Briefings entwickelt."
+        },
+        {
+          "number": "03",
+          "title": "Pilot",
+          "description": "Ein definiertes Projekt von Anfang bis Ende. Wir arbeiten neben Ihrem Team, führen es eigenständig durch und hinterlassen Ihnen einen funktionierenden Blueprint."
+        }
+      ]
+    },
+    "Engagement": {
+      "title": "Wie wir <em>arbeiten.</em>",
+      "items": [
+        {
+          "number": "01",
+          "title": "Build",
+          "description": "Beratungsgeführter Aufbau Ihres Inhouse Produktionsmodells. Struktur, Talent, Prozess, Tooling. Gemeinsam mit Ihrem Team entworfen und aufgebaut."
+        },
+        {
+          "number": "02",
+          "title": "Engine",
+          "description": "Senior Beratung im Retainer. Dauerhafte Begleitung über Inhalte, Kampagnen und Operations hinweg. Unabhängig vom einzelnen Projekt. Mit benannter Partnerverantwortung."
+        },
+        {
+          "number": "03",
+          "title": "Campaign",
+          "description": "Eingebundene Produktionsaufsicht vom Briefing bis zur Auslieferung. Kostenkontrolle, Vendorauswahl, Qualitätssicherung. Wir sitzen auf der Markenseite des Tisches."
+        }
+      ]
+    },
+    "Pillars": {
+      "title": "Vier Säulen. Ein Partner.",
+      "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
+      "kicker": "Was wir tun · 04 Kompetenzen",
+      "items": [
+        {
+          "number": "01",
+          "category": "Production",
+          "title": "Production Controlling",
+          "description": "Kostentransparenz und Echtzeitübersicht über jede Produktion.",
+          "capabilities": [
+            "Budgetentwicklung und Validierung",
+            "Kostenreporting und Abgleich",
+            "Vendorauswahl und Verhandlung",
+            "Triple Bidding",
+            "Rate Benchmarking",
+            "Talent Buyout Management",
+            "SOW und MSA Review",
+            "Echtzeit Spend Visibility"
+          ]
+        },
+        {
+          "number": "02",
+          "category": "Strategic",
+          "title": "Strategische Beratung",
+          "description": "Wir gestalten, wie Marken Inhalte beauftragen und planen. In jeder Größenordnung.",
+          "capabilities": [
+            "Produktionsstrategie",
+            "Operating Model Design",
+            "Roster und Vendor Strategie",
+            "Nachhaltige Produktion und ESG Reporting",
+            "Risk und Compliance",
+            "Internationale Produktionsstrukturen",
+            "Tax Incentive Strategie"
+          ]
+        },
+        {
+          "number": "03",
+          "category": "Organisational",
+          "title": "Organisationsaufbau",
+          "description": "Aufbau der Produktionskompetenz, die Sie brauchen. Von Grund auf oder aus dem Bestand heraus.",
+          "capabilities": [
+            "Aufbau von Inhouse Produktionsabteilungen",
+            "Talentstrategie und Hiring",
+            "Production Tech Stack und Tooling",
+            "VFX und Postproduction Pipelines",
+            "AI Studio Architektur",
+            "Team Upskilling und Change Management"
+          ]
+        },
+        {
+          "number": "04",
+          "category": "AI",
+          "title": "AI Integration",
+          "description": "Vom AI Experiment zur AI nativen Produktion. Gesteuert, kalibriert, gebaut, um zu bleiben.",
+          "capabilities": [
+            "AI Reifegrad Assessment",
+            "AI Use Case Identifikation und Priorisierung",
+            "Tool Auswahl und Vendor Evaluation",
+            "EU konformer AI Stack",
+            "Workflow Integration",
+            "AI Playbooks (Marke, Produktion, Governance)",
+            "Team Training und Zertifizierung",
+            "Ethik und Policy Frameworks"
+          ]
+        }
+      ]
+    },
+    "FAQ": {
+      "title": "Häufige <em>Fragen.</em>",
+      "items": [
+        {
+          "question": "Was unterscheidet shift.media von einer Produktionsfirma?",
+          "answer": "Wir produzieren nicht. Wir beraten zur Produktion. Wir haben kein finanzielles Interesse daran, dass eine Produktion zustande kommt, größer wird oder zu einem bestimmten Vendor geht."
+        },
+        {
+          "question": "Was unterscheidet shift.media von einer Beratung?",
+          "answer": "Wir haben Produktionen tatsächlich gemacht. Am Set. Im Schneideraum. In den Verhandlungen. Unsere Empfehlungen beruhen auf dem, was in der Produktion passiert. Nicht auf dem, was eine Folie behauptet."
+        },
+        {
+          "question": "Bekommen Sie einen Anteil von Vendor Honoraren?",
+          "answer": "Nein. Niemals. Unsere Honorare kommen von unseren Klienten. Mehr nicht."
+        },
+        {
+          "question": "Was kostet ein Auftrag in der Regel?",
+          "answer": "Wir scopen jeden Auftrag individuell. Sprechen Sie mit uns. Wir sagen Ihnen, was nötig ist, bevor Sie sich auf etwas festlegen."
+        },
+        {
+          "question": "Können Sie neben unserer bestehenden Agentur arbeiten?",
+          "answer": "Ja. Wir arbeiten mit Marken, deren Agenturen die Produktion managen, mit Marken, die direkt mit Produktionsfirmen arbeiten, und mit Marken, die ihre eigene Inhouse Funktion aufbauen. Die Konstante ist die unabhängige Aufsicht."
+        }
+      ]
+    },
+    "Closing": {
+      "kicker": "Beginnen Sie mit einem Gespräch",
+      "title": "Fünfundvierzig Minuten. Kein Sales Pitch.",
+      "body": "Sagen Sie uns, was Sie herausfinden wollen. Wir antworten innerhalb von fünf Werktagen schriftlich, ob wir die richtigen Menschen sind, um zu helfen. Und mit welchem Gründer Sie zusammenarbeiten würden.",
+      "cta": "Gespräch anfragen ›"
+    }
+  },
+  "Method": {
+    "Meta": {
+      "title": "Die Shift Methode — shift.media",
+      "description": "Ein Diagnoserahmen für die Content Operations von Marken. Sechs Dimensionen. Ein Gespräch."
+    },
+    "Hero": {
+      "title": "Die Shift <em>Methode.</em>",
+      "subtitle": "Ein Diagnoserahmen für die Content Operations von Marken. Sechs Dimensionen. Eine klare Roadmap.",
+      "claim_p1": "Die meisten Produktionsprobleme sind keine kreativen Probleme.",
+      "claim_p2": "Sie sind operative Probleme.",
+      "intro": "Die Shift Methode ist, wie wir sie diagnostizieren. Über sechs Dimensionen, mit einer klaren Roadmap am Ende und einem belastbaren Plan."
+    },
+    "Dimensions": {
+      "title": "Sechs <em>Dimensionen.</em>",
+      "intro": "Jede eine diagnostische Linse. Wählen Sie eine Dimension, um zu sehen, was wir uns ansehen und warum.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Workflow und Prozesseffizienz",
+          "description": "Wir kartieren Ihren kompletten Ablauf vom Briefing bis zur Auslieferung. Wir identifizieren, wo Zeit und Geld verloren gehen, und beziffern Wartezeiten, Übergabefehler und Prozessstreuung. Der größte Teil von Produktionsverschwendung ist unsichtbar, bis jemand sie kartiert."
+        },
+        {
+          "number": "02",
+          "title": "Technologie und Systemintegration",
+          "description": "Wir bewerten Ihren Tech Stack, die Integrationsqualität, Adoption Rates und ob Ihre Technologieinvestitionen tatsächlich Ihren Produktionszielen dienen. Oder neue Komplexität schaffen."
+        },
+        {
+          "number": "03",
+          "title": "Budget und Ressourcenallokation",
+          "description": "Wir untersuchen Budgetstruktur, Kostenabweichungen, finanzielle Governance und wie Ressourcen über den Produktionszyklus modelliert und eingesetzt werden."
+        },
+        {
+          "number": "04",
+          "title": "Teamstruktur und Kompetenz",
+          "description": "Wir kartieren Rollen, Entscheidungsrechte, Kompetenzabdeckung, Schlüsselpersonenrisiko und die Architektur von Entwicklung und Bindung. Wer macht was, wer entscheidet was und was passiert, wenn jemand geht."
+        },
+        {
+          "number": "05",
+          "title": "Content Pipeline und Output Qualität",
+          "description": "Wir verfolgen den Weg von Inhalten vom Briefing über die Produktion bis ins Archiv. Wir bewerten Qualitätskontrollmechanismen, Reworkraten und Feedback Loops. Wo entsteht Qualität. Und wo wird sie wieder zerstört."
+        },
+        {
+          "number": "06",
+          "title": "Vendor und Partner Management",
+          "description": "Wir segmentieren Ihr Vendor Portfolio, prüfen Vertragsstrukturen und Service Levels und bewerten die Beziehungen, die für Ihren Output am wichtigsten sind. Nicht alle Vendoren sind gleich. Die meisten Marken behandeln sie aber so."
+        }
+      ]
+    },
+    "Deliverables": {
+      "title": "Drei Ergebnisse. <em>Ihnen gehörend.</em>",
+      "items": [
+        {
+          "number": "01",
+          "title": "Die Diagnose",
+          "description": "Ein RAG bewerteter Bericht über alle sechs Dimensionen. Mit Belegen, Ursachenanalyse und Orientierungsbenchmarks."
+        },
+        {
+          "number": "02",
+          "title": "Die Roadmap",
+          "description": "Ein priorisierter Aktionsplan. Was zuerst zu beheben ist, was als Nächstes und was Sie lassen sollten."
+        },
+        {
+          "number": "03",
+          "title": "Die Empfehlung",
+          "description": "Eine klare Aussage darüber, welche Form der Zusammenarbeit als Nächstes sinnvoll ist. Oder ob Sie noch keine brauchen."
+        }
+      ]
+    },
+    "Closing": {
+      "title": "Beginnen Sie mit einem <em>Gespräch.</em>",
+      "body": "Die Shift Methode beginnt mit einem Gespräch, nicht mit einem Sales Pitch. Wir sagen Ihnen, ob das der richtige nächste Schritt ist. Und wenn nicht, was es stattdessen ist.",
+      "cta": "Kontakt aufnehmen ›"
+    }
+  },
+  "Team": {
+    "Meta": {
+      "title": "Team — shift.media",
+      "description": "Das Team hinter shift.media. Drei Mitgründer und ein unabhängiges Partnernetzwerk."
+    },
+    "Hero": {
+      "title": "Gebaut von Menschen, die <em>diese Arbeit gemacht haben.</em>",
+      "subtitle": "Drei Mitgründer. Ein unabhängiges Partnernetzwerk. Jahrzehnte praktische Produktionserfahrung. Von Kostenkontrolle bis kreative Auslieferung."
+    },
+    "Founders": {
+      "title": "Drei Gründer. <em>Eine unabhängige Firma.</em>",
+      "items": [
+        {
+          "role": "Mitgründer",
+          "name": "Justin Stiebel",
+          "discipline": "Strategie, Produktionsleitung und Beratung",
+          "p1": "Spezialist für Production Controlling und Beratung mit tiefer Marktkenntnis in deutscher und europäischer TVC, Content und Kampagnenproduktion.",
+          "p2": "Hat Produktionsbudgets über alle Formate hinweg aufgebaut und gesteuert. Von kleinen Social Kampagnen bis zu großen internationalen Drehs. Weiß, was Dinge kosten, wo gepolstert wird und wo Klienten zu kurz kommen.",
+          "p3": "Spezialist für den deutschen Markt. Seine Tarife, Produktionsfirmen, Regisseure und Dynamiken.",
+          "email": "justin@shift-media.io"
+        },
+        {
+          "role": "Mitgründer",
+          "name": "Cornelius Roenz",
+          "discipline": "Strategie, Organisationsdesign und Executive Production",
+          "p1": "Produktionsleiter mit umfassender Erfahrung im Aufbau und in der Führung von Produktionsfunktionen auf Agentur und Markenseite in ganz Europa.",
+          "p2": "Hat auf jeder Ebene anspruchsvoller Werbeproduktion gearbeitet. Vom Set bis in den Vorstand. Weiß, was es braucht, um kreativ anspruchsvolle und kommerziell komplexe Kampagnen zu liefern. Und was es braucht, um die Organisationen, die sie produzieren, durch Wachstum, Übergänge und Wandel zu führen.",
+          "p3": "Spezialist für Produktionsstrategie, organisationale Transformation und tragfähige Strukturen für Marken und Agenturen in einem sich verändernden Markt.",
+          "email": "cornelius@shift-media.io"
+        },
+        {
+          "role": "Mitgründer",
+          "name": "Jankel Huppertz",
+          "discipline": "Produktionsleitung, Operations und Beratung",
+          "p1": "Produktionsleiter mit tiefer Erfahrung in der Agenturproduktion. Versteht, wie TVC, Content und Kampagnenproduktion funktioniert. Von der Idee bis zur Umsetzung.",
+          "p2": "Hat Produktion über Formate und Größenordnungen hinweg aufgebaut und gesteuert. Von agilem Content bis zu großen internationalen Kampagnen. Weiß, wie man komplexe Produktionen führt, Teams ausrichtet und gegen kreative wie kommerzielle Anforderungen liefert.",
+          "p3": "Spezialist für Produktionsstrukturen, Prozesse und Budgets. Und dafür, wo Wert entsteht oder verloren geht.",
+          "email": "jankel@shift-media.io"
+        }
+      ]
+    },
+    "Partners": {
+      "intro": "Unser Partnernetzwerk ist eine kuratierte Gruppe erfahrener Spezialisten, die wir projektbezogen einbinden. Sie sind unabhängig (keine Festangestellten, keine Mitarbeitenden) und sie erweitern unsere Expertise dort, wo sie gebraucht wird.",
+      "items": [
+        {
+          "role": "Partner",
+          "title": "Finance und Treasury",
+          "description": "Unabhängige finanzielle Aufsicht, Treasury Strukturen und Beschaffungsstrategie für produktionslastige Organisationen."
+        },
+        {
+          "role": "Partner",
+          "title": "Strategie und Marke",
+          "description": "Senior Beratung zu Markenpositionierung, Content Strategie und der Frage, wie Produktion das größere Marketingsystem bedient."
+        },
+        {
+          "role": "Partner",
+          "title": "AI und Technologie",
+          "description": "Praktiker mit echter Hands on Erfahrung in Generative AI, Produktionstools und der Integration von Technologie in kreative Workflows."
+        },
+        {
+          "role": "Partner",
+          "title": "Kreativdirektion",
+          "description": "Preisgekrönte kreative Führung für Projekte, die Senior Creative Oversight von Konzept bis Auslieferung verlangen."
+        },
+        {
+          "role": "Partner",
+          "title": "Nachhaltige Produktion",
+          "description": "Spezialisten für CO2 Budgetierung, nachhaltige Lieferantenauswahl und ESG Reporting in Film und Content Produktion."
+        },
+        {
+          "role": "Partner",
+          "title": "Recht und Rechte",
+          "description": "Music Licensing, Talent Buyouts, IP Frameworks und die rechtliche Architektur hinter konformer, moderner Produktion."
+        },
+        {
+          "role": "Partner",
+          "title": "Postproduction und VFX",
+          "description": "Erfahrene Post Supervisors und VFX Leads, die zu Pipeline Design, Vendor Evaluation und Qualitätskontrolle beraten."
+        },
+        {
+          "role": "Partner",
+          "title": "Internationale Produktion",
+          "description": "Spezialisten für grenzüberschreitende Produktionsstrukturen, Offshore Execution und die Auslieferung von Kampagnen über mehrere Märkte."
+        }
+      ]
+    }
+  },
+  "Contact": {
+    "Meta": {
+      "title": "Kontakt — shift.media",
+      "description": "Kontaktieren Sie shift.media. Unabhängige Produktionsberatung mit Sitz in Hamburg, DE."
+    },
+    "Hero": {
+      "title": "Verbinden Sie sich mit <em>shift.media.</em>",
+      "subtitle": "Erzählen Sie uns von Ihrer Produktionsherausforderung. Wir melden uns innerhalb von 24 Stunden mit einer ehrlichen Einschätzung, ob und wie wir helfen können."
+    },
+    "Form": {
+      "title": "Schreiben Sie uns",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "email": "Geschäftliche Email",
+      "company": "Unternehmen",
+      "role": "Position",
+      "message": "Worum geht es?",
+      "required_marker": "*",
+      "submit": "Nachricht senden ›"
+    },
+    "Details": {
+      "direct_label": "Direkt",
+      "direct_value": "hello@shift-media.io",
+      "hq_label": "Zentrale",
+      "hq_value": "shift.media GmbH\nHamburg, Deutschland",
+      "response_label": "Reaktionszeit",
+      "response_value": "Innerhalb von 24 Stunden, Montag bis Freitag.",
+      "promise_label": "Unser Versprechen",
+      "promise_value": "Kein Pitchdeck. Keine Agenda. Nur ein ehrliches Gespräch darüber, ob wir helfen können. Und wie."
+    }
+  }
+}

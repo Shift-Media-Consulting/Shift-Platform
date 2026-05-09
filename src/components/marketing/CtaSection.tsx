@@ -6,6 +6,7 @@
  */
 
 import { ReactNode } from 'react'
+import { Link } from '@/i18n/routing'
 
 const CTA_GRADIENT =
   'linear-gradient(180deg, #b9d8d2 0%, #2a6f5e 60%, #004d40 100%)'
@@ -14,12 +15,14 @@ type Props = {
   h2?: ReactNode
   para?: string
   eyebrow?: string
+  cta?: string
 }
 
 export default function CtaSection({
   eyebrow = '— Start with a conversation —',
   h2 = <>Forty-five minutes. <em className="news">No sales pitch.</em></>,
   para = "Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with.",
+  cta = 'Request a conversation ›',
 }: Props) {
   return (
     <section
@@ -78,7 +81,7 @@ export default function CtaSection({
       </p>
 
       {/* Button */}
-      <a
+      <Link
         href="/contact"
         style={{
           display: 'inline-flex',
@@ -94,8 +97,8 @@ export default function CtaSection({
           textDecoration: 'none',
         }}
       >
-        Request a conversation ›
-      </a>
+        {cta}
+      </Link>
 
     </section>
   )

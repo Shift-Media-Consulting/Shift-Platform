@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+import { setRequestLocale, getTranslations } from 'next-intl/server'
+import { getTranslations as getMeta } from 'next-intl/server'
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PageReveal from '@/components/marketing/PageReveal'
@@ -8,16 +9,28 @@ import MethodArtifact from './MethodArtifact'
 import MethodCarousel from './MethodCarousel'
 import CtaSection from '@/components/marketing/CtaSection'
 
-export const metadata: Metadata = {
-  title: 'The Shift Method — shift.media',
-  description:
-    'A diagnostic, not a sales pitch. Six operational dimensions. One independent assessment. Yours to keep.',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getMeta({ locale, namespace: 'Method.Meta' })
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: locale === 'de' ? '/method' : '/en/method',
+      languages: { 'de-DE': '/method', 'en': '/en/method', 'x-default': '/method' },
+    },
+  }
 }
 
 const BODY_GRADIENT =
   'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
-export default function MethodPage() {
+export default async function MethodPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations('Method')
+
   return (
     <>
       <Nav />
@@ -68,9 +81,7 @@ export default function MethodPage() {
               marginBottom: '32px',
             }}
           >
-            The{' '}
-            <em className="news">diagnosis</em>{' '}
-            no one inside the room is paid to give you.
+            {t.rich('Hero.title', { em: (c) => <em className="news">{c}</em> })}
           </h1>
 
           {/* Deck */}
@@ -85,8 +96,7 @@ export default function MethodPage() {
               marginBottom: 'clamp(48px, 6vw, 72px)',
             }}
           >
-            Six operational dimensions. One independent assessment. Yours to keep —
-            whether or not you ever work with us again.
+            {t('Hero.subtitle')}
           </p>
 
           {/* Meta strip */}
@@ -173,7 +183,7 @@ export default function MethodPage() {
               maxWidth: '760px',
             }}
           >
-            Most production problems are not creative problems.
+            {t('Hero.claim_p1')}
           </h2>
 
           {/* Deck */}
@@ -187,11 +197,10 @@ export default function MethodPage() {
               marginBottom: 'clamp(48px, 6vw, 72px)',
             }}
           >
-            They are operational problems. Here is when to reach for the Method —
-            and when not to.
+            {t('Hero.claim_p2')} {t('Hero.intro')}
           </p>
 
-          {/* 3 triggers */}
+          {/* 3 triggers — kept in English/DE inline since not in JSON; use Hero subtitle as single block */}
           <div
             className="mth-triggers-grid"
             style={{
@@ -216,9 +225,9 @@ export default function MethodPage() {
                 h3: 'You\'re considering bringing production in-house.',
                 body: 'A studio, a model, a hybrid. Before you build anything — or sign anything — you want a senior, vendor-free view of what your operation actually needs. Not what someone wants to sell you.',
               },
-            ].map((t) => (
+            ].map((trigger) => (
               <div
-                key={t.num}
+                key={trigger.num}
                 className="mth-r"
                 style={{
                   borderTop: '1px solid rgba(246,245,242,0.40)',
@@ -232,7 +241,7 @@ export default function MethodPage() {
                   color: 'rgba(246,245,242,0.45)',
                   marginBottom: '20px',
                 }}>
-                  {t.num}
+                  {trigger.num}
                 </p>
                 <h3 style={{
                   fontFamily: 'var(--font-serif)',
@@ -244,14 +253,14 @@ export default function MethodPage() {
                   maxWidth: '360px',
                   marginBottom: '20px',
                 }}>
-                  {t.h3}
+                  {trigger.h3}
                 </h3>
                 <p style={{
                   fontSize: '15px',
                   lineHeight: 1.65,
                   color: 'rgba(246,245,242,0.70)',
                 }}>
-                  {t.body}
+                  {trigger.body}
                 </p>
               </div>
             ))}
@@ -362,7 +371,11 @@ export default function MethodPage() {
           </div>
         </section>
 
-        <CtaSection h2={<>Forty-five minutes. <em className="news">No sales pitch.</em></>} para="We will tell you whether this is the right next step for your operation, and if it is not, what is." />
+        <CtaSection
+          h2={t.rich('Closing.title', { em: (c) => <em className="news">{c}</em> })}
+          para={t('Closing.body')}
+          cta={t('Closing.cta')}
+        />
 
       </main>
       <Footer />

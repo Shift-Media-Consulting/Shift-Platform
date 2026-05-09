@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Link from 'next/link'
+import { useTranslations, useMessages } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 const CSS = `
 /* ─── Section ───────────────────────────────────────────────────── */
@@ -270,6 +271,12 @@ em.news.is-drawn::after { transform: scaleX(1); }
 `
 
 export default function AboutConflict() {
+  const t = useTranslations('About.Triangle')
+  const messages = useMessages()
+  const nodes = ((messages as any).About.Triangle.nodes as Array<{
+    kicker: string; role: string; description: string; edge_to: string; quote: string
+  }>)
+
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -317,67 +324,41 @@ export default function AboutConflict() {
       <section ref={sectionRef} className="ab-section">
 
         <h1 className="ab-headline">
-          The brand–agency–production triangle has{' '}
-          <em className="news">built-in conflicts.</em>
+          {t.rich('title', { em: (c) => <em className="news">{c}</em> })}
         </h1>
 
         <p className="ab-deck">
-          Three roles. Three relationships. Zero independent oversight.
-          Every seat at the table is paid by the others, which means no one is paid to push back.
+          {t('intro')}
         </p>
 
         <div className="ab-grid">
-
-          <div className="ab-col">
-            <div className="ab-num">— 01 / The buyer</div>
-            <h2 className="ab-role">Brand</h2>
-            <p className="ab-role-desc">
-              Pays the bill. Wants outcomes, transparency, and value for money. Not bundled invoices and unread line items.
-            </p>
-            <div className="ab-quote">
-              <span className="ab-quote-who">↔ Agency</span>
-              <p className="ab-quote-what">"Are we paying for the idea, or the markup on the people making it?"</p>
+          {nodes.map((node) => (
+            <div key={node.role} className="ab-col">
+              <div className="ab-num">— {node.kicker}</div>
+              <h2 className="ab-role">{node.role}</h2>
+              <p className="ab-role-desc">{node.description}</p>
+              <div className="ab-quote">
+                <span className="ab-quote-who">↔ {node.edge_to}</span>
+                <p className="ab-quote-what">&ldquo;{node.quote}&rdquo;</p>
+              </div>
             </div>
-          </div>
-
-          <div className="ab-col">
-            <div className="ab-num">— 02 / The seller</div>
-            <h2 className="ab-role">Agency</h2>
-            <p className="ab-role-desc">
-              Sells the idea. Compensation is often a percentage of the production budget it specs. Bigger spec, bigger fee.
-            </p>
-            <div className="ab-quote">
-              <span className="ab-quote-who">↔ Production</span>
-              <p className="ab-quote-what">"Whose margin lives inside whose line item, and who is going to flag it?"</p>
-            </div>
-          </div>
-
-          <div className="ab-col">
-            <div className="ab-num">— 03 / The maker</div>
-            <h2 className="ab-role">Production</h2>
-            <p className="ab-role-desc">
-              Makes the work. Earns through markups, kit, and crew. Every cost-out is a cut to its own P&amp;L. Cannot grade its own homework.
-            </p>
-            <div className="ab-quote">
-              <span className="ab-quote-who">↔ Brand</span>
-              <p className="ab-quote-what">"Who tells me when this bid is fair, when no one in the room is paid to say so?"</p>
-            </div>
-          </div>
-
+          ))}
         </div>
 
         <div className="ab-footer-rule">
-          <span className="ab-fr-top">Three roles · three relationships · zero independent oversight</span>
+          <span className="ab-fr-top">{t('caption')}</span>
           <span className="ab-fr-main">
             <Link href="/">shift.media</Link>
-            {' · '}<em className="news">the missing fourth seat</em>
+            {' · '}
+            {t.rich('fourth_seat', {
+              brand: (c) => <span>{c}</span>,
+              em: (c) => <em className="news">{c}</em>,
+            })}
           </span>
         </div>
 
         <p className="ab-punchline">
-          A market this complex, this unregulated, and this large does not need{' '}
-          <em className="news">another agency.</em><br />
-          It needs an <em className="news">independent partner.</em>
+          {t.rich('outro', { em: (c) => <em className="news">{c}</em> })}
         </p>
 
       </section>

@@ -1,14 +1,23 @@
-import type { Metadata } from 'next'
+import { setRequestLocale, getTranslations, getMessages } from 'next-intl/server'
+import { getTranslations as getMeta } from 'next-intl/server'
 import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import IntroWrapper from './IntroWrapper'
 import HomeReveal from './HomeReveal'
 import ServicesSlider from './services/ServicesSlider'
+import { Link } from '@/i18n/routing'
 
-export const metadata: Metadata = {
-  title: 'shift.media — Independent Production Advisory',
-  description:
-    'Independent by design. On your side by choice. Production advisory for brands. Hamburg, DE.',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getMeta({ locale, namespace: 'Home.Meta' })
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: locale === 'de' ? '/' : '/en',
+      languages: { 'de-DE': '/', 'en': '/en', 'x-default': '/' },
+    },
+  }
 }
 
 const BODY_GRADIENT =
@@ -17,10 +26,15 @@ const BODY_GRADIENT =
 const CTA_GRADIENT =
   'linear-gradient(180deg, #b9d8d2 0%, #2a6f5e 60%, #004d40 100%)'
 
-const MARQUEE_CAPS =
-  'Production controlling · Strategic advisory · Organisational setup · AI integration · Sustainable production · International structures · Roster advisory · Buyout management'
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
 
-export default function HomePage() {
+  const t = await getTranslations('Home')
+  const messages = await getMessages()
+  const pillarsItems = ((messages as any).Home.Pillars.items as Array<{ number: string; title: string; description: string }>)
+  const statsItems   = ((messages as any).Home.Stats.items   as Array<{ value: string; label: string }>)
+
   return (
     <>
       <Nav />
@@ -40,11 +54,9 @@ export default function HomePage() {
         <section
           data-hm
           className="hm-section"
-          style={{
-            padding: `clamp(100px,14vw,150px) var(--margin-x) clamp(56px,7vw,80px)`,
-          }}
+          style={{ padding: `clamp(100px,14vw,150px) var(--margin-x) clamp(56px,7vw,80px)` }}
         >
-          {/* Section rail */}
+          {/* Rail */}
           <div
             className="reveal"
             style={{
@@ -58,7 +70,7 @@ export default function HomePage() {
               fontWeight: 400,
             }}
           >
-            — 01 / Index · Independent by design
+            {t('Hero.kicker')}
           </div>
 
           {/* H1 */}
@@ -75,9 +87,7 @@ export default function HomePage() {
               marginBottom: '32px',
             }}
           >
-            Independent by design.
-            <br />
-            <em className="news">On your side by choice.</em>
+            {t.rich('Hero.title', { em: (c) => <em className="news">{c}</em> })}
           </h1>
 
           {/* Deck */}
@@ -91,8 +101,10 @@ export default function HomePage() {
               marginBottom: '40px',
             }}
           >
-            <em className="news">shift.media</em> gives brands an independent voice in
-            production, built on expertise, not affiliation.
+            {t.rich('Hero.subtitle', {
+              em:    (c) => <em className="news">{c}</em>,
+              brand: (c) => <em className="news">{c}</em>,
+            })}
           </p>
 
           {/* CTA row */}
@@ -105,7 +117,7 @@ export default function HomePage() {
               marginBottom: 'clamp(40px,5vw,56px)',
             }}
           >
-            <a
+            <Link
               href="/contact"
               style={{
                 display: 'inline-flex',
@@ -120,21 +132,17 @@ export default function HomePage() {
                 textDecoration: 'none',
               }}
             >
-              Get in touch ›
-            </a>
+              {t('Hero.cta_primary')}
+            </Link>
           </div>
-
         </section>
 
         {/* ── Section 2: Four Pillars ──────────────────────────────────── */}
         <section
           data-hm
           className="hm-section"
-          style={{
-            padding: `clamp(48px,6vw,72px) var(--margin-x)`,
-          }}
+          style={{ padding: `clamp(48px,6vw,72px) var(--margin-x)` }}
         >
-          {/* Header grid */}
           <div
             className="reveal hm-pillar-header"
             style={{
@@ -155,7 +163,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Four pillars. <em className="news">One partner.</em>
+              {t.rich('Pillars.title', { em: (c) => <em className="news">{c}</em> })}
             </h2>
             <p
               style={{
@@ -167,18 +175,13 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.
+              {t('Pillars.intro')}
             </p>
           </div>
 
           <ServicesSlider
             compact
-            cards={[
-              { name: 'Production Controlling', desc: 'Cost intelligence and real-time visibility across every production.' },
-              { name: 'Strategic Advisory',     desc: 'Shaping how brands commission and plan content at scale.' },
-              { name: 'Organisational Setup',   desc: 'Building the production capability you need, from scratch or from inside.' },
-              { name: 'AI Integration',         desc: 'From AI experiments to AI-native production. Governed, calibrated, built to last.' },
-            ]}
+            cards={pillarsItems.map(item => ({ name: item.title, desc: item.description }))}
           />
         </section>
 
@@ -186,11 +189,8 @@ export default function HomePage() {
         <section
           data-hm
           className="hm-section"
-          style={{
-            padding: `clamp(48px,6vw,72px) var(--margin-x)`,
-          }}
+          style={{ padding: `clamp(48px,6vw,72px) var(--margin-x)` }}
         >
-          {/* Inner grid */}
           <div
             className="hm-conviction-grid"
             style={{
@@ -200,7 +200,6 @@ export default function HomePage() {
               maxWidth: '1400px',
             }}
           >
-            {/* Left H3 */}
             <h3
               className="reveal"
               style={{
@@ -212,36 +211,21 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Most production budgets are negotiated by people paid by the outcome.{' '}
-              <em className="news">We are not.</em>
+              {t.rich('Independence.headline', { em: (c) => <em className="news">{c}</em> })}
             </h3>
 
-            {/* Right col */}
             <div>
               <p
                 className="reveal"
-                style={{
-                  fontSize: '19px',
-                  color: 'var(--fg-muted)',
-                  maxWidth: '540px',
-                  lineHeight: 1.6,
-                  margin: '0 0 20px 0',
-                }}
+                style={{ fontSize: '19px', color: 'var(--fg-muted)', maxWidth: '540px', lineHeight: 1.6, margin: '0 0 20px 0' }}
               >
-                We do not own a production company. We are not part of an agency
-                holding group.
+                {t('Independence.body_p1')}
               </p>
               <p
                 className="reveal"
-                style={{
-                  fontSize: '19px',
-                  color: 'var(--fg-muted)',
-                  maxWidth: '540px',
-                  lineHeight: 1.6,
-                  margin: 0,
-                }}
+                style={{ fontSize: '19px', color: 'var(--fg-muted)', maxWidth: '540px', lineHeight: 1.6, margin: 0 }}
               >
-                That is the entire premise. Everything else (the controlling, the advisory, the org design, the AI) works because the foundation is independent.
+                {t('Independence.body_p2')}
               </p>
             </div>
           </div>
@@ -259,12 +243,7 @@ export default function HomePage() {
               gap: '40px',
             }}
           >
-            {[
-              { value: '€600M+', label: 'Budgets controlled' },
-              { value: '50+',    label: 'Years of combined production experience' },
-              { value: '0',      label: 'Vendor affiliations' },
-              { value: '100%',   label: 'Founder-owned' },
-            ].map(cell => (
+            {statsItems.map(cell => (
               <div key={cell.label} className="stat-cell reveal">
                 <span
                   style={{
@@ -308,7 +287,6 @@ export default function HomePage() {
             alignItems: 'center',
           }}
         >
-          {/* Eyebrow */}
           <p
             className="reveal"
             style={{
@@ -321,10 +299,9 @@ export default function HomePage() {
               marginBottom: '24px',
             }}
           >
-            — Start with a conversation —
+            — {t('Closing.kicker')} —
           </p>
 
-          {/* H2 */}
           <h2
             className="reveal"
             style={{
@@ -338,10 +315,9 @@ export default function HomePage() {
               marginBottom: '24px',
             }}
           >
-            Tell us what you are trying to figure out.
+            {t('Closing.title')}
           </h2>
 
-          {/* Para */}
           <p
             className="reveal"
             style={{
@@ -352,21 +328,11 @@ export default function HomePage() {
               marginBottom: '40px',
             }}
           >
-            A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help, and which founder you would be working with.
+            {t('Closing.body')}
           </p>
 
-          {/* CTA row */}
-          <div
-            className="reveal"
-            style={{
-              display: 'flex',
-              gap: '20px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}
-          >
-            <a
+          <div className="reveal" style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link
               href="/contact"
               style={{
                 display: 'inline-flex',
@@ -381,8 +347,8 @@ export default function HomePage() {
                 textDecoration: 'none',
               }}
             >
-              Request a conversation ›
-            </a>
+              {t('Closing.cta')}
+            </Link>
           </div>
         </section>
 

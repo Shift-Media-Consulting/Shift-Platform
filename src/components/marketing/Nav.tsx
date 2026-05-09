@@ -1,19 +1,34 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname } from '@/i18n/routing'
+import { Link } from '@/i18n/routing'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { navItems, servicesDropdown } from '@/lib/nav'
+import { useTranslations } from 'next-intl'
+import { LocaleSwitcher } from '@/components/LocaleSwitcher'
 
 export default function Nav() {
   const pathname = usePathname()
+  const t = useTranslations('Nav')
+
   const [scrolled, setScrolled]     = useState(false)
   const [introDone, setIntroDone]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [dropOpen, setDropOpen]     = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const navItems = [
+    { label: t('about'),    href: '/about' as const },
+    { label: t('services'), href: '/services' as const },
+    { label: t('team'),     href: '/team' as const },
+  ]
+
+  const servicesDropdown = [
+    { label: t('audit'),     href: '/method' as const,            desc: t('audit_label') },
+    { label: t('workshops'), href: '/services/workshops' as const, desc: t('workshops_label') },
+    { label: t('pilot'),     href: '/services/pilot' as const,     desc: t('pilot_label') },
+  ]
 
   /* ── Scroll ── */
   useEffect(() => {
@@ -81,7 +96,6 @@ export default function Nav() {
           flex-direction: column;
           overflow: hidden;
           pointer-events: none;
-          /* Animate scale + opacity — feels weightless, like it materialises */
           opacity: 0;
           transform: translateX(-50%) translateY(-6px) scale(0.97);
           transition:
@@ -163,7 +177,6 @@ export default function Nav() {
                     </span>
                   </Link>
 
-                  {/* Floating glass dropdown — independent, hovering below the nav */}
                   <div
                     className={`svc-drop${dropOpen ? ' is-open' : ''}`}
                     onMouseEnter={openDrop}
@@ -199,21 +212,24 @@ export default function Nav() {
           })}
         </div>
 
-        {/* Desktop CTA */}
-        <Link
-          href="/contact"
-          className={[
-            'hidden md:inline-flex items-center gap-2 justify-self-end',
-            'rounded-full bg-cream text-teal font-bold text-[15px] tracking-[0.2px]',
-            'px-7 py-3.5 no-underline',
-            'shadow-[0_4px_14px_rgba(0,0,0,0.14)]',
-            'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-            'hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)] hover:bg-cream-soft',
-          ].join(' ')}
-          style={{ fontFamily: 'var(--font-head)' }}
-        >
-          Get in touch ›
-        </Link>
+        {/* Desktop right: locale switcher + CTA */}
+        <div className="hidden md:flex items-center gap-5 justify-self-end">
+          <LocaleSwitcher />
+          <Link
+            href="/contact"
+            className={[
+              'inline-flex items-center gap-2',
+              'rounded-full bg-cream text-teal font-bold text-[15px] tracking-[0.2px]',
+              'px-7 py-3.5 no-underline',
+              'shadow-[0_4px_14px_rgba(0,0,0,0.14)]',
+              'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
+              'hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)] hover:bg-cream-soft',
+            ].join(' ')}
+            style={{ fontFamily: 'var(--font-head)' }}
+          >
+            {t('contact')}
+          </Link>
+        </div>
 
         {/* Mobile burger */}
         <button
@@ -308,13 +324,16 @@ export default function Nav() {
         </div>
 
         <div className="px-8 pb-12 flex flex-col gap-5">
-          <a
-            href="mailto:hello@shift-media.io"
-            className="text-ink no-underline text-[12px] tracking-[1.5px] opacity-60"
-            style={{ fontFamily: 'var(--font-mono)' }}
-          >
-            HELLO@SHIFT-MEDIA.IO
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href={`mailto:${t('email')}`}
+              className="text-ink no-underline text-[12px] tracking-[1.5px] opacity-60"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              {t('email')}
+            </a>
+            <LocaleSwitcher />
+          </div>
           <Link
             href="/contact"
             className={[
@@ -324,7 +343,7 @@ export default function Nav() {
             ].join(' ')}
             style={{ fontFamily: 'var(--font-head)' }}
           >
-            Get in touch ›
+            {t('contact')}
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 const CSS = `
 /* ── Body gradient ─────────────────────────────────────────────────── */
@@ -223,6 +224,7 @@ const FAQ = [
 ]
 
 export default function ContactClient() {
+  const t = useTranslations('Contact')
   const [progress, setProgress] = useState(0)
   const [charCount, setCharCount] = useState(0)
   const [success, setSuccess] = useState(false)
@@ -368,7 +370,7 @@ export default function ContactClient() {
               marginBottom: 24,
             }}
           >
-            Connect with <em className="news">shift.media</em>.
+            {t.rich('Hero.title', { em: (c) => <em className="news">{c}</em> })}
           </h1>
 
           {/* Deck */}
@@ -381,7 +383,7 @@ export default function ContactClient() {
               lineHeight: 1.5,
             }}
           >
-            Tell us about your production challenge. We will come back within 24 hours with an honest read on whether we can help, and how.
+            {t('Hero.subtitle')}
           </p>
         </section>
 
@@ -451,7 +453,7 @@ export default function ContactClient() {
                     color: 'rgba(246,245,242,0.70)',
                   }}
                 >
-                  — Send us a message
+                  — {t('Form.title')}
                 </span>
                 <span
                   style={{
@@ -483,8 +485,8 @@ export default function ContactClient() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
                   <div className={`field${focused === 'fn' ? ' is-active' : ''}${values.fn ? ' has-value' : ''}`}>
                     <label htmlFor="fn">
-                      First name —{' '}
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>req</span>
+                      {t('Form.first_name')} —{' '}
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>{t('Form.required_marker')}</span>
                     </label>
                     <input
                       id="fn"
@@ -498,8 +500,8 @@ export default function ContactClient() {
                   </div>
                   <div className={`field${focused === 'ln' ? ' is-active' : ''}${values.ln ? ' has-value' : ''}`}>
                     <label htmlFor="ln">
-                      Last name —{' '}
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>req</span>
+                      {t('Form.last_name')} —{' '}
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>{t('Form.required_marker')}</span>
                     </label>
                     <input
                       id="ln"
@@ -517,8 +519,8 @@ export default function ContactClient() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 8 }}>
                   <div className={`field${focused === 'em' ? ' is-active' : ''}${values.em ? ' has-value' : ''}`}>
                     <label htmlFor="em">
-                      Work email —{' '}
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>req</span>
+                      {t('Form.email')} —{' '}
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>{t('Form.required_marker')}</span>
                     </label>
                     <input
                       id="em"
@@ -533,8 +535,8 @@ export default function ContactClient() {
                   </div>
                   <div className={`field${focused === 'co' ? ' is-active' : ''}${values.co ? ' has-value' : ''}`}>
                     <label htmlFor="co">
-                      Company —{' '}
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>req</span>
+                      {t('Form.company')} —{' '}
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>{t('Form.required_marker')}</span>
                     </label>
                     <input
                       id="co"
@@ -606,8 +608,8 @@ export default function ContactClient() {
                   className={`field${focused === 'msg' ? ' is-active' : ''}${values.msg ? ' has-value' : ''}`}
                 >
                   <label htmlFor="msg">
-                    Tell us more —{' '}
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>req</span>
+                    {t('Form.message')} —{' '}
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.55 }}>{t('Form.required_marker')}</span>
                   </label>
                   <textarea
                     id="msg"
@@ -663,7 +665,7 @@ export default function ContactClient() {
                     — No pitch deck. No agenda. An honest conversation about whether we can help.
                   </p>
                   <button type="submit" className="ct-submit">
-                    Send message <span className="ct-arrow">›</span>
+                    {t('Form.submit')} <span className="ct-arrow">›</span>
                   </button>
                 </div>
               </form>
@@ -675,103 +677,44 @@ export default function ContactClient() {
 
               {/* Card: Direct */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.65)',
-                    marginBottom: 10,
-                  }}
-                >
-                  — Direct
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                  — {t('Details.direct_label')}
                 </p>
                 <a
-                  href="mailto:hello@shift-media.io"
-                  style={{
-                    fontSize: 'clamp(16px,2vw,22px)',
-                    color: 'rgba(246,245,242,0.40)',
-                    borderBottom: '1px solid rgba(246,245,242,0.40)',
-                    paddingBottom: 4,
-                    textDecoration: 'none',
-                    fontFamily: 'var(--font-head)',
-                    fontWeight: 500,
-                  }}
+                  href={`mailto:${t('Details.direct_value')}`}
+                  style={{ fontSize: 'clamp(16px,2vw,22px)', color: 'rgba(246,245,242,0.40)', borderBottom: '1px solid rgba(246,245,242,0.40)', paddingBottom: 4, textDecoration: 'none', fontFamily: 'var(--font-head)', fontWeight: 500 }}
                 >
-                  hello@shift-media.io
+                  {t('Details.direct_value')}
                 </a>
               </div>
 
               {/* Card: Headquarters */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.65)',
-                    marginBottom: 10,
-                  }}
-                >
-                  — Headquarters
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                  — {t('Details.hq_label')}
                 </p>
-                <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)', lineHeight: 1.6 }}>
-                  Shift Media GmbH<br />Hamburg, Germany
+                <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
+                  {t('Details.hq_value')}
                 </p>
               </div>
 
               {/* Card: Response time */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.65)',
-                    marginBottom: 10,
-                  }}
-                >
-                  — Response time
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                  — {t('Details.response_label')}
                 </p>
                 <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)' }}>
-                  Within 24 hours<br />Monday to Friday
+                  {t('Details.response_value')}
                 </p>
               </div>
 
               {/* Glass promise card */}
-              <div
-                style={{
-                  marginTop: 8,
-                  background: 'rgba(246,245,242,0.06)',
-                  border: '1px solid rgba(246,245,242,0.30)',
-                  borderRadius: 12,
-                  padding: 28,
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.65)',
-                    marginBottom: 12,
-                  }}
-                >
-                  — The promise
+              <div style={{ marginTop: 8, background: 'rgba(246,245,242,0.06)', border: '1px solid rgba(246,245,242,0.30)', borderRadius: 12, padding: 28, backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 12 }}>
+                  — {t('Details.promise_label')}
                 </p>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    fontWeight: 500,
-                    fontSize: 24,
-                    lineHeight: 1.3,
-                    color: 'rgba(246,245,242,0.90)',
-                  }}
-                >
-                  No pitch deck. No agenda. Just an honest conversation about whether we can help, and how.
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, fontSize: 24, lineHeight: 1.3, color: 'rgba(246,245,242,0.90)' }}>
+                  {t('Details.promise_value')}
                 </p>
               </div>
             </aside>
