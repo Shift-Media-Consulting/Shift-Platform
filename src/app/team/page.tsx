@@ -42,7 +42,7 @@ const founders = [
   {
     monogram: 'JH',
     index: '03',
-    image: '/team/jankel.jpg',
+    image: '/team/jankel.jpeg',
     name: 'Jankel Huppertz',
     role: '— 03 / Co-founder',
     knownForText: 'Known for ',
@@ -379,7 +379,6 @@ export default function TeamPage() {
                 }}>
                   {(f as any).image ? (
                     <>
-                      {/* Plain img — no Next.js optimisation quirks, always works */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={(f as any).image}
@@ -393,11 +392,20 @@ export default function TeamPage() {
                           objectPosition: 'center top',
                         }}
                       />
+                      {/* Glass plane — backdrop-filter blurs the photo behind it,
+                          creating the "behind frosted glass" look */}
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backdropFilter: 'blur(2px) saturate(0.88)',
+                        WebkitBackdropFilter: 'blur(2px) saturate(0.88)',
+                        background: 'rgba(0,50,40,0.18)',
+                      }} />
                       {/* Gradient scrim at bottom for name legibility */}
                       <div style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(to bottom, transparent 45%, rgba(0,25,18,0.85) 100%)',
+                        background: 'linear-gradient(to bottom, transparent 40%, rgba(0,20,15,0.90) 100%)',
                       }} />
                       {/* Name over the scrim */}
                       <span style={{
