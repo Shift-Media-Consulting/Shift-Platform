@@ -3,7 +3,6 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PageReveal from '@/components/marketing/PageReveal'
 import TeamReveal from './TeamReveal'
-import Image from 'next/image'
 import CtaSection from '@/components/marketing/CtaSection'
 
 export const metadata: Metadata = {
@@ -17,6 +16,7 @@ const founders = [
   {
     monogram: 'JS',
     index: '01',
+    image: '/team/justin.jpg',
     name: 'Justin Stiebel',
     role: '— 01 / Co-founder',
     knownForText: 'Known for ',
@@ -42,6 +42,7 @@ const founders = [
   {
     monogram: 'JH',
     index: '03',
+    image: '/team/jankel.jpg',
     name: 'Jankel Huppertz',
     role: '— 03 / Co-founder',
     knownForText: 'Known for ',
@@ -378,26 +379,25 @@ export default function TeamPage() {
                 }}>
                   {(f as any).image ? (
                     <>
-                      {/* Photo fills card — visible through the subtle glass tint */}
-                      <Image
+                      {/* Plain img — no Next.js optimisation quirks, always works */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={(f as any).image}
                         alt={f.name}
-                        fill
-                        sizes="(max-width:900px) 80vw, 33vw"
-                        style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center top',
+                        }}
                       />
-                      {/* Glass plane overlay — very subtle tint so photo reads clearly */}
-                      <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'rgba(0,40,30,0.08)',
-                        backdropFilter: 'blur(0px)',
-                      }} />
                       {/* Gradient scrim at bottom for name legibility */}
                       <div style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(to bottom, transparent 45%, rgba(0,25,18,0.82) 100%)',
+                        background: 'linear-gradient(to bottom, transparent 45%, rgba(0,25,18,0.85) 100%)',
                       }} />
                       {/* Name over the scrim */}
                       <span style={{
