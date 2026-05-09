@@ -364,21 +364,27 @@ export default function TeamPage() {
                 {/* Portrait */}
                 <div style={{
                   aspectRatio: '4/5',
-                  border: '1px solid rgba(246,245,242,0.30)',
                   borderRadius: '6px',
-                  boxShadow: 'inset 0 1px 0 rgba(246,245,242,0.20), 0 24px 60px rgba(0,0,0,0.22)',
                   position: 'relative',
                   marginBottom: '28px',
                   overflow: 'hidden',
-                  /* Glass tint when no photo; photo covers it when present */
                   background: (f as any).image
-                    ? 'rgba(0,20,15,0.15)'
+                    ? 'transparent'
                     : 'linear-gradient(135deg, rgba(246,245,242,0.10) 0%, rgba(246,245,242,0.04) 100%)',
                   backdropFilter: (f as any).image ? 'none' : 'blur(8px)',
                   WebkitBackdropFilter: (f as any).image ? 'none' : 'blur(8px)',
+                  /* Glass frame: warm highlight top, cool tint bottom, CA on sides */
+                  boxShadow: `
+                    inset 0  1px 0 rgba(255,240,220,0.35),
+                    inset 0 -1px 0 rgba(180,200,255,0.20),
+                    inset  1px 0 0 rgba(255,180,180,0.18),
+                    inset -1px 0 0 rgba(140,160,255,0.18),
+                    0 32px 80px rgba(0,0,0,0.30)
+                  `,
                 }}>
                   {(f as any).image ? (
                     <>
+                      {/* Photo — sharp, no blur */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={(f as any).image}
@@ -392,22 +398,61 @@ export default function TeamPage() {
                           objectPosition: 'center top',
                         }}
                       />
-                      {/* Glass plane — backdrop-filter blurs the photo behind it,
-                          creating the "behind frosted glass" look */}
+
+                      {/* ── Glass plane ─────────────────────────────────────
+                          Real glass keeps the image SHARP. The optical
+                          effects happen at the surface, not in the material:
+                          · Specular highlight — diagonal shine across top half
+                          · Subtle teal tint — glass has a slight colour cast
+                          · Chromatic aberration — inset box-shadows in red/cyan
+                            on left/right edges simulate colour fringing at the
+                            glass perimeter
+                          · No blur whatsoever
+                      ─────────────────────────────────────────────────── */}
+
+                      {/* 1. Specular highlight — diagonal streak across top */}
                       <div style={{
                         position: 'absolute',
                         inset: 0,
-                        backdropFilter: 'blur(2px) saturate(0.88)',
-                        WebkitBackdropFilter: 'blur(2px) saturate(0.88)',
-                        background: 'rgba(0,50,40,0.18)',
+                        background: `
+                          linear-gradient(
+                            128deg,
+                            rgba(255,255,255,0.13) 0%,
+                            rgba(255,255,255,0.05) 28%,
+                            transparent           48%,
+                            rgba(255,255,255,0.02) 72%,
+                            transparent           100%
+                          )
+                        `,
                       }} />
-                      {/* Gradient scrim at bottom for name legibility */}
+
+                      {/* 2. Subtle glass tint */}
                       <div style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(to bottom, transparent 40%, rgba(0,20,15,0.90) 100%)',
+                        background: 'rgba(0,40,30,0.10)',
                       }} />
-                      {/* Name over the scrim */}
+
+                      {/* 3. Chromatic aberration — colour fringing at edges */}
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '6px',
+                        boxShadow: `
+                          inset  4px 0 10px rgba(255, 60, 60, 0.12),
+                          inset -4px 0 10px rgba(60, 120, 255, 0.12),
+                          inset  0  3px 16px rgba(255,255,255,0.07)
+                        `,
+                      }} />
+
+                      {/* 4. Bottom scrim for name legibility */}
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(to bottom, transparent 42%, rgba(0,18,12,0.88) 100%)',
+                      }} />
+
+                      {/* Name */}
                       <span style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '11px',
