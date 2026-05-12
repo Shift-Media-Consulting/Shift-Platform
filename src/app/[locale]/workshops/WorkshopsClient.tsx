@@ -257,14 +257,12 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
 
         {/* TIER SECTIONS */}
         {tiers.map((tier, tierIndex) => {
-          const isLight = tierIndex >= 2
-          const sectionBg = isLight ? '#f6f5f2' : 'transparent'
-          const cardClass = isLight ? 'workshop-card light' : 'workshop-card'
-          const textMain = isLight ? '#111111' : '#f6f5f2'
-          const textMuted = isLight ? 'rgba(17,17,17,0.65)' : 'rgba(246,245,242,0.72)'
-          const textFaint = isLight ? 'rgba(17,17,17,0.45)' : 'rgba(246,245,242,0.45)'
-          const ruleColor = isLight ? 'rgba(0,77,64,0.15)' : 'rgba(246,245,242,0.18)'
-          const hookColor = isLight ? 'rgba(17,17,17,0.60)' : 'rgba(246,245,242,0.60)'
+          const cardClass = 'workshop-card'
+          const textMain = '#f6f5f2'
+          const textMuted = 'rgba(246,245,242,0.72)'
+          const textFaint = 'rgba(246,245,242,0.45)'
+          const ruleColor = 'rgba(246,245,242,0.18)'
+          const hookColor = 'rgba(246,245,242,0.60)'
 
           return (
             <section
@@ -272,7 +270,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               id={tier.id}
               ref={el => { tierRefs.current[tier.id] = el }}
               style={{
-                background: sectionBg,
+                background: tierIndex % 2 === 0 ? 'transparent' : 'rgba(0,60,50,0.28)',
                 padding: 'clamp(72px,9vw,100px) var(--margin-x)',
                 scrollMarginTop: '80px',
               }}
@@ -337,7 +335,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         })}
 
         {/* DELIVERABLES BLOCK */}
-        <section style={{ background: '#004d40', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
+        <section style={{ background: 'rgba(0,55,45,0.72)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
           <div style={{ maxWidth: '1100px' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,
@@ -372,14 +370,14 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         <ProductSlide subhead={productSlideSubhead} />
 
         {/* CLOSING CTA */}
-        <section style={{ background: '#f6f5f2', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(17,17,17,0.45)', marginBottom: '24px' }}>
+        <section style={{ background: 'transparent', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.45)', marginBottom: '24px' }}>
             {closing.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: '#111111', margin: '0 0 24px' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 24px' }}>
             {closing.title}
           </h2>
-          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(17,17,17,0.65)', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', maxWidth: '480px', margin: '0 auto 40px' }}>
             {closing.body}
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -387,18 +385,21 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               href="/contact"
               style={{
                 display: 'inline-block',
-                background: '#004d40', color: 'var(--fg)',
+                background: 'rgba(246,245,242,0.12)', color: 'var(--fg)',
+                border: '1px solid rgba(246,245,242,0.30)',
                 fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
                 padding: '14px 32px', borderRadius: '999px',
                 textDecoration: 'none',
-                transition: 'transform 200ms ease, box-shadow 200ms ease',
+                transition: 'transform 200ms ease, box-shadow 200ms ease, background 200ms ease',
               }}
               onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,77,64,0.28)'
+                e.currentTarget.style.background = 'rgba(246,245,242,0.20)'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)'
               }}
               onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.currentTarget.style.transform = ''
+                e.currentTarget.style.background = 'rgba(246,245,242,0.12)'
                 e.currentTarget.style.boxShadow = ''
               }}
             >
@@ -406,7 +407,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
             </Link>
             <a
               href="mailto:hello@shift-media.io"
-              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(17,17,17,0.55)', textDecoration: 'none' }}
+              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(246,245,242,0.50)', textDecoration: 'none' }}
             >
               HELLO@SHIFT-MEDIA.IO
             </a>

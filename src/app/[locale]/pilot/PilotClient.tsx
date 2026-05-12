@@ -45,7 +45,7 @@ function renderOutItem(text: string) {
     <>
       {parts.map((part, i) => {
         if (['Build', 'Engine', 'Campaign', 'Pilot'].includes(part)) {
-          return <strong key={i} style={{ color: 'rgba(17,17,17,0.75)', fontWeight: 700 }}>{part}</strong>
+          return <strong key={i} style={{ color: 'rgba(246,245,242,0.75)', fontWeight: 700 }}>{part}</strong>
         }
         return <span key={i}>{part}</span>
       })}
@@ -447,25 +447,24 @@ export default function PilotClient({
         <section
           ref={scopeRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          data-theme="light"
-          style={{ background: '#f6f5f2', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          style={{ background: 'rgba(0,55,45,0.50)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.40)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
             {scope.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#111111', margin: '0 0 52px', maxWidth: '720px' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 52px', maxWidth: '720px' }}>
             {scope.heading}
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
             {/* In scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.in_label}
               </p>
               <div>
                 {scope.in_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: '#111111' }}>
-                    <span style={{ color: '#004d40', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
+                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.85)', borderBottomColor: 'rgba(246,245,242,0.10)' }}>
+                    <span style={{ color: '#00897b', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -473,13 +472,13 @@ export default function PilotClient({
             </div>
             {/* Out of scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.40)', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.35)', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.out_label}
               </p>
               <div>
                 {scope.out_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: 'rgba(17,17,17,0.55)' }}>
-                    <span style={{ color: 'rgba(17,17,17,0.30)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
+                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.50)', borderBottomColor: 'rgba(246,245,242,0.10)' }}>
+                    <span style={{ color: 'rgba(246,245,242,0.25)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
                     <span style={{ fontSize: '14px' }}>{renderOutItem(item)}</span>
                   </div>
                 ))}
@@ -492,7 +491,7 @@ export default function PilotClient({
         <section
           ref={delRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ background: '#004d40', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          style={{ background: 'rgba(0,55,45,0.72)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '1100px' }}>
             <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
@@ -531,16 +530,15 @@ export default function PilotClient({
         <section
           ref={closingRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          data-theme="light"
-          style={{ background: '#f6f5f2', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}
+          style={{ background: 'transparent', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}
         >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(17,17,17,0.40)', marginBottom: '24px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.45)', marginBottom: '24px' }}>
             {closing.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: '#111111', margin: '0 0 24px' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 24px' }}>
             {closing.title}
           </h2>
-          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(17,17,17,0.65)', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', maxWidth: '480px', margin: '0 auto 40px' }}>
             {closing.body}
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -548,18 +546,21 @@ export default function PilotClient({
               onClick={() => openRequest()}
               style={{
                 display: 'inline-block',
-                background: '#004d40', color: 'var(--fg)',
+                background: 'rgba(246,245,242,0.12)', color: 'var(--fg)',
+                border: '1px solid rgba(246,245,242,0.30)',
                 fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
                 padding: '14px 32px', borderRadius: '999px',
-                border: 'none', cursor: 'pointer',
-                transition: 'transform 200ms ease, box-shadow 200ms ease',
+                cursor: 'pointer',
+                transition: 'transform 200ms ease, box-shadow 200ms ease, background 200ms ease',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,77,64,0.28)'
+                e.currentTarget.style.background = 'rgba(246,245,242,0.20)'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = ''
+                e.currentTarget.style.background = 'rgba(246,245,242,0.12)'
                 e.currentTarget.style.boxShadow = ''
               }}
             >
@@ -567,7 +568,7 @@ export default function PilotClient({
             </button>
             <a
               href="mailto:hello@shift-media.io"
-              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(17,17,17,0.55)', textDecoration: 'none' }}
+              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(246,245,242,0.50)', textDecoration: 'none' }}
             >
               HELLO@SHIFT-MEDIA.IO
             </a>
