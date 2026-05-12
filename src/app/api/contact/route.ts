@@ -204,7 +204,7 @@ function autoReplyEmail(firstName: string) {
               <a href="https://shift-media.io" style="color:rgba(17,17,17,0.35);text-decoration:none;">shift-media.io</a>
               &nbsp;·&nbsp; Hamburg, DE
             </td>
-            <td align="right" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:0.18em;color:rgba(17,17,17,0.25);">Shift Media GmbH</td>
+            <td align="right" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:0.18em;color:rgba(17,17,17,0.25);">Shift Media GbR</td>
           </tr>
         </table>
       </td>

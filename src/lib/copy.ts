@@ -1,5 +1,5 @@
 export const site = {
-  legalName: "Shift Media GmbH",
+  legalName: "Shift Media GbR",
   brand: "shift.media",
   email: "hello@shift-media.io",
   hq: "Hamburg, Germany",

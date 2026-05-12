@@ -15,7 +15,7 @@
   },
   "Footer": {
     "tagline": "UNABHÄNGIGE PRODUKTIONSBERATUNG · HAMBURG, DE",
-    "rights": "© 2026 Shift Media GmbH. Alle Rechte vorbehalten.",
+    "rights": "© 2026 Shift Media GbR. Alle Rechte vorbehalten.",
     "about": "About",
     "services": "Services",
     "team": "Team",
@@ -528,7 +528,7 @@
       "direct_label": "Direkt",
       "direct_value": "hello@shift-media.io",
       "hq_label": "Zentrale",
-      "hq_value": "shift.media GmbH\nHamburg, Deutschland",
+      "hq_value": "shift.media GbR\nHamburg, Deutschland",
       "response_label": "Reaktionszeit",
       "response_value": "Innerhalb von 24 Stunden, Montag bis Freitag.",
       "promise_label": "Unser Versprechen",

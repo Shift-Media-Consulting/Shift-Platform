@@ -15,7 +15,7 @@
   },
   "Footer": {
     "tagline": "INDEPENDENT PRODUCTION ADVISORY · HAMBURG, DE",
-    "rights": "© 2026 Shift Media GmbH. All rights reserved.",
+    "rights": "© 2026 Shift Media GbR. All rights reserved.",
     "about": "About",
     "services": "Services",
     "team": "Team",
@@ -528,7 +528,7 @@
       "direct_label": "Direct",
       "direct_value": "hello@shift-media.io",
       "hq_label": "Headquarters",
-      "hq_value": "shift.media GmbH\nHamburg, Germany",
+      "hq_value": "shift.media GbR\nHamburg, Germany",
       "response_label": "Response time",
       "response_value": "Within 24 hours, Monday to Friday.",
       "promise_label": "Promise",
