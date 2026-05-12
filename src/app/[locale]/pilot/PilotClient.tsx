@@ -32,6 +32,8 @@ interface Props {
   productSlideSubhead: string
 }
 
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+
 // Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
 function renderOutItem(text: string) {
   const parts = text.split(/(Build|Engine|Campaign|Pilot)/g)
@@ -244,7 +246,7 @@ export default function PilotClient({
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      <main style={{ background: 'var(--gradient-body)', minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
+      <main style={{ background: BODY_GRADIENT, minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
 
         {/* SECTION A: HERO */}
         <section
