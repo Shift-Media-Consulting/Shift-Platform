@@ -27,7 +27,7 @@ export default function Nav() {
   const servicesDropdown = [
     { label: t('audit'),     href: '/method' as const,            desc: t('audit_label') },
     { label: t('workshops'), href: '/workshops' as const, desc: t('workshops_label') },
-    { label: t('pilot'),     href: '/services/pilot' as const,     desc: t('pilot_label') },
+    { label: t('pilot'),     href: '/pilot' as const,     desc: t('pilot_label') },
   ]
 
   /* ── Scroll ── */
