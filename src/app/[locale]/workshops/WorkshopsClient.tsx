@@ -35,8 +35,6 @@ interface Props {
   productSlideSubhead: string
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
-
 export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')
   const [detailModal, setDetailModal] = useState<{ tier: TierData; workshop: Workshop } | null>(null)
@@ -141,34 +139,35 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
           box-shadow: 0 8px 24px rgba(0,77,64,0.12);
           background: #faf9f6;
         }
-        .tier-pill {
-          padding: 9px 20px;
-          border-radius: 999px;
-          border: 1px solid rgba(246,245,242,0.28);
-          font-family: var(--font-head);
-          font-weight: 600;
-          font-size: 14px;
-          letter-spacing: -0.2px;
+        .tier-tab {
+          padding: 14px 0;
+          border: none;
+          border-bottom: 2px solid transparent;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
           white-space: nowrap;
           cursor: pointer;
-          transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
-          color: rgba(246,245,242,0.70);
           background: transparent;
+          color: rgba(246,245,242,0.38);
+          transition: color 220ms ease, border-color 220ms ease;
+          margin-right: 32px;
+          flex-shrink: 0;
         }
-        .tier-pill.active {
-          background: #004d40;
-          color: #f6f5f2;
-          border-color: #004d40;
+        .tier-tab.active {
+          color: var(--fg);
+          border-bottom-color: #00897b;
         }
-        .tier-pill:not(.active):hover {
-          background: rgba(246,245,242,0.10);
-          color: #f6f5f2;
+        .tier-tab:not(.active):hover {
+          color: rgba(246,245,242,0.72);
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      <main style={{ background: BODY_GRADIENT, minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
+      <main style={{ background: 'var(--gradient-body)', minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
 
         {/* HERO */}
         <section
@@ -180,7 +179,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.55)', marginBottom: '28px' }}>
             {hero.eyebrow}
           </p>
-          <h1 style={{ fontWeight: 700, fontSize: 'clamp(64px,9vw,120px)', lineHeight: 0.92, letterSpacing: '-0.03em', color: '#f6f5f2', margin: '0 0 32px', maxWidth: '900px' }}>
+          <h1 style={{ fontWeight: 700, fontSize: 'clamp(64px,9vw,120px)', lineHeight: 0.92, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 32px', maxWidth: '900px' }}>
             {hero.title}
           </h1>
           <p style={{ fontSize: 'clamp(16px,1.6vw,19px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.78)', maxWidth: '580px', margin: '0 0 20px' }}>
@@ -191,24 +190,21 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
           </p>
         </section>
 
-        {/* STICKY TIER NAV */}
+        {/* TIER NAV */}
         <div
           style={{
             position: 'sticky',
-            top: '72px',
+            top: '64px',
             zIndex: 40,
-            background: 'rgba(0,60,48,0.72)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
             borderBottom: '1px solid rgba(246,245,242,0.12)',
-            padding: '12px var(--margin-x)',
+            padding: '0 var(--margin-x)',
           }}
         >
-          <div className="no-scrollbar" style={{ display: 'flex', gap: '8px', overflowX: 'auto' }}>
+          <div className="no-scrollbar" style={{ display: 'flex', overflowX: 'auto' }}>
             {tiers.map(tier => (
               <button
                 key={tier.id}
-                className={`tier-pill${activeTierId === tier.id ? ' active' : ''}`}
+                className={`tier-tab${activeTierId === tier.id ? ' active' : ''}`}
                 onClick={() => scrollToTier(tier.id)}
               >
                 {navLabels[tier.id] ?? tier.name}
@@ -304,21 +300,21 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,
               fontSize: 'clamp(32px,4.5vw,60px)', lineHeight: 1.02, letterSpacing: '-0.02em',
-              color: '#f6f5f2', margin: '0 0 16px',
+              color: 'var(--fg)', margin: '0 0 16px',
             }}>
               {deliverables.title}
             </h2>
-            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.72)', maxWidth: '540px', margin: '0 0 56px' }}>
+            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.6, color: 'var(--fg-muted)', maxWidth: '540px', margin: '0 0 56px' }}>
               {deliverables.intro}
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px,1fr))', gap: '32px 48px' }}>
               {deliverables.items.map((item, i) => (
                 <div key={i}>
                   <div style={{ height: '1px', background: 'rgba(246,245,242,0.22)', marginBottom: '20px' }} />
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '10px' }}>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                     — 0{i + 1}
                   </p>
-                  <p style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', margin: '0 0 8px' }}>
+                  <p style={{ fontWeight: 700, fontSize: '17px', color: 'var(--fg)', margin: '0 0 8px' }}>
                     {item.label}
                   </p>
                   <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', margin: 0 }}>
@@ -349,7 +345,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               href="/contact"
               style={{
                 display: 'inline-block',
-                background: '#004d40', color: '#f6f5f2',
+                background: '#004d40', color: 'var(--fg)',
                 fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
                 padding: '14px 32px', borderRadius: '999px',
                 textDecoration: 'none',
@@ -441,7 +437,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               onClick={() => openRequest(detailModal.workshop.name)}
               style={{
                 width: '100%', padding: '15px 24px',
-                background: '#004d40', color: '#f6f5f2',
+                background: '#004d40', color: 'var(--fg)',
                 border: 'none', borderRadius: '999px',
                 fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px',
                 cursor: 'pointer', letterSpacing: '-0.2px',
@@ -502,7 +498,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
                 <p style={{ fontSize: '15px', lineHeight: 1.6, color: 'rgba(17,17,17,0.65)', margin: '0 0 28px' }}>{request.success_body}</p>
                 <button
                   onClick={() => { setRequestModal(null); setSubmitState('idle') }}
-                  style={{ padding: '12px 28px', background: '#004d40', color: '#f6f5f2', border: 'none', borderRadius: '999px', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
+                  style={{ padding: '12px 28px', background: '#004d40', color: 'var(--fg)', border: 'none', borderRadius: '999px', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
                 >
                   Close
                 </button>
@@ -574,7 +570,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
                   <button
                     type="submit"
                     style={{
-                      padding: '14px 24px', background: '#004d40', color: '#f6f5f2',
+                      padding: '14px 24px', background: '#004d40', color: 'var(--fg)',
                       border: 'none', borderRadius: '999px',
                       fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px',
                       cursor: 'pointer', letterSpacing: '-0.2px', marginTop: '4px',

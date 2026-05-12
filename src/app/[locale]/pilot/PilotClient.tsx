@@ -32,8 +32,6 @@ interface Props {
   productSlideSubhead: string
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
-
 // Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
 function renderOutItem(text: string) {
   const parts = text.split(/(Build|Engine|Campaign|Pilot)/g)
@@ -246,7 +244,7 @@ export default function PilotClient({
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      <main style={{ background: BODY_GRADIENT, minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
+      <main style={{ background: 'var(--gradient-body)', minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
 
         {/* SECTION A: HERO */}
         <section
@@ -256,10 +254,10 @@ export default function PilotClient({
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.55)', marginBottom: '28px' }}>
             {hero.eyebrow}
           </p>
-          <h1 style={{ fontWeight: 700, fontSize: 'clamp(64px,9vw,120px)', lineHeight: 0.92, letterSpacing: '-0.03em', color: '#f6f5f2', margin: '0 0 32px', maxWidth: '900px' }}>
+          <h1 style={{ fontWeight: 700, fontSize: 'clamp(64px,9vw,120px)', lineHeight: 0.92, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 32px', maxWidth: '900px' }}>
             {hero.title}
           </h1>
-          <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(18px,1.8vw,22px)', color: 'rgba(246,245,242,0.72)', maxWidth: '620px', margin: '0 0 20px' }}>
+          <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(18px,1.8vw,22px)', color: 'var(--fg-muted)', maxWidth: '620px', margin: '0 0 20px' }}>
             {hero.subline}
           </p>
           <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.65, color: 'rgba(246,245,242,0.70)', maxWidth: '560px', margin: 0 }}>
@@ -274,7 +272,7 @@ export default function PilotClient({
           style={{ background: 'rgba(0,60,50,0.40)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '720px' }}>
-            <h2 style={{ fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', lineHeight: 1.2, letterSpacing: '-0.015em', color: '#f6f5f2', margin: '0 0 8px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', lineHeight: 1.2, letterSpacing: '-0.015em', color: 'var(--fg)', margin: '0 0 8px' }}>
               {definition.lead}
             </h2>
             <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(17px,1.6vw,20px)', color: 'rgba(246,245,242,0.65)', margin: '0 0 36px' }}>
@@ -295,10 +293,10 @@ export default function PilotClient({
           className="fade-section"
           style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
             {projectTypes.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 48px', maxWidth: '720px' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 48px', maxWidth: '720px' }}>
             {projectTypes.heading}
           </h2>
           <div style={{
@@ -315,7 +313,7 @@ export default function PilotClient({
                 tabIndex={0}
                 onKeyDown={e => e.key === 'Enter' && setCardModal(card)}
               >
-                <h3 style={{ fontWeight: 700, fontSize: 'clamp(17px,1.6vw,20px)', letterSpacing: '-0.01em', color: '#f6f5f2', margin: '0 0 10px', lineHeight: 1.15 }}>
+                <h3 style={{ fontWeight: 700, fontSize: 'clamp(17px,1.6vw,20px)', letterSpacing: '-0.01em', color: 'var(--fg)', margin: '0 0 10px', lineHeight: 1.15 }}>
                   {card.title}
                 </h3>
                 <p style={{ fontSize: '14px', lineHeight: 1.55, color: 'rgba(246,245,242,0.62)', margin: 0 }}>
@@ -337,10 +335,10 @@ export default function PilotClient({
               className="fade-section"
               style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)', background: 'rgba(0,77,64,0.20)' }}
             >
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
                 {timeline.eyebrow}
               </p>
-              <h2 style={{ fontWeight: 700, fontSize: 'clamp(28px,4vw,48px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 56px', maxWidth: '600px' }}>
+              <h2 style={{ fontWeight: 700, fontSize: 'clamp(28px,4vw,48px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 56px', maxWidth: '600px' }}>
                 {timeline.heading}
               </h2>
 
@@ -382,7 +380,7 @@ export default function PilotClient({
                     <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', margin: '0 0 8px' }}>
                       Deliverable
                     </p>
-                    <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
+                    <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6, color: 'var(--fg)', margin: 0 }}>
                       {activePhaseData.deliverable}
                     </p>
                   </div>
@@ -401,16 +399,16 @@ export default function PilotClient({
                       <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.38)', margin: '0 0 5px' }}>
                         {phase.duration}
                       </p>
-                      <p style={{ fontWeight: 700, fontSize: '16px', color: '#f6f5f2', letterSpacing: '-0.01em', margin: '0 0 10px' }}>
+                      <p style={{ fontWeight: 700, fontSize: '16px', color: 'var(--fg)', letterSpacing: '-0.01em', margin: '0 0 10px' }}>
                         {phase.label}
                       </p>
-                      <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(246,245,242,0.72)', margin: '0 0 12px' }}>
+                      <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--fg-muted)', margin: '0 0 12px' }}>
                         {phase.description}
                       </p>
                       <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#00897b', margin: '0 0 4px' }}>
                         Deliverable
                       </p>
-                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '15px', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
+                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '15px', lineHeight: 1.6, color: 'var(--fg)', margin: 0 }}>
                         {phase.deliverable}
                       </p>
                     </div>
@@ -473,13 +471,13 @@ export default function PilotClient({
           style={{ background: '#004d40', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '1100px' }}>
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
               {deliverables.eyebrow}
             </p>
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,
               fontSize: 'clamp(28px,4vw,52px)', lineHeight: 1.08, letterSpacing: '-0.02em',
-              color: '#f6f5f2', margin: '0 0 56px', maxWidth: '720px',
+              color: 'var(--fg)', margin: '0 0 56px', maxWidth: '720px',
             }}>
               {deliverables.heading}
             </h2>
@@ -487,10 +485,10 @@ export default function PilotClient({
               {deliverables.items.map((item, i) => (
                 <div key={i}>
                   <div style={{ height: '1px', background: 'rgba(246,245,242,0.22)', marginBottom: '20px' }} />
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '10px' }}>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                     — 0{i + 1}
                   </p>
-                  <p style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', margin: '0 0 8px', lineHeight: 1.3 }}>
+                  <p style={{ fontWeight: 700, fontSize: '17px', color: 'var(--fg)', margin: '0 0 8px', lineHeight: 1.3 }}>
                     {item.label}
                   </p>
                   <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(246,245,242,0.70)', margin: 0 }}>
@@ -526,7 +524,7 @@ export default function PilotClient({
               onClick={() => openRequest()}
               style={{
                 display: 'inline-block',
-                background: '#004d40', color: '#f6f5f2',
+                background: '#004d40', color: 'var(--fg)',
                 fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
                 padding: '14px 32px', borderRadius: '999px',
                 border: 'none', cursor: 'pointer',
@@ -608,7 +606,7 @@ export default function PilotClient({
               onClick={() => openRequest(cardModal.title)}
               style={{
                 width: '100%', padding: '15px 24px',
-                background: '#004d40', color: '#f6f5f2',
+                background: '#004d40', color: 'var(--fg)',
                 border: 'none', borderRadius: '999px',
                 fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px',
                 cursor: 'pointer', letterSpacing: '-0.2px',
@@ -674,7 +672,7 @@ export default function PilotClient({
                 </p>
                 <button
                   onClick={() => { setRequestOpen(false); setSubmitState('idle') }}
-                  style={{ padding: '12px 28px', background: '#004d40', color: '#f6f5f2', border: 'none', borderRadius: '999px', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
+                  style={{ padding: '12px 28px', background: '#004d40', color: 'var(--fg)', border: 'none', borderRadius: '999px', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
                 >
                   Close
                 </button>
@@ -749,7 +747,7 @@ export default function PilotClient({
                   <button
                     type="submit"
                     style={{
-                      padding: '14px 24px', background: '#004d40', color: '#f6f5f2',
+                      padding: '14px 24px', background: '#004d40', color: 'var(--fg)',
                       border: 'none', borderRadius: '999px',
                       fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px',
                       cursor: 'pointer', letterSpacing: '-0.2px', marginTop: '4px',
