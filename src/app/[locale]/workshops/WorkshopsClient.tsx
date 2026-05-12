@@ -35,7 +35,7 @@ interface Props {
   productSlideSubhead: string
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 50%, #b9d8d2 72%, #f6f5f2 90%)'
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
 
 export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')
