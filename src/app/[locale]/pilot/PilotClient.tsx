@@ -32,10 +32,11 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Gradient compressed into top ~42% — transition completes before the cream
-// sections begin, so the dark-to-mint shift is fully visible while scrolling
-// through the dark hero / definition / project-types / timeline blocks.
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%)'
+// Gradient is rendered on a fixed-position layer sized to the viewport — see
+// the <div className="pilot-bg-gradient"/> below. Stops describe the dark-to-mint
+// transition across one full screen, not the full page.
+const BODY_GRADIENT =
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 28%, #4f9382 58%, #7ab3a5 80%, #b9d8d2 100%)'
 
 // Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
 function renderOutItem(text: string) {
@@ -247,9 +248,27 @@ export default function PilotClient({
         .input-field:focus { border-color: #004d40; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* ── Fixed gradient backdrop — sits behind all page content ─────── */
+        .pilot-bg-gradient {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background: ${BODY_GRADIENT};
+        }
+        .pilot-main {
+          position: relative;
+          z-index: 1;
+          min-height: 100vh;
+          font-family: var(--font-head);
+        }
       `}</style>
 
-      <main style={{ background: BODY_GRADIENT, minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
+      {/* Bulletproof gradient — fixed full-viewport layer, nothing can hide it */}
+      <div className="pilot-bg-gradient" aria-hidden="true" />
+
+      <main className="pilot-main">
 
         {/* SECTION A: HERO */}
         <section

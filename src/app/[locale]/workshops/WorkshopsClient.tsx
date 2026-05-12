@@ -35,10 +35,11 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Gradient compressed into top ~42% — by the time the cream sections start (~50%)
-// the transition is complete, so the dark-to-mint shift is fully visible within
-// the dark tier sections instead of being hidden below them.
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%)'
+// Gradient is rendered on a fixed-position layer sized to the viewport — see
+// the <div className="wk-bg-gradient"/> below. That means stops here describe
+// the dark-to-mint transition across one full screen, not the full page.
+const BODY_GRADIENT =
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 28%, #4f9382 58%, #7ab3a5 80%, #b9d8d2 100%)'
 
 export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')
@@ -197,9 +198,27 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* ── Fixed gradient backdrop — sits behind all page content ─────── */
+        .wk-bg-gradient {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background: ${BODY_GRADIENT};
+        }
+        .wk-main {
+          position: relative;
+          z-index: 1;
+          min-height: 100vh;
+          font-family: var(--font-head);
+        }
       `}</style>
 
-      <main style={{ background: BODY_GRADIENT, minHeight: '100vh', fontFamily: 'var(--font-head)' }}>
+      {/* Bulletproof gradient — fixed full-viewport layer, nothing can hide it */}
+      <div className="wk-bg-gradient" aria-hidden="true" />
+
+      <main className="wk-main">
 
         {/* HERO */}
         <section
