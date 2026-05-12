@@ -8,14 +8,14 @@ const CSS = `
 /* ─── Section ───────────────────────────────────────────────────── */
 .ab-section {
   position: relative;
-  padding: 96px 56px 120px;
+  padding: clamp(72px, 8vw, 120px) var(--margin-x);
 }
 
 /* ─── Headline ──────────────────────────────────────────────────── */
 .ab-headline {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 104px;
+  font-size: clamp(48px, 7.5vw, 104px);
   line-height: 0.95;
   letter-spacing: -0.025em;
   color: #f6f5f2;
@@ -77,7 +77,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
   font-size: 13px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(246,245,242,0.60);
+  color: rgba(246,245,242,0.72);
   margin-bottom: 16px;
   font-weight: 400;
 }
@@ -111,7 +111,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(246,245,242,0.60);
+  color: rgba(246,245,242,0.72);
   margin-bottom: 12px;
   font-weight: 400;
 }
@@ -139,13 +139,13 @@ em.news.is-drawn::after { transform: scaleX(1); }
 }
 .ab-fr-top {
   display: block;
-  font-size: 26px;
-  color: rgba(246,245,242,0.50);
+  font-size: clamp(18px, 2vw, 26px);
+  color: rgba(246,245,242,0.72);
   margin-bottom: 8px;
 }
 .ab-fr-main {
   display: block;
-  font-size: 46px;
+  font-size: clamp(28px, 3.5vw, 46px);
   color: #f6f5f2;
 }
 .ab-footer-rule a {
@@ -161,7 +161,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
   margin-right: auto;
   text-align: center;
   font-family: var(--font-head);
-  font-size: 56px;
+  font-size: clamp(32px, 4.5vw, 56px);
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -259,14 +259,10 @@ em.news.is-drawn::after { transform: scaleX(1); }
 
 /* ─── Mobile (<900px) ───────────────────────────────────────────── */
 @media (max-width: 899px) {
-  .ab-section   { padding: 48px 24px 80px; }
-  .ab-headline  { font-size: 52px; }
   .ab-deck      { font-size: 18px; margin-bottom: 56px; }
   .ab-grid      { grid-template-columns: 1fr; column-gap: 0; row-gap: 40px; }
   .ab-col       { min-height: auto; }
-.ab-punchline { font-size: 32px; margin-top: 64px; }
-  .ab-fr-top  { font-size: 16px; }
-  .ab-fr-main { font-size: 28px; }
+  .ab-punchline { margin-top: 64px; }
 }
 `
 
