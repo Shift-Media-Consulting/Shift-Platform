@@ -125,8 +125,6 @@ export default function PilotClient({
     setSubmitState('success')
   }
 
-  const activePhaseData = timeline.phases.find(p => p.id === activePhase) ?? null
-
   return (
     <>
       <style>{`
@@ -155,21 +153,70 @@ export default function PilotClient({
           border-left-color: #00897b;
           background: rgba(246,245,242,0.11);
         }
-        .phase-block {
-          flex: 1;
-          padding: 20px 18px;
-          border: 1px solid rgba(246,245,242,0.16);
-          border-radius: 2px;
-          cursor: pointer;
-          transition: background 200ms ease, border-color 200ms ease;
-          text-align: center;
+        .tl-track-bg {
+          position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+          height: 1px; background: rgba(246,245,242,0.14); z-index: 0;
         }
-        .phase-block.active {
-          background: rgba(0,77,64,0.45);
-          border-color: #00897b;
+        .tl-track-fill {
+          position: absolute; top: 28px; left: 12.5%;
+          height: 1px; background: #00897b; z-index: 0;
+          transition: width 0.55s cubic-bezier(0.65,0,0.35,1);
         }
-        .phase-block:not(.active):hover {
-          background: rgba(246,245,242,0.06);
+        .tl-node-btn {
+          flex: 1; display: flex; flex-direction: column; align-items: center;
+          gap: 14px; background: none; border: none; cursor: pointer; padding: 0 8px;
+        }
+        .tl-node {
+          width: 56px; height: 56px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em;
+          position: relative; z-index: 1;
+          transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .tl-node.active {
+          background: #004d40; border: 1.5px solid #00897b; color: #f6f5f2;
+          box-shadow: 0 0 0 6px rgba(0,137,123,0.15);
+        }
+        .tl-node.inactive {
+          background: rgba(0,50,42,0.40); border: 1.5px solid rgba(246,245,242,0.16); color: rgba(246,245,242,0.38);
+        }
+        .tl-node.inactive:hover {
+          border-color: rgba(246,245,242,0.40); color: rgba(246,245,242,0.65);
+          background: rgba(0,60,50,0.55);
+        }
+        .tl-label { font-weight: 700; font-size: clamp(13px,1.2vw,15px); letter-spacing: -0.015em; margin: 0 0 4px; transition: color 0.35s ease; text-align: center; }
+        .tl-duration { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(246,245,242,0.32); margin: 0; }
+        .tl-detail {
+          margin-top: 48px;
+          border-left: 2px solid #00897b;
+          padding: 0 0 0 28px;
+          animation: fadeUp 0.35s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        /* mobile vertical track */
+        .tl-desktop { display: block; }
+        .tl-mobile  { display: none; }
+        .tl-mobile-item {
+          display: flex; gap: 20px; align-items: flex-start;
+          padding: 0 0 32px 0;
+        }
+        .tl-mobile-item:last-child { padding-bottom: 0; }
+        .tl-mobile-spine {
+          display: flex; flex-direction: column; align-items: center; flex-shrink: 0;
+        }
+        .tl-mobile-dot {
+          width: 40px; height: 40px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em;
+          background: rgba(0,50,42,0.50); border: 1.5px solid rgba(246,245,242,0.20);
+          color: rgba(246,245,242,0.55); flex-shrink: 0;
+        }
+        .tl-mobile-connector {
+          width: 1px; flex: 1; min-height: 28px;
+          background: rgba(246,245,242,0.14); margin: 6px 0;
+        }
+        @media (max-width: 767px) {
+          .tl-desktop { display: none; }
+          .tl-mobile  { display: flex; flex-direction: column; }
         }
         .scope-item {
           display: flex;
@@ -280,118 +327,99 @@ export default function PilotClient({
         </section>
 
         {/* SECTION D: HOW A PILOT RUNS */}
-        <section
-          ref={timelineRef as React.RefObject<HTMLDivElement>}
-          className="fade-section"
-          style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)', background: 'rgba(0,105,92,0.25)' }}
-        >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
-            {timeline.eyebrow}
-          </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 48px', maxWidth: '720px' }}>
-            {timeline.heading}
-          </h2>
+        {(() => {
+          const activeIndex = timeline.phases.findIndex(p => p.id === activePhase)
+          const progressPct = activeIndex >= 0 ? (activeIndex / (timeline.phases.length - 1)) * 75 : 0
+          const activePhaseData = timeline.phases[activeIndex] ?? timeline.phases[0]
+          return (
+            <section
+              ref={timelineRef as React.RefObject<HTMLDivElement>}
+              className="fade-section"
+              style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)', background: 'rgba(0,77,64,0.20)' }}
+            >
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
+                {timeline.eyebrow}
+              </p>
+              <h2 style={{ fontWeight: 700, fontSize: 'clamp(28px,4vw,48px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 56px', maxWidth: '600px' }}>
+                {timeline.heading}
+              </h2>
 
-          {/* Desktop: horizontal phase row */}
-          <div className="hidden md:flex" style={{ gap: '8px', marginBottom: '4px' }}>
-            {timeline.phases.map(phase => (
-              <div
-                key={phase.id}
-                className={`phase-block${activePhase === phase.id ? ' active' : ''}`}
-                onClick={() => setActivePhase(activePhase === phase.id ? '' : phase.id)}
-              >
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', margin: '0 0 6px' }}>
-                  {phase.numeral}
-                </p>
-                <p style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', margin: '0 0 4px', letterSpacing: '-0.01em' }}>
-                  {phase.label}
-                </p>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'rgba(246,245,242,0.55)', margin: 0 }}>
-                  {phase.duration}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop: expanded phase detail */}
-          <div className="hidden md:block" style={{ minHeight: '180px' }}>
-            {activePhaseData && (
-              <div style={{
-                background: 'rgba(0,77,64,0.35)',
-                border: '1px solid rgba(246,245,242,0.14)',
-                borderTop: '2px solid #00897b',
-                padding: 'clamp(24px,3vw,36px)',
-                animation: 'fadeUp 0.3s cubic-bezier(0.16,1,0.3,1) both',
-              }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-                  <div>
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', marginBottom: '10px' }}>
-                      Description
-                    </p>
-                    <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(246,245,242,0.82)', margin: 0 }}>
-                      {activePhaseData.description}
-                    </p>
-                  </div>
-                  <div>
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', marginBottom: '10px' }}>
-                      Deliverable
-                    </p>
-                    <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '16px', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
-                      {activePhaseData.deliverable}
-                    </p>
+              {/* ── Desktop track ── */}
+              <div className="tl-desktop">
+                <div style={{ position: 'relative' }}>
+                  <div className="tl-track-bg" />
+                  <div className="tl-track-fill" style={{ width: `${progressPct}%` }} />
+                  <div style={{ display: 'flex' }}>
+                    {timeline.phases.map((phase) => {
+                      const isActive = activePhase === phase.id
+                      return (
+                        <button
+                          key={phase.id}
+                          className="tl-node-btn"
+                          onClick={() => setActivePhase(phase.id)}
+                        >
+                          <div className={`tl-node ${isActive ? 'active' : 'inactive'}`}>
+                            {phase.numeral}
+                          </div>
+                          <div>
+                            <p className="tl-label" style={{ color: isActive ? '#f6f5f2' : 'rgba(246,245,242,0.45)' }}>
+                              {phase.label}
+                            </p>
+                            <p className="tl-duration">{phase.duration}</p>
+                          </div>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
 
-          {/* Mobile: accordion */}
-          <div className="md:hidden" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {timeline.phases.map(phase => (
-              <div key={phase.id} style={{ border: '1px solid rgba(17,17,17,0.12)', borderRadius: '2px', overflow: 'hidden', marginBottom: '8px' }}>
-                <button
-                  onClick={() => setActivePhase(activePhase === phase.id ? '' : phase.id)}
-                  style={{
-                    width: '100%',
-                    padding: '18px 20px',
-                    background: activePhase === phase.id ? 'rgba(0,77,64,0.40)' : 'rgba(246,245,242,0.05)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    textAlign: 'left',
-                  }}
-                >
-                  <div>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.16em', color: 'rgba(246,245,242,0.45)', display: 'block', marginBottom: '4px' }}>
-                      {phase.numeral} / {phase.duration}
-                    </span>
-                    <span style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', letterSpacing: '-0.01em' }}>
-                      {phase.label}
-                    </span>
-                  </div>
-                  <span style={{ color: 'rgba(246,245,242,0.55)', fontSize: '18px', transform: activePhase === phase.id ? 'rotate(180deg)' : 'none', transition: 'transform 280ms ease' }}>
-                    ↓
-                  </span>
-                </button>
-                {activePhase === phase.id && (
-                  <div style={{ padding: '20px', background: 'rgba(0,77,64,0.20)', borderTop: '1px solid rgba(246,245,242,0.10)' }}>
-                    <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 16px' }}>
-                      {phase.description}
+                {/* Detail panel */}
+                {activePhaseData && (
+                  <div key={activePhaseData.id} className="tl-detail">
+                    <p style={{ fontSize: 'clamp(14px,1.3vw,16px)', lineHeight: 1.75, color: 'rgba(246,245,242,0.78)', margin: '0 0 28px', maxWidth: '680px' }}>
+                      {activePhaseData.description}
                     </p>
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#00897b', margin: '0 0 6px' }}>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', margin: '0 0 8px' }}>
                       Deliverable
                     </p>
-                    <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '15px', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
-                      {phase.deliverable}
+                    <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
+                      {activePhaseData.deliverable}
                     </p>
                   </div>
                 )}
               </div>
-            ))}
-          </div>
-        </section>
+
+              {/* ── Mobile vertical track ── */}
+              <div className="tl-mobile">
+                {timeline.phases.map((phase, i) => (
+                  <div key={phase.id} className="tl-mobile-item">
+                    <div className="tl-mobile-spine">
+                      <div className="tl-mobile-dot">{phase.numeral}</div>
+                      {i < timeline.phases.length - 1 && <div className="tl-mobile-connector" />}
+                    </div>
+                    <div style={{ paddingTop: '8px', paddingBottom: i < timeline.phases.length - 1 ? '16px' : 0 }}>
+                      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.38)', margin: '0 0 5px' }}>
+                        {phase.duration}
+                      </p>
+                      <p style={{ fontWeight: 700, fontSize: '16px', color: '#f6f5f2', letterSpacing: '-0.01em', margin: '0 0 10px' }}>
+                        {phase.label}
+                      </p>
+                      <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(246,245,242,0.72)', margin: '0 0 12px' }}>
+                        {phase.description}
+                      </p>
+                      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#00897b', margin: '0 0 4px' }}>
+                        Deliverable
+                      </p>
+                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '15px', lineHeight: 1.6, color: '#f6f5f2', margin: 0 }}>
+                        {phase.deliverable}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        })()}
 
         {/* SECTION E: IN SCOPE / OUT OF SCOPE */}
         <section
