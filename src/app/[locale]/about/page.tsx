@@ -82,7 +82,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             >
               {t.rich('Principles.title', {
                 em: (c) => (
-                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                  <em className="not-italic font-bold" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--fg)' }}>
                     {c}
                   </em>
                 ),
@@ -121,7 +121,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             >
               {t.rich('Beliefs.title', {
                 em: (c) => (
-                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                  <em className="not-italic font-bold" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--fg)' }}>
                     {c}
                   </em>
                 ),
@@ -130,7 +130,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             <div className="flex flex-col gap-10 sm:gap-12">
               {beliefsItems.map((b, i) => (
-                <div key={i} className="ab-card border-l-2 border-teal-mid/30 pl-7 sm:pl-9">
+                <div key={i} className="ab-card border-l-2 pl-7 sm:pl-9" style={{ borderColor: 'rgba(17,17,17,0.18)' }}>
                   <p
                     className="font-bold leading-[1.1] tracking-[-0.02em] mb-2"
                     style={{ fontSize: 'clamp(20px, 2.8vw, 30px)', color: 'var(--fg)' }}
@@ -138,8 +138,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     {b.claim}
                   </p>
                   <p
-                    className="font-bold text-teal-mid leading-[1.1] tracking-[-0.02em]"
-                    style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.8vw, 30px)' }}
+                    className="font-bold leading-[1.1] tracking-[-0.02em]"
+                    style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.8vw, 30px)', color: 'var(--fg-muted)' }}
                   >
                     {b.reality}
                   </p>
@@ -163,7 +163,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             >
               {t.rich('Origin.title', {
                 em: (c) => (
-                  <em className="not-italic font-bold text-teal-mid" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+                  <em className="not-italic font-bold" style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--fg)' }}>
                     {c}
                   </em>
                 ),
