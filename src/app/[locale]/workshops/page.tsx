@@ -41,6 +41,8 @@ export default async function WorkshopsPage({ params }: { params: Promise<{ loca
     { id: 'leadership', ...W.Leadership },
   ]
 
+  const productSlideSubhead: string = W.ProductSlideSubhead ?? 'After the Workshop, where it makes sense.'
+
   return (
     <>
       <Nav />
@@ -51,6 +53,7 @@ export default async function WorkshopsPage({ params }: { params: Promise<{ loca
         deliverables={W.Deliverables}
         closing={W.Closing}
         request={W.Request}
+        productSlideSubhead={productSlideSubhead}
       />
       <Footer />
     </>

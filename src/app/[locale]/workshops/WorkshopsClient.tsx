@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@/i18n/routing'
+import ProductSlide from '@/components/marketing/ProductSlide'
 
 type Workshop = {
   id: string; name: string; hook: string;
@@ -31,11 +32,12 @@ interface Props {
   deliverables: DeliverablesData
   closing: ClosingData
   request: RequestData
+  productSlideSubhead: string
 }
 
 const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 50%, #b9d8d2 72%, #f6f5f2 90%)'
 
-export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request }: Props) {
+export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')
   const [detailModal, setDetailModal] = useState<{ tier: TierData; workshop: Workshop } | null>(null)
   const [requestModal, setRequestModal] = useState<string | null>(null)
@@ -327,6 +329,9 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
             </div>
           </div>
         </section>
+
+        {/* PRODUCT SLIDE */}
+        <ProductSlide subhead={productSlideSubhead} />
 
         {/* CLOSING CTA */}
         <section style={{ background: '#f6f5f2', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}>

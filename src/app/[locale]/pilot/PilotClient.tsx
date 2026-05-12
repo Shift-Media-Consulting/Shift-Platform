@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Link } from '@/i18n/routing'
+import ProductSlide from '@/components/marketing/ProductSlide'
 
 type HeroData = { eyebrow: string; title: string; body: string; subline: string }
-type DefinitionData = { eyebrow: string; heading: string; p1: string; p2: string; p3: string }
-type CardData = { id: string; title: string; hook: string; detail: string; example: string }
+type DefinitionData = { lead: string; sub: string; p2: string; p3: string; p4: string }
+type CardData = { id: string; title: string; hook: string; detail: string }
 type ProjectTypesData = { eyebrow: string; heading: string; cards: CardData[] }
-type PhaseData = { id: string; label: string; duration: string; description: string; deliverable: string }
+type PhaseData = { id: string; numeral: string; label: string; duration: string; description: string; deliverable: string }
 type TimelineData = { eyebrow: string; heading: string; phases: PhaseData[] }
 type ScopeData = { eyebrow: string; heading: string; in_label: string; out_label: string; in_items: string[]; out_items: string[] }
 type DeliverableItem = { label: string; body: string }
@@ -29,9 +29,25 @@ interface Props {
   deliverables: DeliverablesData
   closing: ClosingData
   request: RequestData
+  productSlideSubhead: string
 }
 
 const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 50%, #b9d8d2 72%, #f6f5f2 90%)'
+
+// Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
+function renderOutItem(text: string) {
+  const parts = text.split(/(Build|Engine|Campaign|Pilot)/g)
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (['Build', 'Engine', 'Campaign', 'Pilot'].includes(part)) {
+          return <strong key={i} style={{ color: 'rgba(17,17,17,0.75)', fontWeight: 700 }}>{part}</strong>
+        }
+        return <span key={i}>{part}</span>
+      })}
+    </>
+  )
+}
 
 function useFadeIn() {
   const ref = useRef<HTMLElement | null>(null)
@@ -46,7 +62,7 @@ function useFadeIn() {
           obs.disconnect()
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.06 }
     )
     obs.observe(el)
     return () => obs.disconnect()
@@ -55,13 +71,14 @@ function useFadeIn() {
 }
 
 export default function PilotClient({
-  hero, definition, projectTypes, timeline, scope, deliverables, closing, request,
+  hero, definition, projectTypes, timeline, scope, deliverables, closing, request, productSlideSubhead,
 }: Props) {
   const [cardModal, setCardModal] = useState<CardData | null>(null)
-  const [activePhase, setActivePhase] = useState<string | null>(timeline.phases[0]?.id ?? null)
+  const [phaseModal, setPhaseModal] = useState<PhaseData | null>(null)
   const [requestOpen, setRequestOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', company: '', email: '', project: '', message: '' })
   const [submitState, setSubmitState] = useState<'idle' | 'success'>('idle')
+  const [activePhase, setActivePhase] = useState<string>(timeline.phases[0]?.id ?? '')
 
   const defRef = useFadeIn() as React.RefObject<HTMLElement>
   const typesRef = useFadeIn() as React.RefObject<HTMLElement>
@@ -70,34 +87,30 @@ export default function PilotClient({
   const delRef = useFadeIn() as React.RefObject<HTMLElement>
   const closingRef = useFadeIn() as React.RefObject<HTMLElement>
 
+  const anyModalOpen = !!(cardModal || phaseModal || requestOpen)
+
   // Close modals on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (requestOpen) { setRequestOpen(false); setSubmitState('idle') }
+        else if (phaseModal) setPhaseModal(null)
         else if (cardModal) setCardModal(null)
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [cardModal, requestOpen])
+  }, [cardModal, phaseModal, requestOpen])
 
   // Prevent body scroll when modal open
   useEffect(() => {
-    document.body.style.overflow = (cardModal || requestOpen) ? 'hidden' : ''
+    document.body.style.overflow = anyModalOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [cardModal, requestOpen])
+  }, [anyModalOpen])
 
-  const openRequest = () => {
+  const openRequest = (projectType = '') => {
     setCardModal(null)
-    setFormData({ name: '', company: '', email: '', project: '', message: '' })
-    setSubmitState('idle')
-    setRequestOpen(true)
-  }
-
-  const openRequestFromCard = (card: CardData) => {
-    setCardModal(null)
-    setFormData({ name: '', company: '', email: '', project: card.title, message: '' })
+    setFormData({ name: '', company: '', email: '', project: projectType, message: '' })
     setSubmitState('idle')
     setRequestOpen(true)
   }
@@ -158,12 +171,6 @@ export default function PilotClient({
         .phase-block:not(.active):hover {
           background: rgba(246,245,242,0.06);
         }
-        .phase-block-mobile {
-          border: 1px solid rgba(17,17,17,0.12);
-          border-radius: 2px;
-          overflow: hidden;
-          margin-bottom: 8px;
-        }
         .scope-item {
           display: flex;
           align-items: flex-start;
@@ -213,27 +220,27 @@ export default function PilotClient({
           </p>
         </section>
 
-        {/* SECTION B: DEFINITION */}
+        {/* SECTION B: WHAT PILOT IS */}
         <section
           ref={defRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          style={{ background: 'rgba(0,60,50,0.40)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '720px' }}>
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '20px' }}>
-              {definition.eyebrow}
-            </p>
-            <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 36px' }}>
-              {definition.heading}
+            <h2 style={{ fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', lineHeight: 1.2, letterSpacing: '-0.015em', color: '#f6f5f2', margin: '0 0 8px' }}>
+              {definition.lead}
             </h2>
-            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 22px' }}>
-              {definition.p1}
+            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(17px,1.6vw,20px)', color: 'rgba(246,245,242,0.65)', margin: '0 0 36px' }}>
+              {definition.sub}
             </p>
             <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 22px' }}>
               {definition.p2}
             </p>
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.65, color: 'rgba(246,245,242,0.65)', margin: 0 }}>
+            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 22px' }}>
               {definition.p3}
+            </p>
+            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.65, color: 'rgba(246,245,242,0.62)', margin: 0 }}>
+              {definition.p4}
             </p>
           </div>
         </section>
@@ -275,7 +282,7 @@ export default function PilotClient({
           </div>
         </section>
 
-        {/* SECTION D: TIMELINE */}
+        {/* SECTION D: HOW A PILOT RUNS */}
         <section
           ref={timelineRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
@@ -290,14 +297,14 @@ export default function PilotClient({
 
           {/* Desktop: horizontal phase row */}
           <div className="hidden md:flex" style={{ gap: '8px', marginBottom: '4px' }}>
-            {timeline.phases.map((phase, i) => (
+            {timeline.phases.map(phase => (
               <div
                 key={phase.id}
                 className={`phase-block${activePhase === phase.id ? ' active' : ''}`}
-                onClick={() => setActivePhase(activePhase === phase.id ? null : phase.id)}
+                onClick={() => setActivePhase(activePhase === phase.id ? '' : phase.id)}
               >
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', margin: '0 0 6px' }}>
-                  0{i + 1}
+                  {phase.numeral}
                 </p>
                 <p style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', margin: '0 0 4px', letterSpacing: '-0.01em' }}>
                   {phase.label}
@@ -343,10 +350,10 @@ export default function PilotClient({
 
           {/* Mobile: accordion */}
           <div className="md:hidden" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {timeline.phases.map((phase, i) => (
-              <div key={phase.id} className="phase-block-mobile">
+            {timeline.phases.map(phase => (
+              <div key={phase.id} style={{ border: '1px solid rgba(17,17,17,0.12)', borderRadius: '2px', overflow: 'hidden', marginBottom: '8px' }}>
                 <button
-                  onClick={() => setActivePhase(activePhase === phase.id ? null : phase.id)}
+                  onClick={() => setActivePhase(activePhase === phase.id ? '' : phase.id)}
                   style={{
                     width: '100%',
                     padding: '18px 20px',
@@ -361,7 +368,7 @@ export default function PilotClient({
                 >
                   <div>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.16em', color: 'rgba(246,245,242,0.45)', display: 'block', marginBottom: '4px' }}>
-                      0{i + 1} / {phase.duration}
+                      {phase.numeral} / {phase.duration}
                     </span>
                     <span style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', letterSpacing: '-0.01em' }}>
                       {phase.label}
@@ -402,11 +409,7 @@ export default function PilotClient({
           <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#111111', margin: '0 0 52px', maxWidth: '720px' }}>
             {scope.heading}
           </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '48px',
-          }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
             {/* In scope */}
             <div>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '16px', fontWeight: 600 }}>
@@ -430,7 +433,7 @@ export default function PilotClient({
                 {scope.out_items.map((item, i) => (
                   <div key={i} className="scope-item" style={{ color: 'rgba(17,17,17,0.55)' }}>
                     <span style={{ color: 'rgba(17,17,17,0.30)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
-                    <span style={{ fontSize: '14px' }}>{item}</span>
+                    <span style={{ fontSize: '14px' }}>{renderOutItem(item)}</span>
                   </div>
                 ))}
               </div>
@@ -438,7 +441,7 @@ export default function PilotClient({
           </div>
         </section>
 
-        {/* SECTION F: DELIVERABLES */}
+        {/* SECTION F: WHAT YOU GET */}
         <section
           ref={delRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
@@ -474,7 +477,10 @@ export default function PilotClient({
           </div>
         </section>
 
-        {/* SECTION G: CLOSING CTA */}
+        {/* SECTION G: PRODUCT SLIDE */}
+        <ProductSlide subhead={productSlideSubhead} />
+
+        {/* SECTION H: CLOSING CTA */}
         <section
           ref={closingRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
@@ -492,7 +498,7 @@ export default function PilotClient({
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
             <button
-              onClick={openRequest}
+              onClick={() => openRequest()}
               style={{
                 display: 'inline-block',
                 background: '#004d40', color: '#f6f5f2',
@@ -538,7 +544,7 @@ export default function PilotClient({
             style={{
               background: '#f6f5f2', color: '#111111',
               borderRadius: '4px',
-              maxWidth: '640px', width: '100%',
+              maxWidth: '580px', width: '100%',
               maxHeight: '90vh', overflowY: 'auto',
               padding: 'clamp(28px,4vw,48px)',
               position: 'relative',
@@ -557,35 +563,24 @@ export default function PilotClient({
               }}
             >×</button>
 
-            <h2 style={{ fontWeight: 700, fontSize: 'clamp(24px,3vw,36px)', letterSpacing: '-0.02em', lineHeight: 1.05, color: '#111111', margin: '0 0 14px', paddingRight: '40px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: 'clamp(22px,3vw,32px)', letterSpacing: '-0.02em', lineHeight: 1.05, color: '#111111', margin: '0 0 12px', paddingRight: '40px' }}>
               {cardModal.title}
             </h2>
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '17px', lineHeight: 1.55, color: 'rgba(17,17,17,0.65)', margin: '0 0 28px' }}>
+            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '17px', lineHeight: 1.55, color: 'rgba(17,17,17,0.65)', margin: '0 0 24px' }}>
               {cardModal.hook}
             </p>
 
-            <div style={{ height: '1px', background: 'rgba(17,17,17,0.10)', marginBottom: '24px' }} />
+            <div style={{ height: '1px', background: 'rgba(17,17,17,0.10)', marginBottom: '20px' }} />
 
-            <div style={{ marginBottom: '24px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '8px' }}>
-                What we cover
-              </p>
-              <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(17,17,17,0.80)', margin: 0 }}>
-                {cardModal.detail}
-              </p>
-            </div>
-
-            <div style={{ marginBottom: '36px', background: '#f0efec', borderRadius: '2px', padding: '16px 18px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.40)', marginBottom: '6px' }}>
-                Example
-              </p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', lineHeight: 1.6, color: 'rgba(17,17,17,0.65)', margin: 0 }}>
-                {cardModal.example}
-              </p>
-            </div>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '8px' }}>
+              What SHIFT covers
+            </p>
+            <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(17,17,17,0.80)', margin: '0 0 32px' }}>
+              {cardModal.detail}
+            </p>
 
             <button
-              onClick={() => openRequestFromCard(cardModal)}
+              onClick={() => openRequest(cardModal.title)}
               style={{
                 width: '100%', padding: '15px 24px',
                 background: '#004d40', color: '#f6f5f2',

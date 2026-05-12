@@ -22,6 +22,8 @@ export default async function PilotPage({ params }: { params: Promise<{ locale: 
   setRequestLocale(locale)
   const messages = await getMessages()
   const P = (messages as any).Pilot
+  // ProductSlide subhead — context-specific phrase, overrides the shared heading from ProductSlide messages
+  const productSlideSubhead = (messages as any).ProductSlide?.heading ?? 'After the Pilot, where it makes sense.'
 
   return (
     <>
@@ -35,6 +37,7 @@ export default async function PilotPage({ params }: { params: Promise<{ locale: 
         deliverables={P.Deliverables}
         closing={P.Closing}
         request={P.Request}
+        productSlideSubhead={productSlideSubhead}
       />
       <Footer />
     </>

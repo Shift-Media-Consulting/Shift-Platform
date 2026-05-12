@@ -8,6 +8,7 @@ import MethodFramework from './MethodFramework'
 import MethodArtifact from './MethodArtifact'
 import MethodCarousel from './MethodCarousel'
 import CtaSection from '@/components/marketing/CtaSection'
+import ProductSlide from '@/components/marketing/ProductSlide'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -370,6 +371,8 @@ export default async function MethodPage({ params }: { params: Promise<{ locale:
             ))}
           </div>
         </section>
+
+        <ProductSlide subhead={t('ProductSlideSubhead')} />
 
         <CtaSection
           h2={t.rich('Closing.title', { em: (c) => <em className="news">{c}</em> })}

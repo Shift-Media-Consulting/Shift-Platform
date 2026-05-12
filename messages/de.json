@@ -414,7 +414,8 @@
       "title": "Beginnen Sie mit einem <em>Gespräch.</em>",
       "body": "Die Shift Methode beginnt mit einem Gespräch, nicht mit einem Sales Pitch. Wir sagen Ihnen, ob das der richtige nächste Schritt ist. Und wenn nicht, was es stattdessen ist.",
       "cta": "Kontakt aufnehmen ›"
-    }
+    },
+    "ProductSlideSubhead": "Nach dem Audit, wo es Sinn macht."
   },
   "Team": {
     "Meta": {
@@ -862,94 +863,82 @@
       "submit": "Anfrage senden ›",
       "success_title": "Anfrage erhalten.",
       "success_body": "Wir melden uns innerhalb von 24 Stunden, Montag bis Freitag."
-    }
+    },
+    "ProductSlideSubhead": "Nach dem Workshop, wo es Sinn macht."
   },
   "Pilot": {
     "Meta": {
       "title": "Pilot — shift.media",
-      "description": "Ein Projekt. Von Brief bis Delivery. SHIFT übernimmt die Rolle, die die Brand intern nicht besetzen kann."
+      "description": "Ein Projekt. Von Brief bis Delivery. SHIFT bringt die Senior Advisory Layer, die euer Team braucht."
     },
     "Hero": {
       "eyebrow": "Services · Pilot",
       "title": "Pilot.",
-      "subline": "Das volle SHIFT Advisory Model, auf einem echten Stück Arbeit.",
-      "body": "Ein Projekt. Von Brief bis Delivery. SHIFT übernimmt die Rolle, die die Brand intern nicht besetzen kann, und steigt sauber wieder aus, sobald das Projekt im Markt ist."
+      "body": "Ein Projekt. Von Brief bis Delivery. SHIFT bringt die Senior Advisory Layer, die euer Team braucht, und steigt sauber wieder aus, sobald das Projekt im Markt ist.",
+      "subline": "SHIFT auf einem echten Stück Arbeit."
     },
     "Definition": {
-      "eyebrow": "Was Pilot ist",
-      "heading": "Pilot ist die dritte Front Door.",
-      "p1": "Wo der Audit eure volle Production Operation untersucht und ein Workshop sich auf ein einzelnes Thema fokussiert, ist ein Pilot volle Advisory Leadership auf einem konkreten Projekt. Von Brief bis Delivery. Was immer das Projekt braucht.",
-      "p2": "Pilot kann Strategy, Production Oversight, AI Integration, Cost Management, Talent und Director Selection, Vendor Negotiation, Post Production Discipline und Handover abdecken. Die Rolle, die wir übernehmen, ist geformt durch das, was in eurem Team fehlt. SHIFT ist unabhängig von der involvierten Agency und Production Company, deshalb ist die Beratung immer nur in eurem Interesse.",
-      "p3": "Ein Pilot ist, wie eine Brand das volle SHIFT Modell auf einem echten Stück Arbeit erlebt, in einem definierten Scope, bevor sie sich auf etwas Längeres committet."
+      "lead": "Ein Pilot ist volle Advisory Leadership auf einem eurer Projekte.",
+      "sub": "Von Brief bis Delivery. Was immer das Projekt braucht.",
+      "p2": "Pilot kann Advisory über Strategy, Production Oversight, AI Integration, Cost Management, Talent und Director Selection, Vendor Negotiation, Post Production Discipline und Handover enthalten. Die Rolle, die SHIFT in eurem Team übernimmt, ist geformt durch das, was fehlt. SHIFT ist unabhängig von der im Projekt involvierten Agency und Production Company, deshalb ist die Beratung immer nur in eurem Interesse.",
+      "p3": "Wo es hilft, designed SHIFT einen bespoken Production Workflow neben eurem Team, der innerhalb des Projekts wie eine Inhouse Funktion arbeitet. Der Workflow wird mit eurem Team gebaut und von eurem Team gefahren. SHIFT architektet und berät ihn.",
+      "p4": "Die Arbeit eines Pilots ist das Projekt selbst. Euer Team und eure gewählten Partner liefern es ab. SHIFT bringt die Advisory Leadership und übergibt eine schriftliche Analyse daneben."
     },
     "ProjectTypes": {
       "eyebrow": "Wo Pilot passt",
-      "heading": "Ein Engagement. Acht Projektarten.",
+      "heading": "Sieben Projektarten.",
       "cards": [
         {
           "id": "brand-campaign",
           "title": "Brand Campaign",
           "hook": "Eine einzelne integrierte Kampagne über mehrere Formate und Kanäle.",
-          "detail": "SHIFT führt das Production Advisory über Film, Content und Social Executions innerhalb der Kampagne. Wir decken Brief Alignment, Production Company Selection, Budget Governance und Delivery Rhythmus über alle Formate ab.",
-          "example": "Europäische FMCG Brand, integrierte Kampagne über TVC, OOH und Social — 12-wöchiger Pilot von Brief bis Delivery."
+          "detail": "SHIFT führt das Production Advisory über Film, Content und Social Executions innerhalb der Kampagne."
         },
         {
           "id": "hero-film",
           "title": "Hero Film",
           "hook": "Ein einzelner High Stakes Hero Film, TVC oder Anthem Piece.",
-          "detail": "SHIFT übernimmt Brief, Director und Production Company Selection, Budget Design, On Set Oversight, Post Discipline und Rights. Die Rolle eines erfahrenen Production Leads, ohne den Overhead einer Festanstellung.",
-          "example": "Challenger Beverage Brand, 90-Sekunden Anthem Film mit internationalem Director — SHIFT eingebettet von Brief bis Post."
+          "detail": "SHIFT deckt Advisory über Brief, Director und Production Company Selection, Budget Design, On Set Oversight, Post Discipline und Rights ab."
         },
         {
           "id": "content-series",
           "title": "Content Series",
           "hook": "Eine definierte Content Series oder Branded Episodic Content.",
-          "detail": "SHIFT designed das Production Model für die Series, fährt die ersten Episoden mit dem Team und übergibt am Ende ein wiederholbares Framework. Für Brands, die ihre Content Operation langfristig selbst betreiben wollen.",
-          "example": "B2B Technology Brand, 8-teilige Social Video Series — SHIFT designed das Production Model und fuhr Episoden 1 bis 3."
+          "detail": "SHIFT designed das Production Model für die Series, berät durch die ersten Episoden neben dem Team und übergibt am Ende ein wiederholbares Framework."
         },
         {
           "id": "brand-launch",
           "title": "Brand Launch",
           "hook": "Die Production Arbeit hinter einem Brand Launch, Rebrand oder großen Positioning Moment.",
-          "detail": "SHIFT deckt die Production Strategy und den Delivery Rhythmus über das Launch Window ab. Mehrere Workstreams, ein Advisory Lead, der alles im Budget und im Zeitplan hält.",
-          "example": "Consumer Healthcare Brand, vollständiger Rebrand mit Kampagne, Packaging Film und Social Suite — 16-wöchiger Pilot."
+          "detail": "SHIFT deckt die Production Strategy und den Delivery Rhythmus über das Launch Window ab."
         },
         {
           "id": "ai-production",
           "title": "AI Production",
           "hook": "Eine erste AI driven Production at Scale.",
-          "detail": "SHIFT deckt Tool Selection, Governance, Output Quality Control, Rights und Disclosure sowie die Human in the Loop Standards ab, die die Brand schützen. Für Brands, die erstmals AI Production durchführen und ein Framework brauchen, das hält.",
-          "example": "Retail Brand, erste KI-generierte Social Campaign über vier Märkte — SHIFT setzte Governance, Quality Gates und Disclosure Protokoll auf."
+          "detail": "SHIFT deckt Tool Selection, Governance, Output Quality Control, Rights und Disclosure sowie die Human in the Loop Standards ab, die die Brand schützen."
         },
         {
           "id": "live-event",
           "title": "Live Event",
-          "hook": "Eine einzelne Live Event Production.",
-          "detail": "Launch, Summit, Brand Activation, Festival. SHIFT übernimmt Production Strategy, Vendor Selection, eingespielte Workflows und Live Governance. Die Planungsstrenge, die teure Überraschungen verhindert.",
-          "example": "Professional Services Firm, jährlicher Client Summit mit hybridem Broadcast Element — SHIFT als Production Advisory Lead."
+          "hook": "Eine einzelne Live Event Production. Launch, Summit, Brand Activation, Festival.",
+          "detail": "SHIFT übernimmt Production Strategy, Vendor Selection, eingespielte Workflows und Live Governance."
         },
         {
           "id": "format-launch",
           "title": "Format Launch",
-          "hook": "Ein neues Format zum Leben bringen.",
-          "detail": "Podcast, Social Series, Mini Documentary, Branded Short Film. SHIFT designed das Production Model für das Format und fährt den ersten Cycle. Was am Ende übergeben wird, ist ein Format, das ohne uns wiederholbar ist.",
-          "example": "Financial Services Brand, Branded Podcast auf sechs Plattformen — SHIFT designed das Production Model und fuhr Staffel 1."
-        },
-        {
-          "id": "crisis-production",
-          "title": "Crisis Production",
-          "hook": "Rapid Response Production für einen Cultural Flashpoint, ein regulatorisches Ereignis oder eine Brand Crisis.",
-          "detail": "SHIFT aktiviert ein eingespieltes Playbook und führt die Production Response in Stunden, nicht in Wochen. Schnelligkeit, Quality Control und Governance unter Druck, die Kombination, die die meisten internen Teams nicht schnell genug aufstellen können.",
-          "example": "Consumer Brand, regulatorische Response mit schnellem Video Content über mehrere Märkte — SHIFT aktiviert innerhalb von 48 Stunden."
+          "hook": "Ein neues Format zum Leben bringen. Podcast, Social Series, Mini Documentary, Branded Short Film.",
+          "detail": "SHIFT designed das Production Model für das Format und berät durch den ersten Cycle."
         }
       ]
     },
     "Timeline": {
       "eyebrow": "Wie ein Pilot läuft",
-      "heading": "Vier Phasen. Ein delivered Project.",
+      "heading": "Vier Phasen. Ein Projekt.",
       "phases": [
         {
           "id": "scope",
+          "numeral": "01",
           "label": "Scope",
           "duration": "Woche 1",
           "description": "Wir scopen den Pilot mit euch. Project Goals, Success Criteria, kritische Constraints, SHIFTs Rolle innerhalb eures Teams, Vendor und Agency Kontext. Wir bestätigen, was wir abdecken, was bei euch bleibt und was außerhalb des Pilots fällt.",
@@ -957,23 +946,26 @@
         },
         {
           "id": "embed",
+          "numeral": "02",
           "label": "Embed",
           "duration": "Woche 2 bis 4",
-          "description": "SHIFT joint das Projekt als Advisory Lead. Brief Refinement, Production Company und Director Selection, Budget Design, Vendor Negotiation, Governance Setup. Mindestens zwei Tage pro Woche aktiv im Projekt, mehr wenn das Projekt es braucht.",
+          "description": "SHIFT joint das Projekt als Advisory Lead. Brief Refinement, Production Company und Director Selection Advisory, Budget Design, Vendor Negotiation Support, Governance Setup. Mindestens zwei Tage pro Woche aktiv im Projekt, mehr wenn das Projekt es braucht.",
           "deliverable": "Production Plan, Budget, Partner Selection, Governance Framework."
         },
         {
           "id": "deliver",
+          "numeral": "03",
           "label": "Deliver",
           "duration": "Woche 4 bis 7",
-          "description": "Live Production mit SHIFT eingebettet in den Projekt Rhythmus. On Set oder in Pre und Post Sessions, in Calls, in Approvals, in Cost Reviews. Wöchentliche Estimated versus Actual Reports. Echtzeit Decision Support für das Brand Team.",
-          "deliverable": "Delivered Project, wöchentliche EvsA Reports, Decision Log."
+          "description": "Das Projekt geht in Live Production, SHIFT eingebettet in den Projekt Rhythmus als Advisory Lead. On Set oder in Pre und Post Sessions, in Calls, in Approvals, in Cost Reviews. Wöchentliche Estimated versus Actual Reports. Echtzeit Decision Support für das Brand Team.",
+          "deliverable": "Delivered Project plus wöchentliche EvsA Reports plus Decision Log."
         },
         {
           "id": "handover",
+          "numeral": "04",
           "label": "Handover",
           "duration": "Letzte Woche",
-          "description": "Post Production Close Out, Cost Reconciliation, Rights und Disclosure Check, Lessons Learned und Empfehlung für das, was als Nächstes kommt. SHIFT steigt sauber aus, mit allem dokumentiert.",
+          "description": "Post Production Close Out, Cost Reconciliation, Rights und Disclosure Check, Lessons Learned, Empfehlung für das, was als Nächstes kommt. SHIFT steigt sauber aus, mit allem dokumentiert.",
           "deliverable": "Finaler Pilot Report zu Project Delivery, Cost Reconciliation, Lessons und Empfehlung."
         }
       ]
@@ -982,47 +974,43 @@
       "eyebrow": "Was wir abdecken",
       "heading": "In Scope und Out of Scope.",
       "in_label": "In Scope innerhalb eines Pilots",
-      "out_label": "Out of Scope innerhalb eines Pilots",
+      "out_label": "Out of Scope",
       "in_items": [
-        "Production Strategy für das Projekt",
+        "Production Strategy Design",
         "Brief Development und Refinement",
-        "Production Company und Director Selection",
+        "Director und Production Company Selection (Advisory)",
         "Budget Design und Benchmarking",
-        "Vendor Negotiation",
+        "Vendor Negotiation Support",
         "Echtzeit Cost Reporting und Variance Management",
-        "Milestone und Approval Gate Management",
-        "AI Tool Selection und Governance für das Projekt",
+        "Milestone und Approval Gate Oversight",
+        "AI Tool Selection und Governance Design",
         "Post Production Cost Discipline",
         "Rights und Licensing Oversight",
-        "Quality Gate Management",
+        "Quality Gate Oversight",
         "Handover Dokumentation"
       ],
       "out_items": [
-        "Strukturelle Neuaufstellung eurer vollen Production Operation — das ist ein Build Engagement",
-        "Laufendes Advisory über mehrere Workstreams hinaus, jenseits dieses Projekts — das ist ein Engine Retainer",
-        "Production Lead auf parallelen Kampagnen neben diesem Projekt — das ist ein Campaign Engagement oder ein erweiterter Pilot",
+        "Strukturelle Neuaufstellung eurer vollen Production Operation — das ist Build",
+        "Laufendes Advisory über mehrere Workstreams hinaus, jenseits dieses Projekts — das ist Engine",
+        "Production Lead auf parallelen Kampagnen neben diesem Projekt — das ist Campaign oder ein erweiterter Pilot",
         "Recruiting oder Hiring Entscheidungen für Permanent Staff — wir beraten, wir vermitteln nicht"
       ]
     },
     "Deliverables": {
       "eyebrow": "Womit jeder Pilot endet",
-      "heading": "Pilot ist echte Arbeit auf einem echten Projekt, und es endet so, wie echte Arbeit endet.",
+      "heading": "Womit jeder Pilot endet.",
       "items": [
         {
-          "label": "Ein delivered Project.",
-          "body": "Die Kampagne, der Film, die Series, der Launch, das Event oder der Rollout, delivered auf den vereinbarten Brief."
+          "label": "Das Projekt, delivered.",
+          "body": "Wofür ihr uns reingeholt habt. Der Film, die Kampagne, die Series, der Launch, das Event, der Rollout. Produziert und im Markt, mit SHIFT als Advisory Lead neben eurem Team und euren Partnern."
         },
         {
-          "label": "Volle Dokumentation.",
-          "body": "Jedes Artefakt, das während des Pilots entstanden ist, sauber aufgeschrieben und ans Team übergeben. Production Plan, Budget, Partner Selection Rationale, Decision Log, Governance Setup, EvsA Reports."
+          "label": "Ein voller Pilot Report.",
+          "body": "Eine schriftliche Analyse dessen, was getan wurde, wie es gebaut wurde, was funktioniert hat, was nicht, die Cost Reconciliation gegen den ursprünglichen Scope und die Lessons Learned. Jedes Artefakt, das während des Pilots entstanden ist, ist als Anhang enthalten. Der Report gehört eurem Team."
         },
         {
-          "label": "Ein finaler Pilot Report.",
-          "body": "Ein schriftlicher Close Out zu dem, was delivered wurde, was funktioniert hat, was beim nächsten Mal anders gehen sollte, und Cost Reconciliation gegen den ursprünglichen Scope."
-        },
-        {
-          "label": "Eine Empfehlung.",
-          "body": "Wo es passt, eine Empfehlung für das nächste SHIFT Engagement. Manchmal ist der richtige nächste Schritt gar keiner. Auch das ist ein valides Outcome."
+          "label": "Eine Empfehlung, wo es passt.",
+          "body": "Manchmal deckt ein Pilot etwas Strukturelles auf, das von einem längeren Engagement mit SHIFT profitieren würde. Manchmal ist das Projekt die Arbeit, und die Arbeit ist erledigt. Beides sind valide Outcomes."
         }
       ]
     },
@@ -1044,5 +1032,41 @@
       "success_title": "Nachricht gesendet.",
       "success_body": "Wir melden uns innerhalb eines Werktags."
     }
+  },
+  "ProductSlide": {
+    "eyebrow": "Was als Nächstes kommt",
+    "heading": "Nach dem Pilot, wo es Sinn macht.",
+    "cards": [
+      {
+        "id": "campaign",
+        "numeral": "01",
+        "title": "Campaign",
+        "hook": "Embedded Production Advisory auf einer konkreten Kampagne oder Production.",
+        "modal_body_1": "Campaign ist End to End Production Advisory Lead auf einer definierten Production. Eine Kampagne, ein Film, eine Content Series, ein Launch, ein AI Rollout, ein Event.",
+        "modal_body_2": "SHIFT sitzt für die Dauer neben eurem Team: in Calls, in Document Reviews, mit Echtzeit Input. Unabhängig von der involvierten Agency und Production Company.",
+        "modal_body_3": "Typischerweise vier Wochen bis sechs Monate. Scoped Fee. Endet, wenn die Kampagne im Markt ist.",
+        "cta": "Gespräch starten"
+      },
+      {
+        "id": "build",
+        "numeral": "02",
+        "title": "Build",
+        "hook": "Beratungsgeführter Aufbau eures Inhouse Production Modells.",
+        "modal_body_1": "Build ist ein mehrmonatiges Engagement, um die Production Funktion in eurer Brand zu designen und aufzubauen. Operating Model, Org Struktur, Workflow, Technology, Governance. Gemeinsam entworfen, gebaut und übergeben.",
+        "modal_body_2": "Designed für Brands, die Production zum ersten Mal Inhouse aufbauen, eine unterperformende Funktion restrukturieren oder Production aus der Agency rausholen.",
+        "modal_body_3": "Typischerweise drei bis sechs Monate, phasenweise. Fixed Fee pro Phase. SHIFT steigt sauber aus, sobald die Funktion operativ ist.",
+        "cta": "Gespräch starten"
+      },
+      {
+        "id": "engine",
+        "numeral": "03",
+        "title": "Engine",
+        "hook": "Senior Beratung im Retainer über Inhalte, Kampagnen und Operations hinweg.",
+        "modal_body_1": "Engine ist ein fixer monatlicher Retainer, der einen vereinbarten Scope an Senior Production Advisory abdeckt. Der Senior Advisor, den ihr Full Time hiren würdet, ohne Full Time zu hiren.",
+        "modal_body_2": "Designed für Brands mit regelmäßigem Production Volume oder laufender Transformation, wo konsistenter Senior Input übers Jahr gebraucht wird. Engine umfasst die volle Production Aktivität, nicht ein einzelnes Projekt.",
+        "modal_body_3": "Typischerweise mindestens sechs Monate. Monatlicher Retainer. Quartals Review von Scope und Outcomes.",
+        "cta": "Gespräch starten"
+      }
+    ]
   }
 }
