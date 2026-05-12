@@ -50,18 +50,18 @@ em.news.is-drawn::after { transform: scaleX(1); }
 /* ── Floating label fields ─────────────────────────────────────────── */
 .field {
   position: relative;
-  border-bottom: 1px solid rgba(246,245,242,0.30);
-  padding-top: 20px;
+  border-bottom: 1.5px solid rgba(246,245,242,0.40);
+  padding-top: 22px;
   padding-bottom: 10px;
   transition: border-color 200ms ease;
 }
-.field.is-active { border-bottom-color: rgba(246,245,242,1); }
+.field.is-active { border-bottom-color: #f6f5f2; }
 .field label {
   position: absolute;
-  top: 20px;
+  top: 22px;
   left: 0;
   font-size: 17px;
-  color: rgba(246,245,242,0.65);
+  color: rgba(246,245,242,0.72);
   pointer-events: none;
   transition: top 250ms cubic-bezier(.22,.61,.36,1),
               font-size 250ms cubic-bezier(.22,.61,.36,1),
@@ -74,61 +74,50 @@ em.news.is-drawn::after { transform: scaleX(1); }
   top: 0px;
   font-size: 11px;
   font-family: var(--font-mono);
-  letter-spacing: 0.20em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(246,245,242,0.80);
+  color: rgba(246,245,242,0.85);
 }
-.field.is-active label { color: rgba(246,245,242,1); }
+.field.is-active label { color: #f6f5f2; }
 .field input,
 .field textarea {
   width: 100%;
   background: transparent;
   border: none;
   outline: none;
-  font-size: 18px;
+  font-size: 17px;
   color: #f6f5f2;
   font-family: var(--font-head);
   padding: 0;
   line-height: 1.4;
 }
-.field textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+.field textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
 .field input::placeholder, .field textarea::placeholder { color: transparent; }
 
 /* ── Chip styles ───────────────────────────────────────────────────── */
 .chip {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
-  color: rgba(246,245,242,0.85);
-  background: rgba(246,245,242,0.06);
-  border: 1px solid rgba(246,245,242,0.30);
-  padding: 8px 14px;
+  letter-spacing: 0.14em;
+  color: rgba(246,245,242,0.90);
+  background: rgba(246,245,242,0.08);
+  border: 1.5px solid rgba(246,245,242,0.40);
+  padding: 7px 13px;
   border-radius: 999px;
   cursor: pointer;
   transition: background 200ms, border-color 200ms, color 200ms;
 }
-.chip:hover { border-color: rgba(246,245,242,0.55); }
+.chip:hover {
+  background: rgba(246,245,242,0.14);
+  border-color: rgba(246,245,242,0.65);
+}
 .chip.is-on {
   background: #f6f5f2;
   color: #111111;
   border-color: #f6f5f2;
 }
 
-/* ── Progress bar ──────────────────────────────────────────────────── */
-.progress-bar {
-  height: 2px;
-  background: rgba(246,245,242,0.18);
-  border-radius: 999px;
-  margin-bottom: 36px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: #f6f5f2;
-  border-radius: 999px;
-  width: 0%;
-  transition: width 500ms cubic-bezier(.22,.61,.36,1);
-}
+/* progress bar removed — form is clean, no gamification */
 
 /* ── Success pane ──────────────────────────────────────────────────── */
 .success-pane {
@@ -195,10 +184,10 @@ em.news.is-drawn::after { transform: scaleX(1); }
 .ct-arrow { transition: transform 200ms ease; }
 
 /* ── FAQ section ───────────────────────────────────────────────────── */
-.ct-faq { padding: clamp(64px,8vw,96px) var(--margin-x); }
+.ct-faq { padding: clamp(64px,8vw,96px) var(--margin-x); background: rgba(246,245,242,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .ct-faq-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(48px,6vw,80px); max-width: 1400px; }
-.ct-qa-item { border-bottom: 1px solid rgba(17,17,17,0.20); padding: 24px 0; }
-.ct-qa-item:first-child { border-top: 1px solid rgba(17,17,17,0.35); }
+.ct-qa-item { border-bottom: 1px solid rgba(17,17,17,0.15); padding: 28px 0; }
+.ct-qa-item:first-child { border-top: 1px solid rgba(17,17,17,0.15); }
 @media (max-width: 899px) {
   .ct-faq-grid { grid-template-columns: 1fr !important; }
   .ct-body-grid { grid-template-columns: 1fr !important; }
@@ -475,11 +464,6 @@ export default function ContactClient() {
                 </span>
               </div>
 
-              {/* Progress bar */}
-              <div className="progress-bar">
-                <div className="progress-fill" style={{ width: `${progress}%` }} />
-              </div>
-
               <form onSubmit={handleSubmit}>
                 {/* Row 1: First / Last name */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
@@ -550,56 +534,28 @@ export default function ContactClient() {
                   </div>
                 </div>
 
-                {/* Chip group 1: Role */}
-                <p
-                  style={{
-                    marginTop: 24,
-                    marginBottom: 12,
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.70)',
-                  }}
-                >
-                  — Your role
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {ROLES.map(r => (
-                    <button
-                      key={r}
-                      type="button"
-                      className={`chip${activeRoles.has(r) ? ' is-on' : ''}`}
-                      onClick={() => toggleRole(r)}
-                    >
-                      {r}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Chip group 2: Topics */}
-                <p
-                  style={{
-                    marginTop: 20,
-                    marginBottom: 12,
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 11,
-                    letterSpacing: '0.20em',
-                    color: 'rgba(246,245,242,0.70)',
-                  }}
-                >
-                  — What can we help with? (pick one or more)
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {TOPICS.map(t => (
-                    <button
-                      key={t}
-                      type="button"
-                      className={`chip${activeTopics.has(t) ? ' is-on' : ''}`}
-                      onClick={() => toggleTopic(t)}
-                    >
-                      {t}
-                    </button>
-                  ))}
+                {/* Chip groups — role + topic in one compact block */}
+                <div style={{ marginTop: 28, borderTop: '1px solid rgba(246,245,242,0.20)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.72)', marginBottom: 10 }}>
+                      — Your role
+                    </p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                      {ROLES.map(r => (
+                        <button key={r} type="button" className={`chip${activeRoles.has(r) ? ' is-on' : ''}`} onClick={() => toggleRole(r)}>{r}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.72)', marginBottom: 10 }}>
+                      — What can we help with?
+                    </p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                      {TOPICS.map(t => (
+                        <button key={t} type="button" className={`chip${activeTopics.has(t) ? ' is-on' : ''}`} onClick={() => toggleTopic(t)}>{t}</button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Textarea */}
@@ -677,12 +633,12 @@ export default function ContactClient() {
 
               {/* Card: Direct */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.80)', marginBottom: 10 }}>
                   — {t('Details.direct_label')}
                 </p>
                 <a
                   href={`mailto:${t('Details.direct_value')}`}
-                  style={{ fontSize: 'clamp(16px,2vw,22px)', color: 'rgba(246,245,242,0.40)', borderBottom: '1px solid rgba(246,245,242,0.40)', paddingBottom: 4, textDecoration: 'none', fontFamily: 'var(--font-head)', fontWeight: 500 }}
+                  style={{ fontSize: 'clamp(16px,2vw,22px)', color: 'rgba(246,245,242,0.92)', borderBottom: '1px solid rgba(246,245,242,0.50)', paddingBottom: 4, textDecoration: 'none', fontFamily: 'var(--font-head)', fontWeight: 500 }}
                 >
                   {t('Details.direct_value')}
                 </a>
@@ -690,30 +646,30 @@ export default function ContactClient() {
 
               {/* Card: Headquarters */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.80)', marginBottom: 10 }}>
                   — {t('Details.hq_label')}
                 </p>
-                <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
+                <p style={{ fontSize: 17, color: 'rgba(246,245,242,0.90)', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
                   {t('Details.hq_value')}
                 </p>
               </div>
 
               {/* Card: Response time */}
               <div style={{ borderTop: '1px solid rgba(246,245,242,0.35)', paddingTop: 20 }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 10 }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.80)', marginBottom: 10 }}>
                   — {t('Details.response_label')}
                 </p>
-                <p style={{ fontSize: 16, color: 'rgba(246,245,242,0.82)' }}>
+                <p style={{ fontSize: 17, color: 'rgba(246,245,242,0.90)' }}>
                   {t('Details.response_value')}
                 </p>
               </div>
 
               {/* Glass promise card */}
-              <div style={{ marginTop: 8, background: 'rgba(246,245,242,0.06)', border: '1px solid rgba(246,245,242,0.30)', borderRadius: 12, padding: 28, backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.20em', color: 'rgba(246,245,242,0.65)', marginBottom: 12 }}>
+              <div style={{ marginTop: 8, background: 'rgba(246,245,242,0.08)', border: '1.5px solid rgba(246,245,242,0.35)', borderRadius: 12, padding: 28, backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.80)', marginBottom: 12 }}>
                   — {t('Details.promise_label')}
                 </p>
-                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, fontSize: 24, lineHeight: 1.3, color: 'rgba(246,245,242,0.90)' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, fontSize: 22, lineHeight: 1.4, color: '#f6f5f2' }}>
                   {t('Details.promise_value')}
                 </p>
               </div>
@@ -757,9 +713,9 @@ export default function ContactClient() {
                   <p
                     className="reveal"
                     style={{
-                      fontSize: 18,
-                      color: 'rgba(17,17,17,0.85)',
-                      lineHeight: 1.55,
+                      fontSize: 16,
+                      color: 'rgba(17,17,17,0.82)',
+                      lineHeight: 1.65,
                     }}
                   >
                     {item.a}
