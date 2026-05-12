@@ -4,6 +4,7 @@ import Nav from '@/components/marketing/Nav'
 import Footer from '@/components/marketing/Footer'
 import PageReveal from '@/components/marketing/PageReveal'
 import TeamReveal from './TeamReveal'
+import PartnerNetwork from './PartnerNetwork'
 import CtaSection from '@/components/marketing/CtaSection'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -261,7 +262,6 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
           data-theme="light"
           style={{ padding: 'clamp(56px,7vw,88px) var(--margin-x)' }}
         >
-          {/* Rail */}
           <p
             className="reveal"
             style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', letterSpacing: '0.2em', color: 'var(--fg-faint)', marginBottom: '40px', fontWeight: 400 }}
@@ -269,47 +269,9 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
             — 03 / The network · A discipline map · Engaged by name
           </p>
 
-          {/* Header */}
-          <p
-            className="reveal"
-            style={{ fontSize: '17px', color: 'var(--fg-muted)', lineHeight: 1.6, maxWidth: '700px', marginBottom: '48px' }}
-          >
-            {t('Partners.intro')}
-          </p>
+          <PartnerNetwork items={partnersItems} intro={t('Partners.intro')} />
 
-          {/* Partner grid — 4 cols × 2 rows */}
-          <div
-            className="reveal tm-partner-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4,1fr)',
-              borderTop: '1px solid var(--fg-rule)',
-            }}
-          >
-            {partnersItems.map((p, i) => (
-              <div
-                key={i}
-                style={{
-                  borderTop: '1px solid var(--fg-rule)',
-                  borderRight: (i + 1) % 4 !== 0 ? '1px solid var(--fg-rule)' : 'none',
-                  padding: '24px 20px 24px 0',
-                }}
-              >
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.2em', color: 'var(--fg-faint)', marginBottom: '12px' }}>
-                  — {String(i + 1).padStart(2, '0')}
-                </p>
-                <p style={{ fontFamily: 'var(--font-head)', fontWeight: 500, fontSize: '17px', color: 'var(--fg)', marginBottom: '8px' }}>
-                  {p.title}
-                </p>
-                <p style={{ fontSize: '13px', color: 'var(--fg-muted)', lineHeight: 1.5 }}>
-                  {p.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Footer rule */}
-          <div className="tm-partner-footer" style={{ marginTop: '24px', display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--fg-rule)', paddingTop: '22px' }}>
+          <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'space-between' }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--fg-faint)' }}>
               — Eight disciplines · engaged by name
             </span>
