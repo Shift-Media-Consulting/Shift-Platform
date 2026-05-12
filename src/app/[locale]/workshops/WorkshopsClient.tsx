@@ -35,9 +35,10 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Same gradient as /about — applied to <main> so it maps to page height.
+// Gradient caps at mid-teal so cream text stays legible throughout without
+// any data-theme="light" flip. CtaSection handles the mint→dark return.
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 55%, #6aab9c 100%)'
 
 // CtaSection-matching reverse gradient — used by closing CTA so it "returns" to dark.
 const CTA_GRADIENT =
@@ -245,16 +246,11 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         </section>
 
         {/* TIER SECTIONS */}
-        {tiers.map((tier, tierIndex) => {
-          const isLight = tierIndex >= 2
-          const cardClass = isLight ? 'workshop-card light' : 'workshop-card'
-
-          return (
+        {tiers.map((tier, tierIndex) => (
             <section
               key={tier.id}
               id={tier.id}
               ref={el => { tierRefs.current[tier.id] = el }}
-              {...(isLight ? { 'data-theme': 'light' } : {})}
               style={{
                 background: 'transparent',
                 padding: 'clamp(72px,9vw,100px) var(--margin-x)',
@@ -288,7 +284,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
                 {tier.workshops.map(workshop => (
                   <div
                     key={workshop.id}
-                    className={cardClass}
+                    className="workshop-card"
                     onClick={() => setDetailModal({ tier, workshop })}
                     role="button"
                     tabIndex={0}
@@ -317,11 +313,10 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
                 </p>
               </div>
             </section>
-          )
-        })}
+        ))}
 
         {/* DELIVERABLES BLOCK */}
-        <section data-theme="light" style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
+        <section style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
           <div style={{ maxWidth: '1100px' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,

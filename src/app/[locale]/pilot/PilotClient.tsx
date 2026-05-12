@@ -32,9 +32,10 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Same gradient as /about — applied to <main> so it maps to page height.
+// Gradient caps at mid-teal so cream text stays legible throughout without
+// any data-theme="light" flip. CtaSection handles the mint→dark return.
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 22%, #4f9382 55%, #6aab9c 100%)'
 
 // CtaSection-matching reverse gradient — closing CTA "returns" to dark.
 const CTA_GRADIENT =
@@ -47,7 +48,7 @@ function renderOutItem(text: string) {
     <>
       {parts.map((part, i) => {
         if (['Build', 'Engine', 'Campaign', 'Pilot'].includes(part)) {
-          return <strong key={i} style={{ color: 'var(--fg)', fontWeight: 700 }}>{part}</strong>
+          return <strong key={i} style={{ color: 'rgba(246,245,242,0.85)', fontWeight: 700 }}>{part}</strong>
         }
         return <span key={i}>{part}</span>
       })}
@@ -229,7 +230,7 @@ export default function PilotClient({
           align-items: flex-start;
           gap: 10px;
           padding: 10px 0;
-          border-bottom: 1px solid var(--fg-rule);
+          border-bottom: 1px solid rgba(246,245,242,0.14);
           font-size: 15px;
           line-height: 1.5;
         }
@@ -436,25 +437,24 @@ export default function PilotClient({
         <section
           ref={scopeRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          data-theme="light"
           style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
             {scope.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 52px', maxWidth: '720px' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,4.5vw,56px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#f6f5f2', margin: '0 0 52px', maxWidth: '720px' }}>
             {scope.heading}
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
             {/* In scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.in_label}
               </p>
               <div>
                 {scope.in_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: 'var(--fg)' }}>
-                    <span style={{ color: '#004d40', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
+                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.85)' }}>
+                    <span style={{ color: '#00897b', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -462,13 +462,13 @@ export default function PilotClient({
             </div>
             {/* Out of scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.35)', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.out_label}
               </p>
               <div>
                 {scope.out_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: 'var(--fg-muted)' }}>
-                    <span style={{ color: 'var(--fg-faint)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
+                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.55)' }}>
+                    <span style={{ color: 'rgba(246,245,242,0.30)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
                     <span style={{ fontSize: '14px' }}>{renderOutItem(item)}</span>
                   </div>
                 ))}
@@ -481,31 +481,30 @@ export default function PilotClient({
         <section
           ref={delRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          data-theme="light"
           style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '1100px' }}>
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '18px' }}>
               {deliverables.eyebrow}
             </p>
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,
               fontSize: 'clamp(28px,4vw,52px)', lineHeight: 1.08, letterSpacing: '-0.02em',
-              color: 'var(--fg)', margin: '0 0 56px', maxWidth: '720px',
+              color: '#f6f5f2', margin: '0 0 56px', maxWidth: '720px',
             }}>
               {deliverables.heading}
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px,1fr))', gap: '32px 48px' }}>
               {deliverables.items.map((item, i) => (
                 <div key={i}>
-                  <div style={{ height: '1px', background: 'var(--fg-rule)', marginBottom: '20px' }} />
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
+                  <div style={{ height: '1px', background: 'rgba(246,245,242,0.22)', marginBottom: '20px' }} />
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.45)', marginBottom: '10px' }}>
                     — 0{i + 1}
                   </p>
-                  <p style={{ fontWeight: 700, fontSize: '17px', color: 'var(--fg)', margin: '0 0 8px', lineHeight: 1.3 }}>
+                  <p style={{ fontWeight: 700, fontSize: '17px', color: '#f6f5f2', margin: '0 0 8px', lineHeight: 1.3 }}>
                     {item.label}
                   </p>
-                  <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'var(--fg-muted)', margin: 0 }}>
+                  <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(246,245,242,0.70)', margin: 0 }}>
                     {item.body}
                   </p>
                 </div>
