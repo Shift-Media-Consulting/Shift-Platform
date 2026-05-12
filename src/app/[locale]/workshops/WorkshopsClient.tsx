@@ -35,11 +35,13 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Gradient is rendered on a fixed-position layer sized to the viewport — see
-// the <div className="wk-bg-gradient"/> below. That means stops here describe
-// the dark-to-mint transition across one full screen, not the full page.
+// Same gradient as /about — applied to <main> so it maps to page height.
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #2a6f5e 28%, #4f9382 58%, #7ab3a5 80%, #b9d8d2 100%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+
+// CtaSection-matching reverse gradient — used by closing CTA so it "returns" to dark.
+const CTA_GRADIENT =
+  'linear-gradient(180deg, #b9d8d2 0%, #2a6f5e 60%, #004d40 100%)'
 
 export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')
@@ -199,26 +201,13 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* ── Fixed gradient backdrop — sits behind all page content ─────── */
-        .wk-bg-gradient {
-          position: fixed;
-          inset: 0;
-          z-index: 0;
-          pointer-events: none;
-          background: ${BODY_GRADIENT};
-        }
         .wk-main {
-          position: relative;
-          z-index: 1;
           min-height: 100vh;
           font-family: var(--font-head);
         }
       `}</style>
 
-      {/* Bulletproof gradient — fixed full-viewport layer, nothing can hide it */}
-      <div className="wk-bg-gradient" aria-hidden="true" />
-
-      <main className="wk-main">
+      <main className="wk-main" style={{ background: BODY_GRADIENT }}>
 
         {/* HERO */}
         <section
@@ -257,37 +246,34 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
 
         {/* TIER SECTIONS */}
         {tiers.map((tier, tierIndex) => {
-          const cardClass = 'workshop-card'
-          const textMain = '#f6f5f2'
-          const textMuted = 'rgba(246,245,242,0.72)'
-          const textFaint = 'rgba(246,245,242,0.45)'
-          const ruleColor = 'rgba(246,245,242,0.18)'
-          const hookColor = 'rgba(246,245,242,0.60)'
+          const isLight = tierIndex >= 2
+          const cardClass = isLight ? 'workshop-card light' : 'workshop-card'
 
           return (
             <section
               key={tier.id}
               id={tier.id}
               ref={el => { tierRefs.current[tier.id] = el }}
+              {...(isLight ? { 'data-theme': 'light' } : {})}
               style={{
-                background: tierIndex % 2 === 0 ? 'transparent' : 'rgba(0,60,50,0.28)',
+                background: 'transparent',
                 padding: 'clamp(72px,9vw,100px) var(--margin-x)',
                 scrollMarginTop: '80px',
               }}
             >
               {/* Tier header */}
               <div style={{ marginBottom: '56px', maxWidth: '880px' }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: textFaint, marginBottom: '18px' }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
                   — 0{tierIndex + 1} / {tier.name}
                 </p>
-                <h2 style={{ fontWeight: 700, fontSize: 'clamp(40px,5.5vw,72px)', lineHeight: 0.96, letterSpacing: '-0.025em', color: textMain, margin: '0 0 16px' }}>
+                <h2 style={{ fontWeight: 700, fontSize: 'clamp(40px,5.5vw,72px)', lineHeight: 0.96, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 16px' }}>
                   {tier.name}
                 </h2>
-                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(18px,1.8vw,22px)', color: textMuted, margin: '0 0 24px' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(18px,1.8vw,22px)', color: 'var(--fg-muted)', margin: '0 0 24px' }}>
                   {tier.tagline}
                 </p>
-                <div style={{ height: '1px', background: ruleColor, marginBottom: '24px' }} />
-                <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.65, color: textMuted, maxWidth: '680px' }}>
+                <div style={{ height: '1px', background: 'var(--fg-rule)', marginBottom: '24px' }} />
+                <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.65, color: 'var(--fg-muted)', maxWidth: '680px' }}>
                   {tier.description}
                 </p>
               </div>
@@ -308,13 +294,13 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
                     tabIndex={0}
                     onKeyDown={e => e.key === 'Enter' && setDetailModal({ tier, workshop })}
                   >
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: textFaint, marginBottom: '10px' }}>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                       {tier.name}
                     </p>
-                    <h3 style={{ fontWeight: 700, fontSize: 'clamp(17px,1.6vw,20px)', letterSpacing: '-0.01em', color: textMain, margin: '0 0 10px', lineHeight: 1.15 }}>
+                    <h3 style={{ fontWeight: 700, fontSize: 'clamp(17px,1.6vw,20px)', letterSpacing: '-0.01em', color: 'var(--fg)', margin: '0 0 10px', lineHeight: 1.15 }}>
                       {workshop.name}
                     </h3>
-                    <p style={{ fontSize: '14px', lineHeight: 1.55, color: hookColor, margin: 0 }}>
+                    <p style={{ fontSize: '14px', lineHeight: 1.55, color: 'var(--fg-muted)', margin: 0 }}>
                       {workshop.hook}
                     </p>
                   </div>
@@ -322,11 +308,11 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               </div>
 
               {/* What follows */}
-              <div style={{ borderTop: `1px solid ${ruleColor}`, paddingTop: '28px', maxWidth: '640px' }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: textFaint, marginBottom: '10px' }}>
+              <div style={{ borderTop: '1px solid var(--fg-rule)', paddingTop: '28px', maxWidth: '640px' }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                   — What follows
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.65, color: textMuted, margin: 0 }}>
+                <p style={{ fontSize: '15px', lineHeight: 1.65, color: 'var(--fg-muted)', margin: 0 }}>
                   {tier.followup}
                 </p>
               </div>
@@ -335,7 +321,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         })}
 
         {/* DELIVERABLES BLOCK */}
-        <section style={{ background: 'rgba(0,55,45,0.72)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
+        <section data-theme="light" style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}>
           <div style={{ maxWidth: '1100px' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700,
@@ -350,14 +336,14 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px,1fr))', gap: '32px 48px' }}>
               {deliverables.items.map((item, i) => (
                 <div key={i}>
-                  <div style={{ height: '1px', background: 'rgba(246,245,242,0.22)', marginBottom: '20px' }} />
+                  <div style={{ height: '1px', background: 'var(--fg-rule)', marginBottom: '20px' }} />
                   <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                     — 0{i + 1}
                   </p>
                   <p style={{ fontWeight: 700, fontSize: '17px', color: 'var(--fg)', margin: '0 0 8px' }}>
                     {item.label}
                   </p>
-                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', margin: 0 }}>
+                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'var(--fg-muted)', margin: 0 }}>
                     {item.body}
                   </p>
                 </div>
@@ -369,49 +355,43 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
         {/* PRODUCT SLIDE */}
         <ProductSlide subhead={productSlideSubhead} />
 
-        {/* CLOSING CTA */}
-        <section style={{ background: 'transparent', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.45)', marginBottom: '24px' }}>
+        {/* CLOSING CTA — mirrors CtaSection: returning gradient, always-dark bg */}
+        <section style={{
+          background: CTA_GRADIENT,
+          padding: 'clamp(88px,12vw,140px) var(--margin-x) clamp(100px,14vw,160px)',
+          textAlign: 'center',
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+        }}>
+          <p style={{ fontFamily: 'var(--font-head)', fontSize: '13px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.60)', marginBottom: '24px', fontWeight: 600 }}>
             {closing.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 24px' }}>
+          <h2 style={{ fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 'clamp(48px,6.5vw,88px)', lineHeight: 0.96, letterSpacing: '-0.025em', color: '#f6f5f2', maxWidth: '900px', marginBottom: '24px' }}>
             {closing.title}
           </h2>
-          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontSize: 'clamp(17px,1.6vw,21px)', lineHeight: 1.5, color: 'rgba(246,245,242,0.82)', maxWidth: '560px', marginBottom: '40px' }}>
             {closing.body}
           </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
-            <Link
-              href="/contact"
-              style={{
-                display: 'inline-block',
-                background: 'rgba(246,245,242,0.12)', color: 'var(--fg)',
-                border: '1px solid rgba(246,245,242,0.30)',
-                fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
-                padding: '14px 32px', borderRadius: '999px',
-                textDecoration: 'none',
-                transition: 'transform 200ms ease, box-shadow 200ms ease, background 200ms ease',
-              }}
-              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.background = 'rgba(246,245,242,0.20)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)'
-              }}
-              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.currentTarget.style.transform = ''
-                e.currentTarget.style.background = 'rgba(246,245,242,0.12)'
-                e.currentTarget.style.boxShadow = ''
-              }}
-            >
-              {closing.cta}
-            </Link>
-            <a
-              href="mailto:hello@shift-media.io"
-              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(246,245,242,0.50)', textDecoration: 'none' }}
-            >
-              HELLO@SHIFT-MEDIA.IO
-            </a>
-          </div>
+          <button
+            onClick={() => openRequest('')}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              padding: '18px 36px', borderRadius: '9999px',
+              background: '#f6f5f2', color: '#111111',
+              fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: '17px',
+              border: 'none', cursor: 'pointer',
+              transition: 'transform 180ms ease, box-shadow 180ms ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.20)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = ''
+              e.currentTarget.style.boxShadow = ''
+            }}
+          >
+            {closing.cta}
+          </button>
         </section>
       </main>
 

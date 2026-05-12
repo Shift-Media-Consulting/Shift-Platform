@@ -32,11 +32,13 @@ interface Props {
   productSlideSubhead: string
 }
 
-// Gradient is rendered on a fixed-position layer sized to the viewport — see
-// the <div className="pilot-bg-gradient"/> below. Stops describe the dark-to-mint
-// transition across one full screen, not the full page.
+// Same gradient as /about — applied to <main> so it maps to page height.
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #2a6f5e 28%, #4f9382 58%, #7ab3a5 80%, #b9d8d2 100%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+
+// CtaSection-matching reverse gradient — closing CTA "returns" to dark.
+const CTA_GRADIENT =
+  'linear-gradient(180deg, #b9d8d2 0%, #2a6f5e 60%, #004d40 100%)'
 
 // Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
 function renderOutItem(text: string) {
@@ -45,7 +47,7 @@ function renderOutItem(text: string) {
     <>
       {parts.map((part, i) => {
         if (['Build', 'Engine', 'Campaign', 'Pilot'].includes(part)) {
-          return <strong key={i} style={{ color: 'rgba(246,245,242,0.75)', fontWeight: 700 }}>{part}</strong>
+          return <strong key={i} style={{ color: 'var(--fg)', fontWeight: 700 }}>{part}</strong>
         }
         return <span key={i}>{part}</span>
       })}
@@ -227,7 +229,7 @@ export default function PilotClient({
           align-items: flex-start;
           gap: 10px;
           padding: 10px 0;
-          border-bottom: 1px solid rgba(17,17,17,0.08);
+          border-bottom: 1px solid var(--fg-rule);
           font-size: 15px;
           line-height: 1.5;
         }
@@ -249,26 +251,13 @@ export default function PilotClient({
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* ── Fixed gradient backdrop — sits behind all page content ─────── */
-        .pilot-bg-gradient {
-          position: fixed;
-          inset: 0;
-          z-index: 0;
-          pointer-events: none;
-          background: ${BODY_GRADIENT};
-        }
         .pilot-main {
-          position: relative;
-          z-index: 1;
           min-height: 100vh;
           font-family: var(--font-head);
         }
       `}</style>
 
-      {/* Bulletproof gradient — fixed full-viewport layer, nothing can hide it */}
-      <div className="pilot-bg-gradient" aria-hidden="true" />
-
-      <main className="pilot-main">
+      <main className="pilot-main" style={{ background: BODY_GRADIENT }}>
 
         {/* SECTION A: HERO */}
         <section
@@ -293,7 +282,7 @@ export default function PilotClient({
         <section
           ref={defRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ background: 'rgba(0,60,50,0.40)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '720px' }}>
             <h2 style={{ fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', lineHeight: 1.2, letterSpacing: '-0.015em', color: 'var(--fg)', margin: '0 0 8px' }}>
@@ -357,7 +346,7 @@ export default function PilotClient({
             <section
               ref={timelineRef as React.RefObject<HTMLDivElement>}
               className="fade-section"
-              style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)', background: 'rgba(0,77,64,0.20)' }}
+              style={{ padding: 'clamp(72px,9vw,100px) var(--margin-x)', background: 'transparent' }}
             >
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
                 {timeline.eyebrow}
@@ -447,7 +436,8 @@ export default function PilotClient({
         <section
           ref={scopeRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ background: 'rgba(0,55,45,0.50)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          data-theme="light"
+          style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
             {scope.eyebrow}
@@ -458,13 +448,13 @@ export default function PilotClient({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
             {/* In scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#00897b', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#004d40', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.in_label}
               </p>
               <div>
                 {scope.in_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.85)', borderBottomColor: 'rgba(246,245,242,0.10)' }}>
-                    <span style={{ color: '#00897b', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
+                  <div key={i} className="scope-item" style={{ color: 'var(--fg)' }}>
+                    <span style={{ color: '#004d40', fontWeight: 700, flexShrink: 0, lineHeight: 1.5 }}>✓</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -472,13 +462,13 @@ export default function PilotClient({
             </div>
             {/* Out of scope */}
             <div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.35)', marginBottom: '16px', fontWeight: 600 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '16px', fontWeight: 600 }}>
                 {scope.out_label}
               </p>
               <div>
                 {scope.out_items.map((item, i) => (
-                  <div key={i} className="scope-item" style={{ color: 'rgba(246,245,242,0.50)', borderBottomColor: 'rgba(246,245,242,0.10)' }}>
-                    <span style={{ color: 'rgba(246,245,242,0.25)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
+                  <div key={i} className="scope-item" style={{ color: 'var(--fg-muted)' }}>
+                    <span style={{ color: 'var(--fg-faint)', flexShrink: 0, lineHeight: 1.5 }}>–</span>
                     <span style={{ fontSize: '14px' }}>{renderOutItem(item)}</span>
                   </div>
                 ))}
@@ -491,7 +481,8 @@ export default function PilotClient({
         <section
           ref={delRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ background: 'rgba(0,55,45,0.72)', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
+          data-theme="light"
+          style={{ background: 'transparent', padding: 'clamp(72px,9vw,100px) var(--margin-x)' }}
         >
           <div style={{ maxWidth: '1100px' }}>
             <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '18px' }}>
@@ -507,14 +498,14 @@ export default function PilotClient({
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px,1fr))', gap: '32px 48px' }}>
               {deliverables.items.map((item, i) => (
                 <div key={i}>
-                  <div style={{ height: '1px', background: 'rgba(246,245,242,0.22)', marginBottom: '20px' }} />
+                  <div style={{ height: '1px', background: 'var(--fg-rule)', marginBottom: '20px' }} />
                   <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-faint)', marginBottom: '10px' }}>
                     — 0{i + 1}
                   </p>
                   <p style={{ fontWeight: 700, fontSize: '17px', color: 'var(--fg)', margin: '0 0 8px', lineHeight: 1.3 }}>
                     {item.label}
                   </p>
-                  <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(246,245,242,0.70)', margin: 0 }}>
+                  <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'var(--fg-muted)', margin: 0 }}>
                     {item.body}
                   </p>
                 </div>
@@ -526,53 +517,47 @@ export default function PilotClient({
         {/* SECTION G: PRODUCT SLIDE */}
         <ProductSlide subhead={productSlideSubhead} />
 
-        {/* SECTION H: CLOSING CTA */}
+        {/* SECTION H: CLOSING CTA — mirrors CtaSection: returning gradient, always-dark bg */}
         <section
           ref={closingRef as React.RefObject<HTMLDivElement>}
           className="fade-section"
-          style={{ background: 'transparent', padding: 'clamp(80px,10vw,120px) var(--margin-x)', textAlign: 'center' }}
+          style={{
+            background: CTA_GRADIENT,
+            padding: 'clamp(88px,12vw,140px) var(--margin-x) clamp(100px,14vw,160px)',
+            textAlign: 'center',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+          }}
         >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.20em', color: 'rgba(246,245,242,0.45)', marginBottom: '24px' }}>
+          <p style={{ fontFamily: 'var(--font-head)', fontSize: '13px', letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(246,245,242,0.60)', marginBottom: '24px', fontWeight: 600 }}>
             {closing.eyebrow}
           </p>
-          <h2 style={{ fontWeight: 700, fontSize: 'clamp(32px,5vw,64px)', lineHeight: 1.0, letterSpacing: '-0.025em', color: 'var(--fg)', margin: '0 0 24px' }}>
+          <h2 style={{ fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 'clamp(48px,6.5vw,88px)', lineHeight: 0.96, letterSpacing: '-0.025em', color: '#f6f5f2', maxWidth: '900px', marginBottom: '24px' }}>
             {closing.title}
           </h2>
-          <p style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.6, color: 'rgba(246,245,242,0.70)', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontSize: 'clamp(17px,1.6vw,21px)', lineHeight: 1.5, color: 'rgba(246,245,242,0.82)', maxWidth: '560px', marginBottom: '40px' }}>
             {closing.body}
           </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
-            <button
-              onClick={() => openRequest()}
-              style={{
-                display: 'inline-block',
-                background: 'rgba(246,245,242,0.12)', color: 'var(--fg)',
-                border: '1px solid rgba(246,245,242,0.30)',
-                fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.2px',
-                padding: '14px 32px', borderRadius: '999px',
-                cursor: 'pointer',
-                transition: 'transform 200ms ease, box-shadow 200ms ease, background 200ms ease',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.background = 'rgba(246,245,242,0.20)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = ''
-                e.currentTarget.style.background = 'rgba(246,245,242,0.12)'
-                e.currentTarget.style.boxShadow = ''
-              }}
-            >
-              {closing.cta}
-            </button>
-            <a
-              href="mailto:hello@shift-media.io"
-              style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', color: 'rgba(246,245,242,0.50)', textDecoration: 'none' }}
-            >
-              HELLO@SHIFT-MEDIA.IO
-            </a>
-          </div>
+          <button
+            onClick={() => openRequest()}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              padding: '18px 36px', borderRadius: '9999px',
+              background: '#f6f5f2', color: '#111111',
+              fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: '17px',
+              border: 'none', cursor: 'pointer',
+              transition: 'transform 180ms ease, box-shadow 180ms ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.20)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = ''
+              e.currentTarget.style.boxShadow = ''
+            }}
+          >
+            {closing.cta}
+          </button>
         </section>
 
       </main>
