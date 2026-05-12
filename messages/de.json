@@ -69,10 +69,22 @@
     },
     "Stats": {
       "items": [
-        { "value": "€600M+", "label": "Verantwortete Budgets" },
-        { "value": "50+", "label": "Jahre kombinierte Produktionserfahrung" },
-        { "value": "0", "label": "Vendor Verbindungen" },
-        { "value": "100%", "label": "Gründergeführt" }
+        {
+          "value": "€600M+",
+          "label": "Verantwortete Budgets"
+        },
+        {
+          "value": "50+",
+          "label": "Jahre kombinierte Produktionserfahrung"
+        },
+        {
+          "value": "0",
+          "label": "Vendor Verbindungen"
+        },
+        {
+          "value": "100%",
+          "label": "Gründergeführt"
+        }
       ]
     },
     "Closing": {
@@ -520,6 +532,336 @@
       "response_value": "Innerhalb von 24 Stunden, Montag bis Freitag.",
       "promise_label": "Unser Versprechen",
       "promise_value": "Kein Pitchdeck. Keine Agenda. Nur ein ehrliches Gespräch darüber, ob wir helfen können. Und wie."
+    }
+  },
+  "Workshops": {
+    "Meta": {
+      "title": "Workshops — shift.media",
+      "description": "Vier Arten von Workshops. Fixed Fee, zeitlich klar definiert, am Ende ein schriftliches Deliverable. Die Front Door zur Zusammenarbeit mit SHIFT."
+    },
+    "Hero": {
+      "eyebrow": "— Services · Workshops",
+      "title": "Workshops.",
+      "body": "Die Front Door zur Zusammenarbeit mit SHIFT. Fixed Fee, zeitlich klar definiert, am Ende ein schriftliches Deliverable. Der Workshop ist der Moment, in dem wir euer Team treffen, mit euch arbeiten und gemeinsam etwas Belastbares produzieren.",
+      "subline": "Vier Arten von Workshops. Einer führt dahin, wo ihr hinmüsst."
+    },
+    "TierNav": {
+      "strategy": "Strategy Workshop",
+      "diagnostic": "Diagnostic Workshop",
+      "practice": "Practice Workshop",
+      "leadership": "Leadership Workshop"
+    },
+    "Strategy": {
+      "name": "Strategy Workshop",
+      "tagline": "Richtung festlegen. Definieren, was ihr erreichen wollt, und wie.",
+      "description": "Ein Strategy Workshop läuft über zwei Tage mit eurem Leadership und Operational Team im Raum. Strukturiert, evidenzbasiert, am Ende ein schriftliches strategisches Position Document und eine zwölf Monats Roadmap. Wir arbeiten gemeinsam mit eurem Team, definieren Richtung, prüfen Annahmen kritisch und produzieren eine Position, mit der ihr arbeiten könnt.",
+      "followup": "Eine klare Position verlangt in der Regel den Aufbau. Nach einem Strategy Workshop gehen die meisten Brands in eine mehrmonatige Engagement, in der das Operating Model, das Team oder der AI Workflow tatsächlich gebaut wird.",
+      "workshops": [
+        {
+          "id": "ai_readiness",
+          "name": "AI Readiness",
+          "hook": "Mapt, wo AI in eurer Production läuft. Bevor sie euch mappt.",
+          "why": "Euer Team nutzt AI Tools in der Production, aber niemand hat gemappt, wo, mit welchen Daten und mit welcher Governance. Ihr müsst wissen, was sicher skalierbar ist und wo das Risiko liegt.",
+          "what": "Ein zwei Tage Diagnostic über sechs AI Maturity Dimensionen. Tool Inventory, Data Readiness, Process Suitability, Governance, Team Capability, Strategic Alignment. RAG bewertet, gemeinsam mit eurem Team im Raum.",
+          "outcome": "Ein schriftlicher AI Readiness Report mit Findings pro Dimension, einer Governance MVP und einer 30/60/90 Roadmap, die euer Leadership freigeben und umsetzen kann.",
+          "duration": "Zwei Tage",
+          "cta": "AI Readiness Workshop anfragen"
+        },
+        {
+          "id": "ai_integration",
+          "name": "AI Integration",
+          "hook": "Ein Plan, AI in Production zu integrieren, ohne Quality zu kompromittieren.",
+          "why": "Ihr wisst, wo die AI Gaps liegen. Jetzt braucht ihr einen klaren Plan, AI in Production Workflows zu integrieren, ohne Quality oder Governance zu kompromittieren.",
+          "what": "Ein zwei Tage Workshop zu Tool Selection Kriterien, Workflow Architecture, Training Plan und Rollout Sequencing. Wir definieren, welche Workflows AI suitable sind und welche nicht.",
+          "outcome": "Ein schriftlicher AI Integration Plan mit priorisierten Use Cases, Tool Empfehlungen, Workflow Designs und einem phasenweisen Rollout Schedule.",
+          "duration": "Zwei Tage",
+          "cta": "AI Integration Workshop anfragen"
+        },
+        {
+          "id": "production_strategy",
+          "name": "Production Strategy",
+          "hook": "Zwölf Monate. Commissioning, Kosten, Kapazität, Capability.",
+          "why": "Eure Production Aktivität ist reaktiv gewachsen, Projekt für Projekt. Ihr braucht eine bewusste zwölf Monats Strategie, die Commissioning, Kosten, Kapazität und Capability mit der Brand Richtung abgleicht.",
+          "what": "Ein zwei Tage strategischer Working Session. Production Volume und Format Analyse. Commissioning Model Design. Roster und Capability Strategy. Budget Framework. Quartals Milestones.",
+          "outcome": "Eine schriftliche Production Strategy mit zwölf Monats Roadmap, Quartals Milestones und dem Commissioning Framework, gegen das das Team arbeitet.",
+          "duration": "Zwei Tage",
+          "cta": "Production Strategy Workshop anfragen"
+        },
+        {
+          "id": "operating_model",
+          "name": "Operating Model Design",
+          "hook": "Die Strukturentscheidungen, die ihr jetzt trefft, definieren eure Capability für Jahre.",
+          "why": "Ihr baut oder restrukturiert eure In House Production. Die Entscheidungen, die ihr jetzt zu Struktur, Decision Rights, Workflow und Technology trefft, definieren eure Capability für Jahre.",
+          "what": "Ein zwei Tage Design Workshop. Org Struktur und Role Architecture. Decision Rights Map. Brief to Delivery Workflow. Technology Stack Selection. Vendor und Partner Prinzipien.",
+          "outcome": "Ein schriftliches Operating Model Document zu Struktur, Rollen, Workflow, Technology und Partner Prinzipien, bereit für die nächste Phase der Arbeit.",
+          "duration": "Zwei Tage",
+          "cta": "Operating Model Design Workshop anfragen"
+        },
+        {
+          "id": "process_improvement",
+          "name": "Process Improvement",
+          "hook": "Den Workflow fixen, der immer wieder langsam, teuer oder fehleranfällig ist.",
+          "why": "Ein konkreter Production Process ist immer wieder langsam, teuer oder fehleranfällig. Ihr wollt ihn einmal richtig fixen, mit dem Team, das ihn jeden Tag fährt.",
+          "what": "Ein zwei Tage Lean und Value Stream Mapping Workshop, angewandt auf euren volumenstärksten oder schmerzhaftesten Workflow. Wir identifizieren Waste, redesignen Handoffs und definieren neue Exit Criteria.",
+          "outcome": "Ein redesignter Workflow mit dokumentierten Exit Criteria, Handoff Protokollen und einem 30 Tage Implementation Plan.",
+          "duration": "Zwei Tage",
+          "cta": "Process Improvement Workshop anfragen"
+        },
+        {
+          "id": "first_90_days",
+          "name": "The First 90 Days",
+          "hook": "Ein bewusster Plan für die neue Rolle. Kein geerbter.",
+          "why": "Ihr seid gerade in eine neue Rolle als Head of Content oder Head of Production gewechselt. Die ersten 90 Tage setzen die Trajektorie für alles, was folgt. Ihr wollt einen bewussten Plan, keinen geerbten.",
+          "what": "Ein zwei Tage Intensiv Workshop für die neue Führungskraft. Audit der geerbten Operations, Mapping von Stakeholdern und politischem Terrain, Definition der 90 Tage Agenda, Identifikation von Early Wins und nötigen Deferrals.",
+          "outcome": "Ein schriftlicher 90 Tage Plan mit Stakeholder Map, Decision Agenda und priorisierten Initiativen, bereit zur Umsetzung ab Woche eins.",
+          "duration": "Zwei Tage",
+          "cta": "First 90 Days Workshop anfragen"
+        },
+        {
+          "id": "day_one_studio",
+          "name": "Day-One Studio",
+          "hook": "Production von Anfang an richtig aufgesetzt. Nicht nachträglich.",
+          "why": "Ihr baut eine Brand von Null auf und wollt Production von Anfang an richtig aufsetzen. Nicht nachträglich zurechtbiegen.",
+          "what": "Ein zwei Tage Greenfield Design Workshop. Brand to Production Blueprint. Studio Struktur und Team Design. Tool Stack von Tag eins. Vendor Partner Framework. Governance integriert.",
+          "outcome": "Ein schriftlicher Day-One Studio Blueprint zu Struktur, Team, Tools, Partnern und Governance, bereit zur Umsetzung ab Woche eins.",
+          "duration": "Zwei Tage",
+          "cta": "Day-One Studio Workshop anfragen"
+        }
+      ]
+    },
+    "Diagnostic": {
+      "name": "Diagnostic Workshop",
+      "tagline": "Eure eigene Production anschauen. Gemeinsam. Ehrlich.",
+      "description": "Ein Diagnostic Workshop dauert einen Tag plus Vorarbeit. Das Team bringt die Artefakte (Briefs, Budgets, Tool Listen, Roster, Production Records) und wir machen die Diagnose mit dem Team, nicht über das Team hinweg. Die Findings gehören eurem Team, weil euer Team sie produziert hat. Jedes Diagnostic nutzt SHIFTs strukturiertes Framework und endet mit einem RAG bewerteten Report.",
+      "followup": "Ein klares Bild bringt oft eine konkrete Production oder ein anstehendes Projekt ans Licht, das jetzt hands on und unabhängige Oversight braucht. Viele Brands gehen aus einem Diagnostic direkt in eine Embedded Engagement auf dieser Production.",
+      "workshops": [
+        {
+          "id": "markup",
+          "name": "Markup Diagnostic",
+          "hook": "Den Markup finden, den ihr in euren Production Budgets nicht sehen könnt.",
+          "why": "Ihr vermutet, dass Production Kosten Markup enthalten, den ihr nicht sehen könnt. Ihr wollt wissen, wie viel, wo und welche Transparenz Gaps existieren.",
+          "what": "Ein eintägiges Forensic auf eure letzten drei bis fünf Production Budgets. Wir gehen Line by Line gemeinsam mit eurem Team durch, vergleichen mit Market Benchmarks und offen ausgewiesenen Strukturen, identifizieren Markup Muster und Transparenz Lücken.",
+          "outcome": "Ein schriftlicher Markup Diagnostic Report mit Findings auf Line Level, Market Benchmark Vergleich und Empfehlungen für Transparenz Klauseln in zukünftigen Briefs und Verträgen.",
+          "duration": "Ein Tag",
+          "cta": "Markup Diagnostic anfragen"
+        },
+        {
+          "id": "roster",
+          "name": "Roster Diagnostic",
+          "hook": "Ein unabhängiger Blick darauf, wer wirklich richtig für die Arbeit ist.",
+          "why": "Euer Director und Production Company Roster ist organisch gewachsen, oft auf Empfehlung der Agency. Ihr wollt einen unabhängigen Blick, wer wirklich richtig für die Arbeit ist, wer nicht und wo die Gaps sind.",
+          "what": "Ein eintägiger Workshop zur Review eures aktuellen Rosters gegen eure Production Needs. Unabhängige Bewertung jedes Partners auf Creative Fit, Cost, Capacity und Delivery Track Record. Keine finanziellen Beziehungen zu schützen.",
+          "outcome": "Ein schriftlicher Roster Diagnostic Report mit Partner für Partner Bewertung, identifizierten Gaps und einer Empfehlung für einen Roster Reset.",
+          "duration": "Ein Tag",
+          "cta": "Roster Diagnostic anfragen"
+        },
+        {
+          "id": "shadow_ai",
+          "name": "Shadow AI Diagnostic",
+          "hook": "Ein vollständiges Bild von AI in der Production, bevor die nächste Frage kommt.",
+          "why": "Euer Team nutzt AI Tools, die ihr nicht freigegeben habt, mit Daten, die ihr nicht klassifiziert habt, mit Disclosure, die ihr nicht definiert habt. Ihr braucht ein vollständiges Bild vor der nächsten Legal, Brand oder Regulatory Frage.",
+          "what": "Ein eintägiges Forensic, was tatsächlich an AI Tools in der Production Funktion läuft. Tool Inventory, Data Flow Mapping, Rights und Disclosure Review, Risk Register Build.",
+          "outcome": "Ein schriftliches Shadow AI Register und Risikobild, geeignet für eine Board Level Conversation, plus eine 30 Tage Governance MVP Empfehlung.",
+          "duration": "Ein Tag",
+          "cta": "Shadow AI Diagnostic anfragen"
+        },
+        {
+          "id": "brief",
+          "name": "Brief Diagnostic",
+          "hook": "Die meisten Production Failures starten im Brief.",
+          "why": "Die meisten Production Failures starten im Brief. Ihr vermutet, dass eure Briefs inkonsistent, mehrdeutig oder ohne die Inputs sind, die Production Teams für gute Delivery brauchen.",
+          "what": "Ein eintägiges Diagnostic auf eure letzten drei bis fünf Production Briefs gegen ein strukturiertes Framework. Objective Clarity, Success Criteria, Budget Framing, Talent Direction, Technical Requirements, Decision Rights.",
+          "outcome": "Ein schriftlicher Brief Diagnostic Report mit Brief für Brief Bewertung, einem redesignten Brief Template und Gate Criteria, was als Production Ready zählt.",
+          "duration": "Ein Tag",
+          "cta": "Brief Diagnostic anfragen"
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity Diagnostic",
+          "hook": "Sechs Dimensionen. RAG bewertet. In einem Tag.",
+          "why": "Ihr wollt ein schnelles, strukturiertes Bild davon, wo eure Production Funktion steht. Sechs Dimensionen, RAG bewertet, an einem Tag. Der schnellere Cousin des vollen Audit.",
+          "what": "Ein eintägiges Diagnostic über sechs Production Dimensionen (Workflow, Technology, Budget, Team, Pipeline, Vendors), gemeinsam mit eurem Team bewertet anhand von SHIFTs Diagnostic Framework.",
+          "outcome": "Ein schriftliches Maturity Diagnostic mit RAG Scores, Top Findings und einer empfohlenen Path Forward, inklusive der Frage, ob ein voller Audit sinnvoll ist.",
+          "duration": "Ein Tag",
+          "cta": "Maturity Diagnostic anfragen"
+        },
+        {
+          "id": "insourcing",
+          "name": "Insourcing Diagnostic",
+          "hook": "Ein quantifizierter Test, ob Insourcing für euch Sinn macht.",
+          "why": "Ihr überlegt, Production In House zu holen, wollt aber einen quantifizierten Test, ob das Sinn macht, in welchem Scope und was es im Vergleich zum aktuellen Agency Modell kostet.",
+          "what": "Ein eintägiges Diagnostic, das Cost, Capability und Risk verschiedener Insourcing Szenarien modelliert. Verglichen mit aktuellen Agency Managed Kosten. Szenario getestet gegen wahrscheinliche Production Volumes.",
+          "outcome": "Ein schriftliches Insourcing Diagnostic mit Szenario Modeling, Total Cost of Ownership Vergleich und einer Empfehlung, ob, wann und wie ihr insourcen solltet.",
+          "duration": "Ein Tag",
+          "cta": "Insourcing Diagnostic anfragen"
+        }
+      ]
+    },
+    "Practice": {
+      "name": "Practice Workshop",
+      "tagline": "Eine Disziplin meistern. Tief auf einer Sache, die wirklich zählt.",
+      "description": "Ein Practice Workshop läuft über einen oder zwei Tage mit dem fokussierten Team im Raum. Die Disziplin wird von einem Senior Advisor mit tiefer, aktueller Erfahrung delivered, nicht aus generalistischer Consulting Theorie. Jeder Practice Workshop wird auf reale anstehende Arbeit des Teams angewandt, sodass das Gelernte direkt nächste Woche landet.",
+      "followup": "Die meisten Practice Workshops kreisen um eine konkrete Production, in der die Disziplin angewandt werden muss. Nach dem Workshop laden Brands SHIFT oft ein, diese Production mit unabhängigem Advisory zu begleiten.",
+      "workshops": [
+        {
+          "id": "sustainable",
+          "name": "Sustainable Production",
+          "hook": "Ein strukturierter Ansatz für Carbon Ziele, der die Kosten nicht treibt.",
+          "why": "Procurement, Brand und ESG Teams verlangen zunehmend, dass Production gegen Carbon und Nachhaltigkeitsziele delivered. Ihr braucht einen strukturierten Ansatz, der die Kosten nicht in die Höhe treibt.",
+          "what": "Ein ein bis zwei Tage Workshop zu Carbon Budgeting, Sustainable Supplier Kriterien, ESG Reporting Frameworks und der Integration von Nachhaltigkeit in den Production Brief.",
+          "outcome": "Ein Sustainable Production Playbook mit Supplier Kriterien, Carbon Budget Templates und Reporting Strukturen, die das Team auf der nächsten Production anwenden kann.",
+          "duration": "Ein bis zwei Tage",
+          "cta": "Sustainable Production Workshop anfragen"
+        },
+        {
+          "id": "procurement",
+          "name": "Procurement-Production Alignment",
+          "hook": "Beide Seiten alignt. Ohne Production Quality zu opfern.",
+          "why": "Procurement und Production sprechen unterschiedliche Sprachen. Entscheidungen werden blockiert, Kosten zu spät hinterfragt, Vertrauen erodiert. Ihr wollt beide Seiten alignen, ohne Production Quality zu opfern.",
+          "what": "Ein ein bis zwei Tage Workshop, der Procurement und Production zusammenführt. Geteiltes Cost Vocabulary, Decision Gates, Eskalationspfade, Supplier Framework. Beide Funktionen im Raum.",
+          "outcome": "Ein gemeinsames Procurement-Production Operating Agreement mit geteilten Definitionen, Decision Gates und Eskalationspfaden, durch die die nächste Production läuft.",
+          "duration": "Ein bis zwei Tage",
+          "cta": "Procurement-Production Workshop anfragen"
+        },
+        {
+          "id": "post_production",
+          "name": "Post-Production Cost Control",
+          "hook": "Wo Budget Overruns sich verstecken. Gefunden und kontrolliert.",
+          "why": "Post Production ist, wo Budget Overruns sich verstecken. Offline, Online, Grade, VFX, Sound, Musik. Ihr wollt einen strukturierten Weg, diese Kosten zu forecasten, zu tracken und zu kontrollieren.",
+          "what": "Ein eintägiger Deep Dive zur Post Production Kostenstruktur. Benchmark Rates pro Disziplin, Cost Driver Analyse, Milestone Gates, Change Order Management, Vendor Terms.",
+          "outcome": "Ein Post-Production Cost Control Playbook mit Budget Struktur, Gate Checklisten, Change Order Discipline und Benchmark Rates, das das Team sofort anwendet.",
+          "duration": "Ein Tag",
+          "cta": "Post-Production Workshop anfragen"
+        },
+        {
+          "id": "music",
+          "name": "Music & Licensing Strategy",
+          "hook": "Sync Fees und Territorial Rights, richtig gehandhabt.",
+          "why": "Sync Fees, Buyout Strukturen und Territorial Rights sind, wo ernsthaft Geld leakt und ernsthaft Legal Risk lebt. Euer Team braucht einen belastbaren Ansatz.",
+          "what": "Ein eintägiger Specialist Workshop zu Music Rights, Sync Fee Strukturen, Buyout Management, Territorial Rights, AI Music Governance und Licensing Negotiation.",
+          "outcome": "Ein Music & Licensing Playbook mit Rights Frameworks, Fee Benchmarks, Vertragsklauseln und einem Decision Tree für lizenzierte versus original komponierte Musik.",
+          "duration": "Ein Tag",
+          "cta": "Music & Licensing Workshop anfragen"
+        },
+        {
+          "id": "cross_border",
+          "name": "Cross-Border Production",
+          "hook": "Kosten, Talent und Compliance über Territorien hinweg.",
+          "why": "Produktion über europäische oder globale Territorien hinweg fügt Cost, Talent und Compliance Komplexität hinzu, die die meisten Brand Teams nicht managen können.",
+          "what": "Ein zwei Tage Workshop zu Cross Border Production. Cost Arbitrage, Talent Flow, Tax Credits, Location Selection, Compliance Regime, Vendor Networks.",
+          "outcome": "Ein Cross-Border Production Playbook mit Territory Selection Kriterien, Cost Frameworks, Compliance Checklisten und einem Vendor Network, das das Team aktivieren kann.",
+          "duration": "Zwei Tage",
+          "cta": "Cross-Border Workshop anfragen"
+        },
+        {
+          "id": "social_first",
+          "name": "Social-First Production",
+          "hook": "Production, die für die Social First Realität designed ist.",
+          "why": "Platform Native, Short Form, AI augmented Content funktioniert nicht im Broadcast Production Modell. Ihr braucht einen Production Ansatz, der für die Social First Realität designed ist.",
+          "what": "Ein zwei Tage Workshop zu Social First Production Design. Volume, Format, Talent, Tools, AI Integration, Brand Consistency at Scale.",
+          "outcome": "Ein Social-First Production Playbook mit Operating Model, Talent Struktur, Tool Stack, AI Integration Points und einem Production Rhythmus, gegen den das Team executed.",
+          "duration": "Zwei Tage",
+          "cta": "Social-First Workshop anfragen"
+        },
+        {
+          "id": "live",
+          "name": "Live & Real-Time Production",
+          "hook": "Capability eingespielt, bevor der Moment kommt.",
+          "why": "Live Events, Breaking News Content und Cultural Moment Production verlangen eine Production Capability, die die meisten Brands nicht eingespielt haben. Wenn der Moment kommt, zeigt sich Capability.",
+          "what": "Ein ein bis zwei Tage Workshop zu Live und Real Time Production. Pre rehearsed Workflows, On Call Talent Networks, Rapid Approval Protokolle, Technology Stack, Governance unter Druck.",
+          "outcome": "Ein Live & Real-Time Production Playbook mit eingespielten Workflows, Talent Network, Approval Protokollen und einer Capability, die das Team bei Bedarf aktivieren kann.",
+          "duration": "Ein bis zwei Tage",
+          "cta": "Live & Real-Time Workshop anfragen"
+        }
+      ]
+    },
+    "Leadership": {
+      "name": "Leadership Workshop",
+      "tagline": "Eure Position gemeinsam erarbeiten. Bevor der Moment kommt.",
+      "description": "Ein Leadership Workshop dauert einen halben bis einen Tag, ausschließlich Senior Audience. Das Leadership Team erarbeitet seine Position zu einem High Stakes Thema vor dem Gespräch, das sie braucht. Das Board, der CFO, der Cultural Flashpoint. SHIFT facilitated. Das Leadership Team produziert die Antwort. Jeder Leadership Workshop endet mit einer belastbaren Position, die der Raum gemeinsam aufgebaut und gemeinsam abgenickt hat.",
+      "followup": "Leader, die SHIFT für einen High Stakes Moment im Raum hatten, wollen uns in der Regel beim nächsten Moment wieder dabei haben. Nach einem Leadership Workshop ist der häufigste Weg eine fortlaufende Advisory Beziehung mit dem Leadership Team.",
+      "workshops": [
+        {
+          "id": "board_ai",
+          "name": "The Board AI Workshop",
+          "hook": "Mit einer belastbaren AI Position ins Board. Nicht mit einem Vendor Logo Deck.",
+          "why": "Das Board wird den CMO fragen, was die AI Position der Brand ist. Der CMO muss mit einer belastbaren Antwort reingehen, nicht mit einem Deck voller Vendor Logos.",
+          "what": "Ein eintägiger Senior Only Working Session, in dem die AI Position der Brand entsteht. Strategic Posture, Governance Commitments, Investment Priorities, Risk Framework. Backed by Evidence, die der Raum gemeinsam produziert.",
+          "outcome": "Eine schriftliche Board AI Position, vom Leadership Team abgenickt, mit der Evidence und der Rationale, die sie trägt.",
+          "duration": "Ein Tag",
+          "cta": "Board AI Workshop anfragen"
+        },
+        {
+          "id": "production_roi",
+          "name": "Production ROI Workshop",
+          "hook": "Production ROI in einer Sprache, die Finance verstehen kann.",
+          "why": "Finance und Procurement fragen nach Production ROI in einer Sprache, die Production Teams nicht sprechen. Ihr braucht eine belastbare Antwort, die im Budget Review standhält.",
+          "what": "Ein eintägiger Senior Workshop, der Production ROI in CFO freundlichen Begriffen definiert. Cost Framework, Value Framework, Measurement Approach, Reporting Cadence.",
+          "outcome": "Ein schriftliches Production ROI Framework mit Definitionen, Measurement Plan und Reporting Templates, das das Team mit Finance ab dem nächsten Budget Cycle nutzt.",
+          "duration": "Ein Tag",
+          "cta": "Production ROI Workshop anfragen"
+        },
+        {
+          "id": "ai_cost_value",
+          "name": "AI Cost vs. Value Workshop",
+          "hook": "Was in eurem AI Stack wirklich seinen Platz verdient.",
+          "why": "Euer AI Subscription Stack wächst und ihr könnt nicht sagen, was wirklich Kosten spart oder Value schafft versus was bezahlt aber kaum genutzt wird.",
+          "what": "Ein eintägiger Senior Workshop, der AI Cost versus Value über den Production Stack modelliert. Tool für Tool Analyse, Usage Data, Outcome Data. Entscheidungen zu Rationalisierung, Scale Up und Exit.",
+          "outcome": "Ein schriftliches AI Cost vs. Value Picture mit Entscheidungen auf Tool Level, Rationalisierungsplan und Quartals Review Cadence.",
+          "duration": "Ein Tag",
+          "cta": "AI Cost vs. Value Workshop anfragen"
+        },
+        {
+          "id": "crisis",
+          "name": "Crisis Production Workshop",
+          "hook": "Ein Crisis Production Plan, eingespielt bevor die Crisis kommt.",
+          "why": "Der nächste Cultural Flashpoint, das nächste regulatorische Ereignis oder die nächste Brand Crisis kommt. Wenn sie kommt, muss eure Production Capability in Stunden reagieren, nicht in Wochen. Die meisten Brands haben keinen eingespielten Plan.",
+          "what": "Ein eintägiger Senior Workshop, in dem das Crisis Production Playbook der Brand entsteht. Trigger Criteria, Decision Rights, On Call Talent, Pre rehearsed Workflows, Governance unter Druck.",
+          "outcome": "Ein schriftliches Crisis Production Playbook, vom Leadership Team abgenickt und vom Production Team in Stunden aktivierbar.",
+          "duration": "Ein Tag",
+          "cta": "Crisis Production Workshop anfragen"
+        }
+      ]
+    },
+    "Deliverables": {
+      "title": "Womit jeder SHIFT Workshop endet.",
+      "intro": "Jeder Workshop produziert ein schriftliches Ergebnis, das dem Team gehört. Keine Slides. Ein Dokument.",
+      "items": [
+        {
+          "label": "Volle Dokumentation.",
+          "body": "Alles, was diskutiert, entschieden und offen geblieben ist, sauber aufgeschrieben und ans Team übergeben."
+        },
+        {
+          "label": "Volle Analyse.",
+          "body": "Eine strukturierte Analyse der Inputs, die das Team in den Raum gebracht hat. Briefs, Budgets, Tool Inventories, Roster, Production Records. Jedes Artefakt bekommt einen schriftlichen Read."
+        },
+        {
+          "label": "Next Steps.",
+          "body": "Konkrete Actions, zu denen sich das Team im Raum committed hat, mit Ownern und Timelines."
+        },
+        {
+          "label": "Eine Empfehlung.",
+          "body": "Wo es passt, eine Empfehlung für das richtige nächste SHIFT Engagement. Manchmal ist das auch kein Follow Up. Beides sind valide Outcomes."
+        }
+      ]
+    },
+    "Closing": {
+      "eyebrow": "— Beginnen Sie mit einem Gespräch —",
+      "title": "Sprecht uns auf einen Workshop an.",
+      "body": "Sagt uns, wo ihr gerade steht und was ansteht. Wir scopen, schedulen und führen ihn mit euch durch.",
+      "cta": "Gespräch starten ›"
+    },
+    "Request": {
+      "title": "Workshop anfragen",
+      "subtitle": "Sagt uns kurz, womit ihr gerade beschäftigt seid. Wir melden uns innerhalb von 24 Stunden.",
+      "field_name": "Name",
+      "field_company": "Unternehmen",
+      "field_email": "Geschäftliche Email",
+      "field_workshop": "Workshop",
+      "field_message": "Was ist der Kontext? (optional)",
+      "submit": "Anfrage senden ›",
+      "success_title": "Anfrage erhalten.",
+      "success_body": "Wir melden uns innerhalb von 24 Stunden, Montag bis Freitag."
     }
   }
 }
