@@ -142,28 +142,55 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
           background: #faf9f6;
         }
         .tier-tab {
-          padding: 14px 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 18px 0;
           border: none;
-          border-bottom: 2px solid transparent;
-          font-family: var(--font-mono);
-          font-size: 11px;
-          font-weight: 400;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
+          border-top: 1px solid rgba(246,245,242,0.14);
+          font-family: var(--font-head);
+          font-size: clamp(14px,1.4vw,17px);
+          font-weight: 600;
+          letter-spacing: -0.01em;
           white-space: nowrap;
           cursor: pointer;
           background: transparent;
-          color: rgba(246,245,242,0.38);
-          transition: color 220ms ease, border-color 220ms ease;
-          margin-right: 32px;
-          flex-shrink: 0;
+          color: rgba(246,245,242,0.45);
+          transition: color 200ms ease, border-color 200ms ease;
+          width: 100%;
+          text-align: left;
+        }
+        .tier-tab .tier-arrow {
+          font-size: 18px;
+          transition: transform 200ms ease, opacity 200ms ease;
+          opacity: 0;
+          transform: translateX(-6px);
         }
         .tier-tab.active {
           color: var(--fg);
-          border-bottom-color: #00897b;
+          border-top-color: #00897b;
+        }
+        .tier-tab.active .tier-arrow {
+          opacity: 1;
+          transform: translateX(0);
+          color: #00897b;
         }
         .tier-tab:not(.active):hover {
-          color: rgba(246,245,242,0.72);
+          color: rgba(246,245,242,0.80);
+        }
+        .tier-tab:not(.active):hover .tier-arrow {
+          opacity: 0.5;
+          transform: translateX(0);
+        }
+        .tier-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 0 32px;
+          margin-top: 56px;
+          padding-top: 0;
+        }
+        @media (max-width: 767px) {
+          .tier-grid { grid-template-columns: 1fr 1fr; gap: 0 20px; }
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -190,30 +217,21 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
           <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(17px,1.5vw,20px)', color: 'rgba(246,245,242,0.65)', margin: 0 }}>
             {hero.subline}
           </p>
-        </section>
 
-        {/* TIER NAV */}
-        <div
-          style={{
-            position: 'sticky',
-            top: '64px',
-            zIndex: 40,
-            borderBottom: '1px solid rgba(246,245,242,0.12)',
-            padding: '0 var(--margin-x)',
-          }}
-        >
-          <div className="no-scrollbar" style={{ display: 'flex', overflowX: 'auto' }}>
+          {/* Track selector — embedded in hero, no sticky conflict */}
+          <div className="tier-grid">
             {tiers.map(tier => (
               <button
                 key={tier.id}
                 className={`tier-tab${activeTierId === tier.id ? ' active' : ''}`}
                 onClick={() => scrollToTier(tier.id)}
               >
+                <span className="tier-arrow">›</span>
                 {navLabels[tier.id] ?? tier.name}
               </button>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* TIER SECTIONS */}
         {tiers.map((tier, tierIndex) => {
@@ -234,7 +252,7 @@ export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, cl
               style={{
                 background: sectionBg,
                 padding: 'clamp(72px,9vw,100px) var(--margin-x)',
-                scrollMarginTop: '120px',
+                scrollMarginTop: '80px',
               }}
             >
               {/* Tier header */}
