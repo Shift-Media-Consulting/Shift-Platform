@@ -32,7 +32,10 @@ interface Props {
   productSlideSubhead: string
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+// Gradient compressed into top ~42% — transition completes before the cream
+// sections begin, so the dark-to-mint shift is fully visible while scrolling
+// through the dark hero / definition / project-types / timeline blocks.
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%)'
 
 // Bold-wrap out-of-scope items — Build, Engine, Campaign, Pilot
 function renderOutItem(text: string) {

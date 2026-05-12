@@ -23,8 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
+// Gradient compressed into top ~42% — transition completes before the
+// light Independence Statement section, so the dark-to-mint shift is
+// fully visible while scrolling through the upper dark blocks.
 const BODY_GRADIENT =
-  'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+  'linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%)'
 
 export default async function MethodPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

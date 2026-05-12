@@ -35,7 +35,10 @@ interface Props {
   productSlideSubhead: string
 }
 
-const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%)'
+// Gradient compressed into top ~42% — by the time the cream sections start (~50%)
+// the transition is complete, so the dark-to-mint shift is fully visible within
+// the dark tier sections instead of being hidden below them.
+const BODY_GRADIENT = 'linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%)'
 
 export default function WorkshopsClient({ hero, tierNav, tiers, deliverables, closing, request, productSlideSubhead }: Props) {
   const [activeTierId, setActiveTierId] = useState(tiers[0]?.id ?? '')

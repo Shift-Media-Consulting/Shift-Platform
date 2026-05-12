@@ -62,7 +62,7 @@
   --font-serif:  'Newsreader36', Georgia, serif;
   --font-mono:   'Geist Mono', 'GeistMono', ui-monospace, monospace;
   --margin-x:    clamp(32px, 7.5vw, 96px);
-  --gradient-body: linear-gradient(180deg, #004d40 0%, #2a6f5e 20%, #4f9382 48%, #b9d8d2 78%, #b9d8d2 100%);
+  --gradient-body: linear-gradient(180deg, #004d40 0%, #2a6f5e 10%, #4f9382 22%, #7ab3a5 32%, #b9d8d2 42%, #b9d8d2 100%);
 
   /* ── Semantic foreground tokens — default: dark (teal) context ── */
   --fg:       #f6f5f2;
