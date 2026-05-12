@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import ProductSlide from '@/components/marketing/ProductSlide'
 
 type HeroData = { eyebrow: string; title: string; body: string; subline: string }
-type DefinitionData = { lead: string; sub: string; p2: string; p3: string; p4: string }
+type DefinitionData = { lead: string; sub: string; p2: string; p3: string }
 type CardData = { id: string; title: string; hook: string; detail: string }
 type ProjectTypesData = { eyebrow: string; heading: string; cards: CardData[] }
 type PhaseData = { id: string; numeral: string; label: string; duration: string; description: string; deliverable: string }
@@ -236,11 +236,8 @@ export default function PilotClient({
             <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 22px' }}>
               {definition.p2}
             </p>
-            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: '0 0 22px' }}>
+            <p style={{ fontSize: 'clamp(15px,1.4vw,17px)', lineHeight: 1.7, color: 'rgba(246,245,242,0.78)', margin: 0 }}>
               {definition.p3}
-            </p>
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.65, color: 'rgba(246,245,242,0.62)', margin: 0 }}>
-              {definition.p4}
             </p>
           </div>
         </section>
