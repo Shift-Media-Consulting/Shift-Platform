@@ -344,13 +344,12 @@ export default function ProductSlide({ subhead }: Props) {
                 <div
                   key={i}
                   style={{
-                    flex: `0 0 clamp(320px, 35vw, 480px)`,
+                    flex: `0 0 clamp(320px, 38vw, 520px)`,
                     minWidth: isMobile ? '80vw' : '320px',
-                    aspectRatio: '3/4',
                     borderRadius: '16px',
                     background: 'rgba(246,245,242,0.06)',
                     border: '1px solid rgba(246,245,242,0.18)',
-                    padding: 'clamp(28px,3vw,44px)',
+                    padding: 'clamp(32px,3.5vw,52px)',
                     display: 'flex',
                     flexDirection: 'column',
                     flexShrink: 0,
@@ -361,18 +360,19 @@ export default function ProductSlide({ subhead }: Props) {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '11px',
                     letterSpacing: '0.18em',
-                    color: 'rgba(246,245,242,0.40)',
-                    marginBottom: '10px',
+                    color: 'rgba(246,245,242,0.38)',
+                    marginBottom: '20px',
                   }}>
-                    {card.numeral}
+                    [{card.numeral}]
                   </p>
+                  <div style={{ height: '1px', background: 'rgba(246,245,242,0.16)', marginBottom: '28px' }} />
                   <h3 style={{
                     fontWeight: 700,
-                    fontSize: 'clamp(32px,4vw,52px)',
-                    lineHeight: 1.0,
-                    letterSpacing: '-0.025em',
+                    fontSize: 'clamp(48px,6vw,80px)',
+                    lineHeight: 0.95,
+                    letterSpacing: '-0.03em',
                     color: '#f6f5f2',
-                    margin: '0 0 16px',
+                    margin: '0 0 28px',
                   }}>
                     {card.title}
                   </h3>
@@ -380,22 +380,22 @@ export default function ProductSlide({ subhead }: Props) {
                     fontFamily: 'var(--font-serif)',
                     fontStyle: 'italic',
                     fontSize: 'clamp(15px,1.3vw,18px)',
-                    lineHeight: 1.5,
-                    color: 'rgba(246,245,242,0.65)',
-                    margin: '0 0 auto',
+                    lineHeight: 1.6,
+                    color: 'rgba(246,245,242,0.62)',
+                    margin: '0 0 28px',
                   }}>
                     {card.hook}
                   </p>
                   <div style={{
-                    marginTop: '32px',
                     paddingTop: '20px',
-                    borderTop: '1px solid rgba(246,245,242,0.14)',
+                    borderTop: '1px solid rgba(246,245,242,0.12)',
                   }}>
                     <span style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '11px',
-                      letterSpacing: '0.14em',
-                      color: 'rgba(246,245,242,0.40)',
+                      fontSize: '10px',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(246,245,242,0.35)',
                     }}>
                       Click to explore
                     </span>
