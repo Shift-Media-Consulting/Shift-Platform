@@ -7,6 +7,7 @@ import ServicesReveal from './ServicesReveal'
 import ServicesSlider from './ServicesSlider'
 import ServicesFaq from './ServicesFaq'
 import ServicesPillarCarousel from './ServicesPillarCarousel'
+import EngagementIndex from './EngagementIndex'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -158,10 +159,22 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               label={t.rich('Entry.title', { em: (c) => <>{c}</> })}
               cards={entryItems.map(i => ({ name: i.title, desc: i.description }))}
             />
-            <ServicesSlider
-              label={t.rich('Engagement.title', { em: (c) => <>{c}</> })}
-              cards={engagementItems.map(i => ({ name: i.title, desc: i.description }))}
-            />
+            <div style={{ padding: '0 var(--margin-x)' }}>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-head)',
+                  fontWeight: 600,
+                  fontSize: 'clamp(36px, 5vw, 72px)',
+                  color: 'var(--fg)',
+                  lineHeight: '1.0',
+                  letterSpacing: '-0.025em',
+                  marginBottom: '48px',
+                }}
+              >
+                {t.rich('Engagement.title', { em: (c) => <>{c}</> })}
+              </h2>
+              <EngagementIndex items={engagementItems} />
+            </div>
           </div>
         </section>
 
