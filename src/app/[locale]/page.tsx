@@ -212,6 +212,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         {/* ── Section 3: Conviction beat ───────────────────────────────── */}
         <section
           data-hm
+          data-theme="light"
           className="hm-section"
           style={{ padding: `clamp(48px,6vw,72px) var(--margin-x)` }}
         >
@@ -319,7 +320,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               fontWeight: 600,
               letterSpacing: '0.20em',
               textTransform: 'uppercase',
-              color: 'rgba(246,245,242,0.60)',
+              color: 'rgba(246,245,242,0.80)',
               marginBottom: '24px',
             }}
           >

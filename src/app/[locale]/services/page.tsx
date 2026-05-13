@@ -199,7 +199,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               style={{
                 fontSize: '19px',
                 lineHeight: 1.55,
-                color: 'rgba(246,245,242,0.75)',
+                color: 'rgba(246,245,242,0.90)',
                 maxWidth: '460px',
                 alignSelf: 'end',
                 margin: 0,
