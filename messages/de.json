@@ -187,7 +187,7 @@
     },
     "Closing": {
       "kicker": "Beginnen Sie mit einem Gespräch",
-      "title": "Fünfundvierzig Minuten. <em>Kein Sales Pitch.</em>",
+      "title": "Ein ehrlicher Blick in 45 Minuten.",
       "body": "Sagen Sie uns, was Sie herausfinden wollen. Wir melden uns innerhalb von 24 Stunden, Montag bis Freitag, mit einer ehrlichen Einschätzung, ob wir die richtigen Menschen sind, um zu helfen. Und mit welchem Gründer Sie zusammenarbeiten würden.",
       "cta": "Gespräch anfragen ›"
     }
@@ -392,7 +392,7 @@
       ]
     },
     "Deliverables": {
-      "title": "Drei Ergebnisse. <em>Ihnen gehörend.</em>",
+      "title": "Was das Audit liefert.",
       "items": [
         {
           "number": "01",
@@ -428,7 +428,7 @@
       "subtitle": "Drei Mitgründer. Ein unabhängiges Partnernetzwerk. Jahrzehnte praktische Produktionserfahrung. Von Kostenkontrolle bis kreative Auslieferung."
     },
     "Founders": {
-      "title": "Drei Gründer. <em>Eine unabhängige Firma.</em>",
+      "title": "Wir haben die Produktionen geleitet, die wir beraten.",
       "items": [
         {
           "role": "Mitgründer",

@@ -187,7 +187,7 @@
     },
     "Closing": {
       "kicker": "Start with a conversation",
-      "title": "Forty five minutes. <em>No sales pitch.</em>",
+      "title": "An honest read in 45 minutes.",
       "body": "Tell us what you are trying to figure out. We will come back within 24 hours, Monday to Friday, with an honest read on whether we are the right people to help, and which founder you would be working with.",
       "cta": "Request a conversation ›"
     }
@@ -392,7 +392,7 @@
       ]
     },
     "Deliverables": {
-      "title": "Three deliverables. <em>Yours to keep.</em>",
+      "title": "What the audit produces.",
       "items": [
         {
           "number": "01",
@@ -428,7 +428,7 @@
       "subtitle": "Three co founders. One independent partner network. Decades of hands on production experience, from cost control to creative delivery."
     },
     "Founders": {
-      "title": "Three founders. <em>One independent firm.</em>",
+      "title": "We have run the productions we advise on.",
       "items": [
         {
           "role": "Co founder",
