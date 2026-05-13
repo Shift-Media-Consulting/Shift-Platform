@@ -102,8 +102,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             }}
           >
             {t.rich('Hero.subtitle', {
-              em:    (c) => <em className="news">{c}</em>,
-              brand: (c) => <em className="news">{c}</em>,
+              em:    (c) => <>{c}</>,
+              brand: (c) => <>{c}</>,
             })}
           </p>
 
@@ -186,7 +186,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             >
               {t.rich('Pillars.title', {
                 br: () => <br />,
-                em: (c) => <em className="news">{c}</em>,
+                em: (c) => <>{c}</>,
               })}
             </h2>
             <p
@@ -235,7 +235,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 margin: 0,
               }}
             >
-              {t.rich('Independence.headline', { em: (c) => <em className="news">{c}</em> })}
+              {t.rich('Independence.headline', { em: (c) => <>{c}</> })}
             </h3>
 
             <div>

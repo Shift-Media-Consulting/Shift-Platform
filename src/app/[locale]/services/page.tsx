@@ -155,11 +155,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         >
           <div className="ab-card flex flex-col gap-20">
             <ServicesSlider
-              label={t.rich('Entry.title', { em: (c) => <em className="news">{c}</em> })}
+              label={t.rich('Entry.title', { em: (c) => <>{c}</> })}
               cards={entryItems.map(i => ({ name: i.title, desc: i.description }))}
             />
             <ServicesSlider
-              label={t.rich('Engagement.title', { em: (c) => <em className="news">{c}</em> })}
+              label={t.rich('Engagement.title', { em: (c) => <>{c}</> })}
               cards={engagementItems.map(i => ({ name: i.title, desc: i.description }))}
             />
           </div>
@@ -246,7 +246,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 marginBottom: 'clamp(40px,5vw,56px)',
               }}
             >
-              {t.rich('FAQ.title', { em: (c) => <em className="news">{c}</em> })}
+              {t.rich('FAQ.title', { em: (c) => <>{c}</> })}
             </h2>
             <div className="ab-card">
               <ServicesFaq items={faqs} />

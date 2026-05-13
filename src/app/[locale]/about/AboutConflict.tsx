@@ -356,7 +356,7 @@ export default function AboutConflict() {
             {' · '}
             {t.rich('fourth_seat', {
               brand: (c) => <span>{c}</span>,
-              em: (c) => <em className="news">{c}</em>,
+              em: (c) => <>{c}</>,
             })}
           </span>
         </div>
