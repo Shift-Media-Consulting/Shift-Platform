@@ -173,27 +173,7 @@ export default function ProductSlide({ subhead }: Props) {
     }
     goToRef.current = goTo
 
-    // Click a side card to navigate to it
-    cardEls.forEach((el, i) => {
-      el.addEventListener('click', () => {
-        const src = i % CARD_COUNT
-        const co2 = centerRef.current
-        const st = stepRef.current
-        const k = Math.round((-xRef.current + co2) / st)
-        const currentActive = ((k % CARD_COUNT) + CARD_COUNT) % CARD_COUNT
-        const dist = src - currentActive
-        if (dist === 0) {
-          // Active card clicked: open modal
-          setActiveModal(cards[src] ?? null)
-        } else {
-          // Side card clicked: animate to it
-          const shortDist = ((dist + CARD_COUNT + Math.round(CARD_COUNT / 2)) % CARD_COUNT) - Math.round(CARD_COUNT / 2)
-          goTo(shortDist)
-        }
-      })
-    })
-
-    // Pointer drag
+    // Pointer drag — clicks handled in onUp via moved flag
     let startX = 0
     let isDragging = false
     let moved = false
@@ -213,12 +193,30 @@ export default function ProductSlide({ subhead }: Props) {
       track.style.transform = `translateX(${xRef.current}px)`
       wrap()
     }
-    const onUp = () => {
+    const onUp = (e: PointerEvent) => {
       if (!isDragging) return
       isDragging = false
       const co2 = centerRef.current
       const st = stepRef.current
       const k = Math.round((-xRef.current + co2) / st)
+
+      if (!moved) {
+        // Tap / click — no drag happened. Detect which card was hit
+        // and either open modal (active card) or navigate (side card).
+        const rect = container.getBoundingClientRect()
+        const offsetCards = Math.round(
+          (e.clientX - rect.left - rect.width / 2) / st
+        )
+        const currentActive = ((k % CARD_COUNT) + CARD_COUNT) % CARD_COUNT
+        if (offsetCards === 0) {
+          setActiveModal(cards[currentActive] ?? null)
+        } else {
+          goTo(offsetCards)
+        }
+        return
+      }
+
+      // Drag ended — snap to nearest card
       const target = -k * st + co2
       cancelAnim.current = animateTo(
         xRef,
