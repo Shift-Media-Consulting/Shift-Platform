@@ -37,7 +37,7 @@
       "cta_secondary": "Die Shift Methode"
     },
     "Pillars": {
-      "title": "Vier Säulen. <em>Ein Partner.</em>",
+      "title": "Vier Säulen.<br><em>Ein Partner.</em>",
       "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
       "items": [
         {
@@ -243,7 +243,7 @@
       ]
     },
     "Pillars": {
-      "title": "Vier Säulen. Ein Partner.",
+      "title": "Vier Säulen.<br>Ein Partner.",
       "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
       "kicker": "Was wir tun · 04 Kompetenzen",
       "items": [
@@ -352,7 +352,8 @@
       "subtitle": "Ein Diagnoserahmen für die Content Operations von Marken. Sechs Dimensionen. Eine klare Roadmap.",
       "claim_p1": "Die meisten Produktionsprobleme sind keine kreativen Probleme.",
       "claim_p2": "Sie sind operative Probleme.",
-      "intro": "Die Shift Methode ist, wie wir sie diagnostizieren. Über sechs Dimensionen, mit einer klaren Roadmap am Ende und einem belastbaren Plan."
+      "intro": "Die Shift Methode ist, wie wir sie diagnostizieren. Über sechs Dimensionen, mit einer klaren Roadmap am Ende und einem belastbaren Plan.",
+      "label": "Audit"
     },
     "Dimensions": {
       "title": "Sechs <em>Dimensionen.</em>",

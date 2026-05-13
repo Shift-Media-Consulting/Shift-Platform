@@ -163,7 +163,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 margin: 0,
               }}
             >
-              {t.rich('Pillars.title', { em: (c) => <em className="news">{c}</em> })}
+              {t.rich('Pillars.title', {
+                br: () => <br />,
+                em: (c) => <em className="news">{c}</em>,
+              })}
             </h2>
             <p
               style={{

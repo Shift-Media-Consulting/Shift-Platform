@@ -23,6 +23,14 @@ const CSS = `
   margin: 0 0 32px;
 }
 
+/* ─── em.news-serif — italic accent, no underline ──────────────── */
+em.news-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: inherit;
+}
+
 /* ─── em.news — italic + underline draw ────────────────────────── */
 em.news {
   font-family: var(--font-serif);
@@ -320,7 +328,7 @@ export default function AboutConflict() {
       <section ref={sectionRef} className="ab-section">
 
         <h1 className="ab-headline">
-          {t.rich('title', { em: (c) => <em className="news">{c}</em> })}
+          {t.rich('title', { em: (c) => <em className="news-serif">{c}</em> })}
         </h1>
 
         <p className="ab-deck">

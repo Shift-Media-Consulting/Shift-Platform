@@ -133,7 +133,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 margin: 0,
               }}
             >
-              {t('Pillars.title')}
+              {t.rich('Pillars.title', { br: () => <br /> })}
             </h2>
             <p
               className="ab-p"

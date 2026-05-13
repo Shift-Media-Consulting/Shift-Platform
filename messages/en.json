@@ -37,7 +37,7 @@
       "cta_secondary": "The Shift Method"
     },
     "Pillars": {
-      "title": "Four pillars. <em>One partner.</em>",
+      "title": "Four pillars.<br><em>One partner.</em>",
       "intro": "A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.",
       "items": [
         {
@@ -243,7 +243,7 @@
       ]
     },
     "Pillars": {
-      "title": "Four pillars. One partner.",
+      "title": "Four pillars.<br>One partner.",
       "intro": "A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.",
       "kicker": "What we do · 04 capabilities",
       "items": [
@@ -352,7 +352,8 @@
       "subtitle": "A diagnostic framework for brand content operations. Six dimensions. One clear roadmap.",
       "claim_p1": "Most production problems are not creative problems.",
       "claim_p2": "They are operational problems.",
-      "intro": "The Shift Method is how we diagnose them. Across six dimensions, ending in a clear roadmap and a defensible plan."
+      "intro": "The Shift Method is how we diagnose them. Across six dimensions, ending in a clear roadmap and a defensible plan.",
+      "label": "Audit"
     },
     "Dimensions": {
       "title": "Six <em>dimensions.</em>",

@@ -174,9 +174,27 @@ export default function ServicesSlider({ label, cards, compact = false }: Props)
 
     container.addEventListener('mouseenter', pauseAll)
     container.addEventListener('mouseleave', scheduleResume)
-    startProgress()
+
+    // Only start auto-advance when the slider scrolls into view —
+    // prevents the timer firing while the user is still above the fold.
+    const viewObs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Reset to card 01 in case the user arrives after a wrap
+          xRef.current = -(stepRef.current * CARD_COUNT) + centerRef.current
+          gsap.set(track, { x: xRef.current })
+          updateCards(cardEls, 0)
+          setActiveIndex(0)
+          startProgress()
+          viewObs.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    viewObs.observe(container)
 
     return () => {
+      viewObs.disconnect()
       obs.kill()
       animRef.current?.kill()
       progAnimRef.current?.kill()

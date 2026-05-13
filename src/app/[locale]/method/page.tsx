@@ -68,35 +68,50 @@ export default async function MethodPage({ params }: { params: Promise<{ locale:
               fontWeight: 400,
             }}
           >
-            — The Shift Method · A diagnostic, not a sales pitch
+            — {t('Hero.label')} · A diagnostic, not a sales pitch
           </p>
 
-          {/* h1 */}
+          {/* h1 — large "AUDIT" label */}
           <h1
             className="ab-h"
             style={{
               fontFamily: 'var(--font-head)',
               fontWeight: 600,
-              fontSize: 'clamp(48px, 7.5vw, 104px)',
-              lineHeight: 0.95,
-              letterSpacing: '-0.025em',
+              fontSize: 'clamp(72px, 10vw, 144px)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.03em',
               color: '#f6f5f2',
-              maxWidth: '1300px',
-              marginBottom: '32px',
+              margin: '0 0 20px',
             }}
           >
-            {t.rich('Hero.title', { em: (c) => <em className="news">{c}</em> })}
+            {t('Hero.label')}
           </h1>
+
+          {/* Sub-headline — "The Shift Method." */}
+          <p
+            className="ab-h2"
+            style={{
+              fontFamily: 'var(--font-head)',
+              fontWeight: 400,
+              fontSize: 'clamp(22px, 2.8vw, 36px)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.015em',
+              color: 'rgba(246,245,242,0.65)',
+              margin: '0 0 clamp(32px, 4vw, 48px)',
+            }}
+          >
+            {t.rich('Hero.title', { em: (c) => <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>{c}</em> })}
+          </p>
 
           {/* Deck */}
           <p
             className="ab-p"
             style={{
-              fontSize: 'clamp(18px, 2vw, 26px)',
-              lineHeight: 1.4,
-              color: 'rgba(246,245,242,0.85)',
+              fontSize: 'clamp(16px, 1.8vw, 22px)',
+              lineHeight: 1.5,
+              color: 'rgba(246,245,242,0.80)',
               fontWeight: 400,
-              maxWidth: '760px',
+              maxWidth: '680px',
               marginBottom: 'clamp(48px, 6vw, 72px)',
             }}
           >
