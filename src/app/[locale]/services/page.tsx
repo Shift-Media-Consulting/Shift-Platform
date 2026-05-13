@@ -50,8 +50,67 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   // Map FAQ items to shape ServicesFaq expects
   const faqs = faqItems.map(item => ({ q: item.question, a: item.answer }))
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How is shift.media different from a production company?',
+        acceptedAnswer: { '@type': 'Answer', text: 'We don\'t make productions. We advise on them. We have no financial interest in any production going ahead, going bigger, or going to any particular vendor.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'How is shift.media different from a consultancy?',
+        acceptedAnswer: { '@type': 'Answer', text: 'We\'ve actually run productions. On set. In the edit suite. In the negotiations. Our recommendations are grounded in what happens in production. Not what a slide deck says should happen.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you take a cut of vendor fees?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. Never. Our fees come from our clients. That\'s it.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What does an engagement typically cost?',
+        acceptedAnswer: { '@type': 'Answer', text: 'We scope each engagement individually. Talk to us. We\'ll tell you what\'s involved before you commit to anything.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can you work alongside our existing agency?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. We work with brands whose agencies are managing the production, brands working directly with production companies, and brands building their own in house function. Independent oversight is the constant.' },
+      },
+    ],
+  }
+
+  const serviceProvider = { '@type': 'Organization', name: 'Shift Media GbR' }
+  const servicesSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        name: 'Production Audit',
+        description: 'A diagnostic framework across six dimensions of brand content operations, ending in a clear roadmap.',
+        provider: serviceProvider,
+      },
+      {
+        '@type': 'Service',
+        name: 'Workshops',
+        description: 'Focused working sessions on production strategy, cost control, operations, and leadership.',
+        provider: serviceProvider,
+      },
+      {
+        '@type': 'Service',
+        name: 'Pilot',
+        description: 'A defined, time-limited advisory engagement from start to finish.',
+        provider: serviceProvider,
+      },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       <Nav />
       <ServicesReveal />
       <main

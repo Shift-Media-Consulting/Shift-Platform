@@ -35,8 +35,19 @@ export default async function MethodPage({ params }: { params: Promise<{ locale:
 
   const t = await getTranslations('Method')
 
+  const methodSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Production Audit — The Shift Method',
+    provider: { '@type': 'Organization', name: 'Shift Media GbR', url: 'https://shift-media.io' },
+    description: 'A diagnostic framework for brand content operations. Six dimensions assessed: strategy, workflow, vendor relationships, technology, talent, and financial controls. Ends in a clear roadmap.',
+    serviceType: 'Production Audit',
+    areaServed: { '@type': 'Place', name: 'Germany, Europe' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(methodSchema) }} />
       <Nav />
       <PageReveal />
       <MethodReveal />

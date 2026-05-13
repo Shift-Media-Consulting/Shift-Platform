@@ -25,8 +25,19 @@ export default async function PilotPage({ params }: { params: Promise<{ locale: 
   // ProductSlide subhead — context-specific phrase, overrides the shared heading from ProductSlide messages
   const productSlideSubhead = (messages as any).ProductSlide?.heading ?? 'After the Pilot, where it makes sense.'
 
+  const pilotSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Production Pilot',
+    provider: { '@type': 'Organization', name: 'Shift Media GbR', url: 'https://shift-media.io' },
+    description: 'A defined, time-limited production advisory engagement — from initial brief to final delivery. Embedded advisory on a single campaign or production.',
+    serviceType: 'Embedded Production Advisory',
+    areaServed: { '@type': 'Place', name: 'Germany, Europe' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pilotSchema) }} />
       <Nav />
       <PilotClient
         hero={P.Hero}

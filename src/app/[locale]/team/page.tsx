@@ -39,8 +39,43 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
 
   const founders = foundersItems.map((f, i) => ({ ...f, ...FOUNDER_IMAGES[i] }))
 
+  const worksFor = { '@type': 'Organization', name: 'Shift Media GbR', url: 'https://shift-media.io' }
+  const teamSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        name: 'Justin Stiebel',
+        jobTitle: 'Co-founder, Shift Media GbR',
+        description: 'Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.',
+        email: 'justin@shift-media.io',
+        worksFor,
+        url: 'https://shift-media.io/team',
+      },
+      {
+        '@type': 'Person',
+        name: 'Cornelius Roenz',
+        jobTitle: 'Co-founder, Shift Media GbR',
+        description: 'Production leader with extensive experience building and running production functions at agency and brand level across Europe.',
+        email: 'cornelius@shift-media.io',
+        worksFor,
+        url: 'https://shift-media.io/team',
+      },
+      {
+        '@type': 'Person',
+        name: 'Jankel Huppertz',
+        jobTitle: 'Co-founder, Shift Media GbR',
+        description: 'Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.',
+        email: 'jankel@shift-media.io',
+        worksFor,
+        url: 'https://shift-media.io/team',
+      },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }} />
       <Nav />
       <PageReveal />
       <TeamReveal />

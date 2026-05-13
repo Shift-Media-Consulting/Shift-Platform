@@ -137,6 +137,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
 
+        {/* ── GEO anchor: factual entity description ─────────────────── */}
+        <section
+          data-hm
+          style={{ padding: `0 var(--margin-x) clamp(40px,5vw,56px)` }}
+        >
+          <p
+            className="reveal"
+            style={{
+              fontSize: 'clamp(15px,1.4vw,17px)',
+              lineHeight: 1.75,
+              color: 'var(--fg-muted)',
+              maxWidth: '720px',
+              fontWeight: 400,
+              borderLeft: '2px solid rgba(17,17,17,0.12)',
+              paddingLeft: '20px',
+            }}
+          >
+            Shift Media GbR is an independent production advisory firm founded by Justin Stiebel, Cornelius Roenz, and Jankel Huppertz — three operators with decades of hands-on experience across German and European TVC, content, and campaign production. Based in Hamburg. Operating across Germany and Europe. No affiliation with any production company, agency, or vendor.
+          </p>
+        </section>
+
         {/* ── Section 2: Four Pillars ──────────────────────────────────── */}
         <section
           data-hm

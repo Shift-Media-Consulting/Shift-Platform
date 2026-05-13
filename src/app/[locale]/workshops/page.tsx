@@ -43,8 +43,19 @@ export default async function WorkshopsPage({ params }: { params: Promise<{ loca
 
   const productSlideSubhead: string = W.ProductSlideSubhead ?? 'After the Workshop, where it makes sense.'
 
+  const workshopsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Production Workshops',
+    provider: { '@type': 'Organization', name: 'Shift Media GbR', url: 'https://shift-media.io' },
+    description: 'Focused working sessions for brand, agency, and production teams on production strategy, cost control, operations, and leadership. Delivered in Hamburg or on location.',
+    serviceType: 'Production Advisory Workshop',
+    areaServed: { '@type': 'Place', name: 'Germany, Europe' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(workshopsSchema) }} />
       <Nav />
       <WorkshopsClient
         hero={W.Hero}
