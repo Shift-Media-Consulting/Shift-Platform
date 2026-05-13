@@ -207,19 +207,28 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
             >
               {t.rich('Pillars.title', { br: () => <br /> })}
             </h2>
-            <p
-              className="ab-p"
-              style={{
-                fontSize: '19px',
-                lineHeight: 1.55,
-                color: 'rgba(246,245,242,0.90)',
-                maxWidth: '460px',
-                alignSelf: 'end',
-                margin: 0,
-              }}
-            >
-              {t('Pillars.intro')}
-            </p>
+            <div style={{ alignSelf: 'end' }}>
+              <p
+                className="ab-p"
+                style={{
+                  fontSize: '19px',
+                  lineHeight: 1.55,
+                  color: 'rgba(246,245,242,0.90)',
+                  maxWidth: '460px',
+                  margin: 0,
+                }}
+              >
+                {t('Pillars.intro')}
+              </p>
+              <figure style={{ margin: '28px 0 0', padding: '18px 22px', borderLeft: '2px solid var(--accent-warm)' }}>
+                <blockquote style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, fontSize: '19px', lineHeight: 1.45, margin: 0, maxWidth: '30ch', color: 'var(--fg-muted)' }}>
+                  {t('Pillars.pull_quote')}
+                </blockquote>
+                <figcaption style={{ marginTop: '10px', fontFamily: 'var(--font-mono)', fontSize: '10.5px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.6, color: 'var(--fg-faint)' }}>
+                  {t('Pillars.pull_quote_attr')}
+                </figcaption>
+              </figure>
+            </div>
           </div>
 
           {/* Pillar rail */}

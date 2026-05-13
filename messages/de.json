@@ -39,6 +39,8 @@
     "Pillars": {
       "title": "Vier Säulen.<br><em>Ein Partner.</em>",
       "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
+      "pull_quote": "Ein Berater. Vier Kompetenzen. Keine Interessenkonflikte.",
+      "pull_quote_attr": "— Shift, zur Struktur",
       "items": [
         {
           "number": "01",
@@ -183,6 +185,8 @@
       "title": "Warum wir <em>das gebaut haben.</em>",
       "body_p1": "Wir haben shift.media in Hamburg gegründet, weil es den unabhängigen Produktionsberater, den wir selbst engagieren würden, in Europa nicht gab. Zumindest nicht so, wie wir ihn verstehen.",
       "body_p2": "Drei Gründer. Jahrzehnte am Set. Eine Firma, gebaut auf der Überzeugung, dass Marken einen Partner verdienen, der wirklich auf ihrer Seite steht.",
+      "pull_quote": "Wir haben Jahre im Dreieck verbracht. Wir wissen genau, wie es funktioniert — und für wen.",
+      "pull_quote_attr": "— Justin Stiebel, Mitgründer",
       "signature": "Justin Stiebel · Cornelius Roenz · Jankel Huppertz"
     },
     "Closing": {
@@ -245,6 +249,8 @@
     "Pillars": {
       "title": "Vier Säulen.<br>Ein Partner.",
       "intro": "Ein vollständiges Operating Model für Marken, die produzieren. Es deckt die vier Bereiche ab, in denen sich unabhängige Expertise am schnellsten auszahlt.",
+      "pull_quote": "Produktionsprobleme eskalieren. Je früher man hinschaut, desto mehr spart man.",
+      "pull_quote_attr": "— Shift, zum Timing",
       "kicker": "Was wir tun · 04 Kompetenzen",
       "items": [
         {

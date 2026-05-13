@@ -179,6 +179,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               </p>
             </div>
 
+            <figure style={{ margin: '32px 0', padding: '18px 22px', borderLeft: '2px solid var(--accent-warm)' }}>
+              <blockquote style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, fontSize: '19px', lineHeight: 1.45, margin: 0, maxWidth: '30ch', color: 'var(--fg-muted)' }}>
+                {t('Origin.pull_quote')}
+              </blockquote>
+              <figcaption style={{ marginTop: '10px', fontFamily: 'var(--font-mono)', fontSize: '10.5px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.6, color: 'var(--fg-faint)' }}>
+                {t('Origin.pull_quote_attr')}
+              </figcaption>
+            </figure>
+
             <p
               className="ab-name font-bold text-[14px] tracking-[0.3px]"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-faint)' }}

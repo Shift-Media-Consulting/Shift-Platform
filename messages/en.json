@@ -39,6 +39,8 @@
     "Pillars": {
       "title": "Four pillars.<br><em>One partner.</em>",
       "intro": "A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.",
+      "pull_quote": "One advisor. Four capabilities. No conflicts.",
+      "pull_quote_attr": "— Shift, on structure",
       "items": [
         {
           "number": "01",
@@ -183,6 +185,8 @@
       "title": "Why we <em>built this.</em>",
       "body_p1": "We started shift.media in Hamburg because the independent production advisor we'd want to hire didn't exist in Europe, at least not the way we thought it should.",
       "body_p2": "Three founders. Decades on set. One firm built around the conviction that brands deserve a partner who is genuinely on their side.",
+      "pull_quote": "We spent years inside the triangle. We know exactly how it works — and who it works for.",
+      "pull_quote_attr": "— Justin Stiebel, co-founder",
       "signature": "Justin Stiebel · Cornelius Roenz · Jankel Huppertz"
     },
     "Closing": {
@@ -245,6 +249,8 @@
     "Pillars": {
       "title": "Four pillars.<br>One partner.",
       "intro": "A complete operating model for brands that produce, covering the four areas where independent expertise pays for itself fastest.",
+      "pull_quote": "Production problems compound. The earlier you look, the more you save.",
+      "pull_quote_attr": "— Shift, on timing",
       "kicker": "What we do · 04 capabilities",
       "items": [
         {
