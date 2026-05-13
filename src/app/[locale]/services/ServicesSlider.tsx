@@ -244,8 +244,11 @@ export default function ServicesSlider({ label, cards, compact = false }: Props)
           <div ref={trackRef} className="flex will-change-transform" style={{ gap: `${GAP}px` }}>
             {tripled.map((card, i) => {
               const src = i % CARD_COUNT
+              const isClone = i < CARD_COUNT || i >= CARD_COUNT * 2
               return (
                 <div key={i}
+                  aria-hidden={isClone ? true : undefined}
+                  role={isClone ? 'presentation' : undefined}
                   className="flex-shrink-0 flex flex-col rounded-2xl overflow-hidden"
                   style={{
                     width:                isMobile ? '82vw' : 'min(540px, 80vw)',

@@ -338,9 +338,13 @@ export default function ProductSlide({ subhead }: Props) {
                 willChange: 'transform',
               }}
             >
-              {tripled.map((card, i) => (
+              {tripled.map((card, i) => {
+                const isClone = i < CARD_COUNT || i >= CARD_COUNT * 2
+                return (
                 <div
                   key={i}
+                  aria-hidden={isClone ? true : undefined}
+                  role={isClone ? 'presentation' : undefined}
                   style={{
                     flex: `0 0 clamp(320px, 38vw, 520px)`,
                     minWidth: isMobile ? '80vw' : '320px',
@@ -399,7 +403,7 @@ export default function ProductSlide({ subhead }: Props) {
                     </span>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
         </div>
