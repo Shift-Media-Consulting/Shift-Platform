@@ -148,7 +148,7 @@ export default function MethodFramework() {
 
         /* Overlay transitions */
         .mth-overlay {
-          transition: opacity 0.38s cubic-bezier(0.16,1,0.3,1), backdrop-filter 0.38s ease;
+          transition: opacity 0.38s cubic-bezier(0.16,1,0.3,1);
         }
 
         /* Node hover ring */
@@ -415,9 +415,7 @@ export default function MethodFramework() {
             position: 'fixed',
             inset: 0,
             zIndex: 9999,
-            background: 'rgba(0,18,12,0.96)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
+            background: 'rgba(0,0,0,0.88)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',

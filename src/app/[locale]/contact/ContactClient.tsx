@@ -184,7 +184,7 @@ em.news.is-drawn::after { transform: scaleX(1); }
 .ct-arrow { transition: transform 200ms ease; }
 
 /* ── FAQ section ───────────────────────────────────────────────────── */
-.ct-faq { padding: clamp(64px,8vw,96px) var(--margin-x); background: rgba(246,245,242,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.ct-faq { padding: clamp(64px,8vw,96px) var(--margin-x); background: rgba(246,245,242,0.88); }
 .ct-faq-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(48px,6vw,80px); max-width: 1400px; }
 .ct-qa-item { border-bottom: 1px solid rgba(17,17,17,0.15); padding: 28px 0; }
 .ct-qa-item:first-child { border-top: 1px solid rgba(17,17,17,0.15); }
@@ -664,8 +664,8 @@ export default function ContactClient() {
                 </p>
               </div>
 
-              {/* Glass promise card */}
-              <div style={{ marginTop: 8, background: 'rgba(246,245,242,0.08)', border: '1.5px solid rgba(246,245,242,0.35)', borderRadius: 12, padding: 28, backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
+              {/* Promise card */}
+              <div style={{ marginTop: 8, background: 'rgba(246,245,242,0.10)', border: '1.5px solid rgba(246,245,242,0.35)', borderRadius: 12, padding: 28 }}>
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', color: 'rgba(246,245,242,0.80)', marginBottom: 12 }}>
                   — {t('Details.promise_label')}
                 </p>
