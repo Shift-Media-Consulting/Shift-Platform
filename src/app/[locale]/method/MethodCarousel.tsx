@@ -16,19 +16,19 @@ type CardData = {
 
 const CARDS: CardData[] = [
   {
-    numeral: 'i.',
+    numeral: '[01]',
     kind: '— The diagnostic',
     h3: 'The diagnostic.',
     para: 'RAG-scored across all six dimensions, with evidence, root-cause analysis, and indicative benchmarks. The picture, not the pitch.',
   },
   {
-    numeral: 'ii.',
+    numeral: '[02]',
     kind: '— The roadmap',
     h3: 'The roadmap.',
     para: 'What to fix first. What to fix next. What to leave alone. Sequenced by impact and effort, not by what we\'d like to sell you.',
   },
   {
-    numeral: 'iii.',
+    numeral: '[03]',
     kind: '— The recommendation',
     h3: 'A memo.',
     para: 'A clear view on which engagement type comes next, or whether you do not need one yet. Signed. On the record.',
